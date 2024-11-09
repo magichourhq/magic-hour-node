@@ -1,0 +1,9 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testPathIgnorePatterns": ["/dist/"],
+  "moduleNameMapper": {
+    "^magic-hour$": "<rootDir>/src/index.ts",
+    "^magic-hour/(.*)$": "<rootDir>/src/$1"
+  }
+}
