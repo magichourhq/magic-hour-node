@@ -3,6 +3,5 @@
  **/
 
 export enum Environment {
-  Default = "https://api.magichour.ai",
-  Environment = "http://api.local.magichour.ai:3000",
+  Environment = "",
 }

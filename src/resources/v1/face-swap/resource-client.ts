@@ -16,7 +16,10 @@ export class FaceSwapClient extends CoreResourceClient {
     super(client);
   }
   /**
-   * Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered
+   * Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+   *
+   * Get more information about this mode at our [product page](/products/face-swap).
+   *
    */
   create(
     request: requests.CreateRequest,
