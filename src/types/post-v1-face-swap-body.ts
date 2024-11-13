@@ -14,7 +14,7 @@ export type PostV1FaceSwapBody = {
    */
   end_seconds: number;
   /**
-   * The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](http://localhost:3000/pricing) for more details
+   * The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
    */
   height: number;
   /**
@@ -26,7 +26,7 @@ export type PostV1FaceSwapBody = {
    */
   start_seconds: number;
   /**
-   * The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](http://localhost:3000/pricing) for more details
+   * The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
    */
   width: number;
 };
