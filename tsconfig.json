@@ -1,5 +1,7 @@
 {
-  "include": ["src"],
+  "include": [
+    "src"
+  ],
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
@@ -7,7 +9,7 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "outDir": "./dist",
-    "paths": { "magic-hour": ["src/index.ts"], "magic-hour/*": ["src/*"] },
+    "paths": {"magic-hour": ["src/index.ts"], "magic-hour/*": ["src/*"]},
     "declaration": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,

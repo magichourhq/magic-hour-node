@@ -126,8 +126,9 @@ export class CoreClient {
 
       if (RUNTIME.type === "node") {
         // explicitly set boundary
-        headers["content-type"] =
-          `${MULTIPART_FORM}; boundary=${form.getBoundary()}`;
+        headers[
+          "content-type"
+        ] = `${MULTIPART_FORM}; boundary=${form.getBoundary()}`;
       } else {
         // the browser should automatically set the content type
         delete headers["content-type"];
