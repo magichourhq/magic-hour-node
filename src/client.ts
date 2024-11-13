@@ -18,7 +18,8 @@ export class Client {
   v1: V1Client;
 
   constructor(opts?: ClientOptions) {
-    const baseUrl = opts?.baseUrl ?? opts?.environment ?? Environment.Default;
+    const baseUrl =
+      opts?.baseUrl ?? opts?.environment ?? Environment.Environment;
     this._client = new CoreClient({ baseUrl, timeout: opts?.timeout });
     this._client.registerAuth("bearerAuth", new AuthBearer(opts?.token));
 
