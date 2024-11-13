@@ -4,7 +4,9 @@
 
 import { CoreClient, CoreResourceClient } from "magic-hour/core";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
+import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
 import { FilesClient } from "magic-hour/resources/v1/files";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { ImageToVideoClient } from "magic-hour/resources/v1/image-to-video";
 import { LipSyncClient } from "magic-hour/resources/v1/lip-sync";
 import { TextToVideoClient } from "magic-hour/resources/v1/text-to-video";
@@ -12,8 +14,10 @@ import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 
 export class V1Client extends CoreResourceClient {
+  imageProjects: ImageProjectsClient;
   videoProjects: VideoProjectsClient;
   faceSwap: FaceSwapClient;
+  faceSwapPhoto: FaceSwapPhotoClient;
   files: FilesClient;
   imageToVideo: ImageToVideoClient;
   lipSync: LipSyncClient;
@@ -23,8 +27,10 @@ export class V1Client extends CoreResourceClient {
   constructor(client: CoreClient) {
     super(client);
 
+    this.imageProjects = new ImageProjectsClient(this._client);
     this.videoProjects = new VideoProjectsClient(this._client);
     this.faceSwap = new FaceSwapClient(this._client);
+    this.faceSwapPhoto = new FaceSwapPhotoClient(this._client);
     this.files = new FilesClient(this._client);
     this.imageToVideo = new ImageToVideoClient(this._client);
     this.lipSync = new LipSyncClient(this._client);
