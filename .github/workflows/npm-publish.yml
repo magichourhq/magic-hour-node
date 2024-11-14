@@ -6,6 +6,7 @@ name: Publish Package
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   publish-npm:
