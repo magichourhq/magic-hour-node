@@ -20,6 +20,16 @@ export { GetV1VideoProjectsIdResponse401 } from "./get-v1-video-projects-id-resp
 export { GetV1VideoProjectsIdResponse401MessageEnum } from "./get-v1-video-projects-id-response401-message-enum";
 export { GetV1VideoProjectsIdResponse404 } from "./get-v1-video-projects-id-response404";
 export { GetV1VideoProjectsIdResponse404MessageEnum } from "./get-v1-video-projects-id-response404-message-enum";
+export { PostV1AiImageGeneratorBody } from "./post-v1-ai-image-generator-body";
+export { PostV1AiImageGeneratorBodyOrientationEnum } from "./post-v1-ai-image-generator-body-orientation-enum";
+export { PostV1AiImageGeneratorBodyStyle } from "./post-v1-ai-image-generator-body-style";
+export { PostV1AiImageGeneratorResponse } from "./post-v1-ai-image-generator-response";
+export { PostV1AiImageGeneratorResponse400 } from "./post-v1-ai-image-generator-response400";
+export { PostV1AiImageGeneratorResponse401 } from "./post-v1-ai-image-generator-response401";
+export { PostV1AiImageGeneratorResponse401MessageEnum } from "./post-v1-ai-image-generator-response401-message-enum";
+export { PostV1AiImageGeneratorResponse404 } from "./post-v1-ai-image-generator-response404";
+export { PostV1AiImageGeneratorResponse404MessageEnum } from "./post-v1-ai-image-generator-response404-message-enum";
+export { PostV1AiImageGeneratorResponse422 } from "./post-v1-ai-image-generator-response422";
 export { PostV1FaceSwapBody } from "./post-v1-face-swap-body";
 export { PostV1FaceSwapBodyAssets } from "./post-v1-face-swap-body-assets";
 export { PostV1FaceSwapBodyAssetsVideoSourceEnum } from "./post-v1-face-swap-body-assets-video-source-enum";

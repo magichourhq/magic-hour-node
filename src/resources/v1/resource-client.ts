@@ -3,6 +3,7 @@
  **/
 
 import { CoreClient, CoreResourceClient } from "magic-hour/core";
+import { AiImageGeneratorClient } from "magic-hour/resources/v1/ai-image-generator";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
 import { FilesClient } from "magic-hour/resources/v1/files";
@@ -16,6 +17,7 @@ import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 export class V1Client extends CoreResourceClient {
   imageProjects: ImageProjectsClient;
   videoProjects: VideoProjectsClient;
+  aiImageGenerator: AiImageGeneratorClient;
   faceSwap: FaceSwapClient;
   faceSwapPhoto: FaceSwapPhotoClient;
   files: FilesClient;
@@ -29,6 +31,7 @@ export class V1Client extends CoreResourceClient {
 
     this.imageProjects = new ImageProjectsClient(this._client);
     this.videoProjects = new VideoProjectsClient(this._client);
+    this.aiImageGenerator = new AiImageGeneratorClient(this._client);
     this.faceSwap = new FaceSwapClient(this._client);
     this.faceSwapPhoto = new FaceSwapPhotoClient(this._client);
     this.files = new FilesClient(this._client);
