@@ -10,7 +10,7 @@ export type PostV1AiImageGeneratorBody = {
    */
   image_count: number;
   /**
-   * Name of your image
+   * The name of image
    */
   name?: string | null;
   orientation: types.PostV1AiImageGeneratorBodyOrientationEnum;
