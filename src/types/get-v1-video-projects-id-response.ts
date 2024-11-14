@@ -23,7 +23,7 @@ export type GetV1VideoProjectsIdResponse = {
    */
   height: number;
   /**
-   * Unique ID of the video. This value can be used in the [get video project API](#tag/video-projects/get/v1/video-projects/{id}) to fetch additional details such as status
+   * Unique ID of the video. This value can be used in the [get video project API](/api/tag/video-projects/get/v1/video-projects/{id}) to fetch additional details such as status
    */
   id: string;
   /**

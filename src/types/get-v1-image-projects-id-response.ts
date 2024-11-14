@@ -8,7 +8,7 @@ export type GetV1ImageProjectsIdResponse = {
   created_at: string;
   downloads: types.GetV1ImageProjectsIdResponseDownloadsItem[];
   /**
-   * Unique ID of the image. This value can be used in the [get image project API](#tag/image-projects/get/v1/image-projects/{id}) to fetch additional details such as status
+   * Unique ID of the image. This value can be used in the [get image project API](/api/tag/image-projects/get/v1/image-projects/{id}) to fetch additional details such as status
    */
   id: string;
   /**

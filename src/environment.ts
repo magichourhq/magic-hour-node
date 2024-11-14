@@ -3,5 +3,5 @@
  **/
 
 export enum Environment {
-  Environment = "",
+  Environment = "https://api.magichour.ai",
 }

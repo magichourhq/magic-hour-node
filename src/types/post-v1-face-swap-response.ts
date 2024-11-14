@@ -8,7 +8,7 @@ export type PostV1FaceSwapResponse = {
    */
   estimated_frame_cost: number;
   /**
-   * Unique ID of the video. This value can be used in the [get video project API](#tag/video-projects/get/v1/video-projects/{id}) to fetch additional details such as status
+   * Unique ID of the image. This value can be used in the [get image project API](/api/tag/image-projects/get/v1/image-projects/{id}) to fetch additional details such as status
    */
   id: string;
 };
