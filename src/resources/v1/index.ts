@@ -4,6 +4,7 @@
 
 export * as aiHeadshotGenerator from "./ai-headshot-generator";
 export * as aiImageGenerator from "./ai-image-generator";
+export * as aiImageUpscaler from "./ai-image-upscaler";
 export * as aiQrCodeGenerator from "./ai-qr-code-generator";
 export * as faceSwap from "./face-swap";
 export * as faceSwapPhoto from "./face-swap-photo";
