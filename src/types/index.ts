@@ -39,6 +39,17 @@ export { PostV1AiImageGeneratorResponse401MessageEnum } from "./post-v1-ai-image
 export { PostV1AiImageGeneratorResponse404 } from "./post-v1-ai-image-generator-response404";
 export { PostV1AiImageGeneratorResponse404MessageEnum } from "./post-v1-ai-image-generator-response404-message-enum";
 export { PostV1AiImageGeneratorResponse422 } from "./post-v1-ai-image-generator-response422";
+export { PostV1AiImageUpscalerBody } from "./post-v1-ai-image-upscaler-body";
+export { PostV1AiImageUpscalerBodyAssets } from "./post-v1-ai-image-upscaler-body-assets";
+export { PostV1AiImageUpscalerBodyStyle } from "./post-v1-ai-image-upscaler-body-style";
+export { PostV1AiImageUpscalerBodyStyleEnhancementEnum } from "./post-v1-ai-image-upscaler-body-style-enhancement-enum";
+export { PostV1AiImageUpscalerResponse } from "./post-v1-ai-image-upscaler-response";
+export { PostV1AiImageUpscalerResponse400 } from "./post-v1-ai-image-upscaler-response400";
+export { PostV1AiImageUpscalerResponse401 } from "./post-v1-ai-image-upscaler-response401";
+export { PostV1AiImageUpscalerResponse401MessageEnum } from "./post-v1-ai-image-upscaler-response401-message-enum";
+export { PostV1AiImageUpscalerResponse404 } from "./post-v1-ai-image-upscaler-response404";
+export { PostV1AiImageUpscalerResponse404MessageEnum } from "./post-v1-ai-image-upscaler-response404-message-enum";
+export { PostV1AiImageUpscalerResponse422 } from "./post-v1-ai-image-upscaler-response422";
 export { PostV1AiQrCodeGeneratorBody } from "./post-v1-ai-qr-code-generator-body";
 export { PostV1AiQrCodeGeneratorBodyStyle } from "./post-v1-ai-qr-code-generator-body-style";
 export { PostV1AiQrCodeGeneratorResponse } from "./post-v1-ai-qr-code-generator-response";

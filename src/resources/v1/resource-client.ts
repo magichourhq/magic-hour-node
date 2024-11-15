@@ -5,6 +5,7 @@
 import { CoreClient, CoreResourceClient } from "magic-hour/core";
 import { AiHeadshotGeneratorClient } from "magic-hour/resources/v1/ai-headshot-generator";
 import { AiImageGeneratorClient } from "magic-hour/resources/v1/ai-image-generator";
+import { AiImageUpscalerClient } from "magic-hour/resources/v1/ai-image-upscaler";
 import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-generator";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
@@ -21,6 +22,7 @@ export class V1Client extends CoreResourceClient {
   videoProjects: VideoProjectsClient;
   aiHeadshotGenerator: AiHeadshotGeneratorClient;
   aiImageGenerator: AiImageGeneratorClient;
+  aiImageUpscaler: AiImageUpscalerClient;
   aiQrCodeGenerator: AiQrCodeGeneratorClient;
   faceSwap: FaceSwapClient;
   faceSwapPhoto: FaceSwapPhotoClient;
@@ -37,6 +39,7 @@ export class V1Client extends CoreResourceClient {
     this.videoProjects = new VideoProjectsClient(this._client);
     this.aiHeadshotGenerator = new AiHeadshotGeneratorClient(this._client);
     this.aiImageGenerator = new AiImageGeneratorClient(this._client);
+    this.aiImageUpscaler = new AiImageUpscalerClient(this._client);
     this.aiQrCodeGenerator = new AiQrCodeGeneratorClient(this._client);
     this.faceSwap = new FaceSwapClient(this._client);
     this.faceSwapPhoto = new FaceSwapPhotoClient(this._client);
