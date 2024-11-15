@@ -21,7 +21,7 @@ jobs:
         id: check_version
         run: |
           git fetch origin ${{ github.base_ref }}
-          OLD_VERSION=$(git show origin/${{ github.base_ref }}:package.json | jq -r .version)
+          OLD_VERSION=$(git show HEAD~1:package.json | jq -r .version)
           NEW_VERSION=$(jq -r .version package.json)
           if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
             echo "version_changed=true" >> $GITHUB_OUTPUT
