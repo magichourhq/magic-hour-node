@@ -1,4 +1,4 @@
-name: PR Checks
+name: checks
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  update-dependencies:
+  version-bump:
     runs-on: ubuntu-latest
 
     steps:
