@@ -20,7 +20,7 @@ export type PostV1LipSyncBody = {
   /**
    * The name of video
    */
-  name?: string | null;
+  name?: string;
   /**
    * The start time of the input video in seconds
    */

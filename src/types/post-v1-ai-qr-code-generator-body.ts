@@ -12,6 +12,6 @@ export type PostV1AiQrCodeGeneratorBody = {
   /**
    * The name of image
    */
-  name?: string | null;
+  name?: string;
   style: types.PostV1AiQrCodeGeneratorBodyStyle;
 };

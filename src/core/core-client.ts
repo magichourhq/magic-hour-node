@@ -104,7 +104,7 @@ export class CoreClient {
 
   private encodeBodyByContentType(
     cfg: RequestConfig,
-    reqInit: RequestInit
+    reqInit: RequestInit,
   ): RequestInit {
     const contentTypeOverride =
       cfg.opts?.additionalHeaders?.["content-type"] ??

@@ -12,7 +12,7 @@ export type PostV1AiImageUpscalerBody = {
   /**
    * The name of image
    */
-  name?: string | null;
+  name?: string;
   scale_factor: number;
   style: types.PostV1AiImageUpscalerBodyStyle;
 };
