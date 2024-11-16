@@ -13,7 +13,7 @@ export function removeSpecificLines(
 
   const cleanedLines = fileContents
     .split("\n")
-    .filter((line) => shouldRemoveLine(line));
+    .filter((line) => !shouldRemoveLine(line));
 
   fs.writeFileSync(filePath, cleanedLines.join("\n"), "utf-8");
 }
