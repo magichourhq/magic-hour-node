@@ -25,7 +25,9 @@ jobs:
           cache: "yarn"
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          corepack enable
+          yarn install
       - name: running codemod
         run: yarn ts-node codemod/index.ts
 
