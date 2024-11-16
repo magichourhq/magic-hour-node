@@ -18,6 +18,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - run: corepack enable
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -26,7 +27,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          corepack enable
           yarn install
       - name: running codemod
         run: yarn ts-node codemod/index.ts
