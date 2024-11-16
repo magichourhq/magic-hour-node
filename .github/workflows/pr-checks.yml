@@ -22,10 +22,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+          cache: "yarn"
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install
+      - name: running codemod
+        run: yarn ts-node codemod/index.ts
 
       - name: Get current version from main
         run: |
@@ -73,6 +75,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add package.json package-lock.json
+          git add .
           git commit -m "chore: update dependencies and version bump" || echo "No changes to commit"
           git push
