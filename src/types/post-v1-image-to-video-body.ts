@@ -20,7 +20,7 @@ export type PostV1ImageToVideoBody = {
   /**
    * The name of video
    */
-  name?: string | null;
+  name?: string;
   style: types.PostV1ImageToVideoBodyStyle;
   /**
    * The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.

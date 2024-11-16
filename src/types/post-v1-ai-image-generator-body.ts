@@ -12,7 +12,7 @@ export type PostV1AiImageGeneratorBody = {
   /**
    * The name of image
    */
-  name?: string | null;
+  name?: string;
   orientation: types.PostV1AiImageGeneratorBodyOrientationEnum;
   style: types.PostV1AiImageGeneratorBodyStyle;
 };

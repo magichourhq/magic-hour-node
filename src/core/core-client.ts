@@ -91,6 +91,8 @@ export class CoreClient {
 
   private applyHeaders(cfg: RequestConfig, reqInit: RequestInit): RequestInit {
     const finalHeaders = {
+      "x-sideko-sdk-language": "Javascript",
+      "x-sideko-runtime": RUNTIME.type,
       ...(reqInit.headers ?? {}),
       ...(cfg.headers ?? {}),
       ...(cfg.contentType ? { "content-type": cfg.contentType } : {}),
@@ -104,7 +106,7 @@ export class CoreClient {
 
   private encodeBodyByContentType(
     cfg: RequestConfig,
-    reqInit: RequestInit
+    reqInit: RequestInit,
   ): RequestInit {
     const contentTypeOverride =
       cfg.opts?.additionalHeaders?.["content-type"] ??

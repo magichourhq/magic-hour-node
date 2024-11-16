@@ -12,7 +12,7 @@ export type PostV1TextToVideoBody = {
   /**
    * The name of video
    */
-  name?: string | null;
+  name?: string;
   /**
    * Determines the orientation of the output video
    */

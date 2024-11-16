@@ -12,5 +12,5 @@ export type PostV1AiHeadshotGeneratorBody = {
   /**
    * The name of image
    */
-  name?: string | null;
+  name?: string;
 };
