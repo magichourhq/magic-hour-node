@@ -4,9 +4,12 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1LipSyncBody
+ */
 export type PostV1LipSyncBody = {
   /**
-   * Provide the assets for lip-sync. For video, The &#x60;video_source&#x60; field determines whether &#x60;video_file_path&#x60; or &#x60;youtube_url&#x60; field is used
+   * Provide the assets for lip-sync. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
    */
   assets: types.PostV1LipSyncBodyAssets;
   /**
@@ -17,6 +20,10 @@ export type PostV1LipSyncBody = {
    * The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
    */
   height: number;
+  /**
+   * Defines the maximum FPS (frames per second) for the output video. If the input video's FPS is lower than this limit, the output video will retain the input FPS. This is useful for reducing unnecessary frame usage in scenarios where high FPS is not required.
+   */
+  max_fps_limit?: number;
   /**
    * The name of video
    */

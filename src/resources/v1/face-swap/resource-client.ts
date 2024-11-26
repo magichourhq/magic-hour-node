@@ -20,6 +20,8 @@ export class FaceSwapClient extends CoreResourceClient {
    *
    * Get more information about this mode at our [product page](/products/face-swap).
    *
+   *
+   * POST /v1/face-swap
    */
   create(
     request: requests.CreateRequest,

@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1AiHeadshotGeneratorBody
+ */
 export type PostV1AiHeadshotGeneratorBody = {
   /**
    * Provide the assets for headshot photo

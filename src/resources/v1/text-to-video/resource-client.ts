@@ -20,6 +20,8 @@ export class TextToVideoClient extends CoreResourceClient {
    *
    * Get more information about this mode at our [product page](/products/text-to-video).
    *
+   *
+   * POST /v1/text-to-video
    */
   create(
     request: requests.CreateRequest,

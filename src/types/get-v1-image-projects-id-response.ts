@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * Success
+ */
 export type GetV1ImageProjectsIdResponse = {
   created_at: string;
   downloads: types.GetV1ImageProjectsIdResponseDownloadsItem[];

@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * The request is not properly authenticated
+ */
 export type PostV1AiHeadshotGeneratorResponse401 = {
   message: types.PostV1AiHeadshotGeneratorResponse401MessageEnum;
 };

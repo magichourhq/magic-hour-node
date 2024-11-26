@@ -26,6 +26,8 @@ export class ImageProjectsClient extends CoreResourceClient {
    * - `error` - an error occurred during rendering
    * - `canceled` - image render is canceled by the user
    *
+   *
+   * GET /v1/image-projects/{id}
    */
   get(
     request: requests.GetRequest,

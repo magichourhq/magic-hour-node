@@ -4,9 +4,12 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1VideoToVideoBody
+ */
 export type PostV1VideoToVideoBody = {
   /**
-   * Provide the assets for video-to-video. For video, The &#x60;video_source&#x60; field determines whether &#x60;video_file_path&#x60; or &#x60;youtube_url&#x60; field is used
+   * Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
    */
   assets: types.PostV1VideoToVideoBodyAssets;
   /**
@@ -15,8 +18,8 @@ export type PostV1VideoToVideoBody = {
   end_seconds: number;
   /**
    * Determines whether the resulting video will have the same frame per second as the original video, or half.
-   * * &#x60;FULL&#x60; - the result video will have the same FPS as the input video
-   * * &#x60;HALF&#x60; - the result video will have half the FPS as the input video
+   * * `FULL` - the result video will have the same FPS as the input video
+   * * `HALF` - the result video will have half the FPS as the input video
    */
   fps_resolution?: types.PostV1VideoToVideoBodyFpsResolutionEnum;
   /**

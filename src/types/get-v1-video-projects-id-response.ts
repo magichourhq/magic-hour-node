@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * Success
+ */
 export type GetV1VideoProjectsIdResponse = {
   created_at: string;
   /**
@@ -15,7 +18,7 @@ export type GetV1VideoProjectsIdResponse = {
    */
   end_seconds: number;
   /**
-   * Frame rate of the video. If the status is not &#x27;complete&#x27;, the frame rate is an estimate and will be adjusted when the video completes.
+   * Frame rate of the video. If the status is not 'complete', the frame rate is an estimate and will be adjusted when the video completes.
    */
   fps: number;
   /**
@@ -39,7 +42,7 @@ export type GetV1VideoProjectsIdResponse = {
    */
   status: types.GetV1VideoProjectsIdResponseStatusEnum;
   /**
-   * The amount of frames used to generate the video. If the status is not &#x27;complete&#x27;, the cost is an estimate and will be adjusted when the video completes.
+   * The amount of frames used to generate the video. If the status is not 'complete', the cost is an estimate and will be adjusted when the video completes.
    */
   total_frame_cost: number;
   type: types.GetV1VideoProjectsIdResponseTypeEnum;

@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1FaceSwapPhotoBody
+ */
 export type PostV1FaceSwapPhotoBody = {
   /**
    * Provide the assets for face swap photo

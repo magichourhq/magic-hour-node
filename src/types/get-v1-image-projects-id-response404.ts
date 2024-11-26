@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * Requested resource is not found
+ */
 export type GetV1ImageProjectsIdResponse404 = {
   message: types.GetV1ImageProjectsIdResponse404MessageEnum;
 };

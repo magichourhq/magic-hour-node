@@ -20,6 +20,8 @@ export class ImageToVideoClient extends CoreResourceClient {
    *
    * Get more information about this mode at our [product page](/products/image-to-video).
    *
+   *
+   * POST /v1/image-to-video
    */
   create(
     request: requests.CreateRequest,

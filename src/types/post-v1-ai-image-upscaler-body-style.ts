@@ -4,10 +4,13 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1AiImageUpscalerBodyStyle
+ */
 export type PostV1AiImageUpscalerBodyStyle = {
   enhancement: types.PostV1AiImageUpscalerBodyStyleEnhancementEnum;
   /**
-   * A prompt to guide the final image. This value is ignored if &#x60;enhancement&#x60; is not Creative
+   * A prompt to guide the final image. This value is ignored if `enhancement` is not Creative
    */
   prompt?: string;
 };

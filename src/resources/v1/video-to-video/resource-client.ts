@@ -20,6 +20,8 @@ export class VideoToVideoClient extends CoreResourceClient {
    *
    * Get more information about this mode at our [product page](/products/video-to-video).
    *
+   *
+   * POST /v1/video-to-video
    */
   create(
     request: requests.CreateRequest,
