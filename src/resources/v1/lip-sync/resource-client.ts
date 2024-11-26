@@ -20,6 +20,8 @@ export class LipSyncClient extends CoreResourceClient {
    *
    * Get more information about this mode at our [product page](/products/lip-sync).
    *
+   *
+   * POST /v1/lip-sync
    */
   create(
     request: requests.CreateRequest,

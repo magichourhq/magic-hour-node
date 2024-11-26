@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1FilesUploadUrlsBodyItemsItem
+ */
 export type PostV1FilesUploadUrlsBodyItemsItem = {
   /**
    * the extension of the file to upload. Do not include the dot (.) before the extension.

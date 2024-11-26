@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * The request is not properly authenticated
+ */
 export type PostV1ImageToVideoResponse401 = {
   message: types.PostV1ImageToVideoResponse401MessageEnum;
 };

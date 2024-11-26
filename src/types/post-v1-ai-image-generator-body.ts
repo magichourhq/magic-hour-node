@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1AiImageGeneratorBody
+ */
 export type PostV1AiImageGeneratorBody = {
   /**
    * number to images to generate

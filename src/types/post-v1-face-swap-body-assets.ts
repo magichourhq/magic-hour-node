@@ -4,18 +4,21 @@
 
 import { types } from "magic-hour";
 
+/**
+ * Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
+ */
 export type PostV1FaceSwapBodyAssets = {
   /**
-   * The path of the input image. This is the &#x60;file_path&#x60; field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls)
+   * The path of the input image. This is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls)
    */
   image_file_path: string;
   /**
-   * The path of the input video. This is the &#x60;file_path&#x60; field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls). This field is required if &#x60;video_source&#x60; is &#x60;file&#x60;
+   * The path of the input video. This is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls). This field is required if `video_source` is `file`
    */
   video_file_path?: string;
   video_source: types.PostV1FaceSwapBodyAssetsVideoSourceEnum;
   /**
-   * Using a youtube video as the input source. This field is required if &#x60;video_source&#x60; is &#x60;youtube&#x60;
+   * Using a youtube video as the input source. This field is required if `video_source` is `youtube`
    */
   youtube_url?: string;
 };

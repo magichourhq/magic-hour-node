@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1TextToVideoBody
+ */
 export type PostV1TextToVideoBody = {
   /**
    * The total duration of the output video in seconds.

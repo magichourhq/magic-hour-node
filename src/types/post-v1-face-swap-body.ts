@@ -4,9 +4,12 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1FaceSwapBody
+ */
 export type PostV1FaceSwapBody = {
   /**
-   * Provide the assets for face swap. For video, The &#x60;video_source&#x60; field determines whether &#x60;video_file_path&#x60; or &#x60;youtube_url&#x60; field is used
+   * Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
    */
   assets: types.PostV1FaceSwapBodyAssets;
   /**

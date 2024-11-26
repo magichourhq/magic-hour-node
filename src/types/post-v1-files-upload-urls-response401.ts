@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * The request is not properly authenticated
+ */
 export type PostV1FilesUploadUrlsResponse401 = {
   message: types.PostV1FilesUploadUrlsResponse401MessageEnum;
 };

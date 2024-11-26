@@ -36,6 +36,8 @@ export class UploadUrlsClient extends CoreResourceClient {
    *   https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
    * ```
    *
+   *
+   * POST /v1/files/upload-urls
    */
   create(
     request: requests.CreateRequest,

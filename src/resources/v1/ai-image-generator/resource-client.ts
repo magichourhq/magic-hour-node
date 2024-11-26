@@ -17,6 +17,8 @@ export class AiImageGeneratorClient extends CoreResourceClient {
   }
   /**
    * Create an AI image. Each image costs 5 frames.
+   *
+   * POST /v1/ai-image-generator
    */
   create(
     request: requests.CreateRequest,

@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * Requested resource is not found
+ */
 export type PostV1FaceSwapResponse404 = {
   message: types.PostV1FaceSwapResponse404MessageEnum;
 };

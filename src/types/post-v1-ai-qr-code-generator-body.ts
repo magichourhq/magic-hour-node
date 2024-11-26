@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1AiQrCodeGeneratorBody
+ */
 export type PostV1AiQrCodeGeneratorBody = {
   /**
    * The content of the QR code.

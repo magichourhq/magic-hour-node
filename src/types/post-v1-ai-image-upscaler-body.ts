@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1AiImageUpscalerBody
+ */
 export type PostV1AiImageUpscalerBody = {
   /**
    * Provide the assets for upscaling

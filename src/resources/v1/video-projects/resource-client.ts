@@ -26,6 +26,8 @@ export class VideoProjectsClient extends CoreResourceClient {
    * - `error` - an error occurred during rendering
    * - `canceled` - video render is canceled by the user
    *
+   *
+   * GET /v1/video-projects/{id}
    */
   get(
     request: requests.GetRequest,

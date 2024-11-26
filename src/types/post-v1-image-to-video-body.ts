@@ -4,6 +4,9 @@
 
 import { types } from "magic-hour";
 
+/**
+ * PostV1ImageToVideoBody
+ */
 export type PostV1ImageToVideoBody = {
   /**
    * Provide the assets for image-to-video.

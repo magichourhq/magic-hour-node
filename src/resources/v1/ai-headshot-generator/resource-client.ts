@@ -17,6 +17,8 @@ export class AiHeadshotGeneratorClient extends CoreResourceClient {
   }
   /**
    * Create an AI headshot. Each headshot costs 50 frames.
+   *
+   * POST /v1/ai-headshot-generator
    */
   create(
     request: requests.CreateRequest,
