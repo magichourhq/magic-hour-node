@@ -6,7 +6,16 @@
  * PostV1FilesUploadUrlsResponseItemsItem
  */
 export type PostV1FilesUploadUrlsResponseItemsItem = {
+  /**
+   * when the upload url expires, and will need to request a new one.
+   */
   expires_at: string;
+  /**
+   * this value is used in APIs that needs assets, such as image_file_path, video_file_path, and audio_file_path
+   */
   file_path: string;
+  /**
+   * Used to upload the file to storage, send a PUT request with the file as data to upload.
+   */
   upload_url: string;
 };
