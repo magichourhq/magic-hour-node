@@ -48,6 +48,10 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 * [create](src/resources/v1/ai-image-upscaler/README.md#create) - Create Upscaled Image
 
+### [v1.ai_photo_editor](src/resources/v1/ai-photo-editor/README.md)
+
+* [create](src/resources/v1/ai-photo-editor/README.md#create) - AI Photo Editor
+
 ### [v1.ai_qr_code_generator](src/resources/v1/ai-qr-code-generator/README.md)
 
 * [create](src/resources/v1/ai-qr-code-generator/README.md#create) - Create AI QR Code

@@ -50,6 +50,16 @@ export { PostV1AiImageUpscalerResponse401MessageEnum } from "./post-v1-ai-image-
 export { PostV1AiImageUpscalerResponse404 } from "./post-v1-ai-image-upscaler-response404";
 export { PostV1AiImageUpscalerResponse404MessageEnum } from "./post-v1-ai-image-upscaler-response404-message-enum";
 export { PostV1AiImageUpscalerResponse422 } from "./post-v1-ai-image-upscaler-response422";
+export { PostV1AiPhotoEditorBody } from "./post-v1-ai-photo-editor-body";
+export { PostV1AiPhotoEditorBodyAssets } from "./post-v1-ai-photo-editor-body-assets";
+export { PostV1AiPhotoEditorBodyStyle } from "./post-v1-ai-photo-editor-body-style";
+export { PostV1AiPhotoEditorResponse } from "./post-v1-ai-photo-editor-response";
+export { PostV1AiPhotoEditorResponse400 } from "./post-v1-ai-photo-editor-response400";
+export { PostV1AiPhotoEditorResponse401 } from "./post-v1-ai-photo-editor-response401";
+export { PostV1AiPhotoEditorResponse401MessageEnum } from "./post-v1-ai-photo-editor-response401-message-enum";
+export { PostV1AiPhotoEditorResponse404 } from "./post-v1-ai-photo-editor-response404";
+export { PostV1AiPhotoEditorResponse404MessageEnum } from "./post-v1-ai-photo-editor-response404-message-enum";
+export { PostV1AiPhotoEditorResponse422 } from "./post-v1-ai-photo-editor-response422";
 export { PostV1AiQrCodeGeneratorBody } from "./post-v1-ai-qr-code-generator-body";
 export { PostV1AiQrCodeGeneratorBodyStyle } from "./post-v1-ai-qr-code-generator-body-style";
 export { PostV1AiQrCodeGeneratorResponse } from "./post-v1-ai-qr-code-generator-response";
