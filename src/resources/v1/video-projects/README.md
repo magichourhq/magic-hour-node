@@ -1,6 +1,23 @@
 
+### delete <a name="delete"></a>
+Delete video
+
+Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
+
+**API Endpoint**: `DELETE /v1/video-projects/{id}`
+
+#### Example Snippet
+
+```typescript
+import Client from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+
+const res = await client.v1.videoProjects.delete({ id: "string" });
+```
+
 ### get <a name="get"></a>
-Get video project details
+Get video details
 
 Get the details of a video project. The `download` field will be `null` unless the video was successfully rendered.
 

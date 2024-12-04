@@ -41,4 +41,21 @@ export class VideoProjectsClient extends CoreResourceClient {
       opts,
     });
   }
+  /**
+   * Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
+   *
+   * DELETE /v1/video-projects/{id}
+   */
+  delete(
+    request: requests.DeleteRequest,
+    opts?: RequestOptions,
+  ): ApiPromise<null> {
+    return this._client.makeRequest({
+      method: "delete",
+      path: `/v1/video-projects/${request.id}`,
+      auth: ["bearerAuth"],
+      responseType: "json",
+      opts,
+    });
+  }
 }
