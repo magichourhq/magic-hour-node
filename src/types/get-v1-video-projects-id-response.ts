@@ -14,9 +14,17 @@ export type GetV1VideoProjectsIdResponse = {
    */
   download?: types.GetV1VideoProjectsIdResponseDownload | null;
   /**
+   * Indicates whether the resource is deleted
+   */
+  enabled: boolean;
+  /**
    * The end time of the input video in seconds
    */
   end_seconds: number;
+  /**
+   * In the case of an error, this object will contain the error encountered during video render
+   */
+  error?: types.GetV1VideoProjectsIdResponseError | null;
   /**
    * Frame rate of the video. If the status is not 'complete', the frame rate is an estimate and will be adjusted when the video completes.
    */

@@ -11,6 +11,14 @@ export type GetV1ImageProjectsIdResponse = {
   created_at: string;
   downloads: types.GetV1ImageProjectsIdResponseDownloadsItem[];
   /**
+   * Indicates whether the resource is deleted
+   */
+  enabled: boolean;
+  /**
+   * In the case of an error, this object will contain the error encountered during video render
+   */
+  error?: types.GetV1ImageProjectsIdResponseError | null;
+  /**
    * Unique ID of the image. This value can be used in the [get image project API](/api/tag/image-projects/get/v1/image-projects/{id}) to fetch additional details such as status
    */
   id: string;

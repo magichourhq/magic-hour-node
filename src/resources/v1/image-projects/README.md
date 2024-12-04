@@ -1,4 +1,21 @@
 
+### delete <a name="delete"></a>
+Delete image
+
+Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+
+**API Endpoint**: `DELETE /v1/image-projects/{id}`
+
+#### Example Snippet
+
+```typescript
+import Client from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+
+const res = await client.v1.imageProjects.delete({ id: "string" });
+```
+
 ### get <a name="get"></a>
 Get image project details
 

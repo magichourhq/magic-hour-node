@@ -3,6 +3,13 @@
  **/
 
 /**
+ * DeleteRequest
+ */
+export type DeleteRequest = {
+  id: string;
+};
+
+/**
  * GetRequest
  */
 export type GetRequest = {
