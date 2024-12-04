@@ -7,6 +7,7 @@ export * as aiImageGenerator from "./ai-image-generator";
 export * as aiImageUpscaler from "./ai-image-upscaler";
 export * as aiPhotoEditor from "./ai-photo-editor";
 export * as aiQrCodeGenerator from "./ai-qr-code-generator";
+export * as animation from "./animation";
 export * as faceSwap from "./face-swap";
 export * as faceSwapPhoto from "./face-swap-photo";
 export * as files from "./files";

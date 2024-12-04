@@ -56,6 +56,10 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 * [create](src/resources/v1/ai-qr-code-generator/README.md#create) - Create AI QR Code
 
+### [v1.animation](src/resources/v1/animation/README.md)
+
+* [create](src/resources/v1/animation/README.md#create) - Create Animation
+
 ### [v1.face_swap](src/resources/v1/face-swap/README.md)
 
 * [create](src/resources/v1/face-swap/README.md#create) - Create Face Swap video
