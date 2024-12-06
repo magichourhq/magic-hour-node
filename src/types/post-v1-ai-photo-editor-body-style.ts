@@ -26,4 +26,8 @@ export type PostV1AiPhotoEditorBodyStyle = {
    * Determines the prompt's influence. Higher values align the output more with the prompt.
    */
   prompt_strength: number;
+  /**
+   * Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
+   */
+  steps?: number;
 };

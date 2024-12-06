@@ -21,8 +21,8 @@ export type PostV1AiPhotoEditorBody = {
    */
   resolution: number;
   /**
-   * Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
+   * Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
    */
-  steps: number;
+  steps?: number;
   style: types.PostV1AiPhotoEditorBodyStyle;
 };
