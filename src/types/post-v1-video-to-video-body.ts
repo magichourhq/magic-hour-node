@@ -23,7 +23,7 @@ export type PostV1VideoToVideoBody = {
    */
   fps_resolution?: types.PostV1VideoToVideoBodyFpsResolutionEnum;
   /**
-   * The height of the final output video. Must be divisible by 64. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
    */
   height: number;
   /**
@@ -36,7 +36,7 @@ export type PostV1VideoToVideoBody = {
   start_seconds: number;
   style: types.PostV1VideoToVideoBodyStyle;
   /**
-   * The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
    */
   width: number;
 };
