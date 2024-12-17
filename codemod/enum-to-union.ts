@@ -35,9 +35,9 @@ function enumToUnion(fileName: string, sourceCode: string): string {
 
         // Replace enum with a type alias (string union)
         return ts.factory.createTypeAliasDeclaration(
-          undefined,
           [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
           enumName,
+          undefined,
           ts.factory.createUnionTypeNode(unionTypes)
         );
       }
@@ -45,7 +45,9 @@ function enumToUnion(fileName: string, sourceCode: string): string {
       return ts.visitEachChild(node, visit, context);
     };
 
-    return (node) => ts.visitNode(node, visit);
+    return (node) => {
+      return ts.visitNode(node, visit) as ts.SourceFile;
+    };
   };
 
   const result = ts.transform(sourceFile, [transformer]);
