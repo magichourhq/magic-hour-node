@@ -38,7 +38,6 @@ function enumToUnion(fileName: string, sourceCode: string): string {
           undefined,
           [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
           enumName,
-          undefined,
           ts.factory.createUnionTypeNode(unionTypes)
         );
       }
