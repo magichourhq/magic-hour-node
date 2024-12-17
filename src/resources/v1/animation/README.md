@@ -9,33 +9,23 @@ Create a Animation video. The estimated frame cost is calculated based on the `f
 #### Example Snippet
 
 ```typescript
-import Client, { types } from "magic-hour";
+import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.animation.create({
-  data: {
-    assets: {
-      audio_file_path: "api-assets/id/1234.mp3",
-      audio_source: types.PostV1AnimationBodyAssetsAudioSourceEnum.File,
-      image_file_path: "api-assets/id/1234.png",
-      youtube_url: "http://www.example.com",
-    },
-    end_seconds: 15,
-    fps: 12,
-    height: 960,
-    name: "Animation video",
-    style: {
-      art_style:
-        types.PostV1AnimationBodyStyleArtStyleEnum.PainterlyIllustration,
-      art_style_custom: "string",
-      camera_effect: types.PostV1AnimationBodyStyleCameraEffectEnum.Accelerate,
-      prompt: "Cyberpunk city",
-      prompt_type: types.PostV1AnimationBodyStylePromptTypeEnum.AiChoose,
-      transition_speed: 5,
-    },
-    width: 512,
+  assets: { audioSource: "file" },
+  endSeconds: 15,
+  fps: 12,
+  height: 960,
+  style: {
+    artStyle: "Painterly Illustration",
+    cameraEffect: "Accelerate",
+    prompt: "Cyberpunk city",
+    promptType: "ai_choose",
+    transitionSpeed: 5,
   },
+  width: 512,
 });
 ```
 

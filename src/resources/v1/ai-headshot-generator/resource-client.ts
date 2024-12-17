@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-headshot-generator/request-types";
+import { Schemas$PostV1AiHeadshotGeneratorBody } from "magic-hour/types/post-v1-ai-headshot-generator-body";
+import { Schemas$PostV1AiHeadshotGeneratorResponse } from "magic-hour/types/post-v1-ai-headshot-generator-response";
 
 export class AiHeadshotGeneratorClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -29,8 +31,9 @@ export class AiHeadshotGeneratorClient extends CoreResourceClient {
       path: "/v1/ai-headshot-generator",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1AiHeadshotGeneratorBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1AiHeadshotGeneratorResponse.in,
       opts,
     });
   }

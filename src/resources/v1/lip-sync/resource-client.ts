@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/lip-sync/request-types";
+import { Schemas$PostV1LipSyncBody } from "magic-hour/types/post-v1-lip-sync-body";
+import { Schemas$PostV1LipSyncResponse } from "magic-hour/types/post-v1-lip-sync-response";
 
 export class LipSyncClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -32,8 +34,9 @@ export class LipSyncClient extends CoreResourceClient {
       path: "/v1/lip-sync",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1LipSyncBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1LipSyncResponse.in,
       opts,
     });
   }

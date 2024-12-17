@@ -16,19 +16,13 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.aiPhotoEditor.create({
-  data: {
-    assets: { image_file_path: "image/id/1234.png" },
-    name: "Photo Editor image",
-    resolution: 768,
-    steps: 123,
-    style: {
-      image_description: "A photo of a person",
-      likeness_strength: 5.2,
-      negative_prompt: "painting, cartoon, sketch",
-      prompt: "A photo portrait of a person wearing a hat",
-      prompt_strength: 3.75,
-      steps: 4,
-    },
+  assets: { imageFilePath: "image/id/1234.png" },
+  resolution: 768,
+  style: {
+    imageDescription: "A photo of a person",
+    likenessStrength: 5.2,
+    prompt: "A photo portrait of a person wearing a hat",
+    promptStrength: 3.75,
   },
 });
 ```

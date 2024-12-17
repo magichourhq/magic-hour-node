@@ -12,17 +12,14 @@ Get more information about this mode at our [product page](/products/text-to-vid
 #### Example Snippet
 
 ```typescript
-import Client, { types } from "magic-hour";
+import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.textToVideo.create({
-  data: {
-    end_seconds: 5,
-    name: "Text To Video video",
-    orientation: types.PostV1TextToVideoBodyOrientationEnum.Landscape,
-    style: { prompt: "string" },
-  },
+  endSeconds: 5,
+  orientation: "landscape",
+  style: { prompt: "string" },
 });
 ```
 

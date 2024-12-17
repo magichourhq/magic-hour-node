@@ -12,7 +12,7 @@ export function isUploadFile(val: any): val is UploadFile {
 }
 
 export function isNodeReadStream(val: any): val is NodeReadStream {
-  // node read stream ducktyping check
+  // node read stream duck-typing check
   return (
     RUNTIME.type === "node" &&
     typeof val === "object" &&

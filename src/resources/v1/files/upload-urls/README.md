@@ -28,23 +28,15 @@ curl -X PUT -H 'Content-Type: application/octet-stream' \
 #### Example Snippet
 
 ```typescript
-import Client, { types } from "magic-hour";
+import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.files.uploadUrls.create({
-  data: {
-    items: [
-      {
-        extension: "mp4",
-        type: types.PostV1FilesUploadUrlsBodyItemsItemTypeEnum.Video,
-      },
-      {
-        extension: "mp3",
-        type: types.PostV1FilesUploadUrlsBodyItemsItemTypeEnum.Audio,
-      },
-    ],
-  },
+  items: [
+    { extension: "mp4", type: "video" },
+    { extension: "mp3", type: "audio" },
+  ],
 });
 ```
 

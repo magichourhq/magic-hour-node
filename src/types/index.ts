@@ -25,6 +25,7 @@ export { GetV1ImageProjectsIdResponse404 } from "./get-v1-image-projects-id-resp
 export { GetV1ImageProjectsIdResponse404MessageEnum } from "./get-v1-image-projects-id-response404-message-enum";
 export { GetV1VideoProjectsIdResponse } from "./get-v1-video-projects-id-response";
 export { GetV1VideoProjectsIdResponseDownload } from "./get-v1-video-projects-id-response-download";
+export { GetV1VideoProjectsIdResponseDownloadsItem } from "./get-v1-video-projects-id-response-downloads-item";
 export { GetV1VideoProjectsIdResponseError } from "./get-v1-video-projects-id-response-error";
 export { GetV1VideoProjectsIdResponseStatusEnum } from "./get-v1-video-projects-id-response-status-enum";
 export { GetV1VideoProjectsIdResponseTypeEnum } from "./get-v1-video-projects-id-response-type-enum";
@@ -126,6 +127,15 @@ export { PostV1FilesUploadUrlsResponse401MessageEnum } from "./post-v1-files-upl
 export { PostV1FilesUploadUrlsResponse404 } from "./post-v1-files-upload-urls-response404";
 export { PostV1FilesUploadUrlsResponse404MessageEnum } from "./post-v1-files-upload-urls-response404-message-enum";
 export { PostV1FilesUploadUrlsResponse422 } from "./post-v1-files-upload-urls-response422";
+export { PostV1ImageBackgroundRemoverBody } from "./post-v1-image-background-remover-body";
+export { PostV1ImageBackgroundRemoverBodyAssets } from "./post-v1-image-background-remover-body-assets";
+export { PostV1ImageBackgroundRemoverResponse } from "./post-v1-image-background-remover-response";
+export { PostV1ImageBackgroundRemoverResponse400 } from "./post-v1-image-background-remover-response400";
+export { PostV1ImageBackgroundRemoverResponse401 } from "./post-v1-image-background-remover-response401";
+export { PostV1ImageBackgroundRemoverResponse401MessageEnum } from "./post-v1-image-background-remover-response401-message-enum";
+export { PostV1ImageBackgroundRemoverResponse404 } from "./post-v1-image-background-remover-response404";
+export { PostV1ImageBackgroundRemoverResponse404MessageEnum } from "./post-v1-image-background-remover-response404-message-enum";
+export { PostV1ImageBackgroundRemoverResponse422 } from "./post-v1-image-background-remover-response422";
 export { PostV1ImageToVideoBody } from "./post-v1-image-to-video-body";
 export { PostV1ImageToVideoBodyAssets } from "./post-v1-image-to-video-body-assets";
 export { PostV1ImageToVideoBodyStyle } from "./post-v1-image-to-video-body-style";

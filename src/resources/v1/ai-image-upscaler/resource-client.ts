@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-image-upscaler/request-types";
+import { Schemas$PostV1AiImageUpscalerBody } from "magic-hour/types/post-v1-ai-image-upscaler-body";
+import { Schemas$PostV1AiImageUpscalerResponse } from "magic-hour/types/post-v1-ai-image-upscaler-response";
 
 export class AiImageUpscalerClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -29,8 +31,9 @@ export class AiImageUpscalerClient extends CoreResourceClient {
       path: "/v1/ai-image-upscaler",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1AiImageUpscalerBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1AiImageUpscalerResponse.in,
       opts,
     });
   }
