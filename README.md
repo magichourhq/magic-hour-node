@@ -72,10 +72,14 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 * [create](src/resources/v1/files/upload-urls/README.md#create) - Generate asset upload urls
 
+### [v1.image_background_remover](src/resources/v1/image-background-remover/README.md)
+
+* [create](src/resources/v1/image-background-remover/README.md#create) - Image Background Remover
+
 ### [v1.image_projects](src/resources/v1/image-projects/README.md)
 
 * [delete](src/resources/v1/image-projects/README.md#delete) - Delete image
-* [get](src/resources/v1/image-projects/README.md#get) - Get image project details
+* [get](src/resources/v1/image-projects/README.md#get) - Get image details
 
 ### [v1.image_to_video](src/resources/v1/image-to-video/README.md)
 

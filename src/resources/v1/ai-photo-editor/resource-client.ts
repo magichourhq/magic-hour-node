@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-photo-editor/request-types";
+import { Schemas$PostV1AiPhotoEditorBody } from "magic-hour/types/post-v1-ai-photo-editor-body";
+import { Schemas$PostV1AiPhotoEditorResponse } from "magic-hour/types/post-v1-ai-photo-editor-response";
 
 export class AiPhotoEditorClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -31,8 +33,9 @@ export class AiPhotoEditorClient extends CoreResourceClient {
       path: "/v1/ai-photo-editor",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1AiPhotoEditorBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1AiPhotoEditorResponse.in,
       opts,
     });
   }

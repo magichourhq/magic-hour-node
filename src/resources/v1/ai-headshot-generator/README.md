@@ -14,10 +14,7 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.aiHeadshotGenerator.create({
-  data: {
-    assets: { image_file_path: "image/id/1234.png" },
-    name: "Ai Headshot image",
-  },
+  assets: { imageFilePath: "image/id/1234.png" },
 });
 ```
 

@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-qr-code-generator/request-types";
+import { Schemas$PostV1AiQrCodeGeneratorBody } from "magic-hour/types/post-v1-ai-qr-code-generator-body";
+import { Schemas$PostV1AiQrCodeGeneratorResponse } from "magic-hour/types/post-v1-ai-qr-code-generator-response";
 
 export class AiQrCodeGeneratorClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -29,8 +31,9 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
       path: "/v1/ai-qr-code-generator",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1AiQrCodeGeneratorBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1AiQrCodeGeneratorResponse.in,
       opts,
     });
   }

@@ -9,17 +9,14 @@ Create an AI image. Each image costs 5 frames.
 #### Example Snippet
 
 ```typescript
-import Client, { types } from "magic-hour";
+import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.aiImageGenerator.create({
-  data: {
-    image_count: 1,
-    name: "Ai Image image",
-    orientation: types.PostV1AiImageGeneratorBodyOrientationEnum.Landscape,
-    style: { prompt: "Cool image" },
-  },
+  imageCount: 1,
+  orientation: "landscape",
+  style: { prompt: "Cool image" },
 });
 ```
 

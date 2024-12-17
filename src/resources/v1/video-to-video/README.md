@@ -12,32 +12,23 @@ Get more information about this mode at our [product page](/products/video-to-vi
 #### Example Snippet
 
 ```typescript
-import Client, { types } from "magic-hour";
+import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.videoToVideo.create({
-  data: {
-    assets: {
-      video_file_path: "video/id/1234.mp4",
-      video_source: types.PostV1VideoToVideoBodyAssetsVideoSourceEnum.File,
-      youtube_url: "http://www.example.com",
-    },
-    end_seconds: 15,
-    fps_resolution: types.PostV1VideoToVideoBodyFpsResolutionEnum.Half,
-    height: 960,
-    name: "Video To Video video",
-    start_seconds: 0,
-    style: {
-      art_style: types.PostV1VideoToVideoBodyStyleArtStyleEnum._3dRender,
-      model: types.PostV1VideoToVideoBodyStyleModelEnum.AbsoluteReality,
-      prompt: "string",
-      prompt_type:
-        types.PostV1VideoToVideoBodyStylePromptTypeEnum.AppendDefault,
-      version: types.PostV1VideoToVideoBodyStyleVersionEnum.Default,
-    },
-    width: 512,
+  assets: { videoSource: "file" },
+  endSeconds: 15,
+  height: 960,
+  startSeconds: 0,
+  style: {
+    artStyle: "3D Render",
+    model: "Absolute Reality",
+    prompt: null,
+    promptType: "append_default",
+    version: "default",
   },
+  width: 512,
 });
 ```
 

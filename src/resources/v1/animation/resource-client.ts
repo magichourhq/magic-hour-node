@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/animation/request-types";
+import { Schemas$PostV1AnimationBody } from "magic-hour/types/post-v1-animation-body";
+import { Schemas$PostV1AnimationResponse } from "magic-hour/types/post-v1-animation-response";
 
 export class AnimationClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -29,8 +31,9 @@ export class AnimationClient extends CoreResourceClient {
       path: "/v1/animation",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1AnimationBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1AnimationResponse.in,
       opts,
     });
   }

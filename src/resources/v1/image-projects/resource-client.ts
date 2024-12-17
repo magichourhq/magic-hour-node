@@ -10,6 +10,7 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/image-projects/request-types";
+import { Schemas$GetV1ImageProjectsIdResponse } from "magic-hour/types/get-v1-image-projects-id-response";
 
 export class ImageProjectsClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -38,6 +39,7 @@ export class ImageProjectsClient extends CoreResourceClient {
       path: `/v1/image-projects/${request.id}`,
       auth: ["bearerAuth"],
       responseType: "json",
+      responseSchema: Schemas$GetV1ImageProjectsIdResponse.in,
       opts,
     });
   }

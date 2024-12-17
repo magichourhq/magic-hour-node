@@ -12,6 +12,7 @@ import { AnimationClient } from "magic-hour/resources/v1/animation";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
 import { FilesClient } from "magic-hour/resources/v1/files";
+import { ImageBackgroundRemoverClient } from "magic-hour/resources/v1/image-background-remover";
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { ImageToVideoClient } from "magic-hour/resources/v1/image-to-video";
 import { LipSyncClient } from "magic-hour/resources/v1/lip-sync";
@@ -31,6 +32,7 @@ export class V1Client extends CoreResourceClient {
   faceSwap: FaceSwapClient;
   faceSwapPhoto: FaceSwapPhotoClient;
   files: FilesClient;
+  imageBackgroundRemover: ImageBackgroundRemoverClient;
   imageToVideo: ImageToVideoClient;
   lipSync: LipSyncClient;
   textToVideo: TextToVideoClient;
@@ -50,6 +52,9 @@ export class V1Client extends CoreResourceClient {
     this.faceSwap = new FaceSwapClient(this._client);
     this.faceSwapPhoto = new FaceSwapPhotoClient(this._client);
     this.files = new FilesClient(this._client);
+    this.imageBackgroundRemover = new ImageBackgroundRemoverClient(
+      this._client,
+    );
     this.imageToVideo = new ImageToVideoClient(this._client);
     this.lipSync = new LipSyncClient(this._client);
     this.textToVideo = new TextToVideoClient(this._client);

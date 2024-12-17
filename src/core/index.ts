@@ -17,7 +17,8 @@ export {
   AuthCookieHeader,
 } from "./auth";
 export { RUNTIME } from "./runtime";
-export { ApiPromise } from "./api-promise";
+export { ApiPromise, EventSourceResponse } from "./api-promise";
 export { BinaryResponse } from "./binary-response";
 export { ApiError } from "./api-error";
 export { createForm, UploadFile, isUploadFile } from "./form-data";
+export { zodTransform, zodUploadFile } from "./zod";

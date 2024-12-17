@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/image-to-video/request-types";
+import { Schemas$PostV1ImageToVideoBody } from "magic-hour/types/post-v1-image-to-video-body";
+import { Schemas$PostV1ImageToVideoResponse } from "magic-hour/types/post-v1-image-to-video-response";
 
 export class ImageToVideoClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -32,8 +34,9 @@ export class ImageToVideoClient extends CoreResourceClient {
       path: "/v1/image-to-video",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1ImageToVideoBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1ImageToVideoResponse.in,
       opts,
     });
   }

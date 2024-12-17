@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/face-swap-photo/request-types";
+import { Schemas$PostV1FaceSwapPhotoBody } from "magic-hour/types/post-v1-face-swap-photo-body";
+import { Schemas$PostV1FaceSwapPhotoResponse } from "magic-hour/types/post-v1-face-swap-photo-response";
 
 export class FaceSwapPhotoClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -29,8 +31,9 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
       path: "/v1/face-swap-photo",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1FaceSwapPhotoBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1FaceSwapPhotoResponse.in,
       opts,
     });
   }

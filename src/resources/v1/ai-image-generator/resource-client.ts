@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-image-generator/request-types";
+import { Schemas$PostV1AiImageGeneratorBody } from "magic-hour/types/post-v1-ai-image-generator-body";
+import { Schemas$PostV1AiImageGeneratorResponse } from "magic-hour/types/post-v1-ai-image-generator-response";
 
 export class AiImageGeneratorClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -29,8 +31,9 @@ export class AiImageGeneratorClient extends CoreResourceClient {
       path: "/v1/ai-image-generator",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1AiImageGeneratorBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1AiImageGeneratorResponse.in,
       opts,
     });
   }

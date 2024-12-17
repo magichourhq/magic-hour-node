@@ -10,6 +10,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/files/upload-urls/request-types";
+import { Schemas$PostV1FilesUploadUrlsBody } from "magic-hour/types/post-v1-files-upload-urls-body";
+import { Schemas$PostV1FilesUploadUrlsResponse } from "magic-hour/types/post-v1-files-upload-urls-response";
 
 export class UploadUrlsClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -48,8 +50,9 @@ export class UploadUrlsClient extends CoreResourceClient {
       path: "/v1/files/upload-urls",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data,
+      body: Schemas$PostV1FilesUploadUrlsBody.out.parse(request),
       responseType: "json",
+      responseSchema: Schemas$PostV1FilesUploadUrlsResponse.in,
       opts,
     });
   }

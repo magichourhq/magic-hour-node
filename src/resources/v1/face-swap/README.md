@@ -12,24 +12,16 @@ Get more information about this mode at our [product page](/products/face-swap).
 #### Example Snippet
 
 ```typescript
-import Client, { types } from "magic-hour";
+import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const res = await client.v1.faceSwap.create({
-  data: {
-    assets: {
-      image_file_path: "image/id/1234.png",
-      video_file_path: "video/id/1234.mp4",
-      video_source: types.PostV1FaceSwapBodyAssetsVideoSourceEnum.File,
-      youtube_url: "http://www.example.com",
-    },
-    end_seconds: 15,
-    height: 960,
-    name: "Face Swap video",
-    start_seconds: 0,
-    width: 512,
-  },
+  assets: { imageFilePath: "image/id/1234.png", videoSource: "file" },
+  endSeconds: 15,
+  height: 960,
+  startSeconds: 0,
+  width: 512,
 });
 ```
 
