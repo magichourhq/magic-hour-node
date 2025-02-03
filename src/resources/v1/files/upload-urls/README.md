@@ -31,7 +31,6 @@ curl -X PUT -H 'Content-Type: application/octet-stream' \
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.files.uploadUrls.create({
   items: [
     { extension: "mp4", type: "video" },
@@ -39,5 +38,3 @@ const res = await client.v1.files.uploadUrls.create({
   ],
 });
 ```
-
-**Upgrade to see all examples**

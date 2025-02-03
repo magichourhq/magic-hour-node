@@ -12,10 +12,7 @@ Remove background from image. Each image costs 5 frames.
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.imageBackgroundRemover.create({
   assets: { imageFilePath: "image/id/1234.png" },
 });
 ```
-
-**Upgrade to see all examples**

@@ -12,11 +12,8 @@ Create an AI QR code. Each QR code costs 20 frames.
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.aiQrCodeGenerator.create({
   content: "https://magichour.ai",
   style: { artStyle: "Watercolor" },
 });
 ```
-
-**Upgrade to see all examples**

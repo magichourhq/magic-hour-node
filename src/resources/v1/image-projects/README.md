@@ -12,7 +12,6 @@ Permanently delete the rendered image. This action is not reversible, please be 
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.imageProjects.delete({ id: "string" });
 ```
 
@@ -38,8 +37,5 @@ The image can be one of the following status
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.imageProjects.get({ id: "string" });
 ```
-
-**Upgrade to see all examples**

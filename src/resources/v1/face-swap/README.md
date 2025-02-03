@@ -15,14 +15,15 @@ Get more information about this mode at our [product page](/products/face-swap).
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.faceSwap.create({
-  assets: { imageFilePath: "image/id/1234.png", videoSource: "file" },
+  assets: {
+    imageFilePath: "image/id/1234.png",
+    videoFilePath: "video/id/1234.mp4",
+    videoSource: "file",
+  },
   endSeconds: 15,
   height: 960,
   startSeconds: 0,
   width: 512,
 });
 ```
-
-**Upgrade to see all examples**
