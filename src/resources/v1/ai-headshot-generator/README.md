@@ -12,10 +12,7 @@ Create an AI headshot. Each headshot costs 50 frames.
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.aiHeadshotGenerator.create({
   assets: { imageFilePath: "image/id/1234.png" },
 });
 ```
-
-**Upgrade to see all examples**

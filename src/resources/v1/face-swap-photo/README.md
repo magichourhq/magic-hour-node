@@ -12,7 +12,6 @@ Create a face swap photo. Each photo costs 5 frames. The height/width of the out
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.faceSwapPhoto.create({
   assets: {
     sourceFilePath: "api-assets/id/1234.png",
@@ -20,5 +19,3 @@ const res = await client.v1.faceSwapPhoto.create({
   },
 });
 ```
-
-**Upgrade to see all examples**

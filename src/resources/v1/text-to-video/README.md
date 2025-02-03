@@ -15,12 +15,9 @@ Get more information about this mode at our [product page](/products/text-to-vid
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.textToVideo.create({
   endSeconds: 5,
   orientation: "landscape",
   style: { prompt: "string" },
 });
 ```
-
-**Upgrade to see all examples**

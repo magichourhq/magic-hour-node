@@ -15,7 +15,6 @@ Get more information about this mode at our [product page](/products/image-to-vi
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-
 const res = await client.v1.imageToVideo.create({
   assets: { imageFilePath: "image/id/1234.png" },
   endSeconds: 5,
@@ -24,5 +23,3 @@ const res = await client.v1.imageToVideo.create({
   width: 512,
 });
 ```
-
-**Upgrade to see all examples**
