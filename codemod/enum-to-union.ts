@@ -10,7 +10,7 @@ function enumToUnion(fileName: string, sourceCode: string): string {
     fileName,
     sourceCode,
     ts.ScriptTarget.Latest,
-    true
+    true,
   );
 
   const transformer: ts.TransformerFactory<ts.SourceFile> = (context) => {
@@ -26,10 +26,10 @@ function enumToUnion(fileName: string, sourceCode: string): string {
             member.initializer && ts.isStringLiteral(member.initializer)
               ? member.initializer.text
               : ts.isIdentifier(memberName)
-              ? memberName.text
-              : (memberName as ts.StringLiteral).text;
+                ? memberName.text
+                : (memberName as ts.StringLiteral).text;
           return ts.factory.createLiteralTypeNode(
-            ts.factory.createStringLiteral(value)
+            ts.factory.createStringLiteral(value),
           );
         });
 
@@ -38,7 +38,7 @@ function enumToUnion(fileName: string, sourceCode: string): string {
           [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
           enumName,
           undefined,
-          ts.factory.createUnionTypeNode(unionTypes)
+          ts.factory.createUnionTypeNode(unionTypes),
         );
       }
 
@@ -54,7 +54,7 @@ function enumToUnion(fileName: string, sourceCode: string): string {
   const printer = ts.createPrinter();
   const transformedSourceFile = result.transformed[0];
   const transformedCode = printer.printFile(
-    transformedSourceFile as ts.SourceFile
+    transformedSourceFile as ts.SourceFile,
   );
 
   result.dispose();

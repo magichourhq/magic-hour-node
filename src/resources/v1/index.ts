@@ -1,3 +1,4 @@
+export * as aiClothesChanger from "./ai-clothes-changer";
 export * as aiHeadshotGenerator from "./ai-headshot-generator";
 export * as aiImageGenerator from "./ai-image-generator";
 export * as aiImageUpscaler from "./ai-image-upscaler";

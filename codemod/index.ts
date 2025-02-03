@@ -15,5 +15,5 @@ function shouldRemoveLine(line: string) {
 
 removeSpecificLines(
   path.resolve("./src/core/core-client.ts"),
-  shouldRemoveLine
+  shouldRemoveLine,
 );
