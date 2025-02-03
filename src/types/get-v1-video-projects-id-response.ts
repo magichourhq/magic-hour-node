@@ -68,6 +68,7 @@ export type GetV1VideoProjectsIdResponse = {
   totalFrameCost: number;
   type:
     | "ANIMATION"
+    | "AUTO_SUBTITLE"
     | "FACE_SWAP"
     | "IMAGE_TO_VIDEO"
     | "LIP_SYNC"
@@ -100,6 +101,7 @@ export type External$GetV1VideoProjectsIdResponse = {
   total_frame_cost: number;
   type:
     | "ANIMATION"
+    | "AUTO_SUBTITLE"
     | "FACE_SWAP"
     | "IMAGE_TO_VIDEO"
     | "LIP_SYNC"
@@ -139,6 +141,7 @@ const SchemaIn$GetV1VideoProjectsIdResponse: z.ZodType<
     total_frame_cost: z.number().int(),
     type: z.enum([
       "ANIMATION",
+      "AUTO_SUBTITLE",
       "FACE_SWAP",
       "IMAGE_TO_VIDEO",
       "LIP_SYNC",
@@ -199,6 +202,7 @@ const SchemaOut$GetV1VideoProjectsIdResponse: z.ZodType<
     totalFrameCost: z.number().int(),
     type: z.enum([
       "ANIMATION",
+      "AUTO_SUBTITLE",
       "FACE_SWAP",
       "IMAGE_TO_VIDEO",
       "LIP_SYNC",

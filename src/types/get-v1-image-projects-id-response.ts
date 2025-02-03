@@ -49,6 +49,7 @@ export type GetV1ImageProjectsIdResponse = {
     | "AI_HEADSHOT"
     | "AI_IMAGE"
     | "BACKGROUND_REMOVER"
+    | "CLOTHES_CHANGER"
     | "FACE_SWAP"
     | "IMAGE_UPSCALER"
     | "PHOTO_EDITOR"
@@ -74,6 +75,7 @@ export type External$GetV1ImageProjectsIdResponse = {
     | "AI_HEADSHOT"
     | "AI_IMAGE"
     | "BACKGROUND_REMOVER"
+    | "CLOTHES_CHANGER"
     | "FACE_SWAP"
     | "IMAGE_UPSCALER"
     | "PHOTO_EDITOR"
@@ -109,6 +111,7 @@ const SchemaIn$GetV1ImageProjectsIdResponse: z.ZodType<
       "AI_HEADSHOT",
       "AI_IMAGE",
       "BACKGROUND_REMOVER",
+      "CLOTHES_CHANGER",
       "FACE_SWAP",
       "IMAGE_UPSCALER",
       "PHOTO_EDITOR",
@@ -160,6 +163,7 @@ const SchemaOut$GetV1ImageProjectsIdResponse: z.ZodType<
       "AI_HEADSHOT",
       "AI_IMAGE",
       "BACKGROUND_REMOVER",
+      "CLOTHES_CHANGER",
       "FACE_SWAP",
       "IMAGE_UPSCALER",
       "PHOTO_EDITOR",

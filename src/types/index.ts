@@ -18,6 +18,13 @@ export { GetV1VideoProjectsIdResponseError } from "./get-v1-video-projects-id-re
 export { GetV1VideoProjectsIdResponse400 } from "./get-v1-video-projects-id-response400";
 export { GetV1VideoProjectsIdResponse401 } from "./get-v1-video-projects-id-response401";
 export { GetV1VideoProjectsIdResponse404 } from "./get-v1-video-projects-id-response404";
+export { PostV1AiClothesChangerBody } from "./post-v1-ai-clothes-changer-body";
+export { PostV1AiClothesChangerBodyAssets } from "./post-v1-ai-clothes-changer-body-assets";
+export { PostV1AiClothesChangerResponse } from "./post-v1-ai-clothes-changer-response";
+export { PostV1AiClothesChangerResponse400 } from "./post-v1-ai-clothes-changer-response400";
+export { PostV1AiClothesChangerResponse401 } from "./post-v1-ai-clothes-changer-response401";
+export { PostV1AiClothesChangerResponse404 } from "./post-v1-ai-clothes-changer-response404";
+export { PostV1AiClothesChangerResponse422 } from "./post-v1-ai-clothes-changer-response422";
 export { PostV1AiHeadshotGeneratorBody } from "./post-v1-ai-headshot-generator-body";
 export { PostV1AiHeadshotGeneratorBodyAssets } from "./post-v1-ai-headshot-generator-body-assets";
 export { PostV1AiHeadshotGeneratorResponse } from "./post-v1-ai-headshot-generator-response";

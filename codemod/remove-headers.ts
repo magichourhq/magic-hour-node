@@ -7,7 +7,7 @@ import * as fs from "fs";
  */
 export function removeSpecificLines(
   filePath: string,
-  shouldRemoveLine: (line: string) => boolean
+  shouldRemoveLine: (line: string) => boolean,
 ): void {
   const fileContents = fs.readFileSync(filePath, "utf-8");
 
