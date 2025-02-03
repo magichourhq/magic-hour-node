@@ -12,19 +12,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repository
-        uses: actions/checkout@v4
-      - name: setup node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          cache: "npm"
           node-version: 22
           registry-url: https://registry.npmjs.org/
-      - name: install dependencies
-        run: npm install
-      - name: build & publish
-        run: |
-          npm run build
-          npm publish
+      - run: npm ci
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
