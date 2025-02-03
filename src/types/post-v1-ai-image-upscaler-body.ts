@@ -23,6 +23,9 @@ export type PostV1AiImageUpscalerBody = {
    * The name of image
    */
   name?: string | undefined;
+  /**
+   * How much to scale the image. Must be either 2 or 4
+   */
   scaleFactor: number;
   style: PostV1AiImageUpscalerBodyStyle;
 };
