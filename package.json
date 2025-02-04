@@ -1,6 +1,20 @@
 {
   "name": "magic-hour",
-  "version": "0.8.2",
+  "version": "0.8.3",
+  "description": "Node SDK for Magic Hour API",
+  "keywords": [
+    "magic hour",
+    "AI video",
+    "AI image",
+    "api"
+  ],
+  "homepage": "https://github.com/magichourhq/magic-hour-node",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/magichourhq/magic-hour-node.git"
+  },
+  "bugs": "https://github.com/magichourhq/magic-hour-node/issues",
+  "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
