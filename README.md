@@ -1,6 +1,6 @@
-# Magic Hour API Typescript SDK
+# Magic Hour Typescript SDK
 
-![NPM Version](https://img.shields.io/npm/v/magic-hour)
+[![NPM Version](https://img.shields.io/npm/v/magic-hour)](https://www.npmjs.com/package/magic-hour)
 
 Magic Hour provides an API (beta) that can be integrated into your own application to generate videos and images using AI.
 
