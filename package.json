@@ -2,6 +2,12 @@
   "name": "magic-hour",
   "version": "0.8.3",
   "description": "Node SDK for Magic Hour API",
+  "keywords": [
+    "magic hour",
+    "AI video",
+    "AI image",
+    "api"
+  ],
   "homepage": "https://github.com/magichourhq/magic-hour-node",
   "repository": {
     "type": "git",
