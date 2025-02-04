@@ -6,7 +6,7 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/image-projects/request-types";
-import { Schemas$GetV1ImageProjectsIdResponse } from "magic-hour/types/get-v1-image-projects-id-response";
+import { Schemas$V1ImageProjectsgetResponse } from "magic-hour/types/v1-image-projectsget-response";
 
 export class ImageProjectsClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -31,13 +31,12 @@ export class ImageProjectsClient extends CoreResourceClient {
   get(
     request: requests.GetRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.GetV1ImageProjectsIdResponse> {
+  ): ApiPromise<types.V1ImageProjectsgetResponse> {
     return this._client.makeRequest({
       method: "get",
       path: `/v1/image-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseType: "json",
-      responseSchema: Schemas$GetV1ImageProjectsIdResponse.in,
+      responseSchema: Schemas$V1ImageProjectsgetResponse.in,
       opts,
     });
   }
@@ -56,7 +55,7 @@ export class ImageProjectsClient extends CoreResourceClient {
       method: "delete",
       path: `/v1/image-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseType: "json",
+      responseRaw: true,
       opts,
     });
   }

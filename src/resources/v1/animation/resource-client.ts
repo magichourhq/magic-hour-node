@@ -7,7 +7,7 @@ import {
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/animation/request-types";
 import { Schemas$PostV1AnimationBody } from "magic-hour/types/post-v1-animation-body";
-import { Schemas$PostV1AnimationResponse } from "magic-hour/types/post-v1-animation-response";
+import { Schemas$V1AnimationcreateResponse } from "magic-hour/types/v1-animationcreate-response";
 
 export class AnimationClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -23,15 +23,14 @@ export class AnimationClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1AnimationResponse> {
+  ): ApiPromise<types.V1AnimationcreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/animation",
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AnimationBody.out.parse(request),
-      responseType: "json",
-      responseSchema: Schemas$PostV1AnimationResponse.in,
+      responseSchema: Schemas$V1AnimationcreateResponse.in,
       opts,
     });
   }

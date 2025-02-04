@@ -17,9 +17,9 @@ describe("tests client.v1.lipSync.create", () => {
               videoFilePath: "video/id/1234.mp4",
               videoSource: "file",
             },
-            endSeconds: 15,
+            endSeconds: 15.0,
             height: 960,
-            startSeconds: 0,
+            startSeconds: 0.0,
             width: 512,
           })
           .asResponse(),
@@ -29,9 +29,9 @@ describe("tests client.v1.lipSync.create", () => {
             videoFilePath: "video/id/1234.mp4",
             videoSource: "file",
           },
-          endSeconds: 15,
+          endSeconds: 15.0,
           height: 960,
-          startSeconds: 0,
+          startSeconds: 0.0,
           width: 512,
         }),
       ]);

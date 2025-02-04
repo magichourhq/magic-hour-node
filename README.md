@@ -36,27 +36,27 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 ## Module Documentation and Snippets
 
-### [v1.ai_clothes_changer](src/resources/v1/ai-clothes-changer/README.md)
+### [v1.aiClothesChanger](src/resources/v1/ai-clothes-changer/README.md)
 
 * [create](src/resources/v1/ai-clothes-changer/README.md#create) - AI Clothes Changer
 
-### [v1.ai_headshot_generator](src/resources/v1/ai-headshot-generator/README.md)
+### [v1.aiHeadshotGenerator](src/resources/v1/ai-headshot-generator/README.md)
 
 * [create](src/resources/v1/ai-headshot-generator/README.md#create) - AI Headshots
 
-### [v1.ai_image_generator](src/resources/v1/ai-image-generator/README.md)
+### [v1.aiImageGenerator](src/resources/v1/ai-image-generator/README.md)
 
 * [create](src/resources/v1/ai-image-generator/README.md#create) - AI Images
 
-### [v1.ai_image_upscaler](src/resources/v1/ai-image-upscaler/README.md)
+### [v1.aiImageUpscaler](src/resources/v1/ai-image-upscaler/README.md)
 
 * [create](src/resources/v1/ai-image-upscaler/README.md#create) - AI Image Upscaler
 
-### [v1.ai_photo_editor](src/resources/v1/ai-photo-editor/README.md)
+### [v1.aiPhotoEditor](src/resources/v1/ai-photo-editor/README.md)
 
 * [create](src/resources/v1/ai-photo-editor/README.md#create) - AI Photo Editor
 
-### [v1.ai_qr_code_generator](src/resources/v1/ai-qr-code-generator/README.md)
+### [v1.aiQrCodeGenerator](src/resources/v1/ai-qr-code-generator/README.md)
 
 * [create](src/resources/v1/ai-qr-code-generator/README.md#create) - AI QR Code
 
@@ -64,45 +64,45 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 * [create](src/resources/v1/animation/README.md#create) - Animation
 
-### [v1.face_swap](src/resources/v1/face-swap/README.md)
+### [v1.faceSwap](src/resources/v1/face-swap/README.md)
 
 * [create](src/resources/v1/face-swap/README.md#create) - Face Swap video
 
-### [v1.face_swap_photo](src/resources/v1/face-swap-photo/README.md)
+### [v1.faceSwapPhoto](src/resources/v1/face-swap-photo/README.md)
 
 * [create](src/resources/v1/face-swap-photo/README.md#create) - Face Swap Photo
 
-### [v1.files.upload_urls](src/resources/v1/files/upload-urls/README.md)
+### [v1.files.uploadUrls](src/resources/v1/files/upload-urls/README.md)
 
 * [create](src/resources/v1/files/upload-urls/README.md#create) - Generate asset upload urls
 
-### [v1.image_background_remover](src/resources/v1/image-background-remover/README.md)
+### [v1.imageBackgroundRemover](src/resources/v1/image-background-remover/README.md)
 
 * [create](src/resources/v1/image-background-remover/README.md#create) - Image Background Remover
 
-### [v1.image_projects](src/resources/v1/image-projects/README.md)
+### [v1.imageProjects](src/resources/v1/image-projects/README.md)
 
 * [delete](src/resources/v1/image-projects/README.md#delete) - Delete image
 * [get](src/resources/v1/image-projects/README.md#get) - Get image details
 
-### [v1.image_to_video](src/resources/v1/image-to-video/README.md)
+### [v1.imageToVideo](src/resources/v1/image-to-video/README.md)
 
 * [create](src/resources/v1/image-to-video/README.md#create) - Image-to-Video
 
-### [v1.lip_sync](src/resources/v1/lip-sync/README.md)
+### [v1.lipSync](src/resources/v1/lip-sync/README.md)
 
 * [create](src/resources/v1/lip-sync/README.md#create) - Lip Sync
 
-### [v1.text_to_video](src/resources/v1/text-to-video/README.md)
+### [v1.textToVideo](src/resources/v1/text-to-video/README.md)
 
 * [create](src/resources/v1/text-to-video/README.md#create) - Text-to-Video
 
-### [v1.video_projects](src/resources/v1/video-projects/README.md)
+### [v1.videoProjects](src/resources/v1/video-projects/README.md)
 
 * [delete](src/resources/v1/video-projects/README.md#delete) - Delete video
 * [get](src/resources/v1/video-projects/README.md#get) - Get video details
 
-### [v1.video_to_video](src/resources/v1/video-to-video/README.md)
+### [v1.videoToVideo](src/resources/v1/video-to-video/README.md)
 
 * [create](src/resources/v1/video-to-video/README.md#create) - Video-to-Video
 

@@ -7,7 +7,7 @@ import {
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-image-upscaler/request-types";
 import { Schemas$PostV1AiImageUpscalerBody } from "magic-hour/types/post-v1-ai-image-upscaler-body";
-import { Schemas$PostV1AiImageUpscalerResponse } from "magic-hour/types/post-v1-ai-image-upscaler-response";
+import { Schemas$V1AiImageUpscalercreateResponse } from "magic-hour/types/v1-ai-image-upscalercreate-response";
 
 export class AiImageUpscalerClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -23,15 +23,14 @@ export class AiImageUpscalerClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1AiImageUpscalerResponse> {
+  ): ApiPromise<types.V1AiImageUpscalercreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/ai-image-upscaler",
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AiImageUpscalerBody.out.parse(request),
-      responseType: "json",
-      responseSchema: Schemas$PostV1AiImageUpscalerResponse.in,
+      responseSchema: Schemas$V1AiImageUpscalercreateResponse.in,
       opts,
     });
   }

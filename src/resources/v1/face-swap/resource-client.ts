@@ -7,7 +7,7 @@ import {
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/face-swap/request-types";
 import { Schemas$PostV1FaceSwapBody } from "magic-hour/types/post-v1-face-swap-body";
-import { Schemas$PostV1FaceSwapResponse } from "magic-hour/types/post-v1-face-swap-response";
+import { Schemas$V1FaceSwapcreateResponse } from "magic-hour/types/v1-face-swapcreate-response";
 
 export class FaceSwapClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -26,15 +26,14 @@ export class FaceSwapClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1FaceSwapResponse> {
+  ): ApiPromise<types.V1FaceSwapcreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/face-swap",
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1FaceSwapBody.out.parse(request),
-      responseType: "json",
-      responseSchema: Schemas$PostV1FaceSwapResponse.in,
+      responseSchema: Schemas$V1FaceSwapcreateResponse.in,
       opts,
     });
   }

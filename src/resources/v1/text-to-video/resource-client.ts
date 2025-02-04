@@ -7,7 +7,7 @@ import {
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/text-to-video/request-types";
 import { Schemas$PostV1TextToVideoBody } from "magic-hour/types/post-v1-text-to-video-body";
-import { Schemas$PostV1TextToVideoResponse } from "magic-hour/types/post-v1-text-to-video-response";
+import { Schemas$V1TextToVideocreateResponse } from "magic-hour/types/v1-text-to-videocreate-response";
 
 export class TextToVideoClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -26,15 +26,14 @@ export class TextToVideoClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1TextToVideoResponse> {
+  ): ApiPromise<types.V1TextToVideocreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/text-to-video",
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1TextToVideoBody.out.parse(request),
-      responseType: "json",
-      responseSchema: Schemas$PostV1TextToVideoResponse.in,
+      responseSchema: Schemas$V1TextToVideocreateResponse.in,
       opts,
     });
   }
