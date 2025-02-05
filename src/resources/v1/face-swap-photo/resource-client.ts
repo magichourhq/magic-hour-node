@@ -30,7 +30,6 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1FaceSwapPhotoBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1FaceSwapPhotoResponse.in,
       opts,
     });

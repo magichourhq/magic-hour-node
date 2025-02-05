@@ -1,4 +1,5 @@
 export {
+  ApiResponse,
   CoreClient,
   CoreClientProps,
   CoreResourceClient,

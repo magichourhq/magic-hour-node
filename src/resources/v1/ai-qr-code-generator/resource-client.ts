@@ -30,7 +30,6 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AiQrCodeGeneratorBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1AiQrCodeGeneratorResponse.in,
       opts,
     });

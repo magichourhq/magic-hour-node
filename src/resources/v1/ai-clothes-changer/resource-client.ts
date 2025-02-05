@@ -30,7 +30,6 @@ export class AiClothesChangerClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AiClothesChangerBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1AiClothesChangerResponse.in,
       opts,
     });

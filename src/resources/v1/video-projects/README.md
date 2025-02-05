@@ -12,7 +12,9 @@ Permanently delete the rendered video. This action is not reversible, please be 
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.videoProjects.delete({ id: "string" });
+const res = await client.v1.videoProjects.delete({
+  id: "cm6pvghix03bvyz0zwash6noj",
+});
 ```
 
 ### get <a name="get"></a>
@@ -37,5 +39,7 @@ The video can be one of the following status
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.videoProjects.get({ id: "string" });
+const res = await client.v1.videoProjects.get({
+  id: "cm6pvghix03bvyz0zwash6noj",
+});
 ```

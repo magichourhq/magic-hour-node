@@ -33,7 +33,6 @@ export class VideoToVideoClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1VideoToVideoBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1VideoToVideoResponse.in,
       opts,
     });

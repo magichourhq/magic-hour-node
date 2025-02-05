@@ -12,13 +12,13 @@ describe("tests client.v1.textToVideo.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.textToVideo
           .create({
-            endSeconds: 5,
+            endSeconds: 5.0,
             orientation: "landscape",
             style: { prompt: "string" },
           })
           .asResponse(),
         client.v1.textToVideo.create({
-          endSeconds: 5,
+          endSeconds: 5.0,
           orientation: "landscape",
           style: { prompt: "string" },
         }),

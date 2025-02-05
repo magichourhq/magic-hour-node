@@ -30,7 +30,6 @@ export class AiHeadshotGeneratorClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AiHeadshotGeneratorBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1AiHeadshotGeneratorResponse.in,
       opts,
     });

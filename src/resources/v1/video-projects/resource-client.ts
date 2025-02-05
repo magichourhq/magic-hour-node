@@ -36,7 +36,6 @@ export class VideoProjectsClient extends CoreResourceClient {
       method: "get",
       path: `/v1/video-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseType: "json",
       responseSchema: Schemas$GetV1VideoProjectsIdResponse.in,
       opts,
     });
@@ -56,7 +55,7 @@ export class VideoProjectsClient extends CoreResourceClient {
       method: "delete",
       path: `/v1/video-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseType: "json",
+      responseRaw: true,
       opts,
     });
   }

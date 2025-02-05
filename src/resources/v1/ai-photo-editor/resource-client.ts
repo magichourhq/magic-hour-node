@@ -32,7 +32,6 @@ export class AiPhotoEditorClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AiPhotoEditorBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1AiPhotoEditorResponse.in,
       opts,
     });

@@ -17,9 +17,9 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.videoToVideo.create({
   assets: { videoFilePath: "video/id/1234.mp4", videoSource: "file" },
-  endSeconds: 15,
+  endSeconds: 15.0,
   height: 960,
-  startSeconds: 0,
+  startSeconds: 0.0,
   style: {
     artStyle: "3D Render",
     model: "Absolute Reality",

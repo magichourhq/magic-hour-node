@@ -16,7 +16,7 @@ import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.textToVideo.create({
-  endSeconds: 5,
+  endSeconds: 5.0,
   orientation: "landscape",
   style: { prompt: "string" },
 });

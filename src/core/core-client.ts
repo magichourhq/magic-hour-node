@@ -19,14 +19,15 @@ export interface CoreClientProps {
   timeout?: number | undefined;
 }
 
+export type ApiResponse = Response | NodeResponse;
 export type HttpMethod = "get" | "post" | "put" | "patch" | "delete";
-export type ResponseType = "json" | "blob" | "unknown" | "event-stream";
 
 export type RequestConfig = {
   method: HttpMethod;
   path: string;
-  responseType: ResponseType;
   responseSchema?: z.Schema;
+  responseStream?: boolean;
+  responseRaw?: boolean;
   auth?: string[];
   query?: string[];
   body?: any;
@@ -164,7 +165,7 @@ export class CoreClient {
     return reqInit;
   }
 
-  private async request(cfg: RequestConfig): Promise<Response | NodeResponse> {
+  private async request(cfg: RequestConfig): Promise<ApiResponse> {
     const fetcherFn =
       RUNTIME.type === "node" || typeof fetch !== "function"
         ? require("node-fetch").default
@@ -198,7 +199,8 @@ export class CoreClient {
   makeRequest<R>(cfg: RequestConfig): ApiPromise<R> {
     return new ApiPromise({
       responsePromise: this.request(cfg),
-      responseType: cfg.responseType,
+      responseRaw: cfg.responseRaw ?? false,
+      responseStream: cfg.responseStream ?? false,
       responseSchema: cfg.responseSchema,
     });
   }
