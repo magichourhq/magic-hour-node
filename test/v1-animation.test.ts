@@ -17,8 +17,8 @@ describe("tests client.v1.animation.create", () => {
               audioSource: "file",
               imageFilePath: "api-assets/id/1234.png",
             },
-            endSeconds: 15,
-            fps: 12,
+            endSeconds: 15.0,
+            fps: 12.0,
             height: 960,
             style: {
               artStyle: "Painterly Illustration",
@@ -36,8 +36,8 @@ describe("tests client.v1.animation.create", () => {
             audioSource: "file",
             imageFilePath: "api-assets/id/1234.png",
           },
-          endSeconds: 15,
-          fps: 12,
+          endSeconds: 15.0,
+          fps: 12.0,
           height: 960,
           style: {
             artStyle: "Painterly Illustration",

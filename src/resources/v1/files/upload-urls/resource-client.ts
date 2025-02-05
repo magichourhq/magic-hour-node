@@ -49,7 +49,6 @@ export class UploadUrlsClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1FilesUploadUrlsBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1FilesUploadUrlsResponse.in,
       opts,
     });

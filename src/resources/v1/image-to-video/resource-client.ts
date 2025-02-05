@@ -33,7 +33,6 @@ export class ImageToVideoClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1ImageToVideoBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1ImageToVideoResponse.in,
       opts,
     });

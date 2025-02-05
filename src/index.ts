@@ -1,6 +1,7 @@
 export { Client as default } from "magic-hour/client";
 export {
   ApiError,
+  ApiResponse,
   BinaryResponse,
   RequestOptions,
   UploadFile,

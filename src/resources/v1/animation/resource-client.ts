@@ -30,7 +30,6 @@ export class AnimationClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AnimationBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1AnimationResponse.in,
       opts,
     });

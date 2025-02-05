@@ -17,7 +17,7 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.imageToVideo.create({
   assets: { imageFilePath: "image/id/1234.png" },
-  endSeconds: 5,
+  endSeconds: 5.0,
   height: 960,
   style: { prompt: null },
   width: 512,

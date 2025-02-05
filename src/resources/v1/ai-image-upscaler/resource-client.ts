@@ -30,7 +30,6 @@ export class AiImageUpscalerClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AiImageUpscalerBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1AiImageUpscalerResponse.in,
       opts,
     });

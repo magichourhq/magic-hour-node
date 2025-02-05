@@ -36,7 +36,6 @@ export class ImageProjectsClient extends CoreResourceClient {
       method: "get",
       path: `/v1/image-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseType: "json",
       responseSchema: Schemas$GetV1ImageProjectsIdResponse.in,
       opts,
     });
@@ -56,7 +55,7 @@ export class ImageProjectsClient extends CoreResourceClient {
       method: "delete",
       path: `/v1/image-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseType: "json",
+      responseRaw: true,
       opts,
     });
   }

@@ -13,7 +13,7 @@ describe("tests client.v1.imageToVideo.create", () => {
         client.v1.imageToVideo
           .create({
             assets: { imageFilePath: "image/id/1234.png" },
-            endSeconds: 5,
+            endSeconds: 5.0,
             height: 960,
             style: { prompt: null },
             width: 512,
@@ -21,7 +21,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           .asResponse(),
         client.v1.imageToVideo.create({
           assets: { imageFilePath: "image/id/1234.png" },
-          endSeconds: 5,
+          endSeconds: 5.0,
           height: 960,
           style: { prompt: null },
           width: 512,

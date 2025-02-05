@@ -30,7 +30,6 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1ImageBackgroundRemoverBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1ImageBackgroundRemoverResponse.in,
       opts,
     });

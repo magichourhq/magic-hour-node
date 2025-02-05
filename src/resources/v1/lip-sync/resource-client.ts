@@ -33,7 +33,6 @@ export class LipSyncClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1LipSyncBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1LipSyncResponse.in,
       opts,
     });

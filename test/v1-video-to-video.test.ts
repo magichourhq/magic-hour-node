@@ -13,9 +13,9 @@ describe("tests client.v1.videoToVideo.create", () => {
         client.v1.videoToVideo
           .create({
             assets: { videoFilePath: "video/id/1234.mp4", videoSource: "file" },
-            endSeconds: 15,
+            endSeconds: 15.0,
             height: 960,
-            startSeconds: 0,
+            startSeconds: 0.0,
             style: {
               artStyle: "3D Render",
               model: "Absolute Reality",
@@ -28,9 +28,9 @@ describe("tests client.v1.videoToVideo.create", () => {
           .asResponse(),
         client.v1.videoToVideo.create({
           assets: { videoFilePath: "video/id/1234.mp4", videoSource: "file" },
-          endSeconds: 15,
+          endSeconds: 15.0,
           height: 960,
-          startSeconds: 0,
+          startSeconds: 0.0,
           style: {
             artStyle: "3D Render",
             model: "Absolute Reality",

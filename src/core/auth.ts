@@ -260,7 +260,6 @@ export class OAuth2 implements AuthProvider {
         {
           method: "post",
           path: tokenUrl,
-          responseType: "json",
           headers: reqHeaders,
           body: reqData,
           contentType: reqHeaders["content-type"],

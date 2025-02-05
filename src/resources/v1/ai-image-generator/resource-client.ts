@@ -30,7 +30,6 @@ export class AiImageGeneratorClient extends CoreResourceClient {
       auth: ["bearerAuth"],
       contentType: "application/json",
       body: Schemas$PostV1AiImageGeneratorBody.out.parse(request),
-      responseType: "json",
       responseSchema: Schemas$PostV1AiImageGeneratorResponse.in,
       opts,
     });

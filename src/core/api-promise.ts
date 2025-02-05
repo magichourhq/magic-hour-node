@@ -1,11 +1,12 @@
 import * as z from "zod";
-import { Response as NodeResponse } from "node-fetch";
+import { ApiResponse } from "./core-client";
 import { BinaryResponse } from "./binary-response";
-import { ResponseType } from "./core-client";
+import { JSON_PATTERN, TEXT_PATTERN } from "./content-type";
 
 export interface ApiPromiseProps {
-  responsePromise: Promise<Response | NodeResponse>;
-  responseType?: ResponseType | undefined;
+  responsePromise: Promise<ApiResponse>;
+  responseStream: boolean;
+  responseRaw: boolean;
   responseSchema?: z.Schema | undefined;
 }
 
@@ -25,37 +26,44 @@ export class ApiPromise<T>
    * Gets the raw response as returned by `fetch` rather than automatically
    * parsing the response.
    */
-  async asResponse(): Promise<Response | NodeResponse> {
+  async asResponse(): Promise<ApiResponse> {
     return await this.responseProps.responsePromise;
   }
 
-  private async parseResponse(): Promise<T> {
-    const { responsePromise, responseType, responseSchema } =
-      this.responseProps;
-    const response = await responsePromise;
+  private getResponseType(contentType: string): "json" | "text" | "binary" {
+    if (JSON_PATTERN.test(contentType)) {
+      return "json";
+    } else if (TEXT_PATTERN.test(contentType)) {
+      return "text";
+    } else {
+      return "binary";
+    }
+  }
 
-    const contentType = response.headers.get("content-type");
+  private async parseResponse(): Promise<T> {
+    const { responsePromise, responseSchema, responseRaw } = this.responseProps;
+    const response = await responsePromise;
 
     if (response.status === 204) {
       return null as unknown as T;
-    } else if (responseType === "blob") {
-      return new BinaryResponse(
-        await response.blob(),
-        contentType,
-      ) as unknown as T;
+    } else if (responseRaw) {
+      return response as unknown as T;
     }
 
-    // use a pattern to match json content type to handle
-    // base case of application/json as well as vendor specific
-    // headers e.g. application/vnd.github+json
-    const jsonPattern = /application\/.*json/g;
-    if (contentType?.match(jsonPattern)) {
-      const rawJson = await response.json();
-      return responseSchema ? responseSchema.parse(rawJson) : rawJson;
+    const contentType = response.headers.get("content-type") ?? "";
+    switch (this.getResponseType(contentType)) {
+      case "json":
+        const rawJson = await response.json();
+        return responseSchema ? responseSchema.parse(rawJson) : rawJson;
+      case "text":
+        return (await response.text()) as unknown as T;
+      case "binary":
+      default:
+        return new BinaryResponse(
+          await response.blob(),
+          contentType,
+        ) as unknown as T;
     }
-
-    // fall back on text
-    return (await response.text()) as unknown as T;
   }
 
   private async *handleNodeStream(
@@ -109,9 +117,9 @@ export class ApiPromise<T>
   }
 
   async *asEventStream(): AsyncIterableIterator<T> {
-    const { responsePromise, responseType } = this.responseProps;
+    const { responsePromise, responseStream } = this.responseProps;
 
-    if (responseType !== "event-stream") {
+    if (!responseStream) {
       throw new Error("Response is not an event stream");
     }
 
@@ -130,9 +138,9 @@ export class ApiPromise<T>
   }
 
   async next(): Promise<IteratorResult<T>> {
-    const { responseType } = this.responseProps;
+    const { responseStream } = this.responseProps;
 
-    if (responseType === "event-stream") {
+    if (responseStream) {
       const iterator = this.asEventStream();
       const result = await iterator.next();
       return result;
@@ -145,9 +153,9 @@ export class ApiPromise<T>
   [Symbol.asyncIterator](): AsyncIterator<T> {
     const iterator = {
       next: async (): Promise<IteratorResult<T>> => {
-        const { responseType } = this.responseProps;
+        const { responseStream } = this.responseProps;
 
-        if (responseType === "event-stream") {
+        if (responseStream) {
           const stream = this.asEventStream();
           return stream.next();
         }
@@ -170,7 +178,7 @@ export class ApiPromise<T>
       | undefined
       | null,
   ): Promise<Result1 | Result2> {
-    if (this.responseProps.responseType === "event-stream") {
+    if (this.responseProps.responseStream) {
       return Promise.resolve(this.asEventStream() as unknown as Result1);
     }
     return this.parseResponse().then(onfulfilled, onrejected);
