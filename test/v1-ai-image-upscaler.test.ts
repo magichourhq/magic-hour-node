@@ -12,13 +12,13 @@ describe("tests client.v1.aiImageUpscaler.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.aiImageUpscaler
           .create({
-            assets: { imageFilePath: "image/id/1234.png" },
+            assets: { imageFilePath: "api-assets/id/1234.png" },
             scaleFactor: 123.45,
             style: { enhancement: "Balanced" },
           })
           .asResponse(),
         client.v1.aiImageUpscaler.create({
-          assets: { imageFilePath: "image/id/1234.png" },
+          assets: { imageFilePath: "api-assets/id/1234.png" },
           scaleFactor: 123.45,
           style: { enhancement: "Balanced" },
         }),
