@@ -12,7 +12,7 @@ describe("tests client.v1.imageToVideo.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.imageToVideo
           .create({
-            assets: { imageFilePath: "image/id/1234.png" },
+            assets: { imageFilePath: "api-assets/id/1234.png" },
             endSeconds: 5.0,
             height: 960,
             style: { prompt: null },
@@ -20,7 +20,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           })
           .asResponse(),
         client.v1.imageToVideo.create({
-          assets: { imageFilePath: "image/id/1234.png" },
+          assets: { imageFilePath: "api-assets/id/1234.png" },
           endSeconds: 5.0,
           height: 960,
           style: { prompt: null },

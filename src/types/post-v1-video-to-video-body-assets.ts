@@ -6,7 +6,7 @@ import * as z from "zod";
  */
 export type PostV1VideoToVideoBodyAssets = {
   /**
-   * The path of the input video. This is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls). This field is required if `video_source` is `file`
+   * The path of the input video. This field is required if `video_source` is `file`. This value is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls).
    */
   videoFilePath?: string | undefined;
   videoSource: "file" | "youtube";

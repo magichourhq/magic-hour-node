@@ -13,8 +13,8 @@ describe("tests client.v1.lipSync.create", () => {
         client.v1.lipSync
           .create({
             assets: {
-              audioFilePath: "audio/id/1234.mp3",
-              videoFilePath: "video/id/1234.mp4",
+              audioFilePath: "api-assets/id/1234.mp3",
+              videoFilePath: "api-assets/id/1234.mp4",
               videoSource: "file",
             },
             endSeconds: 15.0,
@@ -25,8 +25,8 @@ describe("tests client.v1.lipSync.create", () => {
           .asResponse(),
         client.v1.lipSync.create({
           assets: {
-            audioFilePath: "audio/id/1234.mp3",
-            videoFilePath: "video/id/1234.mp4",
+            audioFilePath: "api-assets/id/1234.mp3",
+            videoFilePath: "api-assets/id/1234.mp4",
             videoSource: "file",
           },
           endSeconds: 15.0,

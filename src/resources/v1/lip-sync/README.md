@@ -17,8 +17,8 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.lipSync.create({
   assets: {
-    audioFilePath: "audio/id/1234.mp3",
-    videoFilePath: "video/id/1234.mp4",
+    audioFilePath: "api-assets/id/1234.mp3",
+    videoFilePath: "api-assets/id/1234.mp4",
     videoSource: "file",
   },
   endSeconds: 15.0,
