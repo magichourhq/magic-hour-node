@@ -18,7 +18,7 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.faceSwap.create({
   assets: {
     imageFilePath: "image/id/1234.png",
-    videoFilePath: "video/id/1234.mp4",
+    videoFilePath: "api-assets/id/1234.mp4",
     videoSource: "file",
   },
   endSeconds: 15.0,

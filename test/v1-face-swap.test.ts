@@ -14,7 +14,7 @@ describe("tests client.v1.faceSwap.create", () => {
           .create({
             assets: {
               imageFilePath: "image/id/1234.png",
-              videoFilePath: "video/id/1234.mp4",
+              videoFilePath: "api-assets/id/1234.mp4",
               videoSource: "file",
             },
             endSeconds: 15.0,
@@ -26,7 +26,7 @@ describe("tests client.v1.faceSwap.create", () => {
         client.v1.faceSwap.create({
           assets: {
             imageFilePath: "image/id/1234.png",
-            videoFilePath: "video/id/1234.mp4",
+            videoFilePath: "api-assets/id/1234.mp4",
             videoSource: "file",
           },
           endSeconds: 15.0,
