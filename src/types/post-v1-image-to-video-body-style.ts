@@ -6,6 +6,10 @@ import * as z from "zod";
  */
 export type PostV1ImageToVideoBodyStyle = {
   /**
+   * High Quality mode enhances detail, sharpness, and realism, making it ideal for portraits, animals, and intricate landscapes.
+   */
+  highQuality?: boolean | undefined;
+  /**
    * The prompt used for the video.
    */
   prompt: string | null;
@@ -17,6 +21,7 @@ export type PostV1ImageToVideoBodyStyle = {
  * we expect to come in as network data
  */
 export type External$PostV1ImageToVideoBodyStyle = {
+  high_quality?: boolean | undefined;
   prompt: string | null;
 };
 
@@ -29,10 +34,12 @@ const SchemaIn$PostV1ImageToVideoBodyStyle: z.ZodType<
   unknown
 > = z
   .object({
+    high_quality: z.boolean().optional(),
     prompt: z.string().nullable(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      high_quality: "highQuality",
       prompt: "prompt",
     });
   });
@@ -47,10 +54,12 @@ const SchemaOut$PostV1ImageToVideoBodyStyle: z.ZodType<
   PostV1ImageToVideoBodyStyle // the object to be transformed
 > = z
   .object({
+    highQuality: z.boolean().optional(),
     prompt: z.string().nullable(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      highQuality: "high_quality",
       prompt: "prompt",
     });
   });
