@@ -1,3 +1,17 @@
+export { ApiError } from "./api-error";
+export { ApiPromise, EventSourceResponse } from "./api-promise";
+export {
+  AuthBasic,
+  AuthBearer,
+  AuthCookieHeader,
+  AuthKeyHeader,
+  AuthKeyQuery,
+  AuthProvider,
+  OAuth2,
+  OAuth2ClientCredentialsProps,
+  OAuth2PasswordProps,
+} from "./auth";
+export { BinaryResponse } from "./binary-response";
 export {
   ApiResponse,
   CoreClient,
@@ -5,20 +19,7 @@ export {
   CoreResourceClient,
   RequestOptions,
 } from "./core-client";
-export {
-  AuthProvider,
-  AuthBasic,
-  AuthBearer,
-  AuthKeyQuery,
-  AuthKeyHeader,
-  AuthCookieHeader,
-  OAuth2,
-  OAuth2PasswordProps,
-  OAuth2ClientCredentialsProps,
-} from "./auth";
+export { createForm, isUploadFile, UploadFile } from "./form-data";
+export { encodeQueryParam } from "./query";
 export { RUNTIME } from "./runtime";
-export { ApiPromise, EventSourceResponse } from "./api-promise";
-export { BinaryResponse } from "./binary-response";
-export { ApiError } from "./api-error";
-export { createForm, UploadFile, isUploadFile } from "./form-data";
-export { zodTransform, zodUploadFile, zodRequiredAny } from "./zod";
+export { zodRequiredAny, zodTransform, zodUploadFile } from "./zod";
