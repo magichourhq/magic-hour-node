@@ -6,7 +6,7 @@ import * as z from "zod";
  */
 export type PostV1AnimationBodyAssets = {
   /**
-   * The path of the input audio. This field is required if `audio_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file.
+   * The path of the input audio. This field is required if `audio_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
    */
   audioFilePath?: string | undefined;
   /**
@@ -14,7 +14,7 @@ export type PostV1AnimationBodyAssets = {
    */
   audioSource: "file" | "none" | "youtube";
   /**
-   * An initial image to use a the first frame of the video. This value can be either the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file.
+   * An initial image to use a the first frame of the video. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
    */
   imageFilePath?: string | undefined;
   /**
