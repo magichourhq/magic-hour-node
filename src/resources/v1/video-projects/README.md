@@ -20,7 +20,7 @@ const res = await client.v1.videoProjects.delete({
 ### get <a name="get"></a>
 Get video details
 
-Get the details of a video project. The `download` field will be `null` unless the video was successfully rendered.
+Get the details of a video project. The `downloads` field will be empty unless the video was successfully rendered.
 
 The video can be one of the following status
 - `draft` - not currently used
