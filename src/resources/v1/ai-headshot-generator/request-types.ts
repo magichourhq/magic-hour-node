@@ -4,6 +4,11 @@ import {
   PostV1AiHeadshotGeneratorBodyAssets,
   Schemas$PostV1AiHeadshotGeneratorBodyAssets,
 } from "magic-hour/types/post-v1-ai-headshot-generator-body-assets";
+import {
+  External$PostV1AiHeadshotGeneratorBodyStyle,
+  PostV1AiHeadshotGeneratorBodyStyle,
+  Schemas$PostV1AiHeadshotGeneratorBodyStyle,
+} from "magic-hour/types/post-v1-ai-headshot-generator-body-style";
 import * as z from "zod";
 
 /**
@@ -18,6 +23,7 @@ export type CreateRequest = {
    * The name of image
    */
   name?: string | undefined;
+  style?: PostV1AiHeadshotGeneratorBodyStyle | undefined;
 };
 
 /**
@@ -28,6 +34,7 @@ export type CreateRequest = {
 export type External$CreateRequest = {
   assets: External$PostV1AiHeadshotGeneratorBodyAssets;
   name?: string | undefined;
+  style?: External$PostV1AiHeadshotGeneratorBodyStyle | undefined;
 };
 
 /**
@@ -41,11 +48,13 @@ const SchemaIn$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$PostV1AiHeadshotGeneratorBodyAssets.in,
     name: z.string().optional(),
+    style: Schemas$PostV1AiHeadshotGeneratorBodyStyle.in.optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       assets: "assets",
       name: "name",
+      style: "style",
     });
   });
 
@@ -61,11 +70,13 @@ const SchemaOut$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$PostV1AiHeadshotGeneratorBodyAssets.out,
     name: z.string().optional(),
+    style: Schemas$PostV1AiHeadshotGeneratorBodyStyle.out.optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       assets: "assets",
       name: "name",
+      style: "style",
     });
   });
 

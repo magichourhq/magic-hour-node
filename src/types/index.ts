@@ -42,6 +42,7 @@ export { PostV1AiClothesChangerResponse404MessageEnum } from "./post-v1-ai-cloth
 export { PostV1AiClothesChangerResponse422 } from "./post-v1-ai-clothes-changer-response422";
 export { PostV1AiHeadshotGeneratorBody } from "./post-v1-ai-headshot-generator-body";
 export { PostV1AiHeadshotGeneratorBodyAssets } from "./post-v1-ai-headshot-generator-body-assets";
+export { PostV1AiHeadshotGeneratorBodyStyle } from "./post-v1-ai-headshot-generator-body-style";
 export { PostV1AiHeadshotGeneratorResponse } from "./post-v1-ai-headshot-generator-response";
 export { PostV1AiHeadshotGeneratorResponse400 } from "./post-v1-ai-headshot-generator-response400";
 export { PostV1AiHeadshotGeneratorResponse401 } from "./post-v1-ai-headshot-generator-response401";
