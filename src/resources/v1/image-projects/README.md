@@ -20,7 +20,7 @@ const res = await client.v1.imageProjects.delete({
 ### get <a name="get"></a>
 Get image details
 
-Get the details of a image project. The `download` field will be `null` unless the image was successfully rendered.
+Get the details of a image project. The `downloads` field will be empty unless the image was successfully rendered.
 
 The image can be one of the following status
 - `draft` - not currently used
