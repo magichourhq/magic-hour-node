@@ -6,8 +6,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/image-background-remover/request-types";
-import { Schemas$PostV1ImageBackgroundRemoverBody } from "magic-hour/types/post-v1-image-background-remover-body";
-import { Schemas$PostV1ImageBackgroundRemoverResponse } from "magic-hour/types/post-v1-image-background-remover-response";
+import { Schemas$V1ImageBackgroundRemoverCreateBody } from "magic-hour/types/v1-image-background-remover-create-body";
+import { Schemas$V1ImageBackgroundRemoverCreateResponse } from "magic-hour/types/v1-image-background-remover-create-response";
 
 export class ImageBackgroundRemoverClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -23,14 +23,14 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1ImageBackgroundRemoverResponse> {
+  ): ApiPromise<types.V1ImageBackgroundRemoverCreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/image-background-remover",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: Schemas$PostV1ImageBackgroundRemoverBody.out.parse(request),
-      responseSchema: Schemas$PostV1ImageBackgroundRemoverResponse.in,
+      body: Schemas$V1ImageBackgroundRemoverCreateBody.out.parse(request),
+      responseSchema: Schemas$V1ImageBackgroundRemoverCreateResponse.in,
       opts,
     });
   }

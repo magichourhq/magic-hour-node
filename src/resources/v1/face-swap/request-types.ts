@@ -1,9 +1,9 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1FaceSwapBodyAssets,
-  PostV1FaceSwapBodyAssets,
-  Schemas$PostV1FaceSwapBodyAssets,
-} from "magic-hour/types/post-v1-face-swap-body-assets";
+  External$V1FaceSwapCreateBodyAssets,
+  Schemas$V1FaceSwapCreateBodyAssets,
+  V1FaceSwapCreateBodyAssets,
+} from "magic-hour/types/v1-face-swap-create-body-assets";
 import * as z from "zod";
 
 /**
@@ -13,7 +13,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
    */
-  assets: PostV1FaceSwapBodyAssets;
+  assets: V1FaceSwapCreateBodyAssets;
   /**
    * The end time of the input video in seconds
    */
@@ -42,7 +42,7 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1FaceSwapBodyAssets;
+  assets: External$V1FaceSwapCreateBodyAssets;
   end_seconds: number;
   height: number;
   name?: string | undefined;
@@ -59,7 +59,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1FaceSwapBodyAssets.in,
+    assets: Schemas$V1FaceSwapCreateBodyAssets.in,
     end_seconds: z.number(),
     height: z.number().int(),
     name: z.string().optional(),
@@ -87,7 +87,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1FaceSwapBodyAssets.out,
+    assets: Schemas$V1FaceSwapCreateBodyAssets.out,
     endSeconds: z.number(),
     height: z.number().int(),
     name: z.string().optional(),

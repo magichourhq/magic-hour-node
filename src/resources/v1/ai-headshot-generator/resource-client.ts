@@ -6,8 +6,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-headshot-generator/request-types";
-import { Schemas$PostV1AiHeadshotGeneratorBody } from "magic-hour/types/post-v1-ai-headshot-generator-body";
-import { Schemas$PostV1AiHeadshotGeneratorResponse } from "magic-hour/types/post-v1-ai-headshot-generator-response";
+import { Schemas$V1AiHeadshotGeneratorCreateBody } from "magic-hour/types/v1-ai-headshot-generator-create-body";
+import { Schemas$V1AiHeadshotGeneratorCreateResponse } from "magic-hour/types/v1-ai-headshot-generator-create-response";
 
 export class AiHeadshotGeneratorClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -23,14 +23,14 @@ export class AiHeadshotGeneratorClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1AiHeadshotGeneratorResponse> {
+  ): ApiPromise<types.V1AiHeadshotGeneratorCreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/ai-headshot-generator",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: Schemas$PostV1AiHeadshotGeneratorBody.out.parse(request),
-      responseSchema: Schemas$PostV1AiHeadshotGeneratorResponse.in,
+      body: Schemas$V1AiHeadshotGeneratorCreateBody.out.parse(request),
+      responseSchema: Schemas$V1AiHeadshotGeneratorCreateResponse.in,
       opts,
     });
   }

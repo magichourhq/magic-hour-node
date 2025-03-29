@@ -1,9 +1,9 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1LipSyncBodyAssets,
-  PostV1LipSyncBodyAssets,
-  Schemas$PostV1LipSyncBodyAssets,
-} from "magic-hour/types/post-v1-lip-sync-body-assets";
+  External$V1LipSyncCreateBodyAssets,
+  Schemas$V1LipSyncCreateBodyAssets,
+  V1LipSyncCreateBodyAssets,
+} from "magic-hour/types/v1-lip-sync-create-body-assets";
 import * as z from "zod";
 
 /**
@@ -13,7 +13,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for lip-sync. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
    */
-  assets: PostV1LipSyncBodyAssets;
+  assets: V1LipSyncCreateBodyAssets;
   /**
    * The end time of the input video in seconds
    */
@@ -46,7 +46,7 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1LipSyncBodyAssets;
+  assets: External$V1LipSyncCreateBodyAssets;
   end_seconds: number;
   height: number;
   max_fps_limit?: number | undefined;
@@ -64,7 +64,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1LipSyncBodyAssets.in,
+    assets: Schemas$V1LipSyncCreateBodyAssets.in,
     end_seconds: z.number(),
     height: z.number().int(),
     max_fps_limit: z.number().optional(),
@@ -94,7 +94,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1LipSyncBodyAssets.out,
+    assets: Schemas$V1LipSyncCreateBodyAssets.out,
     endSeconds: z.number(),
     height: z.number().int(),
     maxFpsLimit: z.number().optional(),

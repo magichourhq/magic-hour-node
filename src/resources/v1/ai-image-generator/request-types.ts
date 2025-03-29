@@ -1,9 +1,9 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1AiImageGeneratorBodyStyle,
-  PostV1AiImageGeneratorBodyStyle,
-  Schemas$PostV1AiImageGeneratorBodyStyle,
-} from "magic-hour/types/post-v1-ai-image-generator-body-style";
+  External$V1AiImageGeneratorCreateBodyStyle,
+  Schemas$V1AiImageGeneratorCreateBodyStyle,
+  V1AiImageGeneratorCreateBodyStyle,
+} from "magic-hour/types/v1-ai-image-generator-create-body-style";
 import * as z from "zod";
 
 /**
@@ -19,7 +19,7 @@ export type CreateRequest = {
    */
   name?: string | undefined;
   orientation: "landscape" | "portrait" | "square";
-  style: PostV1AiImageGeneratorBodyStyle;
+  style: V1AiImageGeneratorCreateBodyStyle;
 };
 
 /**
@@ -31,7 +31,7 @@ export type External$CreateRequest = {
   image_count: number;
   name?: string | undefined;
   orientation: "landscape" | "portrait" | "square";
-  style: External$PostV1AiImageGeneratorBodyStyle;
+  style: External$V1AiImageGeneratorCreateBodyStyle;
 };
 
 /**
@@ -46,7 +46,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     image_count: z.number().int(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]),
-    style: Schemas$PostV1AiImageGeneratorBodyStyle.in,
+    style: Schemas$V1AiImageGeneratorCreateBodyStyle.in,
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -70,7 +70,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     imageCount: z.number().int(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]),
-    style: Schemas$PostV1AiImageGeneratorBodyStyle.out,
+    style: Schemas$V1AiImageGeneratorCreateBodyStyle.out,
   })
   .transform((obj) => {
     return zodTransform(obj, {

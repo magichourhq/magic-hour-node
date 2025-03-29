@@ -1,9 +1,9 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1TextToVideoBodyStyle,
-  PostV1TextToVideoBodyStyle,
-  Schemas$PostV1TextToVideoBodyStyle,
-} from "magic-hour/types/post-v1-text-to-video-body-style";
+  External$V1TextToVideoCreateBodyStyle,
+  Schemas$V1TextToVideoCreateBodyStyle,
+  V1TextToVideoCreateBodyStyle,
+} from "magic-hour/types/v1-text-to-video-create-body-style";
 import * as z from "zod";
 
 /**
@@ -22,7 +22,7 @@ export type CreateRequest = {
    * Determines the orientation of the output video
    */
   orientation: "landscape" | "portrait" | "square";
-  style: PostV1TextToVideoBodyStyle;
+  style: V1TextToVideoCreateBodyStyle;
 };
 
 /**
@@ -34,7 +34,7 @@ export type External$CreateRequest = {
   end_seconds: number;
   name?: string | undefined;
   orientation: "landscape" | "portrait" | "square";
-  style: External$PostV1TextToVideoBodyStyle;
+  style: External$V1TextToVideoCreateBodyStyle;
 };
 
 /**
@@ -49,7 +49,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     end_seconds: z.number(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]),
-    style: Schemas$PostV1TextToVideoBodyStyle.in,
+    style: Schemas$V1TextToVideoCreateBodyStyle.in,
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -73,7 +73,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     endSeconds: z.number(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]),
-    style: Schemas$PostV1TextToVideoBodyStyle.out,
+    style: Schemas$V1TextToVideoCreateBodyStyle.out,
   })
   .transform((obj) => {
     return zodTransform(obj, {

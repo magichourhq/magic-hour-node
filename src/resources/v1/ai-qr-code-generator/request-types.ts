@@ -1,9 +1,9 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1AiQrCodeGeneratorBodyStyle,
-  PostV1AiQrCodeGeneratorBodyStyle,
-  Schemas$PostV1AiQrCodeGeneratorBodyStyle,
-} from "magic-hour/types/post-v1-ai-qr-code-generator-body-style";
+  External$V1AiQrCodeGeneratorCreateBodyStyle,
+  Schemas$V1AiQrCodeGeneratorCreateBodyStyle,
+  V1AiQrCodeGeneratorCreateBodyStyle,
+} from "magic-hour/types/v1-ai-qr-code-generator-create-body-style";
 import * as z from "zod";
 
 /**
@@ -18,7 +18,7 @@ export type CreateRequest = {
    * The name of image
    */
   name?: string | undefined;
-  style: PostV1AiQrCodeGeneratorBodyStyle;
+  style: V1AiQrCodeGeneratorCreateBodyStyle;
 };
 
 /**
@@ -29,7 +29,7 @@ export type CreateRequest = {
 export type External$CreateRequest = {
   content: string;
   name?: string | undefined;
-  style: External$PostV1AiQrCodeGeneratorBodyStyle;
+  style: External$V1AiQrCodeGeneratorCreateBodyStyle;
 };
 
 /**
@@ -43,7 +43,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   .object({
     content: z.string(),
     name: z.string().optional(),
-    style: Schemas$PostV1AiQrCodeGeneratorBodyStyle.in,
+    style: Schemas$V1AiQrCodeGeneratorCreateBodyStyle.in,
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -65,7 +65,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   .object({
     content: z.string(),
     name: z.string().optional(),
-    style: Schemas$PostV1AiQrCodeGeneratorBodyStyle.out,
+    style: Schemas$V1AiQrCodeGeneratorCreateBodyStyle.out,
   })
   .transform((obj) => {
     return zodTransform(obj, {

@@ -1,14 +1,14 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1ImageToVideoBodyAssets,
-  PostV1ImageToVideoBodyAssets,
-  Schemas$PostV1ImageToVideoBodyAssets,
-} from "magic-hour/types/post-v1-image-to-video-body-assets";
+  External$V1ImageToVideoCreateBodyAssets,
+  Schemas$V1ImageToVideoCreateBodyAssets,
+  V1ImageToVideoCreateBodyAssets,
+} from "magic-hour/types/v1-image-to-video-create-body-assets";
 import {
-  External$PostV1ImageToVideoBodyStyle,
-  PostV1ImageToVideoBodyStyle,
-  Schemas$PostV1ImageToVideoBodyStyle,
-} from "magic-hour/types/post-v1-image-to-video-body-style";
+  External$V1ImageToVideoCreateBodyStyle,
+  Schemas$V1ImageToVideoCreateBodyStyle,
+  V1ImageToVideoCreateBodyStyle,
+} from "magic-hour/types/v1-image-to-video-create-body-style";
 import * as z from "zod";
 
 /**
@@ -18,7 +18,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for image-to-video.
    */
-  assets: PostV1ImageToVideoBodyAssets;
+  assets: V1ImageToVideoCreateBodyAssets;
   /**
    * The total duration of the output video in seconds.
    */
@@ -31,7 +31,7 @@ export type CreateRequest = {
    * The name of video
    */
   name?: string | undefined;
-  style: PostV1ImageToVideoBodyStyle;
+  style: V1ImageToVideoCreateBodyStyle;
   /**
    * The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
    */
@@ -44,11 +44,11 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1ImageToVideoBodyAssets;
+  assets: External$V1ImageToVideoCreateBodyAssets;
   end_seconds: number;
   height: number;
   name?: string | undefined;
-  style: External$PostV1ImageToVideoBodyStyle;
+  style: External$V1ImageToVideoCreateBodyStyle;
   width: number;
 };
 
@@ -61,11 +61,11 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1ImageToVideoBodyAssets.in,
+    assets: Schemas$V1ImageToVideoCreateBodyAssets.in,
     end_seconds: z.number(),
     height: z.number().int(),
     name: z.string().optional(),
-    style: Schemas$PostV1ImageToVideoBodyStyle.in,
+    style: Schemas$V1ImageToVideoCreateBodyStyle.in,
     width: z.number().int(),
   })
   .transform((obj) => {
@@ -89,11 +89,11 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1ImageToVideoBodyAssets.out,
+    assets: Schemas$V1ImageToVideoCreateBodyAssets.out,
     endSeconds: z.number(),
     height: z.number().int(),
     name: z.string().optional(),
-    style: Schemas$PostV1ImageToVideoBodyStyle.out,
+    style: Schemas$V1ImageToVideoCreateBodyStyle.out,
     width: z.number().int(),
   })
   .transform((obj) => {
