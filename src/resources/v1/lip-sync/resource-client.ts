@@ -6,8 +6,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/lip-sync/request-types";
-import { Schemas$PostV1LipSyncBody } from "magic-hour/types/post-v1-lip-sync-body";
-import { Schemas$PostV1LipSyncResponse } from "magic-hour/types/post-v1-lip-sync-response";
+import { Schemas$V1LipSyncCreateBody } from "magic-hour/types/v1-lip-sync-create-body";
+import { Schemas$V1LipSyncCreateResponse } from "magic-hour/types/v1-lip-sync-create-response";
 
 export class LipSyncClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -26,14 +26,14 @@ export class LipSyncClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1LipSyncResponse> {
+  ): ApiPromise<types.V1LipSyncCreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/lip-sync",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: Schemas$PostV1LipSyncBody.out.parse(request),
-      responseSchema: Schemas$PostV1LipSyncResponse.in,
+      body: Schemas$V1LipSyncCreateBody.out.parse(request),
+      responseSchema: Schemas$V1LipSyncCreateResponse.in,
       opts,
     });
   }

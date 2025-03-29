@@ -6,7 +6,7 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/video-projects/request-types";
-import { Schemas$GetV1VideoProjectsIdResponse } from "magic-hour/types/get-v1-video-projects-id-response";
+import { Schemas$V1VideoProjectsGetResponse } from "magic-hour/types/v1-video-projects-get-response";
 
 export class VideoProjectsClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -31,12 +31,12 @@ export class VideoProjectsClient extends CoreResourceClient {
   get(
     request: requests.GetRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.GetV1VideoProjectsIdResponse> {
+  ): ApiPromise<types.V1VideoProjectsGetResponse> {
     return this._client.makeRequest({
       method: "get",
       path: `/v1/video-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseSchema: Schemas$GetV1VideoProjectsIdResponse.in,
+      responseSchema: Schemas$V1VideoProjectsGetResponse.in,
       opts,
     });
   }

@@ -1,16 +1,16 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1FilesUploadUrlsBodyItemsItem,
-  PostV1FilesUploadUrlsBodyItemsItem,
-  Schemas$PostV1FilesUploadUrlsBodyItemsItem,
-} from "magic-hour/types/post-v1-files-upload-urls-body-items-item";
+  External$V1FilesUploadUrlsCreateBodyItemsItem,
+  Schemas$V1FilesUploadUrlsCreateBodyItemsItem,
+  V1FilesUploadUrlsCreateBodyItemsItem,
+} from "magic-hour/types/v1-files-upload-urls-create-body-items-item";
 import * as z from "zod";
 
 /**
  * CreateRequest
  */
 export type CreateRequest = {
-  items: PostV1FilesUploadUrlsBodyItemsItem[];
+  items: V1FilesUploadUrlsCreateBodyItemsItem[];
 };
 
 /**
@@ -19,7 +19,7 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  items: External$PostV1FilesUploadUrlsBodyItemsItem[];
+  items: External$V1FilesUploadUrlsCreateBodyItemsItem[];
 };
 
 /**
@@ -31,7 +31,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    items: z.array(Schemas$PostV1FilesUploadUrlsBodyItemsItem.in),
+    items: z.array(Schemas$V1FilesUploadUrlsCreateBodyItemsItem.in),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -49,7 +49,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    items: z.array(Schemas$PostV1FilesUploadUrlsBodyItemsItem.out),
+    items: z.array(Schemas$V1FilesUploadUrlsCreateBodyItemsItem.out),
   })
   .transform((obj) => {
     return zodTransform(obj, {

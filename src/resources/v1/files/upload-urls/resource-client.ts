@@ -6,8 +6,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/files/upload-urls/request-types";
-import { Schemas$PostV1FilesUploadUrlsBody } from "magic-hour/types/post-v1-files-upload-urls-body";
-import { Schemas$PostV1FilesUploadUrlsResponse } from "magic-hour/types/post-v1-files-upload-urls-response";
+import { Schemas$V1FilesUploadUrlsCreateBody } from "magic-hour/types/v1-files-upload-urls-create-body";
+import { Schemas$V1FilesUploadUrlsCreateResponse } from "magic-hour/types/v1-files-upload-urls-create-response";
 
 export class UploadUrlsClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -42,14 +42,14 @@ export class UploadUrlsClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1FilesUploadUrlsResponse> {
+  ): ApiPromise<types.V1FilesUploadUrlsCreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/files/upload-urls",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: Schemas$PostV1FilesUploadUrlsBody.out.parse(request),
-      responseSchema: Schemas$PostV1FilesUploadUrlsResponse.in,
+      body: Schemas$V1FilesUploadUrlsCreateBody.out.parse(request),
+      responseSchema: Schemas$V1FilesUploadUrlsCreateResponse.in,
       opts,
     });
   }

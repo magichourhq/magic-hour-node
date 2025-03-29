@@ -6,8 +6,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/video-to-video/request-types";
-import { Schemas$PostV1VideoToVideoBody } from "magic-hour/types/post-v1-video-to-video-body";
-import { Schemas$PostV1VideoToVideoResponse } from "magic-hour/types/post-v1-video-to-video-response";
+import { Schemas$V1VideoToVideoCreateBody } from "magic-hour/types/v1-video-to-video-create-body";
+import { Schemas$V1VideoToVideoCreateResponse } from "magic-hour/types/v1-video-to-video-create-response";
 
 export class VideoToVideoClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -26,14 +26,14 @@ export class VideoToVideoClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1VideoToVideoResponse> {
+  ): ApiPromise<types.V1VideoToVideoCreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/video-to-video",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: Schemas$PostV1VideoToVideoBody.out.parse(request),
-      responseSchema: Schemas$PostV1VideoToVideoResponse.in,
+      body: Schemas$V1VideoToVideoCreateBody.out.parse(request),
+      responseSchema: Schemas$V1VideoToVideoCreateResponse.in,
       opts,
     });
   }

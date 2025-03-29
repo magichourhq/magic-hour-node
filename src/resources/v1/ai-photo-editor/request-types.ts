@@ -1,14 +1,14 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1AiPhotoEditorBodyAssets,
-  PostV1AiPhotoEditorBodyAssets,
-  Schemas$PostV1AiPhotoEditorBodyAssets,
-} from "magic-hour/types/post-v1-ai-photo-editor-body-assets";
+  External$V1AiPhotoEditorCreateBodyAssets,
+  Schemas$V1AiPhotoEditorCreateBodyAssets,
+  V1AiPhotoEditorCreateBodyAssets,
+} from "magic-hour/types/v1-ai-photo-editor-create-body-assets";
 import {
-  External$PostV1AiPhotoEditorBodyStyle,
-  PostV1AiPhotoEditorBodyStyle,
-  Schemas$PostV1AiPhotoEditorBodyStyle,
-} from "magic-hour/types/post-v1-ai-photo-editor-body-style";
+  External$V1AiPhotoEditorCreateBodyStyle,
+  Schemas$V1AiPhotoEditorCreateBodyStyle,
+  V1AiPhotoEditorCreateBodyStyle,
+} from "magic-hour/types/v1-ai-photo-editor-create-body-style";
 import * as z from "zod";
 
 /**
@@ -18,7 +18,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for photo editor
    */
-  assets: PostV1AiPhotoEditorBodyAssets;
+  assets: V1AiPhotoEditorCreateBodyAssets;
   /**
    * The name of image
    */
@@ -31,7 +31,7 @@ export type CreateRequest = {
    * Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
    */
   steps?: number | undefined;
-  style: PostV1AiPhotoEditorBodyStyle;
+  style: V1AiPhotoEditorCreateBodyStyle;
 };
 
 /**
@@ -40,11 +40,11 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1AiPhotoEditorBodyAssets;
+  assets: External$V1AiPhotoEditorCreateBodyAssets;
   name?: string | undefined;
   resolution: number;
   steps?: number | undefined;
-  style: External$PostV1AiPhotoEditorBodyStyle;
+  style: External$V1AiPhotoEditorCreateBodyStyle;
 };
 
 /**
@@ -56,11 +56,11 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1AiPhotoEditorBodyAssets.in,
+    assets: Schemas$V1AiPhotoEditorCreateBodyAssets.in,
     name: z.string().optional(),
     resolution: z.number().int(),
     steps: z.number().int().optional(),
-    style: Schemas$PostV1AiPhotoEditorBodyStyle.in,
+    style: Schemas$V1AiPhotoEditorCreateBodyStyle.in,
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -82,11 +82,11 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1AiPhotoEditorBodyAssets.out,
+    assets: Schemas$V1AiPhotoEditorCreateBodyAssets.out,
     name: z.string().optional(),
     resolution: z.number().int(),
     steps: z.number().int().optional(),
-    style: Schemas$PostV1AiPhotoEditorBodyStyle.out,
+    style: Schemas$V1AiPhotoEditorCreateBodyStyle.out,
   })
   .transform((obj) => {
     return zodTransform(obj, {

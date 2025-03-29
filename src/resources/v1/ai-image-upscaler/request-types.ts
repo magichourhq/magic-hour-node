@@ -1,14 +1,14 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1AiImageUpscalerBodyAssets,
-  PostV1AiImageUpscalerBodyAssets,
-  Schemas$PostV1AiImageUpscalerBodyAssets,
-} from "magic-hour/types/post-v1-ai-image-upscaler-body-assets";
+  External$V1AiImageUpscalerCreateBodyAssets,
+  Schemas$V1AiImageUpscalerCreateBodyAssets,
+  V1AiImageUpscalerCreateBodyAssets,
+} from "magic-hour/types/v1-ai-image-upscaler-create-body-assets";
 import {
-  External$PostV1AiImageUpscalerBodyStyle,
-  PostV1AiImageUpscalerBodyStyle,
-  Schemas$PostV1AiImageUpscalerBodyStyle,
-} from "magic-hour/types/post-v1-ai-image-upscaler-body-style";
+  External$V1AiImageUpscalerCreateBodyStyle,
+  Schemas$V1AiImageUpscalerCreateBodyStyle,
+  V1AiImageUpscalerCreateBodyStyle,
+} from "magic-hour/types/v1-ai-image-upscaler-create-body-style";
 import * as z from "zod";
 
 /**
@@ -18,7 +18,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for upscaling
    */
-  assets: PostV1AiImageUpscalerBodyAssets;
+  assets: V1AiImageUpscalerCreateBodyAssets;
   /**
    * The name of image
    */
@@ -27,7 +27,7 @@ export type CreateRequest = {
    * How much to scale the image. Must be either 2 or 4
    */
   scaleFactor: number;
-  style: PostV1AiImageUpscalerBodyStyle;
+  style: V1AiImageUpscalerCreateBodyStyle;
 };
 
 /**
@@ -36,10 +36,10 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1AiImageUpscalerBodyAssets;
+  assets: External$V1AiImageUpscalerCreateBodyAssets;
   name?: string | undefined;
   scale_factor: number;
-  style: External$PostV1AiImageUpscalerBodyStyle;
+  style: External$V1AiImageUpscalerCreateBodyStyle;
 };
 
 /**
@@ -51,10 +51,10 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1AiImageUpscalerBodyAssets.in,
+    assets: Schemas$V1AiImageUpscalerCreateBodyAssets.in,
     name: z.string().optional(),
     scale_factor: z.number(),
-    style: Schemas$PostV1AiImageUpscalerBodyStyle.in,
+    style: Schemas$V1AiImageUpscalerCreateBodyStyle.in,
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -75,10 +75,10 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1AiImageUpscalerBodyAssets.out,
+    assets: Schemas$V1AiImageUpscalerCreateBodyAssets.out,
     name: z.string().optional(),
     scaleFactor: z.number(),
-    style: Schemas$PostV1AiImageUpscalerBodyStyle.out,
+    style: Schemas$V1AiImageUpscalerCreateBodyStyle.out,
   })
   .transform((obj) => {
     return zodTransform(obj, {

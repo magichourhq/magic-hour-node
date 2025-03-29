@@ -1,9 +1,9 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1ImageBackgroundRemoverBodyAssets,
-  PostV1ImageBackgroundRemoverBodyAssets,
-  Schemas$PostV1ImageBackgroundRemoverBodyAssets,
-} from "magic-hour/types/post-v1-image-background-remover-body-assets";
+  External$V1ImageBackgroundRemoverCreateBodyAssets,
+  Schemas$V1ImageBackgroundRemoverCreateBodyAssets,
+  V1ImageBackgroundRemoverCreateBodyAssets,
+} from "magic-hour/types/v1-image-background-remover-create-body-assets";
 import * as z from "zod";
 
 /**
@@ -13,7 +13,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for background removal
    */
-  assets: PostV1ImageBackgroundRemoverBodyAssets;
+  assets: V1ImageBackgroundRemoverCreateBodyAssets;
   /**
    * The name of image
    */
@@ -26,7 +26,7 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1ImageBackgroundRemoverBodyAssets;
+  assets: External$V1ImageBackgroundRemoverCreateBodyAssets;
   name?: string | undefined;
 };
 
@@ -39,7 +39,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1ImageBackgroundRemoverBodyAssets.in,
+    assets: Schemas$V1ImageBackgroundRemoverCreateBodyAssets.in,
     name: z.string().optional(),
   })
   .transform((obj) => {
@@ -59,7 +59,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1ImageBackgroundRemoverBodyAssets.out,
+    assets: Schemas$V1ImageBackgroundRemoverCreateBodyAssets.out,
     name: z.string().optional(),
   })
   .transform((obj) => {

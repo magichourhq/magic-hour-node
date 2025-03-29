@@ -6,8 +6,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-photo-editor/request-types";
-import { Schemas$PostV1AiPhotoEditorBody } from "magic-hour/types/post-v1-ai-photo-editor-body";
-import { Schemas$PostV1AiPhotoEditorResponse } from "magic-hour/types/post-v1-ai-photo-editor-response";
+import { Schemas$V1AiPhotoEditorCreateBody } from "magic-hour/types/v1-ai-photo-editor-create-body";
+import { Schemas$V1AiPhotoEditorCreateResponse } from "magic-hour/types/v1-ai-photo-editor-create-response";
 
 export class AiPhotoEditorClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -25,14 +25,14 @@ export class AiPhotoEditorClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1AiPhotoEditorResponse> {
+  ): ApiPromise<types.V1AiPhotoEditorCreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/ai-photo-editor",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: Schemas$PostV1AiPhotoEditorBody.out.parse(request),
-      responseSchema: Schemas$PostV1AiPhotoEditorResponse.in,
+      body: Schemas$V1AiPhotoEditorCreateBody.out.parse(request),
+      responseSchema: Schemas$V1AiPhotoEditorCreateResponse.in,
       opts,
     });
   }

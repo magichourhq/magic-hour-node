@@ -1,14 +1,14 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1AnimationBodyAssets,
-  PostV1AnimationBodyAssets,
-  Schemas$PostV1AnimationBodyAssets,
-} from "magic-hour/types/post-v1-animation-body-assets";
+  External$V1AnimationCreateBodyAssets,
+  Schemas$V1AnimationCreateBodyAssets,
+  V1AnimationCreateBodyAssets,
+} from "magic-hour/types/v1-animation-create-body-assets";
 import {
-  External$PostV1AnimationBodyStyle,
-  PostV1AnimationBodyStyle,
-  Schemas$PostV1AnimationBodyStyle,
-} from "magic-hour/types/post-v1-animation-body-style";
+  External$V1AnimationCreateBodyStyle,
+  Schemas$V1AnimationCreateBodyStyle,
+  V1AnimationCreateBodyStyle,
+} from "magic-hour/types/v1-animation-create-body-style";
 import * as z from "zod";
 
 /**
@@ -18,7 +18,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for animation.
    */
-  assets: PostV1AnimationBodyAssets;
+  assets: V1AnimationCreateBodyAssets;
   /**
    * The end time of the input video in seconds
    */
@@ -38,7 +38,7 @@ export type CreateRequest = {
   /**
    * Defines the style of the output video
    */
-  style: PostV1AnimationBodyStyle;
+  style: V1AnimationCreateBodyStyle;
   /**
    * The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
    */
@@ -51,12 +51,12 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1AnimationBodyAssets;
+  assets: External$V1AnimationCreateBodyAssets;
   end_seconds: number;
   fps: number;
   height: number;
   name?: string | undefined;
-  style: External$PostV1AnimationBodyStyle;
+  style: External$V1AnimationCreateBodyStyle;
   width: number;
 };
 
@@ -69,12 +69,12 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1AnimationBodyAssets.in,
+    assets: Schemas$V1AnimationCreateBodyAssets.in,
     end_seconds: z.number(),
     fps: z.number(),
     height: z.number().int(),
     name: z.string().optional(),
-    style: Schemas$PostV1AnimationBodyStyle.in,
+    style: Schemas$V1AnimationCreateBodyStyle.in,
     width: z.number().int(),
   })
   .transform((obj) => {
@@ -99,12 +99,12 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1AnimationBodyAssets.out,
+    assets: Schemas$V1AnimationCreateBodyAssets.out,
     endSeconds: z.number(),
     fps: z.number(),
     height: z.number().int(),
     name: z.string().optional(),
-    style: Schemas$PostV1AnimationBodyStyle.out,
+    style: Schemas$V1AnimationCreateBodyStyle.out,
     width: z.number().int(),
   })
   .transform((obj) => {

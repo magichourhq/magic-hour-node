@@ -6,8 +6,8 @@ import {
   RequestOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-clothes-changer/request-types";
-import { Schemas$PostV1AiClothesChangerBody } from "magic-hour/types/post-v1-ai-clothes-changer-body";
-import { Schemas$PostV1AiClothesChangerResponse } from "magic-hour/types/post-v1-ai-clothes-changer-response";
+import { Schemas$V1AiClothesChangerCreateBody } from "magic-hour/types/v1-ai-clothes-changer-create-body";
+import { Schemas$V1AiClothesChangerCreateResponse } from "magic-hour/types/v1-ai-clothes-changer-create-response";
 
 export class AiClothesChangerClient extends CoreResourceClient {
   constructor(client: CoreClient) {
@@ -23,14 +23,14 @@ export class AiClothesChangerClient extends CoreResourceClient {
   create(
     request: requests.CreateRequest,
     opts?: RequestOptions,
-  ): ApiPromise<types.PostV1AiClothesChangerResponse> {
+  ): ApiPromise<types.V1AiClothesChangerCreateResponse> {
     return this._client.makeRequest({
       method: "post",
       path: "/v1/ai-clothes-changer",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: Schemas$PostV1AiClothesChangerBody.out.parse(request),
-      responseSchema: Schemas$PostV1AiClothesChangerResponse.in,
+      body: Schemas$V1AiClothesChangerCreateBody.out.parse(request),
+      responseSchema: Schemas$V1AiClothesChangerCreateResponse.in,
       opts,
     });
   }

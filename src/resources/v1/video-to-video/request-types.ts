@@ -1,14 +1,14 @@
 import { zodTransform } from "magic-hour/core";
 import {
-  External$PostV1VideoToVideoBodyAssets,
-  PostV1VideoToVideoBodyAssets,
-  Schemas$PostV1VideoToVideoBodyAssets,
-} from "magic-hour/types/post-v1-video-to-video-body-assets";
+  External$V1VideoToVideoCreateBodyAssets,
+  Schemas$V1VideoToVideoCreateBodyAssets,
+  V1VideoToVideoCreateBodyAssets,
+} from "magic-hour/types/v1-video-to-video-create-body-assets";
 import {
-  External$PostV1VideoToVideoBodyStyle,
-  PostV1VideoToVideoBodyStyle,
-  Schemas$PostV1VideoToVideoBodyStyle,
-} from "magic-hour/types/post-v1-video-to-video-body-style";
+  External$V1VideoToVideoCreateBodyStyle,
+  Schemas$V1VideoToVideoCreateBodyStyle,
+  V1VideoToVideoCreateBodyStyle,
+} from "magic-hour/types/v1-video-to-video-create-body-style";
 import * as z from "zod";
 
 /**
@@ -18,7 +18,7 @@ export type CreateRequest = {
   /**
    * Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
    */
-  assets: PostV1VideoToVideoBodyAssets;
+  assets: V1VideoToVideoCreateBodyAssets;
   /**
    * The end time of the input video in seconds
    */
@@ -41,7 +41,7 @@ export type CreateRequest = {
    * The start time of the input video in seconds
    */
   startSeconds: number;
-  style: PostV1VideoToVideoBodyStyle;
+  style: V1VideoToVideoCreateBodyStyle;
   /**
    * The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
    */
@@ -54,13 +54,13 @@ export type CreateRequest = {
  * we expect to come in as network data
  */
 export type External$CreateRequest = {
-  assets: External$PostV1VideoToVideoBodyAssets;
+  assets: External$V1VideoToVideoCreateBodyAssets;
   end_seconds: number;
   fps_resolution?: ("FULL" | "HALF") | undefined;
   height: number;
   name?: string | undefined;
   start_seconds: number;
-  style: External$PostV1VideoToVideoBodyStyle;
+  style: External$V1VideoToVideoCreateBodyStyle;
   width: number;
 };
 
@@ -73,13 +73,13 @@ const SchemaIn$CreateRequest: z.ZodType<
   unknown
 > = z
   .object({
-    assets: Schemas$PostV1VideoToVideoBodyAssets.in,
+    assets: Schemas$V1VideoToVideoCreateBodyAssets.in,
     end_seconds: z.number(),
     fps_resolution: z.enum(["FULL", "HALF"]).optional(),
     height: z.number().int(),
     name: z.string().optional(),
     start_seconds: z.number(),
-    style: Schemas$PostV1VideoToVideoBodyStyle.in,
+    style: Schemas$V1VideoToVideoCreateBodyStyle.in,
     width: z.number().int(),
   })
   .transform((obj) => {
@@ -105,13 +105,13 @@ const SchemaOut$CreateRequest: z.ZodType<
   CreateRequest // the object to be transformed
 > = z
   .object({
-    assets: Schemas$PostV1VideoToVideoBodyAssets.out,
+    assets: Schemas$V1VideoToVideoCreateBodyAssets.out,
     endSeconds: z.number(),
     fpsResolution: z.enum(["FULL", "HALF"]).optional(),
     height: z.number().int(),
     name: z.string().optional(),
     startSeconds: z.number(),
-    style: Schemas$PostV1VideoToVideoBodyStyle.out,
+    style: Schemas$V1VideoToVideoCreateBodyStyle.out,
     width: z.number().int(),
   })
   .transform((obj) => {
