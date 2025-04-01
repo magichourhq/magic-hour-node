@@ -16,6 +16,7 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Black Spiderman"
     | "Boba Fett"
     | "Celestial Skin"
+    | "Chinese Swordsmen"
     | "Clay"
     | "Comic"
     | "Cyberpunk"
@@ -37,14 +38,17 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Lego"
     | "Link"
     | "Marble"
+    | "Mario"
     | "Master Chief"
     | "Mech"
     | "Minecraft"
+    | "Mystique"
     | "Naruto"
     | "Neon Dream"
     | "Oil Painting"
     | "On Fire"
     | "Origami"
+    | "Pixar"
     | "Pixel"
     | "Power Armor"
     | "Power Ranger"
@@ -59,6 +63,7 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Studio Ghibli"
     | "Sub-Zero"
     | "The Void"
+    | "Tomb Raider"
     | "Underwater"
     | "Van Gogh"
     | "Viking"
@@ -107,6 +112,7 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Black Spiderman"
     | "Boba Fett"
     | "Celestial Skin"
+    | "Chinese Swordsmen"
     | "Clay"
     | "Comic"
     | "Cyberpunk"
@@ -128,14 +134,17 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Lego"
     | "Link"
     | "Marble"
+    | "Mario"
     | "Master Chief"
     | "Mech"
     | "Minecraft"
+    | "Mystique"
     | "Naruto"
     | "Neon Dream"
     | "Oil Painting"
     | "On Fire"
     | "Origami"
+    | "Pixar"
     | "Pixel"
     | "Power Armor"
     | "Power Ranger"
@@ -150,6 +159,7 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Studio Ghibli"
     | "Sub-Zero"
     | "The Void"
+    | "Tomb Raider"
     | "Underwater"
     | "Van Gogh"
     | "Viking"
@@ -182,6 +192,7 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Black Spiderman",
       "Boba Fett",
       "Celestial Skin",
+      "Chinese Swordsmen",
       "Clay",
       "Comic",
       "Cyberpunk",
@@ -203,14 +214,17 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Lego",
       "Link",
       "Marble",
+      "Mario",
       "Master Chief",
       "Mech",
       "Minecraft",
+      "Mystique",
       "Naruto",
       "Neon Dream",
       "Oil Painting",
       "On Fire",
       "Origami",
+      "Pixar",
       "Pixel",
       "Power Armor",
       "Power Ranger",
@@ -225,6 +239,7 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Studio Ghibli",
       "Sub-Zero",
       "The Void",
+      "Tomb Raider",
       "Underwater",
       "Van Gogh",
       "Viking",
@@ -273,6 +288,7 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Black Spiderman",
       "Boba Fett",
       "Celestial Skin",
+      "Chinese Swordsmen",
       "Clay",
       "Comic",
       "Cyberpunk",
@@ -294,14 +310,17 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Lego",
       "Link",
       "Marble",
+      "Mario",
       "Master Chief",
       "Mech",
       "Minecraft",
+      "Mystique",
       "Naruto",
       "Neon Dream",
       "Oil Painting",
       "On Fire",
       "Origami",
+      "Pixar",
       "Pixel",
       "Power Armor",
       "Power Ranger",
@@ -316,6 +335,7 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Studio Ghibli",
       "Sub-Zero",
       "The Void",
+      "Tomb Raider",
       "Underwater",
       "Van Gogh",
       "Viking",

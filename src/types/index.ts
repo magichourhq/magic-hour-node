@@ -58,6 +58,15 @@ export { V1AiQrCodeGeneratorCreateResponse401MessageEnum } from "./v1-ai-qr-code
 export { V1AiQrCodeGeneratorCreateResponse404 } from "./v1-ai-qr-code-generator-create-response404";
 export { V1AiQrCodeGeneratorCreateResponse404MessageEnum } from "./v1-ai-qr-code-generator-create-response404-message-enum";
 export { V1AiQrCodeGeneratorCreateResponse422 } from "./v1-ai-qr-code-generator-create-response422";
+export { V1AiTalkingPhotoCreateBody } from "./v1-ai-talking-photo-create-body";
+export { V1AiTalkingPhotoCreateBodyAssets } from "./v1-ai-talking-photo-create-body-assets";
+export { V1AiTalkingPhotoCreateResponse } from "./v1-ai-talking-photo-create-response";
+export { V1AiTalkingPhotoCreateResponse400 } from "./v1-ai-talking-photo-create-response400";
+export { V1AiTalkingPhotoCreateResponse401 } from "./v1-ai-talking-photo-create-response401";
+export { V1AiTalkingPhotoCreateResponse401MessageEnum } from "./v1-ai-talking-photo-create-response401-message-enum";
+export { V1AiTalkingPhotoCreateResponse404 } from "./v1-ai-talking-photo-create-response404";
+export { V1AiTalkingPhotoCreateResponse404MessageEnum } from "./v1-ai-talking-photo-create-response404-message-enum";
+export { V1AiTalkingPhotoCreateResponse422 } from "./v1-ai-talking-photo-create-response422";
 export { V1AnimationCreateBody } from "./v1-animation-create-body";
 export { V1AnimationCreateBodyAssets } from "./v1-animation-create-body-assets";
 export { V1AnimationCreateBodyAssetsAudioSourceEnum } from "./v1-animation-create-body-assets-audio-source-enum";
