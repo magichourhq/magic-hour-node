@@ -56,6 +56,10 @@ const client = new Client({
 
 * [create](src/resources/v1/ai-qr-code-generator/README.md#create) - AI QR Code
 
+### [v1.aiTalkingPhoto](src/resources/v1/ai-talking-photo/README.md)
+
+* [create](src/resources/v1/ai-talking-photo/README.md#create) - AI Talking Photo
+
 ### [v1.animation](src/resources/v1/animation/README.md)
 
 * [create](src/resources/v1/animation/README.md#create) - Animation
