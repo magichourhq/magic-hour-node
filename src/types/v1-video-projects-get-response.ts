@@ -43,7 +43,7 @@ export type V1VideoProjectsGetResponse = {
    */
   fps: number;
   /**
-   * The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * The height of the final output video. A value of -1 indicates the height can be ignored.
    */
   height: number;
   /**
@@ -76,7 +76,7 @@ export type V1VideoProjectsGetResponse = {
     | "TEXT_TO_VIDEO"
     | "VIDEO_TO_VIDEO";
   /**
-   * The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * The width of the final output video. A value of -1 indicates the width can be ignored.
    */
   width: number;
 };
