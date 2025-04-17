@@ -66,15 +66,10 @@ export type V1VideoProjectsGetResponse = {
    * The amount of frames used to generate the video. If the status is not 'complete', the cost is an estimate and will be adjusted when the video completes.
    */
   totalFrameCost: number;
-  type:
-    | "ANIMATION"
-    | "AUTO_SUBTITLE"
-    | "FACE_SWAP"
-    | "IMAGE_TO_VIDEO"
-    | "LIP_SYNC"
-    | "TALKING_PHOTO"
-    | "TEXT_TO_VIDEO"
-    | "VIDEO_TO_VIDEO";
+  /**
+   * The type of the video project. Possible values are ANIMATION, IMAGE_TO_VIDEO, VIDEO_TO_VIDEO, TEXT_TO_VIDEO, FACE_SWAP, LIP_SYNC, AUTO_SUBTITLE, TALKING_PHOTO
+   */
+  type: string;
   /**
    * The width of the final output video. A value of -1 indicates the width can be ignored.
    */
@@ -100,15 +95,7 @@ export type External$V1VideoProjectsGetResponse = {
   start_seconds: number;
   status: "canceled" | "complete" | "draft" | "error" | "queued" | "rendering";
   total_frame_cost: number;
-  type:
-    | "ANIMATION"
-    | "AUTO_SUBTITLE"
-    | "FACE_SWAP"
-    | "IMAGE_TO_VIDEO"
-    | "LIP_SYNC"
-    | "TALKING_PHOTO"
-    | "TEXT_TO_VIDEO"
-    | "VIDEO_TO_VIDEO";
+  type: string;
   width: number;
 };
 
@@ -141,16 +128,7 @@ const SchemaIn$V1VideoProjectsGetResponse: z.ZodType<
       "rendering",
     ]),
     total_frame_cost: z.number().int(),
-    type: z.enum([
-      "ANIMATION",
-      "AUTO_SUBTITLE",
-      "FACE_SWAP",
-      "IMAGE_TO_VIDEO",
-      "LIP_SYNC",
-      "TALKING_PHOTO",
-      "TEXT_TO_VIDEO",
-      "VIDEO_TO_VIDEO",
-    ]),
+    type: z.string(),
     width: z.number().int(),
   })
   .transform((obj) => {
@@ -203,16 +181,7 @@ const SchemaOut$V1VideoProjectsGetResponse: z.ZodType<
       "rendering",
     ]),
     totalFrameCost: z.number().int(),
-    type: z.enum([
-      "ANIMATION",
-      "AUTO_SUBTITLE",
-      "FACE_SWAP",
-      "IMAGE_TO_VIDEO",
-      "LIP_SYNC",
-      "TALKING_PHOTO",
-      "TEXT_TO_VIDEO",
-      "VIDEO_TO_VIDEO",
-    ]),
+    type: z.string(),
     width: z.number().int(),
   })
   .transform((obj) => {

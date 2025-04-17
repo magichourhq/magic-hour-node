@@ -13,6 +13,7 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
         client.v1.aiPhotoEditor
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
+            name: "Photo Editor image",
             resolution: 768,
             style: {
               imageDescription: "A photo of a person",
@@ -26,6 +27,7 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
           .asResponse(),
         client.v1.aiPhotoEditor.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
+          name: "Photo Editor image",
           resolution: 768,
           style: {
             imageDescription: "A photo of a person",

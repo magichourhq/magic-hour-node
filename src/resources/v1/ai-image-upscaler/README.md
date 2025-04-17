@@ -14,6 +14,7 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageUpscaler.create({
   assets: { imageFilePath: "api-assets/id/1234.png" },
+  name: "Image Upscaler image",
   scaleFactor: 2.0,
   style: { enhancement: "Balanced" },
 });

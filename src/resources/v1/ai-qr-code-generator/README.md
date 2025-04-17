@@ -14,6 +14,7 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiQrCodeGenerator.create({
   content: "https://magichour.ai",
+  name: "Qr Code image",
   style: { artStyle: "Watercolor" },
 });
 ```

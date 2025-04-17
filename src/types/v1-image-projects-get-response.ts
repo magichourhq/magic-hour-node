@@ -45,15 +45,10 @@ export type V1ImageProjectsGetResponse = {
    * The amount of frames used to generate the image.
    */
   totalFrameCost: number;
-  type:
-    | "AI_HEADSHOT"
-    | "AI_IMAGE"
-    | "BACKGROUND_REMOVER"
-    | "CLOTHES_CHANGER"
-    | "FACE_SWAP"
-    | "IMAGE_UPSCALER"
-    | "PHOTO_EDITOR"
-    | "QR_CODE";
+  /**
+   * The type of the image project. Possible values are AI_HEADSHOT, AI_IMAGE, IMAGE_UPSCALER, FACE_SWAP, PHOTO_EDITOR, QR_CODE, BACKGROUND_REMOVER, CLOTHES_CHANGER, AI_MEME, FACE_EDITOR
+   */
+  type: string;
 };
 
 /**
@@ -71,15 +66,7 @@ export type External$V1ImageProjectsGetResponse = {
   name: string | null;
   status: "canceled" | "complete" | "draft" | "error" | "queued" | "rendering";
   total_frame_cost: number;
-  type:
-    | "AI_HEADSHOT"
-    | "AI_IMAGE"
-    | "BACKGROUND_REMOVER"
-    | "CLOTHES_CHANGER"
-    | "FACE_SWAP"
-    | "IMAGE_UPSCALER"
-    | "PHOTO_EDITOR"
-    | "QR_CODE";
+  type: string;
 };
 
 /**
@@ -107,16 +94,7 @@ const SchemaIn$V1ImageProjectsGetResponse: z.ZodType<
       "rendering",
     ]),
     total_frame_cost: z.number().int(),
-    type: z.enum([
-      "AI_HEADSHOT",
-      "AI_IMAGE",
-      "BACKGROUND_REMOVER",
-      "CLOTHES_CHANGER",
-      "FACE_SWAP",
-      "IMAGE_UPSCALER",
-      "PHOTO_EDITOR",
-      "QR_CODE",
-    ]),
+    type: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -159,16 +137,7 @@ const SchemaOut$V1ImageProjectsGetResponse: z.ZodType<
       "rendering",
     ]),
     totalFrameCost: z.number().int(),
-    type: z.enum([
-      "AI_HEADSHOT",
-      "AI_IMAGE",
-      "BACKGROUND_REMOVER",
-      "CLOTHES_CHANGER",
-      "FACE_SWAP",
-      "IMAGE_UPSCALER",
-      "PHOTO_EDITOR",
-      "QR_CODE",
-    ]),
+    type: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {

@@ -11,10 +11,14 @@ describe("tests client.v1.imageBackgroundRemover.create", () => {
       // Get both raw response for status and parsed response for data
       const [rawResponse, response] = await Promise.all([
         client.v1.imageBackgroundRemover
-          .create({ assets: { imageFilePath: "api-assets/id/1234.png" } })
+          .create({
+            assets: { imageFilePath: "api-assets/id/1234.png" },
+            name: "Background Remover image",
+          })
           .asResponse(),
         client.v1.imageBackgroundRemover.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
+          name: "Background Remover image",
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

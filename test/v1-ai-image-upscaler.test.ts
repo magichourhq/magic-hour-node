@@ -13,12 +13,14 @@ describe("tests client.v1.aiImageUpscaler.create", () => {
         client.v1.aiImageUpscaler
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
+            name: "Image Upscaler image",
             scaleFactor: 2.0,
             style: { enhancement: "Balanced" },
           })
           .asResponse(),
         client.v1.aiImageUpscaler.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
+          name: "Image Upscaler image",
           scaleFactor: 2.0,
           style: { enhancement: "Balanced" },
         }),

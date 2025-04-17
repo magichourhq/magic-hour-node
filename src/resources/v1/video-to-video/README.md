@@ -18,12 +18,14 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.videoToVideo.create({
   assets: { videoFilePath: "api-assets/id/1234.mp4", videoSource: "file" },
   endSeconds: 15.0,
+  fpsResolution: "HALF",
   height: 960,
+  name: "Video To Video video",
   startSeconds: 0.0,
   style: {
     artStyle: "3D Render",
     model: "Absolute Reality",
-    prompt: null,
+    prompt: "string",
     promptType: "append_default",
     version: "default",
   },

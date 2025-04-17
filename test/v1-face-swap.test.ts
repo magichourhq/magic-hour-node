@@ -19,6 +19,7 @@ describe("tests client.v1.faceSwap.create", () => {
             },
             endSeconds: 15.0,
             height: 960,
+            name: "Face Swap video",
             startSeconds: 0.0,
             width: 512,
           })
@@ -31,6 +32,7 @@ describe("tests client.v1.faceSwap.create", () => {
           },
           endSeconds: 15.0,
           height: 960,
+          name: "Face Swap video",
           startSeconds: 0.0,
           width: 512,
         }),
