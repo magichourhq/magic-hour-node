@@ -13,11 +13,13 @@ describe("tests client.v1.aiQrCodeGenerator.create", () => {
         client.v1.aiQrCodeGenerator
           .create({
             content: "https://magichour.ai",
+            name: "Qr Code image",
             style: { artStyle: "Watercolor" },
           })
           .asResponse(),
         client.v1.aiQrCodeGenerator.create({
           content: "https://magichour.ai",
+          name: "Qr Code image",
           style: { artStyle: "Watercolor" },
         }),
       ]);

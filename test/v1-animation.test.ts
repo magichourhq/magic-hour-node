@@ -20,6 +20,7 @@ describe("tests client.v1.animation.create", () => {
             endSeconds: 15.0,
             fps: 12.0,
             height: 960,
+            name: "Animation video",
             style: {
               artStyle: "Painterly Illustration",
               cameraEffect: "Accelerate",
@@ -39,6 +40,7 @@ describe("tests client.v1.animation.create", () => {
           endSeconds: 15.0,
           fps: 12.0,
           height: 960,
+          name: "Animation video",
           style: {
             artStyle: "Painterly Illustration",
             cameraEffect: "Accelerate",

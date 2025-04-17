@@ -13,12 +13,14 @@ describe("tests client.v1.textToVideo.create", () => {
         client.v1.textToVideo
           .create({
             endSeconds: 5.0,
+            name: "Text To Video video",
             orientation: "landscape",
             style: { prompt: "string" },
           })
           .asResponse(),
         client.v1.textToVideo.create({
           endSeconds: 5.0,
+          name: "Text To Video video",
           orientation: "landscape",
           style: { prompt: "string" },
         }),

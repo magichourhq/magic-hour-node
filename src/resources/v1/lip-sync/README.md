@@ -23,6 +23,8 @@ const res = await client.v1.lipSync.create({
   },
   endSeconds: 15.0,
   height: 960,
+  maxFpsLimit: 12.0,
+  name: "Lip Sync video",
   startSeconds: 0.0,
   width: 512,
 });

@@ -48,6 +48,10 @@ const client = new Client({
 
 * [create](src/resources/v1/ai-image-upscaler/README.md#create) - AI Image Upscaler
 
+### [v1.aiMemeGenerator](src/resources/v1/ai-meme-generator/README.md)
+
+* [create](src/resources/v1/ai-meme-generator/README.md#create) - AI Meme Generator
+
 ### [v1.aiPhotoEditor](src/resources/v1/ai-photo-editor/README.md)
 
 * [create](src/resources/v1/ai-photo-editor/README.md#create) - AI Photo Editor

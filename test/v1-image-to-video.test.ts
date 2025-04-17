@@ -15,7 +15,8 @@ describe("tests client.v1.imageToVideo.create", () => {
             assets: { imageFilePath: "api-assets/id/1234.png" },
             endSeconds: 5.0,
             height: 960,
-            style: { prompt: null },
+            name: "Image To Video video",
+            style: { prompt: "string" },
             width: 512,
           })
           .asResponse(),
@@ -23,7 +24,8 @@ describe("tests client.v1.imageToVideo.create", () => {
           assets: { imageFilePath: "api-assets/id/1234.png" },
           endSeconds: 5.0,
           height: 960,
-          style: { prompt: null },
+          name: "Image To Video video",
+          style: { prompt: "string" },
           width: 512,
         }),
       ]);

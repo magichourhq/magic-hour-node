@@ -1,8 +1,8 @@
 import Client, { Environment } from "magic-hour";
 
-describe("tests client.v1.faceSwapPhoto.create", () => {
+describe("tests client.v1.aiMemeGenerator.create", () => {
   test.concurrent(
-    "POST /v1/face-swap-photo | testId: success_default | Success test with response schema validation. Expects status code 200",
+    "POST /v1/ai-meme-generator | testId: success_default | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -10,21 +10,23 @@ describe("tests client.v1.faceSwapPhoto.create", () => {
       });
       // Get both raw response for status and parsed response for data
       const [rawResponse, response] = await Promise.all([
-        client.v1.faceSwapPhoto
+        client.v1.aiMemeGenerator
           .create({
-            assets: {
-              sourceFilePath: "api-assets/id/1234.png",
-              targetFilePath: "api-assets/id/1234.png",
+            name: "My Funny Meme",
+            style: {
+              searchWeb: false,
+              template: "Drake Hotline Bling",
+              topic: "When the code finally works",
             },
-            name: "Face Swap image",
           })
           .asResponse(),
-        client.v1.faceSwapPhoto.create({
-          assets: {
-            sourceFilePath: "api-assets/id/1234.png",
-            targetFilePath: "api-assets/id/1234.png",
+        client.v1.aiMemeGenerator.create({
+          name: "My Funny Meme",
+          style: {
+            searchWeb: false,
+            template: "Drake Hotline Bling",
+            topic: "When the code finally works",
           },
-          name: "Face Swap image",
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

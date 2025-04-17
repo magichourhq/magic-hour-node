@@ -13,12 +13,14 @@ describe("tests client.v1.aiImageGenerator.create", () => {
         client.v1.aiImageGenerator
           .create({
             imageCount: 1,
+            name: "Ai Image image",
             orientation: "landscape",
             style: { prompt: "Cool image" },
           })
           .asResponse(),
         client.v1.aiImageGenerator.create({
           imageCount: 1,
+          name: "Ai Image image",
           orientation: "landscape",
           style: { prompt: "Cool image" },
         }),

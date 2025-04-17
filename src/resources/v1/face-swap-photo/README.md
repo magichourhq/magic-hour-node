@@ -17,5 +17,6 @@ const res = await client.v1.faceSwapPhoto.create({
     sourceFilePath: "api-assets/id/1234.png",
     targetFilePath: "api-assets/id/1234.png",
   },
+  name: "Face Swap image",
 });
 ```

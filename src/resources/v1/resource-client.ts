@@ -3,6 +3,7 @@ import { AiClothesChangerClient } from "magic-hour/resources/v1/ai-clothes-chang
 import { AiHeadshotGeneratorClient } from "magic-hour/resources/v1/ai-headshot-generator";
 import { AiImageGeneratorClient } from "magic-hour/resources/v1/ai-image-generator";
 import { AiImageUpscalerClient } from "magic-hour/resources/v1/ai-image-upscaler";
+import { AiMemeGeneratorClient } from "magic-hour/resources/v1/ai-meme-generator";
 import { AiPhotoEditorClient } from "magic-hour/resources/v1/ai-photo-editor";
 import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-generator";
 import { AiTalkingPhotoClient } from "magic-hour/resources/v1/ai-talking-photo";
@@ -25,6 +26,7 @@ export class V1Client extends CoreResourceClient {
   aiHeadshotGenerator: AiHeadshotGeneratorClient;
   aiImageGenerator: AiImageGeneratorClient;
   aiImageUpscaler: AiImageUpscalerClient;
+  aiMemeGenerator: AiMemeGeneratorClient;
   aiPhotoEditor: AiPhotoEditorClient;
   aiQrCodeGenerator: AiQrCodeGeneratorClient;
   aiTalkingPhoto: AiTalkingPhotoClient;
@@ -47,6 +49,7 @@ export class V1Client extends CoreResourceClient {
     this.aiHeadshotGenerator = new AiHeadshotGeneratorClient(this._client);
     this.aiImageGenerator = new AiImageGeneratorClient(this._client);
     this.aiImageUpscaler = new AiImageUpscalerClient(this._client);
+    this.aiMemeGenerator = new AiMemeGeneratorClient(this._client);
     this.aiPhotoEditor = new AiPhotoEditorClient(this._client);
     this.aiQrCodeGenerator = new AiQrCodeGeneratorClient(this._client);
     this.aiTalkingPhoto = new AiTalkingPhotoClient(this._client);
