@@ -2,17 +2,22 @@ import { zodTransform } from "magic-hour/core";
 import * as z from "zod";
 
 /**
- * V1ImageToVideoCreateBodyStyle
+ * Attributed used to dictate the style of the output
  */
 export type V1ImageToVideoCreateBodyStyle = {
   /**
-   * High Quality mode enhances detail, sharpness, and realism, making it ideal for portraits, animals, and intricate landscapes.
+   * Deprecated: Please use `quality_mode` instead. For backward compatibility, setting `high_quality: true` and `quality_mode: quick` will map to `quality_mode: studio`. Note: `quality_mode: studio` offers the same quality as `high_quality: true`.
    */
   highQuality?: boolean | undefined;
   /**
    * The prompt used for the video.
    */
-  prompt: string | null;
+  prompt?: string | undefined;
+  /**
+   * * `quick` - Fastest option for rapid results. Takes ~3 minutes per 5s of video.
+   * *  `studio` - Polished visuals with longer runtime. Takes ~8.5 minutes per 5s of video.
+   */
+  qualityMode?: ("quick" | "studio") | undefined;
 };
 
 /**
@@ -22,7 +27,8 @@ export type V1ImageToVideoCreateBodyStyle = {
  */
 export type External$V1ImageToVideoCreateBodyStyle = {
   high_quality?: boolean | undefined;
-  prompt: string | null;
+  prompt?: string | undefined;
+  quality_mode?: ("quick" | "studio") | undefined;
 };
 
 /**
@@ -35,12 +41,14 @@ const SchemaIn$V1ImageToVideoCreateBodyStyle: z.ZodType<
 > = z
   .object({
     high_quality: z.boolean().optional(),
-    prompt: z.string().nullable(),
+    prompt: z.string().optional(),
+    quality_mode: z.enum(["quick", "studio"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       high_quality: "highQuality",
       prompt: "prompt",
+      quality_mode: "qualityMode",
     });
   });
 
@@ -55,12 +63,14 @@ const SchemaOut$V1ImageToVideoCreateBodyStyle: z.ZodType<
 > = z
   .object({
     highQuality: z.boolean().optional(),
-    prompt: z.string().nullable(),
+    prompt: z.string().optional(),
+    qualityMode: z.enum(["quick", "studio"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       highQuality: "high_quality",
       prompt: "prompt",
+      qualityMode: "quality_mode",
     });
   });
 

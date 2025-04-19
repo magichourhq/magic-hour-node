@@ -147,6 +147,7 @@ export { V1ImageProjectsGetResponse404MessageEnum } from "./v1-image-projects-ge
 export { V1ImageToVideoCreateBody } from "./v1-image-to-video-create-body";
 export { V1ImageToVideoCreateBodyAssets } from "./v1-image-to-video-create-body-assets";
 export { V1ImageToVideoCreateBodyStyle } from "./v1-image-to-video-create-body-style";
+export { V1ImageToVideoCreateBodyStyleQualityModeEnum } from "./v1-image-to-video-create-body-style-quality-mode-enum";
 export { V1ImageToVideoCreateResponse } from "./v1-image-to-video-create-response";
 export { V1ImageToVideoCreateResponse400 } from "./v1-image-to-video-create-response400";
 export { V1ImageToVideoCreateResponse401 } from "./v1-image-to-video-create-response401";
@@ -167,6 +168,7 @@ export { V1LipSyncCreateResponse422 } from "./v1-lip-sync-create-response422";
 export { V1TextToVideoCreateBody } from "./v1-text-to-video-create-body";
 export { V1TextToVideoCreateBodyOrientationEnum } from "./v1-text-to-video-create-body-orientation-enum";
 export { V1TextToVideoCreateBodyStyle } from "./v1-text-to-video-create-body-style";
+export { V1TextToVideoCreateBodyStyleQualityModeEnum } from "./v1-text-to-video-create-body-style-quality-mode-enum";
 export { V1TextToVideoCreateResponse } from "./v1-text-to-video-create-response";
 export { V1TextToVideoCreateResponse400 } from "./v1-text-to-video-create-response400";
 export { V1TextToVideoCreateResponse401 } from "./v1-text-to-video-create-response401";

@@ -31,6 +31,9 @@ export type V1ImageToVideoCreateBody = {
    * The name of video
    */
   name?: string | undefined;
+  /**
+   * Attributed used to dictate the style of the output
+   */
   style: V1ImageToVideoCreateBodyStyle;
   /**
    * The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
