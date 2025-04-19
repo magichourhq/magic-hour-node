@@ -15,14 +15,14 @@ describe("tests client.v1.textToVideo.create", () => {
             endSeconds: 5.0,
             name: "Text To Video video",
             orientation: "landscape",
-            style: { prompt: "string" },
+            style: { prompt: "a dog running" },
           })
           .asResponse(),
         client.v1.textToVideo.create({
           endSeconds: 5.0,
           name: "Text To Video video",
           orientation: "landscape",
-          style: { prompt: "string" },
+          style: { prompt: "a dog running" },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

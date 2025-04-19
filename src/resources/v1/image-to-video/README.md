@@ -20,7 +20,7 @@ const res = await client.v1.imageToVideo.create({
   endSeconds: 5.0,
   height: 960,
   name: "Image To Video video",
-  style: { prompt: "string" },
+  style: { prompt: "a dog running" },
   width: 512,
 });
 ```

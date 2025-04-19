@@ -9,6 +9,11 @@ export type V1TextToVideoCreateBodyStyle = {
    * The prompt used for the video.
    */
   prompt: string;
+  /**
+   * * `quick` - Fastest option for rapid results. Takes ~3 minutes per 5s of video.
+   * *  `studio` - Polished visuals with longer runtime. Takes ~8.5 minutes per 5s of video.
+   */
+  qualityMode?: ("quick" | "studio") | undefined;
 };
 
 /**
@@ -18,6 +23,7 @@ export type V1TextToVideoCreateBodyStyle = {
  */
 export type External$V1TextToVideoCreateBodyStyle = {
   prompt: string;
+  quality_mode?: ("quick" | "studio") | undefined;
 };
 
 /**
@@ -30,10 +36,12 @@ const SchemaIn$V1TextToVideoCreateBodyStyle: z.ZodType<
 > = z
   .object({
     prompt: z.string(),
+    quality_mode: z.enum(["quick", "studio"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       prompt: "prompt",
+      quality_mode: "qualityMode",
     });
   });
 
@@ -48,10 +56,12 @@ const SchemaOut$V1TextToVideoCreateBodyStyle: z.ZodType<
 > = z
   .object({
     prompt: z.string(),
+    qualityMode: z.enum(["quick", "studio"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       prompt: "prompt",
+      qualityMode: "quality_mode",
     });
   });
 
