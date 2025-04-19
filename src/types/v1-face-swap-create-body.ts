@@ -19,9 +19,16 @@ export type V1FaceSwapCreateBody = {
    */
   endSeconds: number;
   /**
-   * The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * Used to determine the dimensions of the output video.
+   *
+   * * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   *
+   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
+   *
+   * See our [pricing page](https://magichour.ai/pricing) for more details.
    */
-  height: number;
+  height?: number | undefined;
   /**
    * The name of video
    */
@@ -31,9 +38,16 @@ export type V1FaceSwapCreateBody = {
    */
   startSeconds: number;
   /**
-   * The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * Used to determine the dimensions of the output video.
+   *
+   * * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   *
+   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
+   *
+   * See our [pricing page](https://magichour.ai/pricing) for more details.
    */
-  width: number;
+  width?: number | undefined;
 };
 
 /**
@@ -44,10 +58,10 @@ export type V1FaceSwapCreateBody = {
 export type External$V1FaceSwapCreateBody = {
   assets: External$V1FaceSwapCreateBodyAssets;
   end_seconds: number;
-  height: number;
+  height?: number | undefined;
   name?: string | undefined;
   start_seconds: number;
-  width: number;
+  width?: number | undefined;
 };
 
 /**
@@ -61,10 +75,10 @@ const SchemaIn$V1FaceSwapCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1FaceSwapCreateBodyAssets.in,
     end_seconds: z.number(),
-    height: z.number().int(),
+    height: z.number().int().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
-    width: z.number().int(),
+    width: z.number().int().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -89,10 +103,10 @@ const SchemaOut$V1FaceSwapCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1FaceSwapCreateBodyAssets.out,
     endSeconds: z.number(),
-    height: z.number().int(),
+    height: z.number().int().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
-    width: z.number().int(),
+    width: z.number().int().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
