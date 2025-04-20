@@ -1,0 +1,36 @@
+
+### create <a name="create"></a>
+AI Face Editor
+
+Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+
+**API Endpoint**: `POST /v1/ai-face-editor`
+
+#### Example Snippet
+
+```typescript
+import Client from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+const res = await client.v1.aiFaceEditor.create({
+  assets: { imageFilePath: "api-assets/id/1234.png" },
+  name: "Face Editor image",
+  style: {
+    enhanceFace: false,
+    eyeGazeHorizontal: 0.0,
+    eyeGazeVertical: 0.0,
+    eyeOpenRatio: 0.0,
+    eyebrowDirection: 0.0,
+    headPitch: 0.0,
+    headRoll: 0.0,
+    headYaw: 0.0,
+    lipOpenRatio: 0.0,
+    mouthGrim: 0.0,
+    mouthPositionHorizontal: 0.0,
+    mouthPositionVertical: 0.0,
+    mouthPout: 0.0,
+    mouthPurse: 0.0,
+    mouthSmile: 0.0,
+  },
+});
+```

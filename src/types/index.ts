@@ -8,6 +8,16 @@ export { V1AiClothesChangerCreateResponse401MessageEnum } from "./v1-ai-clothes-
 export { V1AiClothesChangerCreateResponse404 } from "./v1-ai-clothes-changer-create-response404";
 export { V1AiClothesChangerCreateResponse404MessageEnum } from "./v1-ai-clothes-changer-create-response404-message-enum";
 export { V1AiClothesChangerCreateResponse422 } from "./v1-ai-clothes-changer-create-response422";
+export { V1AiFaceEditorCreateBody } from "./v1-ai-face-editor-create-body";
+export { V1AiFaceEditorCreateBodyAssets } from "./v1-ai-face-editor-create-body-assets";
+export { V1AiFaceEditorCreateBodyStyle } from "./v1-ai-face-editor-create-body-style";
+export { V1AiFaceEditorCreateResponse } from "./v1-ai-face-editor-create-response";
+export { V1AiFaceEditorCreateResponse400 } from "./v1-ai-face-editor-create-response400";
+export { V1AiFaceEditorCreateResponse401 } from "./v1-ai-face-editor-create-response401";
+export { V1AiFaceEditorCreateResponse401MessageEnum } from "./v1-ai-face-editor-create-response401-message-enum";
+export { V1AiFaceEditorCreateResponse404 } from "./v1-ai-face-editor-create-response404";
+export { V1AiFaceEditorCreateResponse404MessageEnum } from "./v1-ai-face-editor-create-response404-message-enum";
+export { V1AiFaceEditorCreateResponse422 } from "./v1-ai-face-editor-create-response422";
 export { V1AiHeadshotGeneratorCreateBody } from "./v1-ai-headshot-generator-create-body";
 export { V1AiHeadshotGeneratorCreateBodyAssets } from "./v1-ai-headshot-generator-create-body-assets";
 export { V1AiHeadshotGeneratorCreateBodyStyle } from "./v1-ai-headshot-generator-create-body-style";
