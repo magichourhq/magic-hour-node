@@ -16,6 +16,7 @@ import { ImageBackgroundRemoverClient } from "magic-hour/resources/v1/image-back
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { ImageToVideoClient } from "magic-hour/resources/v1/image-to-video";
 import { LipSyncClient } from "magic-hour/resources/v1/lip-sync";
+import { PhotoColorizerClient } from "magic-hour/resources/v1/photo-colorizer";
 import { TextToVideoClient } from "magic-hour/resources/v1/text-to-video";
 import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
@@ -39,6 +40,7 @@ export class V1Client extends CoreResourceClient {
   imageBackgroundRemover: ImageBackgroundRemoverClient;
   imageToVideo: ImageToVideoClient;
   lipSync: LipSyncClient;
+  photoColorizer: PhotoColorizerClient;
   textToVideo: TextToVideoClient;
   videoToVideo: VideoToVideoClient;
 
@@ -65,6 +67,7 @@ export class V1Client extends CoreResourceClient {
     );
     this.imageToVideo = new ImageToVideoClient(this._client);
     this.lipSync = new LipSyncClient(this._client);
+    this.photoColorizer = new PhotoColorizerClient(this._client);
     this.textToVideo = new TextToVideoClient(this._client);
     this.videoToVideo = new VideoToVideoClient(this._client);
   }

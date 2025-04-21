@@ -15,6 +15,7 @@ export * as imageBackgroundRemover from "./image-background-remover";
 export * as imageProjects from "./image-projects";
 export * as imageToVideo from "./image-to-video";
 export * as lipSync from "./lip-sync";
+export * as photoColorizer from "./photo-colorizer";
 export { V1Client } from "./resource-client";
 export * as textToVideo from "./text-to-video";
 export * as videoProjects from "./video-projects";

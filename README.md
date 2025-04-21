@@ -101,6 +101,10 @@ const client = new Client({
 
 * [create](src/resources/v1/lip-sync/README.md#create) - Lip Sync
 
+### [v1.photoColorizer](src/resources/v1/photo-colorizer/README.md)
+
+* [create](src/resources/v1/photo-colorizer/README.md#create) - Photo Colorizer
+
 ### [v1.textToVideo](src/resources/v1/text-to-video/README.md)
 
 * [create](src/resources/v1/text-to-video/README.md#create) - Text-to-Video

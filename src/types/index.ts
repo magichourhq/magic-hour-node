@@ -175,6 +175,15 @@ export { V1LipSyncCreateResponse401MessageEnum } from "./v1-lip-sync-create-resp
 export { V1LipSyncCreateResponse404 } from "./v1-lip-sync-create-response404";
 export { V1LipSyncCreateResponse404MessageEnum } from "./v1-lip-sync-create-response404-message-enum";
 export { V1LipSyncCreateResponse422 } from "./v1-lip-sync-create-response422";
+export { V1PhotoColorizerCreateBody } from "./v1-photo-colorizer-create-body";
+export { V1PhotoColorizerCreateBodyAssets } from "./v1-photo-colorizer-create-body-assets";
+export { V1PhotoColorizerCreateResponse } from "./v1-photo-colorizer-create-response";
+export { V1PhotoColorizerCreateResponse400 } from "./v1-photo-colorizer-create-response400";
+export { V1PhotoColorizerCreateResponse401 } from "./v1-photo-colorizer-create-response401";
+export { V1PhotoColorizerCreateResponse401MessageEnum } from "./v1-photo-colorizer-create-response401-message-enum";
+export { V1PhotoColorizerCreateResponse404 } from "./v1-photo-colorizer-create-response404";
+export { V1PhotoColorizerCreateResponse404MessageEnum } from "./v1-photo-colorizer-create-response404-message-enum";
+export { V1PhotoColorizerCreateResponse422 } from "./v1-photo-colorizer-create-response422";
 export { V1TextToVideoCreateBody } from "./v1-text-to-video-create-body";
 export { V1TextToVideoCreateBodyOrientationEnum } from "./v1-text-to-video-create-body-orientation-enum";
 export { V1TextToVideoCreateBodyStyle } from "./v1-text-to-video-create-body-style";
