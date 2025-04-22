@@ -24,9 +24,11 @@ export type CreateRequest = {
    */
   endSeconds: number;
   /**
-   * The height of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
+   * This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+   *
+   * It is retained solely for backward compatibility and will be deprecated in the future.
    */
-  height: number;
+  height?: number | undefined;
   /**
    * The name of video
    */
@@ -36,9 +38,11 @@ export type CreateRequest = {
    */
   style: V1ImageToVideoCreateBodyStyle;
   /**
-   * The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
+   * This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+   *
+   * It is retained solely for backward compatibility and will be deprecated in the future.
    */
-  width: number;
+  width?: number | undefined;
 };
 
 /**
@@ -49,10 +53,10 @@ export type CreateRequest = {
 export type External$CreateRequest = {
   assets: External$V1ImageToVideoCreateBodyAssets;
   end_seconds: number;
-  height: number;
+  height?: number | undefined;
   name?: string | undefined;
   style: External$V1ImageToVideoCreateBodyStyle;
-  width: number;
+  width?: number | undefined;
 };
 
 /**
@@ -66,10 +70,10 @@ const SchemaIn$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1ImageToVideoCreateBodyAssets.in,
     end_seconds: z.number(),
-    height: z.number().int(),
+    height: z.number().int().optional(),
     name: z.string().optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.in,
-    width: z.number().int(),
+    width: z.number().int().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -94,10 +98,10 @@ const SchemaOut$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1ImageToVideoCreateBodyAssets.out,
     endSeconds: z.number(),
-    height: z.number().int(),
+    height: z.number().int().optional(),
     name: z.string().optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.out,
-    width: z.number().int(),
+    width: z.number().int().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
