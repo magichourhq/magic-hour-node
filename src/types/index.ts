@@ -18,6 +18,15 @@ export { V1AiFaceEditorCreateResponse401MessageEnum } from "./v1-ai-face-editor-
 export { V1AiFaceEditorCreateResponse404 } from "./v1-ai-face-editor-create-response404";
 export { V1AiFaceEditorCreateResponse404MessageEnum } from "./v1-ai-face-editor-create-response404-message-enum";
 export { V1AiFaceEditorCreateResponse422 } from "./v1-ai-face-editor-create-response422";
+export { V1AiGifGeneratorCreateBody } from "./v1-ai-gif-generator-create-body";
+export { V1AiGifGeneratorCreateBodyStyle } from "./v1-ai-gif-generator-create-body-style";
+export { V1AiGifGeneratorCreateResponse } from "./v1-ai-gif-generator-create-response";
+export { V1AiGifGeneratorCreateResponse400 } from "./v1-ai-gif-generator-create-response400";
+export { V1AiGifGeneratorCreateResponse401 } from "./v1-ai-gif-generator-create-response401";
+export { V1AiGifGeneratorCreateResponse401MessageEnum } from "./v1-ai-gif-generator-create-response401-message-enum";
+export { V1AiGifGeneratorCreateResponse404 } from "./v1-ai-gif-generator-create-response404";
+export { V1AiGifGeneratorCreateResponse404MessageEnum } from "./v1-ai-gif-generator-create-response404-message-enum";
+export { V1AiGifGeneratorCreateResponse422 } from "./v1-ai-gif-generator-create-response422";
 export { V1AiHeadshotGeneratorCreateBody } from "./v1-ai-headshot-generator-create-body";
 export { V1AiHeadshotGeneratorCreateBodyAssets } from "./v1-ai-headshot-generator-create-body-assets";
 export { V1AiHeadshotGeneratorCreateBodyStyle } from "./v1-ai-headshot-generator-create-body-style";
