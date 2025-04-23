@@ -1,5 +1,4 @@
 import * as z from "zod";
-import formUrlEncoded from "form-urlencoded";
 import { Response as NodeResponse } from "node-fetch";
 
 import { AuthProvider } from "./auth";
@@ -7,6 +6,7 @@ import { RUNTIME } from "./runtime";
 import { ApiPromise } from "./api-promise";
 import { ApiError } from "./api-error";
 import { createForm } from "./form-data";
+import { encodeQueryParam, QueryStyle } from "./query";
 import {
   JSON_PATTERN,
   TEXT_PATTERN,
@@ -31,6 +31,10 @@ export type RequestConfig = {
   auth?: string[];
   query?: string[];
   body?: any;
+  bodyEncoding?: {
+    style?: Record<string, QueryStyle>;
+    explode?: Record<string, boolean>;
+  };
   contentType?: string;
   headers?: Record<string, string>;
   opts?: RequestOptions | undefined;
@@ -145,7 +149,22 @@ export class CoreClient {
       reqInit.headers = headers;
       reqInit.body = form as unknown as FormData;
     } else if (contentType === URL_FORM) {
-      reqInit.body = formUrlEncoded(cfg.body);
+      if (typeof cfg.body !== "object") {
+        throw new TypeError(
+          "x-www-form-urlencoded data must be an object at the top level",
+        );
+      }
+
+      // encode form data
+      const styleMap = cfg.bodyEncoding?.style ?? {};
+      const explodeMap = cfg.bodyEncoding?.explode ?? {};
+      const formData = Object.entries(cfg.body).map(([name, value]) => {
+        const style = styleMap[name] ?? "form";
+        const explode = explodeMap[name] ?? style === "form";
+        return encodeQueryParam({ name, value, style, explode });
+      });
+
+      reqInit.body = formData.join("&");
     } else {
       // we expect body to already be encoded in the correct fashion
       reqInit.body = cfg.body;

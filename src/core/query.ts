@@ -1,9 +1,14 @@
 import qs from "qs";
 
+export type QueryStyle =
+  | "form"
+  | "spaceDelimited"
+  | "pipeDelimited"
+  | "deepObject";
 export interface EncodeQueryParamProps {
   name: string;
   value: any;
-  style: "form" | "spaceDelimited" | "pipeDelimited" | "deepObject";
+  style: QueryStyle;
   explode: boolean;
 }
 
@@ -85,7 +90,7 @@ function encodePipeDelimited(
 }
 
 function encodeDeepObj(name: string, value: any, explode: boolean): string {
-  if (!Array.isArray(value) && typeof value === "object" && value != null) {
+  if ((Array.isArray(value) || typeof value === "object") && value != null) {
     return qs.stringify({ [name]: value });
   } else {
     // according to the docs, deepObject style only applies to

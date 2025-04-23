@@ -40,6 +40,10 @@ const client = new Client({
 
 * [create](src/resources/v1/ai-face-editor/README.md#create) - AI Face Editor
 
+### [v1.aiGifGenerator](src/resources/v1/ai-gif-generator/README.md)
+
+* [create](src/resources/v1/ai-gif-generator/README.md#create) - AI GIFs
+
 ### [v1.aiHeadshotGenerator](src/resources/v1/ai-headshot-generator/README.md)
 
 * [create](src/resources/v1/ai-headshot-generator/README.md#create) - AI Headshots

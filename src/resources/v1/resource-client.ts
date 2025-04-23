@@ -1,6 +1,7 @@
 import { CoreClient, CoreResourceClient } from "magic-hour/core";
 import { AiClothesChangerClient } from "magic-hour/resources/v1/ai-clothes-changer";
 import { AiFaceEditorClient } from "magic-hour/resources/v1/ai-face-editor";
+import { AiGifGeneratorClient } from "magic-hour/resources/v1/ai-gif-generator";
 import { AiHeadshotGeneratorClient } from "magic-hour/resources/v1/ai-headshot-generator";
 import { AiImageGeneratorClient } from "magic-hour/resources/v1/ai-image-generator";
 import { AiImageUpscalerClient } from "magic-hour/resources/v1/ai-image-upscaler";
@@ -26,6 +27,7 @@ export class V1Client extends CoreResourceClient {
   videoProjects: VideoProjectsClient;
   aiClothesChanger: AiClothesChangerClient;
   aiFaceEditor: AiFaceEditorClient;
+  aiGifGenerator: AiGifGeneratorClient;
   aiHeadshotGenerator: AiHeadshotGeneratorClient;
   aiImageGenerator: AiImageGeneratorClient;
   aiImageUpscaler: AiImageUpscalerClient;
@@ -51,6 +53,7 @@ export class V1Client extends CoreResourceClient {
     this.videoProjects = new VideoProjectsClient(this._client);
     this.aiClothesChanger = new AiClothesChangerClient(this._client);
     this.aiFaceEditor = new AiFaceEditorClient(this._client);
+    this.aiGifGenerator = new AiGifGeneratorClient(this._client);
     this.aiHeadshotGenerator = new AiHeadshotGeneratorClient(this._client);
     this.aiImageGenerator = new AiImageGeneratorClient(this._client);
     this.aiImageUpscaler = new AiImageUpscalerClient(this._client);
