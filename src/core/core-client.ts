@@ -225,10 +225,16 @@ export class CoreClient {
   }
 }
 
+export interface ResourceClientOptions {
+  lazyLoad?: boolean | undefined;
+}
+
 export class CoreResourceClient {
   protected _client: CoreClient;
+  protected _opts: ResourceClientOptions;
 
-  constructor(client: CoreClient) {
+  constructor(client: CoreClient, opts: ResourceClientOptions) {
     this._client = client;
+    this._opts = opts;
   }
 }

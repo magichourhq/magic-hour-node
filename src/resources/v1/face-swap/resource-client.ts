@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/face-swap/request-types";
 import { Schemas$V1FaceSwapCreateBody } from "magic-hour/types/v1-face-swap-create-body";
 import { Schemas$V1FaceSwapCreateResponse } from "magic-hour/types/v1-face-swap-create-response";
 
 export class FaceSwapClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * Face Swap video

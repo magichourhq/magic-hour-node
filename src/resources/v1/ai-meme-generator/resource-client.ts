@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-meme-generator/request-types";
 import { Schemas$V1AiMemeGeneratorCreateBody } from "magic-hour/types/v1-ai-meme-generator-create-body";
 import { Schemas$V1AiMemeGeneratorCreateResponse } from "magic-hour/types/v1-ai-meme-generator-create-response";
 
 export class AiMemeGeneratorClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * AI Meme Generator

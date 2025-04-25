@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/animation/request-types";
 import { Schemas$V1AnimationCreateBody } from "magic-hour/types/v1-animation-create-body";
 import { Schemas$V1AnimationCreateResponse } from "magic-hour/types/v1-animation-create-response";
 
 export class AnimationClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * Animation

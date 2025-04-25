@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/text-to-video/request-types";
 import { Schemas$V1TextToVideoCreateBody } from "magic-hour/types/v1-text-to-video-create-body";
 import { Schemas$V1TextToVideoCreateResponse } from "magic-hour/types/v1-text-to-video-create-response";
 
 export class TextToVideoClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * Text-to-Video

@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/photo-colorizer/request-types";
 import { Schemas$V1PhotoColorizerCreateBody } from "magic-hour/types/v1-photo-colorizer-create-body";
 import { Schemas$V1PhotoColorizerCreateResponse } from "magic-hour/types/v1-photo-colorizer-create-response";
 
 export class PhotoColorizerClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * Photo Colorizer

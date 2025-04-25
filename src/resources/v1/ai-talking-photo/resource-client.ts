@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-talking-photo/request-types";
 import { Schemas$V1AiTalkingPhotoCreateBody } from "magic-hour/types/v1-ai-talking-photo-create-body";
 import { Schemas$V1AiTalkingPhotoCreateResponse } from "magic-hour/types/v1-ai-talking-photo-create-response";
 
 export class AiTalkingPhotoClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * AI Talking Photo

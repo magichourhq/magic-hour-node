@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/files/upload-urls/request-types";
 import { Schemas$V1FilesUploadUrlsCreateBody } from "magic-hour/types/v1-files-upload-urls-create-body";
 import { Schemas$V1FilesUploadUrlsCreateResponse } from "magic-hour/types/v1-files-upload-urls-create-response";
 
 export class UploadUrlsClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * Generate asset upload urls

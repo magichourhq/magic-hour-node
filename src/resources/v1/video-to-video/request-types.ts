@@ -30,9 +30,16 @@ export type CreateRequest = {
    */
   fpsResolution?: ("FULL" | "HALF") | undefined;
   /**
-   * The height of the final output video. Must be divisible by 64. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * Used to determine the dimensions of the output video.
+   *
+   * * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   *
+   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
+   *
+   * See our [pricing page](https://magichour.ai/pricing) for more details.
    */
-  height: number;
+  height?: number | undefined;
   /**
    * The name of video
    */
@@ -43,9 +50,16 @@ export type CreateRequest = {
   startSeconds: number;
   style: V1VideoToVideoCreateBodyStyle;
   /**
-   * The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+   * Used to determine the dimensions of the output video.
+   *
+   * * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   *
+   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
+   *
+   * See our [pricing page](https://magichour.ai/pricing) for more details.
    */
-  width: number;
+  width?: number | undefined;
 };
 
 /**
@@ -57,11 +71,11 @@ export type External$CreateRequest = {
   assets: External$V1VideoToVideoCreateBodyAssets;
   end_seconds: number;
   fps_resolution?: ("FULL" | "HALF") | undefined;
-  height: number;
+  height?: number | undefined;
   name?: string | undefined;
   start_seconds: number;
   style: External$V1VideoToVideoCreateBodyStyle;
-  width: number;
+  width?: number | undefined;
 };
 
 /**
@@ -76,11 +90,11 @@ const SchemaIn$CreateRequest: z.ZodType<
     assets: Schemas$V1VideoToVideoCreateBodyAssets.in,
     end_seconds: z.number(),
     fps_resolution: z.enum(["FULL", "HALF"]).optional(),
-    height: z.number().int(),
+    height: z.number().int().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
     style: Schemas$V1VideoToVideoCreateBodyStyle.in,
-    width: z.number().int(),
+    width: z.number().int().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -108,11 +122,11 @@ const SchemaOut$CreateRequest: z.ZodType<
     assets: Schemas$V1VideoToVideoCreateBodyAssets.out,
     endSeconds: z.number(),
     fpsResolution: z.enum(["FULL", "HALF"]).optional(),
-    height: z.number().int(),
+    height: z.number().int().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
     style: Schemas$V1VideoToVideoCreateBodyStyle.out,
-    width: z.number().int(),
+    width: z.number().int().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
