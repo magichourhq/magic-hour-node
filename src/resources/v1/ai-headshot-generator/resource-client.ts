@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-headshot-generator/request-types";
 import { Schemas$V1AiHeadshotGeneratorCreateBody } from "magic-hour/types/v1-ai-headshot-generator-create-body";
 import { Schemas$V1AiHeadshotGeneratorCreateResponse } from "magic-hour/types/v1-ai-headshot-generator-create-response";
 
 export class AiHeadshotGeneratorClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * AI Headshots

@@ -4,13 +4,33 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/video-projects/request-types";
 import { Schemas$V1VideoProjectsGetResponse } from "magic-hour/types/v1-video-projects-get-response";
 
 export class VideoProjectsClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
+  }
+  /**
+   * Delete video
+   *
+   * Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
+   *
+   * DELETE /v1/video-projects/{id}
+   */
+  delete(
+    request: requests.DeleteRequest,
+    opts?: RequestOptions,
+  ): ApiPromise<null> {
+    return this._client.makeRequest({
+      method: "delete",
+      path: `/v1/video-projects/${request.id}`,
+      auth: ["bearerAuth"],
+      responseRaw: true,
+      opts,
+    });
   }
   /**
    * Get video details
@@ -37,25 +57,6 @@ export class VideoProjectsClient extends CoreResourceClient {
       path: `/v1/video-projects/${request.id}`,
       auth: ["bearerAuth"],
       responseSchema: Schemas$V1VideoProjectsGetResponse.in,
-      opts,
-    });
-  }
-  /**
-   * Delete video
-   *
-   * Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
-   *
-   * DELETE /v1/video-projects/{id}
-   */
-  delete(
-    request: requests.DeleteRequest,
-    opts?: RequestOptions,
-  ): ApiPromise<null> {
-    return this._client.makeRequest({
-      method: "delete",
-      path: `/v1/video-projects/${request.id}`,
-      auth: ["bearerAuth"],
-      responseRaw: true,
       opts,
     });
   }

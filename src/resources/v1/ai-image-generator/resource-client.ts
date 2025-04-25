@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-image-generator/request-types";
 import { Schemas$V1AiImageGeneratorCreateBody } from "magic-hour/types/v1-ai-image-generator-create-body";
 import { Schemas$V1AiImageGeneratorCreateResponse } from "magic-hour/types/v1-ai-image-generator-create-response";
 
 export class AiImageGeneratorClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * AI Images

@@ -4,13 +4,33 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/image-projects/request-types";
 import { Schemas$V1ImageProjectsGetResponse } from "magic-hour/types/v1-image-projects-get-response";
 
 export class ImageProjectsClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
+  }
+  /**
+   * Delete image
+   *
+   * Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+   *
+   * DELETE /v1/image-projects/{id}
+   */
+  delete(
+    request: requests.DeleteRequest,
+    opts?: RequestOptions,
+  ): ApiPromise<null> {
+    return this._client.makeRequest({
+      method: "delete",
+      path: `/v1/image-projects/${request.id}`,
+      auth: ["bearerAuth"],
+      responseRaw: true,
+      opts,
+    });
   }
   /**
    * Get image details
@@ -37,25 +57,6 @@ export class ImageProjectsClient extends CoreResourceClient {
       path: `/v1/image-projects/${request.id}`,
       auth: ["bearerAuth"],
       responseSchema: Schemas$V1ImageProjectsGetResponse.in,
-      opts,
-    });
-  }
-  /**
-   * Delete image
-   *
-   * Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
-   *
-   * DELETE /v1/image-projects/{id}
-   */
-  delete(
-    request: requests.DeleteRequest,
-    opts?: RequestOptions,
-  ): ApiPromise<null> {
-    return this._client.makeRequest({
-      method: "delete",
-      path: `/v1/image-projects/${request.id}`,
-      auth: ["bearerAuth"],
-      responseRaw: true,
       opts,
     });
   }

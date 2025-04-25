@@ -4,14 +4,15 @@ import {
   CoreClient,
   CoreResourceClient,
   RequestOptions,
+  ResourceClientOptions,
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/ai-image-upscaler/request-types";
 import { Schemas$V1AiImageUpscalerCreateBody } from "magic-hour/types/v1-ai-image-upscaler-create-body";
 import { Schemas$V1AiImageUpscalerCreateResponse } from "magic-hour/types/v1-ai-image-upscaler-create-response";
 
 export class AiImageUpscalerClient extends CoreResourceClient {
-  constructor(client: CoreClient) {
-    super(client);
+  constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
+    super(coreClient, opts);
   }
   /**
    * AI Image Upscaler

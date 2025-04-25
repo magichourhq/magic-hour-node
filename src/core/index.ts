@@ -16,6 +16,7 @@ export {
   ApiResponse,
   CoreClient,
   CoreClientProps,
+  ResourceClientOptions,
   CoreResourceClient,
   RequestOptions,
 } from "./core-client";
