@@ -22,6 +22,8 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
               prompt: "A photo portrait of a person wearing a hat",
               promptStrength: 3.75,
               steps: 4,
+              upscaleFactor: 2,
+              upscaleFidelity: 0.5,
             },
           })
           .asResponse(),
@@ -36,6 +38,8 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
             prompt: "A photo portrait of a person wearing a hat",
             promptStrength: 3.75,
             steps: 4,
+            upscaleFactor: 2,
+            upscaleFidelity: 0.5,
           },
         }),
       ]);

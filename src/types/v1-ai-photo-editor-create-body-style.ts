@@ -29,6 +29,14 @@ export type V1AiPhotoEditorCreateBodyStyle = {
    * Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
    */
   steps?: number | undefined;
+  /**
+   * The multiplier applied to an image's original dimensions during the upscaling process. For example, a scale of 2 doubles the width and height (e.g., from 512x512 to 1024x1024).
+   */
+  upscaleFactor?: number | undefined;
+  /**
+   * Upscale fidelity refers to the level of quality desired in the generated image. Fidelity value of 1 means more details.
+   */
+  upscaleFidelity?: number | undefined;
 };
 
 /**
@@ -43,6 +51,8 @@ export type External$V1AiPhotoEditorCreateBodyStyle = {
   prompt: string;
   prompt_strength: number;
   steps?: number | undefined;
+  upscale_factor?: number | undefined;
+  upscale_fidelity?: number | undefined;
 };
 
 /**
@@ -60,6 +70,8 @@ const SchemaIn$V1AiPhotoEditorCreateBodyStyle: z.ZodType<
     prompt: z.string(),
     prompt_strength: z.number(),
     steps: z.number().int().optional(),
+    upscale_factor: z.number().int().optional(),
+    upscale_fidelity: z.number().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -69,6 +81,8 @@ const SchemaIn$V1AiPhotoEditorCreateBodyStyle: z.ZodType<
       prompt: "prompt",
       prompt_strength: "promptStrength",
       steps: "steps",
+      upscale_factor: "upscaleFactor",
+      upscale_fidelity: "upscaleFidelity",
     });
   });
 
@@ -88,6 +102,8 @@ const SchemaOut$V1AiPhotoEditorCreateBodyStyle: z.ZodType<
     prompt: z.string(),
     promptStrength: z.number(),
     steps: z.number().int().optional(),
+    upscaleFactor: z.number().int().optional(),
+    upscaleFidelity: z.number().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -97,6 +113,8 @@ const SchemaOut$V1AiPhotoEditorCreateBodyStyle: z.ZodType<
       prompt: "prompt",
       promptStrength: "prompt_strength",
       steps: "steps",
+      upscaleFactor: "upscale_factor",
+      upscaleFidelity: "upscale_fidelity",
     });
   });
 
