@@ -15,7 +15,7 @@ import {
 } from "./content-type";
 
 export interface CoreClientProps {
-  baseUrl: string;
+  baseUrl: string | Record<string, string | undefined>;
   timeout?: number | undefined;
 }
 
@@ -25,6 +25,7 @@ export type HttpMethod = "get" | "post" | "put" | "patch" | "delete";
 export type RequestConfig = {
   method: HttpMethod;
   path: string;
+  serviceName?: string | undefined;
   responseSchema?: z.Schema;
   responseStream?: boolean;
   responseRaw?: boolean;
@@ -47,14 +48,19 @@ export interface RequestOptions {
   additionalQuery?: Record<string, string>;
 }
 
+const _DEFAULT_SERVICE_NAME = "__default_service__";
+
 export class CoreClient {
-  public baseUrl: string;
+  private baseUrl: Record<string, string | undefined>;
   private auths: Record<string, AuthProvider>;
   private timeout: number | undefined;
   // private agent: any // TODO
 
   constructor(props: CoreClientProps) {
-    this.baseUrl = props.baseUrl;
+    this.baseUrl =
+      typeof props.baseUrl === "string"
+        ? { [_DEFAULT_SERVICE_NAME]: props.baseUrl }
+        : props.baseUrl;
     this.auths = {};
     this.timeout = props.timeout;
   }
@@ -74,20 +80,15 @@ export class CoreClient {
     return cfg;
   }
 
-  buildUrl(path: string): string {
-    const base = this.baseUrl.endsWith("/")
-      ? this.baseUrl.slice(0, -1)
-      : this.baseUrl;
+  buildUrl(path: string, serviceName: string = _DEFAULT_SERVICE_NAME): string {
+    const baseUrl = this.baseUrl[serviceName ?? _DEFAULT_SERVICE_NAME] ?? "";
+    const base = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
     const cleanPath = path.startsWith("/") ? path.slice(1) : path;
     return `${base}/${cleanPath}`;
   }
 
   private buildUrlFromCfg(cfg: RequestConfig): string {
-    const base = this.baseUrl.endsWith("/")
-      ? this.baseUrl.slice(0, -1)
-      : this.baseUrl;
-    const path = cfg.path.startsWith("/") ? cfg.path.slice(1) : cfg.path;
-    let url = `${base}/${path}`;
+    let url = this.buildUrl(cfg.path, cfg.serviceName);
 
     const searchParams = new URLSearchParams((cfg.query ?? []).join("&"));
     for (const [key, val] of Object.entries(cfg.opts?.additionalQuery ?? {})) {

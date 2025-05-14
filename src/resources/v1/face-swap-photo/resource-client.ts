@@ -17,7 +17,7 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
   /**
    * Face Swap Photo
    *
-   * Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+   * Create a face swap photo. Each photo costs 5 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
    *
    * POST /v1/face-swap-photo
    */

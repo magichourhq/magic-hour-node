@@ -17,7 +17,7 @@ export class AiHeadshotGeneratorClient extends CoreResourceClient {
   /**
    * AI Headshots
    *
-   * Create an AI headshot. Each headshot costs 50 frames.
+   * Create an AI headshot. Each headshot costs 50 credits.
    *
    * POST /v1/ai-headshot-generator
    */

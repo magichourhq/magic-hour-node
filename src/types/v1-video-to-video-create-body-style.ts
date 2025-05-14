@@ -45,6 +45,7 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Mystique"
     | "Naruto"
     | "Neon Dream"
+    | "No Art Style"
     | "Oil Painting"
     | "On Fire"
     | "Origami"
@@ -141,6 +142,7 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Mystique"
     | "Naruto"
     | "Neon Dream"
+    | "No Art Style"
     | "Oil Painting"
     | "On Fire"
     | "Origami"
@@ -221,6 +223,7 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Mystique",
       "Naruto",
       "Neon Dream",
+      "No Art Style",
       "Oil Painting",
       "On Fire",
       "Origami",
@@ -317,6 +320,7 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Mystique",
       "Naruto",
       "Neon Dream",
+      "No Art Style",
       "Oil Painting",
       "On Fire",
       "Origami",
