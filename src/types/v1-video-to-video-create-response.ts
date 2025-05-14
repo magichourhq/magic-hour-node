@@ -6,7 +6,15 @@ import * as z from "zod";
  */
 export type V1VideoToVideoCreateResponse = {
   /**
-   * Estimated cost of the video in terms of number of frames needed to render the video. Frames will be adjusted when the video completes
+   * The amount of credits deducted from your account to generate the video. If the status is not 'complete', this value is an estimate and may be adjusted upon completion based on the actual FPS of the output video.
+   *
+   * If video generation fails, credits will be refunded, and this field will be updated to include the refund.
+   */
+  creditsCharged: number;
+  /**
+   * Deprecated: Previously represented the number of frames (original name of our credit system) used for video generation. Use 'credits_charged' instead.
+   *
+   * The amount of frames used to generate the video. If the status is not 'complete', the cost is an estimate and will be adjusted when the video completes.
    */
   estimatedFrameCost: number;
   /**
@@ -21,6 +29,7 @@ export type V1VideoToVideoCreateResponse = {
  * we expect to come in as network data
  */
 export type External$V1VideoToVideoCreateResponse = {
+  credits_charged: number;
   estimated_frame_cost: number;
   id: string;
 };
@@ -34,11 +43,13 @@ const SchemaIn$V1VideoToVideoCreateResponse: z.ZodType<
   unknown
 > = z
   .object({
+    credits_charged: z.number().int(),
     estimated_frame_cost: z.number().int(),
     id: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      credits_charged: "creditsCharged",
       estimated_frame_cost: "estimatedFrameCost",
       id: "id",
     });
@@ -54,11 +65,13 @@ const SchemaOut$V1VideoToVideoCreateResponse: z.ZodType<
   V1VideoToVideoCreateResponse // the object to be transformed
 > = z
   .object({
+    creditsCharged: z.number().int(),
     estimatedFrameCost: z.number().int(),
     id: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      creditsCharged: "credits_charged",
       estimatedFrameCost: "estimated_frame_cost",
       id: "id",
     });

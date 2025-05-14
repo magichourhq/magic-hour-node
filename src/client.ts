@@ -17,9 +17,10 @@ export class Client {
   protected _opts: ResourceClientOptions;
 
   constructor(opts?: ClientOptions) {
-    const baseUrl =
-      opts?.baseUrl ?? opts?.environment ?? Environment.Environment;
-    this._client = new CoreClient({ baseUrl, timeout: opts?.timeout });
+    this._client = new CoreClient({
+      baseUrl: opts?.baseUrl ?? opts?.environment ?? Environment.Environment,
+      timeout: opts?.timeout,
+    });
     this._opts = { lazyLoad: opts?.lazyLoad };
     this._client.registerAuth("bearerAuth", new AuthBearer(opts?.token));
     if (this._opts.lazyLoad === false) {

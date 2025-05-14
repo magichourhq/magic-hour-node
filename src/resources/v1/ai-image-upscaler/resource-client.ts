@@ -17,7 +17,7 @@ export class AiImageUpscalerClient extends CoreResourceClient {
   /**
    * AI Image Upscaler
    *
-   * Upscale your image using AI. Each 2x upscale costs 50 frames, and 4x upscale costs 200 frames.
+   * Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale costs 200 credits.
    *
    * POST /v1/ai-image-upscaler
    */

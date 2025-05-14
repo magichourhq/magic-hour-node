@@ -17,7 +17,7 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
   /**
    * Image Background Remover
    *
-   * Remove background from image. Each image costs 5 frames.
+   * Remove background from image. Each image costs 5 credits.
    *
    * POST /v1/image-background-remover
    */

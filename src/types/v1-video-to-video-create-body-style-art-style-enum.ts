@@ -41,6 +41,7 @@ export type V1VideoToVideoCreateBodyStyleArtStyleEnum =
   | "Mystique"
   | "Naruto"
   | "Neon Dream"
+  | "No Art Style"
   | "Oil Painting"
   | "On Fire"
   | "Origami"

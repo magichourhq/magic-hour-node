@@ -22,6 +22,12 @@ import * as z from "zod";
 export type V1VideoProjectsGetResponse = {
   createdAt: string;
   /**
+   * The amount of credits deducted from your account to generate the video. If the status is not 'complete', this value is an estimate and may be adjusted upon completion based on the actual FPS of the output video.
+   *
+   * If video generation fails, credits will be refunded, and this field will be updated to include the refund.
+   */
+  creditsCharged: number;
+  /**
    * Deprecated: Please use `.downloads` instead. The download url and expiration date of the video project
    */
   download: V1VideoProjectsGetResponseDownload | null;
@@ -63,6 +69,8 @@ export type V1VideoProjectsGetResponse = {
    */
   status: "canceled" | "complete" | "draft" | "error" | "queued" | "rendering";
   /**
+   * Deprecated: Previously represented the number of frames (original name of our credit system) used for video generation. Use 'credits_charged' instead.
+   *
    * The amount of frames used to generate the video. If the status is not 'complete', the cost is an estimate and will be adjusted when the video completes.
    */
   totalFrameCost: number;
@@ -83,6 +91,7 @@ export type V1VideoProjectsGetResponse = {
  */
 export type External$V1VideoProjectsGetResponse = {
   created_at: string;
+  credits_charged: number;
   download: External$V1VideoProjectsGetResponseDownload | null;
   downloads: External$V1VideoProjectsGetResponseDownloadsItem[];
   enabled: boolean;
@@ -109,6 +118,7 @@ const SchemaIn$V1VideoProjectsGetResponse: z.ZodType<
 > = z
   .object({
     created_at: z.string(),
+    credits_charged: z.number().int(),
     download: Schemas$V1VideoProjectsGetResponseDownload.in.nullable(),
     downloads: z.array(Schemas$V1VideoProjectsGetResponseDownloadsItem.in),
     enabled: z.boolean(),
@@ -134,6 +144,7 @@ const SchemaIn$V1VideoProjectsGetResponse: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       created_at: "createdAt",
+      credits_charged: "creditsCharged",
       download: "download",
       downloads: "downloads",
       enabled: "enabled",
@@ -162,6 +173,7 @@ const SchemaOut$V1VideoProjectsGetResponse: z.ZodType<
 > = z
   .object({
     createdAt: z.string(),
+    creditsCharged: z.number().int(),
     download: Schemas$V1VideoProjectsGetResponseDownload.out.nullable(),
     downloads: z.array(Schemas$V1VideoProjectsGetResponseDownloadsItem.out),
     enabled: z.boolean(),
@@ -187,6 +199,7 @@ const SchemaOut$V1VideoProjectsGetResponse: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       createdAt: "created_at",
+      creditsCharged: "credits_charged",
       download: "download",
       downloads: "downloads",
       enabled: "enabled",

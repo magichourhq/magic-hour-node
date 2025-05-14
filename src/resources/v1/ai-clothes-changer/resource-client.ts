@@ -17,7 +17,7 @@ export class AiClothesChangerClient extends CoreResourceClient {
   /**
    * AI Clothes Changer
    *
-   * Change outfits in photos in seconds with just a photo reference. Each photo costs 25 frames.
+   * Change outfits in photos in seconds with just a photo reference. Each photo costs 25 credits.
    *
    * POST /v1/ai-clothes-changer
    */

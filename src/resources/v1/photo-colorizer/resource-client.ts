@@ -17,7 +17,7 @@ export class PhotoColorizerClient extends CoreResourceClient {
   /**
    * Photo Colorizer
    *
-   * Colorize image. Each image costs 5 frames.
+   * Colorize image. Each image costs 5 credits.
    *
    * POST /v1/photo-colorizer
    */

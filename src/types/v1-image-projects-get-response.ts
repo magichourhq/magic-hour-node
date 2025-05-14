@@ -16,6 +16,12 @@ import * as z from "zod";
  */
 export type V1ImageProjectsGetResponse = {
   createdAt: string;
+  /**
+   * The amount of credits deducted from your account to generate the image. We charge credits right when the request is made.
+   *
+   * If an error occurred while generating the image(s), credits will be refunded and this field will be updated to include the refund.
+   */
+  creditsCharged: number;
   downloads: V1ImageProjectsGetResponseDownloadsItem[];
   /**
    * Indicates whether the resource is deleted
@@ -42,7 +48,7 @@ export type V1ImageProjectsGetResponse = {
    */
   status: "canceled" | "complete" | "draft" | "error" | "queued" | "rendering";
   /**
-   * The amount of frames used to generate the image.
+   * Deprecated: Previously represented the number of frames (original name of our credit system) used for image generation. Use 'credits_charged' instead.
    */
   totalFrameCost: number;
   /**
@@ -58,6 +64,7 @@ export type V1ImageProjectsGetResponse = {
  */
 export type External$V1ImageProjectsGetResponse = {
   created_at: string;
+  credits_charged: number;
   downloads: External$V1ImageProjectsGetResponseDownloadsItem[];
   enabled: boolean;
   error: External$V1ImageProjectsGetResponseError | null;
@@ -79,6 +86,7 @@ const SchemaIn$V1ImageProjectsGetResponse: z.ZodType<
 > = z
   .object({
     created_at: z.string(),
+    credits_charged: z.number().int(),
     downloads: z.array(Schemas$V1ImageProjectsGetResponseDownloadsItem.in),
     enabled: z.boolean(),
     error: Schemas$V1ImageProjectsGetResponseError.in.nullable(),
@@ -99,6 +107,7 @@ const SchemaIn$V1ImageProjectsGetResponse: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       created_at: "createdAt",
+      credits_charged: "creditsCharged",
       downloads: "downloads",
       enabled: "enabled",
       error: "error",
@@ -122,6 +131,7 @@ const SchemaOut$V1ImageProjectsGetResponse: z.ZodType<
 > = z
   .object({
     createdAt: z.string(),
+    creditsCharged: z.number().int(),
     downloads: z.array(Schemas$V1ImageProjectsGetResponseDownloadsItem.out),
     enabled: z.boolean(),
     error: Schemas$V1ImageProjectsGetResponseError.out.nullable(),
@@ -142,6 +152,7 @@ const SchemaOut$V1ImageProjectsGetResponse: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       createdAt: "created_at",
+      creditsCharged: "credits_charged",
       downloads: "downloads",
       enabled: "enabled",
       error: "error",
