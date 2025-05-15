@@ -3,6 +3,11 @@ import {
   Schemas$V1AiTalkingPhotoCreateBodyAssets,
   V1AiTalkingPhotoCreateBodyAssets,
 } from "./v1-ai-talking-photo-create-body-assets";
+import {
+  External$V1AiTalkingPhotoCreateBodyStyle,
+  Schemas$V1AiTalkingPhotoCreateBodyStyle,
+  V1AiTalkingPhotoCreateBodyStyle,
+} from "./v1-ai-talking-photo-create-body-style";
 import { zodTransform } from "magic-hour/core";
 import * as z from "zod";
 
@@ -15,7 +20,7 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   assets: V1AiTalkingPhotoCreateBodyAssets;
   /**
-   * The end time of the input video in seconds
+   * The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
    */
   endSeconds: number;
   /**
@@ -23,9 +28,13 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   name?: string | undefined;
   /**
-   * The start time of the input video in seconds
+   * The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
    */
   startSeconds: number;
+  /**
+   * Attributes used to dictate the style of the output
+   */
+  style?: V1AiTalkingPhotoCreateBodyStyle | undefined;
 };
 
 /**
@@ -38,6 +47,7 @@ export type External$V1AiTalkingPhotoCreateBody = {
   end_seconds: number;
   name?: string | undefined;
   start_seconds: number;
+  style?: External$V1AiTalkingPhotoCreateBodyStyle | undefined;
 };
 
 /**
@@ -53,6 +63,7 @@ const SchemaIn$V1AiTalkingPhotoCreateBody: z.ZodType<
     end_seconds: z.number(),
     name: z.string().optional(),
     start_seconds: z.number(),
+    style: Schemas$V1AiTalkingPhotoCreateBodyStyle.in.optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -60,6 +71,7 @@ const SchemaIn$V1AiTalkingPhotoCreateBody: z.ZodType<
       end_seconds: "endSeconds",
       name: "name",
       start_seconds: "startSeconds",
+      style: "style",
     });
   });
 
@@ -77,6 +89,7 @@ const SchemaOut$V1AiTalkingPhotoCreateBody: z.ZodType<
     endSeconds: z.number(),
     name: z.string().optional(),
     startSeconds: z.number(),
+    style: Schemas$V1AiTalkingPhotoCreateBodyStyle.out.optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -84,6 +97,7 @@ const SchemaOut$V1AiTalkingPhotoCreateBody: z.ZodType<
       endSeconds: "end_seconds",
       name: "name",
       startSeconds: "start_seconds",
+      style: "style",
     });
   });
 

@@ -89,6 +89,8 @@ export { V1AiQrCodeGeneratorCreateResponse404MessageEnum } from "./v1-ai-qr-code
 export { V1AiQrCodeGeneratorCreateResponse422 } from "./v1-ai-qr-code-generator-create-response422";
 export { V1AiTalkingPhotoCreateBody } from "./v1-ai-talking-photo-create-body";
 export { V1AiTalkingPhotoCreateBodyAssets } from "./v1-ai-talking-photo-create-body-assets";
+export { V1AiTalkingPhotoCreateBodyStyle } from "./v1-ai-talking-photo-create-body-style";
+export { V1AiTalkingPhotoCreateBodyStyleGenerationModeEnum } from "./v1-ai-talking-photo-create-body-style-generation-mode-enum";
 export { V1AiTalkingPhotoCreateResponse } from "./v1-ai-talking-photo-create-response";
 export { V1AiTalkingPhotoCreateResponse400 } from "./v1-ai-talking-photo-create-response400";
 export { V1AiTalkingPhotoCreateResponse401 } from "./v1-ai-talking-photo-create-response401";
