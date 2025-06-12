@@ -17,4 +17,14 @@ const res = await client.v1.aiImageUpscaler.create({
   scaleFactor: 2.0,
   style: { enhancement: "Balanced" },
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for upscaling | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `scale_factor` | ✓ | How much to scale the image. Must be either 2 or 4 | `2.0` |
+| `style` | ✓ |  | `{"enhancement": "Balanced"}` |
+| `name` | ✗ | The name of image | `"Image Upscaler image"` |

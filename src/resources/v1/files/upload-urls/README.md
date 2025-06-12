@@ -36,4 +36,11 @@ const res = await client.v1.files.uploadUrls.create({
     { extension: "mp3", type: "audio" },
   ],
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `items` | ✓ |  | `[{"extension": "mp4", "type": "video"}, {"extension": "mp3", "type": "audio"}]` |

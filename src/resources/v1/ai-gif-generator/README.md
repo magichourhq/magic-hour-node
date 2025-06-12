@@ -15,4 +15,12 @@ const res = await client.v1.aiGifGenerator.create({
   name: "Ai Gif gif",
   style: { prompt: "Cute dancing cat, pixel art" },
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
+| `name` | ✗ | The name of gif | `"Ai Gif gif"` |

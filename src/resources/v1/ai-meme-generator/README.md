@@ -19,4 +19,12 @@ const res = await client.v1.aiMemeGenerator.create({
     topic: "When the code finally works",
   },
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"searchWeb": false, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
+| `name` | ✗ | The name of the meme. | `"My Funny Meme"` |

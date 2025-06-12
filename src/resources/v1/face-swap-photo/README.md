@@ -18,4 +18,12 @@ const res = await client.v1.faceSwapPhoto.create({
   },
   name: "Face Swap image",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for face swap photo | `{"sourceFilePath": "api-assets/id/1234.png", "targetFilePath": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Face Swap image"` |

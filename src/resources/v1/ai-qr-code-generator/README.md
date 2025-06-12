@@ -16,4 +16,13 @@ const res = await client.v1.aiQrCodeGenerator.create({
   name: "Qr Code image",
   style: { artStyle: "Watercolor" },
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `content` | ✓ | The content of the QR code. | `"https://magichour.ai"` |
+| `style` | ✓ |  | `{"artStyle": "Watercolor"}` |
+| `name` | ✗ | The name of image | `"Qr Code image"` |

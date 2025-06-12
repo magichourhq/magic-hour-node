@@ -30,4 +30,17 @@ const res = await client.v1.animation.create({
   },
   width: 512,
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for animation. | `{"audioFilePath": "api-assets/id/1234.mp3", "audioSource": "file", "imageFilePath": "api-assets/id/1234.png"}` |
+| `end_seconds` | ✓ | The end time of the input video in seconds | `15.0` |
+| `fps` | ✓ | The desire output video frame rate | `12.0` |
+| `height` | ✓ | The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details | `960` |
+| `style` | ✓ | Defines the style of the output video | `{"artStyle": "Painterly Illustration", "cameraEffect": "Accelerate", "prompt": "Cyberpunk city", "promptType": "ai_choose", "transitionSpeed": 5}` |
+| `width` | ✓ | The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details | `512` |
+| `name` | ✗ | The name of video | `"Animation video"` |

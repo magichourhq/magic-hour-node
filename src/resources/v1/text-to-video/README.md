@@ -20,4 +20,14 @@ const res = await client.v1.textToVideo.create({
   orientation: "landscape",
   style: { prompt: "a dog running" },
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
+| `orientation` | ✓ | Determines the orientation of the output video | `"landscape"` |
+| `style` | ✓ |  | `{"prompt": "a dog running"}` |
+| `name` | ✗ | The name of video | `"Text To Video video"` |

@@ -15,14 +15,14 @@ describe("tests client.v1.aiImageGenerator.create", () => {
             imageCount: 1,
             name: "Ai Image image",
             orientation: "landscape",
-            style: { prompt: "Cool image" },
+            style: { prompt: "Cool image", tool: "ai-anime-generator" },
           })
           .asResponse(),
         client.v1.aiImageGenerator.create({
           imageCount: 1,
           name: "Ai Image image",
           orientation: "landscape",
-          style: { prompt: "Cool image" },
+          style: { prompt: "Cool image", tool: "ai-anime-generator" },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
