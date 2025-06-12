@@ -20,4 +20,15 @@ const res = await client.v1.aiTalkingPhoto.create({
   name: "Talking Photo image",
   startSeconds: 0.0,
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for creating a talking photo | `{"audioFilePath": "api-assets/id/1234.mp3", "imageFilePath": "api-assets/id/1234.png"}` |
+| `end_seconds` | ✓ | The end time of the input audio in seconds. The maximum duration allowed is 30 seconds. | `15.0` |
+| `start_seconds` | ✓ | The start time of the input audio in seconds. The maximum duration allowed is 30 seconds. | `0.0` |
+| `name` | ✗ | The name of image | `"Talking Photo image"` |
+| `style` | ✗ | Attributes used to dictate the style of the output | `{"generationMode": "expressive", "intensity": 1.5}` |

@@ -40,6 +40,7 @@ export { V1AiHeadshotGeneratorCreateResponse422 } from "./v1-ai-headshot-generat
 export { V1AiImageGeneratorCreateBody } from "./v1-ai-image-generator-create-body";
 export { V1AiImageGeneratorCreateBodyOrientationEnum } from "./v1-ai-image-generator-create-body-orientation-enum";
 export { V1AiImageGeneratorCreateBodyStyle } from "./v1-ai-image-generator-create-body-style";
+export { V1AiImageGeneratorCreateBodyStyleToolEnum } from "./v1-ai-image-generator-create-body-style-tool-enum";
 export { V1AiImageGeneratorCreateResponse } from "./v1-ai-image-generator-create-response";
 export { V1AiImageGeneratorCreateResponse400 } from "./v1-ai-image-generator-create-response400";
 export { V1AiImageGeneratorCreateResponse401 } from "./v1-ai-image-generator-create-response401";

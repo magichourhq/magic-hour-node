@@ -15,4 +15,12 @@ const res = await client.v1.imageBackgroundRemover.create({
   assets: { imageFilePath: "api-assets/id/1234.png" },
   name: "Background Remover image",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for background removal | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Background Remover image"` |

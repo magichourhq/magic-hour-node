@@ -32,4 +32,13 @@ const res = await client.v1.aiFaceEditor.create({
     mouthSmile: 0.0,
   },
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for face editor | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `style` | ✓ | Face editing parameters | `{"enhanceFace": false, "eyeGazeHorizontal": 0.0, "eyeGazeVertical": 0.0, "eyeOpenRatio": 0.0, "eyebrowDirection": 0.0, "headPitch": 0.0, "headRoll": 0.0, "headYaw": 0.0, "lipOpenRatio": 0.0, "mouthGrim": 0.0, "mouthPositionHorizontal": 0.0, "mouthPositionVertical": 0.0, "mouthPout": 0.0, "mouthPurse": 0.0, "mouthSmile": 0.0}` |
+| `name` | ✗ | The name of image | `"Face Editor image"` |

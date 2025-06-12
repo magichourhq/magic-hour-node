@@ -14,7 +14,14 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.videoProjects.delete({
   id: "cm6pvghix03bvyz0zwash6noj",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the video project | `"cm6pvghix03bvyz0zwash6noj"` |
 
 ### Get video details <a name="get"></a>
 
@@ -40,4 +47,11 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.videoProjects.get({
   id: "cm6pvghix03bvyz0zwash6noj",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the video | `"cm6pvghix03bvyz0zwash6noj"` |

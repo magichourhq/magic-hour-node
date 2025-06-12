@@ -15,4 +15,12 @@ const res = await client.v1.photoColorizer.create({
   assets: { imageFilePath: "api-assets/id/1234.png" },
   name: "Photo Colorizer image",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for photo colorization | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Photo Colorizer image"` |

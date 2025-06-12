@@ -14,7 +14,14 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.imageProjects.delete({
   id: "cm6pvghix03bvyz0zwash6noj",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |
 
 ### Get image details <a name="get"></a>
 
@@ -40,4 +47,11 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.imageProjects.get({
   id: "cm6pvghix03bvyz0zwash6noj",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |

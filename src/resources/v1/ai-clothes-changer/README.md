@@ -19,4 +19,12 @@ const res = await client.v1.aiClothesChanger.create({
   },
   name: "Clothes Changer image",
 });
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for clothes changer | `{"garmentFilePath": "api-assets/id/outfit.png", "garmentType": "dresses", "personFilePath": "api-assets/id/model.png"}` |
+| `name` | ✗ | The name of image | `"Clothes Changer image"` |
