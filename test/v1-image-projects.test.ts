@@ -2,7 +2,7 @@ import Client, { Environment } from "magic-hour";
 
 describe("tests client.v1.imageProjects.delete", () => {
   test.concurrent(
-    "DELETE /v1/image-projects/{id} | testId: generated_success | Empty response test. Expects status code 204",
+    "DELETE /v1/image-projects/{id} | testId: success_all_params | Empty response test. Expects status code 204",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -25,7 +25,7 @@ describe("tests client.v1.imageProjects.delete", () => {
 
 describe("tests client.v1.imageProjects.get", () => {
   test.concurrent(
-    "GET /v1/image-projects/{id} | testId: generated_success | Success test with response schema validation. Expects status code 200",
+    "GET /v1/image-projects/{id} | testId: success_all_params | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",

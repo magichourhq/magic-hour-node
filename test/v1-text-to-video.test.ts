@@ -2,7 +2,7 @@ import Client, { Environment } from "magic-hour";
 
 describe("tests client.v1.textToVideo.create", () => {
   test.concurrent(
-    "POST /v1/text-to-video | testId: success_default | Success test with response schema validation. Expects status code 200",
+    "POST /v1/text-to-video | testId: success_all_params | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -15,14 +15,14 @@ describe("tests client.v1.textToVideo.create", () => {
             endSeconds: 5.0,
             name: "Text To Video video",
             orientation: "landscape",
-            style: { prompt: "a dog running" },
+            style: { prompt: "a dog running", qualityMode: "quick" },
           })
           .asResponse(),
         client.v1.textToVideo.create({
           endSeconds: 5.0,
           name: "Text To Video video",
           orientation: "landscape",
-          style: { prompt: "a dog running" },
+          style: { prompt: "a dog running", qualityMode: "quick" },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

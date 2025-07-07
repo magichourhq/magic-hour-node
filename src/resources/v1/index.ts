@@ -2,6 +2,7 @@ export * as aiClothesChanger from "./ai-clothes-changer";
 export * as aiFaceEditor from "./ai-face-editor";
 export * as aiGifGenerator from "./ai-gif-generator";
 export * as aiHeadshotGenerator from "./ai-headshot-generator";
+export * as aiImageEditor from "./ai-image-editor";
 export * as aiImageGenerator from "./ai-image-generator";
 export * as aiImageUpscaler from "./ai-image-upscaler";
 export * as aiMemeGenerator from "./ai-meme-generator";

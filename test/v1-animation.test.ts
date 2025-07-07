@@ -2,7 +2,7 @@ import Client, { Environment } from "magic-hour";
 
 describe("tests client.v1.animation.create", () => {
   test.concurrent(
-    "POST /v1/animation | testId: success_default | Success test with response schema validation. Expects status code 200",
+    "POST /v1/animation | testId: success_all_params | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -16,6 +16,7 @@ describe("tests client.v1.animation.create", () => {
               audioFilePath: "api-assets/id/1234.mp3",
               audioSource: "file",
               imageFilePath: "api-assets/id/1234.png",
+              youtubeUrl: "http://www.example.com",
             },
             endSeconds: 15.0,
             fps: 12.0,
@@ -23,6 +24,7 @@ describe("tests client.v1.animation.create", () => {
             name: "Animation video",
             style: {
               artStyle: "Painterly Illustration",
+              artStyleCustom: "string",
               cameraEffect: "Accelerate",
               prompt: "Cyberpunk city",
               promptType: "ai_choose",
@@ -36,6 +38,7 @@ describe("tests client.v1.animation.create", () => {
             audioFilePath: "api-assets/id/1234.mp3",
             audioSource: "file",
             imageFilePath: "api-assets/id/1234.png",
+            youtubeUrl: "http://www.example.com",
           },
           endSeconds: 15.0,
           fps: 12.0,
@@ -43,6 +46,7 @@ describe("tests client.v1.animation.create", () => {
           name: "Animation video",
           style: {
             artStyle: "Painterly Illustration",
+            artStyleCustom: "string",
             cameraEffect: "Accelerate",
             prompt: "Cyberpunk city",
             promptType: "ai_choose",

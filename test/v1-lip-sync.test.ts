@@ -2,7 +2,7 @@ import Client, { Environment } from "magic-hour";
 
 describe("tests client.v1.lipSync.create", () => {
   test.concurrent(
-    "POST /v1/lip-sync | testId: success_default | Success test with response schema validation. Expects status code 200",
+    "POST /v1/lip-sync | testId: success_all_params | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -16,6 +16,7 @@ describe("tests client.v1.lipSync.create", () => {
               audioFilePath: "api-assets/id/1234.mp3",
               videoFilePath: "api-assets/id/1234.mp4",
               videoSource: "file",
+              youtubeUrl: "http://www.example.com",
             },
             endSeconds: 15.0,
             height: 960,
@@ -30,6 +31,7 @@ describe("tests client.v1.lipSync.create", () => {
             audioFilePath: "api-assets/id/1234.mp3",
             videoFilePath: "api-assets/id/1234.mp4",
             videoSource: "file",
+            youtubeUrl: "http://www.example.com",
           },
           endSeconds: 15.0,
           height: 960,

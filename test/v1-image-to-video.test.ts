@@ -2,7 +2,7 @@ import Client, { Environment } from "magic-hour";
 
 describe("tests client.v1.imageToVideo.create", () => {
   test.concurrent(
-    "POST /v1/image-to-video | testId: success_default | Success test with response schema validation. Expects status code 200",
+    "POST /v1/image-to-video | testId: success_all_params | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -16,7 +16,11 @@ describe("tests client.v1.imageToVideo.create", () => {
             endSeconds: 5.0,
             height: 960,
             name: "Image To Video video",
-            style: { prompt: "a dog running" },
+            style: {
+              highQuality: true,
+              prompt: "a dog running",
+              qualityMode: "quick",
+            },
             width: 512,
           })
           .asResponse(),
@@ -25,7 +29,11 @@ describe("tests client.v1.imageToVideo.create", () => {
           endSeconds: 5.0,
           height: 960,
           name: "Image To Video video",
-          style: { prompt: "a dog running" },
+          style: {
+            highQuality: true,
+            prompt: "a dog running",
+            qualityMode: "quick",
+          },
           width: 512,
         }),
       ]);

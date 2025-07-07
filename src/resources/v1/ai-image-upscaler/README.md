@@ -5,6 +5,15 @@ Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale co
 
 **API Endpoint**: `POST /v1/ai-image-upscaler`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for upscaling | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `scale_factor` | ✓ | How much to scale the image. Must be either 2 or 4 | `2.0` |
+| `style` | ✓ |  | `{"enhancement": "Balanced"}` |
+| `name` | ✗ | The name of image | `"Image Upscaler image"` |
+
 #### Example Snippet
 
 ```typescript
@@ -20,11 +29,10 @@ const res = await client.v1.aiImageUpscaler.create({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for upscaling | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `scale_factor` | ✓ | How much to scale the image. Must be either 2 or 4 | `2.0` |
-| `style` | ✓ |  | `{"enhancement": "Balanced"}` |
-| `name` | ✗ | The name of image | `"Image Upscaler image"` |
+##### Type
+[V1AiImageUpscalerCreateResponse](/src/types/v1-ai-image-upscaler-create-response.ts)
+
+##### Example
+`{"creditsCharged": 50, "frameCost": 50, "id": "clx7uu86w0a5qp55yxz315r6r"}`

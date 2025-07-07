@@ -5,6 +5,12 @@ Permanently delete the rendered image. This action is not reversible, please be 
 
 **API Endpoint**: `DELETE /v1/image-projects/{id}`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |
+
 #### Example Snippet
 
 ```typescript
@@ -16,12 +22,6 @@ const res = await client.v1.imageProjects.delete({
 });
 
 ```
-
-#### Parameters
-
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |
 
 ### Get image details <a name="get"></a>
 
@@ -38,6 +38,12 @@ The image can be one of the following status
 
 **API Endpoint**: `GET /v1/image-projects/{id}`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |
+
 #### Example Snippet
 
 ```typescript
@@ -50,8 +56,10 @@ const res = await client.v1.imageProjects.get({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |
+##### Type
+[V1ImageProjectsGetResponse](/src/types/v1-image-projects-get-response.ts)
+
+##### Example
+`{"createdAt": "1970-01-01T00:00:00", "creditsCharged": 5, "downloads": [{"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.png"}], "enabled": true, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "id": "clx7uu86w0a5qp55yxz315r6r", "imageCount": 1, "name": "Example Name", "status": "complete", "totalFrameCost": 5, "type": "AI_IMAGE"}`

@@ -48,6 +48,10 @@ const client = new Client({
 
 * [create](src/resources/v1/ai-headshot-generator/README.md#create) - AI Headshots
 
+### [v1.aiImageEditor](src/resources/v1/ai-image-editor/README.md)
+
+* [create](src/resources/v1/ai-image-editor/README.md#create) - AI Image Editor
+
 ### [v1.aiImageGenerator](src/resources/v1/ai-image-generator/README.md)
 
 * [create](src/resources/v1/ai-image-generator/README.md#create) - AI Images

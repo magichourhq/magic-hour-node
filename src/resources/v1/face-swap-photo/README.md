@@ -5,6 +5,13 @@ Create a face swap photo. Each photo costs 5 credits. The height/width of the ou
 
 **API Endpoint**: `POST /v1/face-swap-photo`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for face swap photo | `{"sourceFilePath": "api-assets/id/1234.png", "targetFilePath": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Face Swap image"` |
+
 #### Example Snippet
 
 ```typescript
@@ -21,9 +28,10 @@ const res = await client.v1.faceSwapPhoto.create({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for face swap photo | `{"sourceFilePath": "api-assets/id/1234.png", "targetFilePath": "api-assets/id/1234.png"}` |
-| `name` | ✗ | The name of image | `"Face Swap image"` |
+##### Type
+[V1FaceSwapPhotoCreateResponse](/src/types/v1-face-swap-photo-create-response.ts)
+
+##### Example
+`{"creditsCharged": 5, "frameCost": 5, "id": "clx7uu86w0a5qp55yxz315r6r"}`

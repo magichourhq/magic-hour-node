@@ -5,6 +5,13 @@ Colorize image. Each image costs 5 credits.
 
 **API Endpoint**: `POST /v1/photo-colorizer`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for photo colorization | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Photo Colorizer image"` |
+
 #### Example Snippet
 
 ```typescript
@@ -18,9 +25,10 @@ const res = await client.v1.photoColorizer.create({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for photo colorization | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `name` | ✗ | The name of image | `"Photo Colorizer image"` |
+##### Type
+[V1PhotoColorizerCreateResponse](/src/types/v1-photo-colorizer-create-response.ts)
+
+##### Example
+`{"creditsCharged": 5, "frameCost": 5, "id": "clx7uu86w0a5qp55yxz315r6r"}`

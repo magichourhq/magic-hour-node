@@ -8,6 +8,15 @@ Get more information about this mode at our [product page](/products/text-to-vid
 
 **API Endpoint**: `POST /v1/text-to-video`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
+| `orientation` | ✓ | Determines the orientation of the output video | `"landscape"` |
+| `style` | ✓ |  | `{"prompt": "a dog running"}` |
+| `name` | ✗ | The name of video | `"Text To Video video"` |
+
 #### Example Snippet
 
 ```typescript
@@ -23,11 +32,10 @@ const res = await client.v1.textToVideo.create({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
-| `orientation` | ✓ | Determines the orientation of the output video | `"landscape"` |
-| `style` | ✓ |  | `{"prompt": "a dog running"}` |
-| `name` | ✗ | The name of video | `"Text To Video video"` |
+##### Type
+[V1TextToVideoCreateResponse](/src/types/v1-text-to-video-create-response.ts)
+
+##### Example
+`{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "clx7uu86w0a5qp55yxz315r6r"}`
