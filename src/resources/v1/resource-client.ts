@@ -7,6 +7,7 @@ import { AiClothesChangerClient } from "magic-hour/resources/v1/ai-clothes-chang
 import { AiFaceEditorClient } from "magic-hour/resources/v1/ai-face-editor";
 import { AiGifGeneratorClient } from "magic-hour/resources/v1/ai-gif-generator";
 import { AiHeadshotGeneratorClient } from "magic-hour/resources/v1/ai-headshot-generator";
+import { AiImageEditorClient } from "magic-hour/resources/v1/ai-image-editor";
 import { AiImageGeneratorClient } from "magic-hour/resources/v1/ai-image-generator";
 import { AiImageUpscalerClient } from "magic-hour/resources/v1/ai-image-upscaler";
 import { AiMemeGeneratorClient } from "magic-hour/resources/v1/ai-meme-generator";
@@ -33,6 +34,7 @@ export class V1Client extends CoreResourceClient {
   private _aiFaceEditorLazy?: AiFaceEditorClient; // lazy-loading cache
   private _aiGifGeneratorLazy?: AiGifGeneratorClient; // lazy-loading cache
   private _aiHeadshotGeneratorLazy?: AiHeadshotGeneratorClient; // lazy-loading cache
+  private _aiImageEditorLazy?: AiImageEditorClient; // lazy-loading cache
   private _aiImageGeneratorLazy?: AiImageGeneratorClient; // lazy-loading cache
   private _aiImageUpscalerLazy?: AiImageUpscalerClient; // lazy-loading cache
   private _aiMemeGeneratorLazy?: AiMemeGeneratorClient; // lazy-loading cache
@@ -59,6 +61,7 @@ export class V1Client extends CoreResourceClient {
       this.aiFaceEditor;
       this.aiGifGenerator;
       this.aiHeadshotGenerator;
+      this.aiImageEditor;
       this.aiImageGenerator;
       this.aiImageUpscaler;
       this.aiMemeGenerator;
@@ -132,6 +135,16 @@ export class V1Client extends CoreResourceClient {
       this._aiHeadshotGeneratorLazy ??
       (this._aiHeadshotGeneratorLazy =
         new (require("./ai-headshot-generator").AiHeadshotGeneratorClient)(
+          this._client,
+          this._opts,
+        ))
+    );
+  }
+  get aiImageEditor(): AiImageEditorClient {
+    return (
+      this._aiImageEditorLazy ??
+      (this._aiImageEditorLazy =
+        new (require("./ai-image-editor").AiImageEditorClient)(
           this._client,
           this._opts,
         ))

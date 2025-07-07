@@ -5,6 +5,13 @@ Change outfits in photos in seconds with just a photo reference. Each photo cost
 
 **API Endpoint**: `POST /v1/ai-clothes-changer`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for clothes changer | `{"garmentFilePath": "api-assets/id/outfit.png", "garmentType": "dresses", "personFilePath": "api-assets/id/model.png"}` |
+| `name` | ✗ | The name of image | `"Clothes Changer image"` |
+
 #### Example Snippet
 
 ```typescript
@@ -22,9 +29,10 @@ const res = await client.v1.aiClothesChanger.create({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for clothes changer | `{"garmentFilePath": "api-assets/id/outfit.png", "garmentType": "dresses", "personFilePath": "api-assets/id/model.png"}` |
-| `name` | ✗ | The name of image | `"Clothes Changer image"` |
+##### Type
+[V1AiClothesChangerCreateResponse](/src/types/v1-ai-clothes-changer-create-response.ts)
+
+##### Example
+`{"creditsCharged": 25, "frameCost": 25, "id": "clx7uu86w0a5qp55yxz315r6r"}`

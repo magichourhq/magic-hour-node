@@ -62,67 +62,37 @@ export class AuthBearer implements AuthProvider {
   }
 }
 
-export class AuthKeyQuery implements AuthProvider {
+export class AuthKey implements AuthProvider {
   name: string;
+  location: "query" | "header" | "cookie";
   key: string | null;
 
-  constructor(name: string, key?: string) {
+  constructor(
+    name: string,
+    location: "query" | "header" | "cookie",
+    key?: string,
+  ) {
     this.name = name;
+    this.location = location;
     this.key = key ?? null;
   }
 
   async applyAuth(cfg: RequestConfig): Promise<RequestConfig> {
-    const query = cfg.query ?? [];
-    if (this.key !== null) {
+    if (this.key === null) {
+      return cfg;
+    }
+
+    if (this.location === "query") {
+      const query = cfg.query ?? [];
       cfg.query = query;
       query.push(qs.stringify({ [this.name]: this.key }));
-    }
-
-    return cfg;
-  }
-
-  setValue(val?: string | undefined) {
-    this.key = val ?? null;
-  }
-}
-
-export class AuthKeyHeader implements AuthProvider {
-  name: string;
-  key: string | null;
-
-  constructor(name: string, key?: string) {
-    this.name = name;
-    this.key = key ?? null;
-  }
-
-  async applyAuth(cfg: RequestConfig): Promise<RequestConfig> {
-    const headers = cfg.headers ?? {};
-    if (this.key !== null) {
+    } else if (this.location === "header") {
+      const headers = cfg.headers ?? {};
       cfg.headers = headers;
       headers[this.name] = this.key;
-    }
-
-    return cfg;
-  }
-
-  setValue(val?: string | undefined) {
-    this.key = val ?? null;
-  }
-}
-
-export class AuthCookieHeader implements AuthProvider {
-  name: string;
-  key: string | null;
-
-  constructor(name: string, key?: string) {
-    this.name = name;
-    this.key = key ?? null;
-  }
-
-  async applyAuth(cfg: RequestConfig): Promise<RequestConfig> {
-    if (RUNTIME.type === "browser") {
+    } else if (this.location === "cookie" && RUNTIME.type === "browser") {
       cfg.withCredentials = true;
-    } else if (this.key !== null) {
+    } else if (this.location === "cookie") {
       const headers = cfg.headers ?? {};
       const cookies: string = headers[COOKIE] ?? "";
       headers[COOKIE] = `${cookies.length > 0 ? ";" : ""}${this.name}=${
@@ -145,14 +115,19 @@ export class AuthCookieHeader implements AuthProvider {
  * Details:
  *    https://datatracker.ietf.org/doc/html/rfc6749#section-4.3
  */
-export type OAuth2PasswordProps = {
+export type OAuth2Password = {
   username: string;
   password: string;
   clientId?: string | undefined;
   clientSecret?: string | undefined;
   grantType?: "password" | string | undefined;
   scope?: string[] | undefined;
+
+  tokenUrl?: string | undefined;
 };
+function isOAuth2Password(val: any): val is OAuth2Password {
+  return typeof val.username === "string" && typeof val.password === "string";
+}
 
 /**
  * OAuth2 authentication props for a client credentials flow
@@ -160,16 +135,24 @@ export type OAuth2PasswordProps = {
  * Details:
  *    https://datatracker.ietf.org/doc/html/rfc6749#section-4.4
  */
-export type OAuth2ClientCredentialsProps = {
+export type OAuth2ClientCredentials = {
   clientId: string;
   clientSecret: string;
   grantType?: "client_credentials" | string | undefined;
   scope?: string[] | undefined;
+
+  tokenUrl?: string | undefined;
 };
+function isOAuth2ClientCredentials(val: any): val is OAuth2ClientCredentials {
+  return (
+    typeof val.clientId === "string" && typeof val.clientSecret === "string"
+  );
+}
 
 export type OAuth2ProviderProps = {
   // OAuth2 provider configuration
-  tokenUrl: string;
+  baseUrl: string;
+  defaultTokenUrl: string;
   accessTokenPointer: string;
   expiresInPointer: string;
   credentialsLocation: "request_body" | "basic_authorization_header";
@@ -177,12 +160,7 @@ export type OAuth2ProviderProps = {
   requestMutator: AuthProvider;
 
   // OAuth2 access token request values
-  username?: string | undefined;
-  password?: string | undefined;
-  clientId?: string | undefined;
-  clientSecret?: string | undefined;
-  grantType: "password" | "client_credentials" | string;
-  scope?: string[] | undefined;
+  form?: OAuth2Password | OAuth2ClientCredentials | undefined;
 };
 export class OAuth2 implements AuthProvider {
   // OAuth2 provider configuration
@@ -196,48 +174,52 @@ export class OAuth2 implements AuthProvider {
     this.props = props;
   }
 
-  async refresh(): Promise<{ accessToken: string; expiresAt: Date }> {
+  async refresh(
+    form: OAuth2Password | OAuth2ClientCredentials,
+  ): Promise<{ accessToken: string; expiresAt: Date }> {
     const {
-      tokenUrl,
-      username,
-      password,
-      clientId,
-      clientSecret,
-      scope,
-      grantType,
+      baseUrl,
+      defaultTokenUrl,
       credentialsLocation,
       bodyContent,
       accessTokenPointer,
       expiresInPointer,
     } = this.props;
 
+    // build token url
+    let tokenUrl = form?.tokenUrl ?? defaultTokenUrl;
+    if (tokenUrl.startsWith("/")) {
+      // relative token url
+      const base = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+      tokenUrl = `${base}${tokenUrl}`;
+    }
+
+    let defaultGrantType = isOAuth2Password(form)
+      ? "password"
+      : "client_credentials";
+
     const reqHeaders: Record<string, string> = {};
     const reqData: Record<string, string | undefined> = {
-      grant_type: grantType,
+      grant_type: form.grantType ?? defaultGrantType,
     };
 
     // Add client credentials
-    if (
-      typeof clientId !== "undefined" &&
-      typeof clientSecret !== "undefined"
-    ) {
+    if (isOAuth2ClientCredentials(form)) {
       if (credentialsLocation === "basic_authorization_header") {
-        const encoded = toBase64(`${clientId}:${clientSecret}`);
+        const encoded = toBase64(`${form.clientId}:${form.clientSecret}`);
         reqHeaders[AUTHORIZATION] = `Basic ${encoded}`;
       } else {
-        reqData["client_id"] = clientId;
-        reqData["client_secret"] = clientSecret;
+        reqData["client_id"] = form.clientId;
+        reqData["client_secret"] = form.clientSecret;
       }
     }
 
-    if (typeof username !== "undefined") {
-      reqData["username"] = username;
+    if (isOAuth2Password(form)) {
+      reqData["username"] = form.username;
+      reqData["password"] = form.password;
     }
-    if (typeof password !== "undefined") {
-      reqData["password"] = password;
-    }
-    if (typeof scope !== "undefined") {
-      reqData["scope"] = scope.join(" ");
+    if (typeof form.scope !== "undefined") {
+      reqData["scope"] = form.scope.join(" ");
     }
 
     const reqInit: RequestInit = { method: "POST" };
@@ -282,8 +264,8 @@ export class OAuth2 implements AuthProvider {
   }
 
   async applyAuth(cfg: RequestConfig): Promise<RequestConfig> {
-    if (!this.accessToken) {
-      const { accessToken, expiresAt } = await this.refresh();
+    if (this.props.form && !this.accessToken) {
+      const { accessToken, expiresAt } = await this.refresh(this.props.form);
       this.accessToken = accessToken;
       this.expiresAt = expiresAt;
     }

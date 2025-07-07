@@ -5,6 +5,13 @@ Create an AI GIF. Each GIF costs 25 credits.
 
 **API Endpoint**: `POST /v1/ai-gif-generator`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
+| `name` | ✗ | The name of gif | `"Ai Gif gif"` |
+
 #### Example Snippet
 
 ```typescript
@@ -18,9 +25,10 @@ const res = await client.v1.aiGifGenerator.create({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
-| `name` | ✗ | The name of gif | `"Ai Gif gif"` |
+##### Type
+[V1AiGifGeneratorCreateResponse](/src/types/v1-ai-gif-generator-create-response.ts)
+
+##### Example
+`{"creditsCharged": 25, "frameCost": 25, "id": "clx7uu86w0a5qp55yxz315r6r"}`

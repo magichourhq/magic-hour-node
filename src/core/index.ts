@@ -3,13 +3,11 @@ export { ApiPromise, EventSourceResponse } from "./api-promise";
 export {
   AuthBasic,
   AuthBearer,
-  AuthCookieHeader,
-  AuthKeyHeader,
-  AuthKeyQuery,
+  AuthKey,
   AuthProvider,
   OAuth2,
-  OAuth2ClientCredentialsProps,
-  OAuth2PasswordProps,
+  OAuth2ClientCredentials,
+  OAuth2Password,
 } from "./auth";
 export { BinaryResponse } from "./binary-response";
 export {

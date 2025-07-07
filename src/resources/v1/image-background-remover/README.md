@@ -5,6 +5,13 @@ Remove background from image. Each image costs 5 credits.
 
 **API Endpoint**: `POST /v1/image-background-remover`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for background removal | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Background Remover image"` |
+
 #### Example Snippet
 
 ```typescript
@@ -18,9 +25,10 @@ const res = await client.v1.imageBackgroundRemover.create({
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for background removal | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `name` | ✗ | The name of image | `"Background Remover image"` |
+##### Type
+[V1ImageBackgroundRemoverCreateResponse](/src/types/v1-image-background-remover-create-response.ts)
+
+##### Example
+`{"creditsCharged": 5, "frameCost": 5, "id": "clx7uu86w0a5qp55yxz315r6r"}`

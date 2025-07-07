@@ -2,7 +2,7 @@ import Client, { Environment } from "magic-hour";
 
 describe("tests client.v1.aiPhotoEditor.create", () => {
   test.concurrent(
-    "POST /v1/ai-photo-editor | testId: success_default | Success test with response schema validation. Expects status code 200",
+    "POST /v1/ai-photo-editor | testId: success_all_params | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -15,6 +15,7 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
             assets: { imageFilePath: "api-assets/id/1234.png" },
             name: "Photo Editor image",
             resolution: 768,
+            steps: 123,
             style: {
               imageDescription: "A photo of a person",
               likenessStrength: 5.2,
@@ -31,6 +32,7 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
           assets: { imageFilePath: "api-assets/id/1234.png" },
           name: "Photo Editor image",
           resolution: 768,
+          steps: 123,
           style: {
             imageDescription: "A photo of a person",
             likenessStrength: 5.2,

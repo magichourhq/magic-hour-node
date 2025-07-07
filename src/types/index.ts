@@ -37,6 +37,16 @@ export { V1AiHeadshotGeneratorCreateResponse401MessageEnum } from "./v1-ai-heads
 export { V1AiHeadshotGeneratorCreateResponse404 } from "./v1-ai-headshot-generator-create-response404";
 export { V1AiHeadshotGeneratorCreateResponse404MessageEnum } from "./v1-ai-headshot-generator-create-response404-message-enum";
 export { V1AiHeadshotGeneratorCreateResponse422 } from "./v1-ai-headshot-generator-create-response422";
+export { V1AiImageEditorCreateBody } from "./v1-ai-image-editor-create-body";
+export { V1AiImageEditorCreateBodyAssets } from "./v1-ai-image-editor-create-body-assets";
+export { V1AiImageEditorCreateBodyStyle } from "./v1-ai-image-editor-create-body-style";
+export { V1AiImageEditorCreateResponse } from "./v1-ai-image-editor-create-response";
+export { V1AiImageEditorCreateResponse400 } from "./v1-ai-image-editor-create-response400";
+export { V1AiImageEditorCreateResponse401 } from "./v1-ai-image-editor-create-response401";
+export { V1AiImageEditorCreateResponse401MessageEnum } from "./v1-ai-image-editor-create-response401-message-enum";
+export { V1AiImageEditorCreateResponse404 } from "./v1-ai-image-editor-create-response404";
+export { V1AiImageEditorCreateResponse404MessageEnum } from "./v1-ai-image-editor-create-response404-message-enum";
+export { V1AiImageEditorCreateResponse422 } from "./v1-ai-image-editor-create-response422";
 export { V1AiImageGeneratorCreateBody } from "./v1-ai-image-generator-create-body";
 export { V1AiImageGeneratorCreateBodyOrientationEnum } from "./v1-ai-image-generator-create-body-orientation-enum";
 export { V1AiImageGeneratorCreateBodyStyle } from "./v1-ai-image-generator-create-body-style";

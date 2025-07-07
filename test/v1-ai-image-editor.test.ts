@@ -1,8 +1,8 @@
 import Client, { Environment } from "magic-hour";
 
-describe("tests client.v1.aiQrCodeGenerator.create", () => {
+describe("tests client.v1.aiImageEditor.create", () => {
   test.concurrent(
-    "POST /v1/ai-qr-code-generator | testId: success_all_params | Success test with response schema validation. Expects status code 200",
+    "POST /v1/ai-image-editor | testId: success_all_params | Success test with response schema validation. Expects status code 200",
     async () => {
       const client = new Client({
         token: "API_TOKEN",
@@ -10,17 +10,17 @@ describe("tests client.v1.aiQrCodeGenerator.create", () => {
       });
       // Get both raw response for status and parsed response for data
       const [rawResponse, response] = await Promise.all([
-        client.v1.aiQrCodeGenerator
+        client.v1.aiImageEditor
           .create({
-            content: "https://magichour.ai",
-            name: "Qr Code image",
-            style: { artStyle: "Watercolor" },
+            assets: { imageFilePath: "api-assets/id/1234.png" },
+            name: "Ai Image Editor image",
+            style: { prompt: "Give me sunglasses" },
           })
           .asResponse(),
-        client.v1.aiQrCodeGenerator.create({
-          content: "https://magichour.ai",
-          name: "Qr Code image",
-          style: { artStyle: "Watercolor" },
+        client.v1.aiImageEditor.create({
+          assets: { imageFilePath: "api-assets/id/1234.png" },
+          name: "Ai Image Editor image",
+          style: { prompt: "Give me sunglasses" },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
