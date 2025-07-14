@@ -45,7 +45,7 @@ export type CreateRequest = {
   /**
    * Attributed used to dictate the style of the output
    */
-  style: V1ImageToVideoCreateBodyStyle;
+  style?: V1ImageToVideoCreateBodyStyle | undefined;
   /**
    * This field does not affect the output video's resolution. The video's orientation will match that of the input image.
    *
@@ -65,7 +65,7 @@ export type External$CreateRequest = {
   height?: number | undefined;
   name?: string | undefined;
   resolution?: ("1080p" | "480p" | "720p") | undefined;
-  style: External$V1ImageToVideoCreateBodyStyle;
+  style?: External$V1ImageToVideoCreateBodyStyle | undefined;
   width?: number | undefined;
 };
 
@@ -83,7 +83,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     height: z.number().int().optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
-    style: Schemas$V1ImageToVideoCreateBodyStyle.in,
+    style: Schemas$V1ImageToVideoCreateBodyStyle.in.optional(),
     width: z.number().int().optional(),
   })
   .transform((obj) => {
@@ -113,7 +113,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     height: z.number().int().optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
-    style: Schemas$V1ImageToVideoCreateBodyStyle.out,
+    style: Schemas$V1ImageToVideoCreateBodyStyle.out.optional(),
     width: z.number().int().optional(),
   })
   .transform((obj) => {
