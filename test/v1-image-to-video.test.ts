@@ -16,6 +16,7 @@ describe("tests client.v1.imageToVideo.create", () => {
             endSeconds: 5.0,
             height: 960,
             name: "Image To Video video",
+            resolution: "1080p",
             style: {
               highQuality: true,
               prompt: "a dog running",
@@ -29,6 +30,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           endSeconds: 5.0,
           height: 960,
           name: "Image To Video video",
+          resolution: "1080p",
           style: {
             highQuality: true,
             prompt: "a dog running",
