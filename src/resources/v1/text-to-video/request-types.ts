@@ -22,6 +22,15 @@ export type CreateRequest = {
    * Determines the orientation of the output video
    */
   orientation: "landscape" | "portrait" | "square";
+  /**
+   * Controls the output video resolution. Defaults to `720p` if not specified.
+   *
+   * **Options:**
+   * - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+   * - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+   * - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+   */
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
   style: V1TextToVideoCreateBodyStyle;
 };
 
@@ -34,6 +43,7 @@ export type External$CreateRequest = {
   end_seconds: number;
   name?: string | undefined;
   orientation: "landscape" | "portrait" | "square";
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
   style: External$V1TextToVideoCreateBodyStyle;
 };
 
@@ -49,6 +59,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     end_seconds: z.number(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     style: Schemas$V1TextToVideoCreateBodyStyle.in,
   })
   .transform((obj) => {
@@ -56,6 +67,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       end_seconds: "endSeconds",
       name: "name",
       orientation: "orientation",
+      resolution: "resolution",
       style: "style",
     });
   });
@@ -73,6 +85,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     endSeconds: z.number(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     style: Schemas$V1TextToVideoCreateBodyStyle.out,
   })
   .transform((obj) => {
@@ -80,6 +93,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       endSeconds: "end_seconds",
       name: "name",
       orientation: "orientation",
+      resolution: "resolution",
       style: "style",
     });
   });

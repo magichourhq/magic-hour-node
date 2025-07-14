@@ -178,6 +178,7 @@ export { V1ImageProjectsGetResponse404 } from "./v1-image-projects-get-response4
 export { V1ImageProjectsGetResponse404MessageEnum } from "./v1-image-projects-get-response404-message-enum";
 export { V1ImageToVideoCreateBody } from "./v1-image-to-video-create-body";
 export { V1ImageToVideoCreateBodyAssets } from "./v1-image-to-video-create-body-assets";
+export { V1ImageToVideoCreateBodyResolutionEnum } from "./v1-image-to-video-create-body-resolution-enum";
 export { V1ImageToVideoCreateBodyStyle } from "./v1-image-to-video-create-body-style";
 export { V1ImageToVideoCreateBodyStyleQualityModeEnum } from "./v1-image-to-video-create-body-style-quality-mode-enum";
 export { V1ImageToVideoCreateResponse } from "./v1-image-to-video-create-response";
@@ -208,6 +209,7 @@ export { V1PhotoColorizerCreateResponse404MessageEnum } from "./v1-photo-coloriz
 export { V1PhotoColorizerCreateResponse422 } from "./v1-photo-colorizer-create-response422";
 export { V1TextToVideoCreateBody } from "./v1-text-to-video-create-body";
 export { V1TextToVideoCreateBodyOrientationEnum } from "./v1-text-to-video-create-body-orientation-enum";
+export { V1TextToVideoCreateBodyResolutionEnum } from "./v1-text-to-video-create-body-resolution-enum";
 export { V1TextToVideoCreateBodyStyle } from "./v1-text-to-video-create-body-style";
 export { V1TextToVideoCreateBodyStyleQualityModeEnum } from "./v1-text-to-video-create-body-style-quality-mode-enum";
 export { V1TextToVideoCreateResponse } from "./v1-text-to-video-create-response";

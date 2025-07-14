@@ -34,6 +34,15 @@ export type CreateRequest = {
    */
   name?: string | undefined;
   /**
+   * Controls the output video resolution. Defaults to `720p` if not specified.
+   *
+   * **Options:**
+   * - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+   * - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+   * - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+   */
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
+  /**
    * Attributed used to dictate the style of the output
    */
   style: V1ImageToVideoCreateBodyStyle;
@@ -55,6 +64,7 @@ export type External$CreateRequest = {
   end_seconds: number;
   height?: number | undefined;
   name?: string | undefined;
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
   style: External$V1ImageToVideoCreateBodyStyle;
   width?: number | undefined;
 };
@@ -72,6 +82,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     end_seconds: z.number(),
     height: z.number().int().optional(),
     name: z.string().optional(),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.in,
     width: z.number().int().optional(),
   })
@@ -81,6 +92,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       end_seconds: "endSeconds",
       height: "height",
       name: "name",
+      resolution: "resolution",
       style: "style",
       width: "width",
     });
@@ -100,6 +112,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     endSeconds: z.number(),
     height: z.number().int().optional(),
     name: z.string().optional(),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.out,
     width: z.number().int().optional(),
   })
@@ -109,6 +122,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       endSeconds: "end_seconds",
       height: "height",
       name: "name",
+      resolution: "resolution",
       style: "style",
       width: "width",
     });

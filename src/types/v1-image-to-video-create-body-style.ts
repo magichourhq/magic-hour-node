@@ -6,7 +6,11 @@ import * as z from "zod";
  */
 export type V1ImageToVideoCreateBodyStyle = {
   /**
-   * Deprecated: Please use `quality_mode` instead. For backward compatibility, setting `high_quality: true` and `quality_mode: quick` will map to `quality_mode: studio`. Note: `quality_mode: studio` offers the same quality as `high_quality: true`.
+   * Deprecated: Please use `resolution` instead. For backward compatibility,
+   * * `false` maps to 720p resolution
+   * * `true` maps to 1080p resolution
+   *
+   * This field will be removed in a future version. Use the `resolution` field to directly specify the resolution.
    */
   highQuality?: boolean | undefined;
   /**
@@ -14,8 +18,11 @@ export type V1ImageToVideoCreateBodyStyle = {
    */
   prompt?: string | undefined;
   /**
-   * * `quick` - Fastest option for rapid results. Takes ~3 minutes per 5s of video.
-   * *  `studio` - Polished visuals with longer runtime. Takes ~8.5 minutes per 5s of video.
+   * DEPRECATED: Please use `resolution` field instead. For backward compatibility:
+   * * `quick` maps to 720p resolution
+   * * `studio` maps to 1080p resolution
+   *
+   * This field will be removed in a future version. Use the `resolution` field to directly to specify the resolution.
    */
   qualityMode?: ("quick" | "studio") | undefined;
 };
