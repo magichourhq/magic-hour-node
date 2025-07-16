@@ -15,6 +15,7 @@ import { AiPhotoEditorClient } from "magic-hour/resources/v1/ai-photo-editor";
 import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-generator";
 import { AiTalkingPhotoClient } from "magic-hour/resources/v1/ai-talking-photo";
 import { AnimationClient } from "magic-hour/resources/v1/animation";
+import { AutoSubtitleGeneratorClient } from "magic-hour/resources/v1/auto-subtitle-generator";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
 import { FilesClient } from "magic-hour/resources/v1/files";
@@ -42,6 +43,7 @@ export class V1Client extends CoreResourceClient {
   private _aiQrCodeGeneratorLazy?: AiQrCodeGeneratorClient; // lazy-loading cache
   private _aiTalkingPhotoLazy?: AiTalkingPhotoClient; // lazy-loading cache
   private _animationLazy?: AnimationClient; // lazy-loading cache
+  private _autoSubtitleGeneratorLazy?: AutoSubtitleGeneratorClient; // lazy-loading cache
   private _faceSwapLazy?: FaceSwapClient; // lazy-loading cache
   private _faceSwapPhotoLazy?: FaceSwapPhotoClient; // lazy-loading cache
   private _filesLazy?: FilesClient; // lazy-loading cache
@@ -69,6 +71,7 @@ export class V1Client extends CoreResourceClient {
       this.aiQrCodeGenerator;
       this.aiTalkingPhoto;
       this.animation;
+      this.autoSubtitleGenerator;
       this.faceSwap;
       this.faceSwapPhoto;
       this.files;
@@ -217,6 +220,16 @@ export class V1Client extends CoreResourceClient {
         this._client,
         this._opts,
       ))
+    );
+  }
+  get autoSubtitleGenerator(): AutoSubtitleGeneratorClient {
+    return (
+      this._autoSubtitleGeneratorLazy ??
+      (this._autoSubtitleGeneratorLazy =
+        new (require("./auto-subtitle-generator").AutoSubtitleGeneratorClient)(
+          this._client,
+          this._opts,
+        ))
     );
   }
   get faceSwap(): FaceSwapClient {
