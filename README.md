@@ -80,6 +80,10 @@ const client = new Client({
 
 * [create](src/resources/v1/animation/README.md#create) - Animation
 
+### [v1.autoSubtitleGenerator](src/resources/v1/auto-subtitle-generator/README.md)
+
+* [create](src/resources/v1/auto-subtitle-generator/README.md#create) - Auto Subtitle Generator
+
 ### [v1.faceSwap](src/resources/v1/face-swap/README.md)
 
 * [create](src/resources/v1/face-swap/README.md#create) - Face Swap video
