@@ -20,7 +20,7 @@ export type CreateRequest = {
    */
   assets: V1AiTalkingPhotoCreateBodyAssets;
   /**
-   * The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+   * The end time of the input audio in seconds. The maximum duration allowed is 60 seconds.
    */
   endSeconds: number;
   /**
@@ -28,7 +28,7 @@ export type CreateRequest = {
    */
   name?: string | undefined;
   /**
-   * The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+   * The start time of the input audio in seconds. The maximum duration allowed is 60 seconds.
    */
   startSeconds: number;
   /**
