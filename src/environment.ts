@@ -1,4 +1,4 @@
 export enum Environment {
   Environment = "https://api.magichour.ai",
-  MockServer = "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.28.0",
+  MockServer = "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.29.0",
 }

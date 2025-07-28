@@ -1,3 +1,8 @@
+import {
+  External$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
+  Schemas$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
+  V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
+} from "./v1-face-swap-photo-create-body-assets-face-mappings-item";
 import { zodTransform } from "magic-hour/core";
 import * as z from "zod";
 
@@ -6,9 +11,21 @@ import * as z from "zod";
  */
 export type V1FaceSwapPhotoCreateBodyAssets = {
   /**
-   * This is the image from which the face is extracted. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   * This is the array of face mappings used for multiple face swap. The value is required if `face_swap_mode` is `individual-faces`.
    */
-  sourceFilePath: string;
+  faceMappings?: V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem[] | undefined;
+  /**
+   * The mode of face swap.
+   * * `all-faces` - Swap all faces in the target image. `source_file_path` is required.
+   * * `individual-faces` - Swap individual faces in the target image. `source_faces` is required.
+   */
+  faceSwapMode?: ("all-faces" | "individual-faces") | undefined;
+  /**
+   * This is the image from which the face is extracted. The value is required if `face_swap_mode` is `all-faces`.
+   *
+   * This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   */
+  sourceFilePath?: string | undefined;
   /**
    * This is the image where the face from the source image will be placed. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
    */
@@ -21,7 +38,11 @@ export type V1FaceSwapPhotoCreateBodyAssets = {
  * we expect to come in as network data
  */
 export type External$V1FaceSwapPhotoCreateBodyAssets = {
-  source_file_path: string;
+  face_mappings?:
+    | External$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem[]
+    | undefined;
+  face_swap_mode?: ("all-faces" | "individual-faces") | undefined;
+  source_file_path?: string | undefined;
   target_file_path: string;
 };
 
@@ -34,11 +55,17 @@ const SchemaIn$V1FaceSwapPhotoCreateBodyAssets: z.ZodType<
   unknown
 > = z
   .object({
-    source_file_path: z.string(),
+    face_mappings: z
+      .array(Schemas$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem.in)
+      .optional(),
+    face_swap_mode: z.enum(["all-faces", "individual-faces"]).optional(),
+    source_file_path: z.string().optional(),
     target_file_path: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      face_mappings: "faceMappings",
+      face_swap_mode: "faceSwapMode",
       source_file_path: "sourceFilePath",
       target_file_path: "targetFilePath",
     });
@@ -54,11 +81,17 @@ const SchemaOut$V1FaceSwapPhotoCreateBodyAssets: z.ZodType<
   V1FaceSwapPhotoCreateBodyAssets // the object to be transformed
 > = z
   .object({
-    sourceFilePath: z.string(),
+    faceMappings: z
+      .array(Schemas$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem.out)
+      .optional(),
+    faceSwapMode: z.enum(["all-faces", "individual-faces"]).optional(),
+    sourceFilePath: z.string().optional(),
     targetFilePath: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      faceMappings: "face_mappings",
+      faceSwapMode: "face_swap_mode",
       sourceFilePath: "source_file_path",
       targetFilePath: "target_file_path",
     });
