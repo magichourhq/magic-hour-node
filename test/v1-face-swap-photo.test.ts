@@ -13,6 +13,13 @@ describe("tests client.v1.faceSwapPhoto.create", () => {
         client.v1.faceSwapPhoto
           .create({
             assets: {
+              faceMappings: [
+                {
+                  newFace: "api-assets/id/1234.png",
+                  originalFace: "api-assets/id/0-0.png",
+                },
+              ],
+              faceSwapMode: "all-faces",
               sourceFilePath: "api-assets/id/1234.png",
               targetFilePath: "api-assets/id/1234.png",
             },
@@ -21,6 +28,13 @@ describe("tests client.v1.faceSwapPhoto.create", () => {
           .asResponse(),
         client.v1.faceSwapPhoto.create({
           assets: {
+            faceMappings: [
+              {
+                newFace: "api-assets/id/1234.png",
+                originalFace: "api-assets/id/0-0.png",
+              },
+            ],
+            faceSwapMode: "all-faces",
             sourceFilePath: "api-assets/id/1234.png",
             targetFilePath: "api-assets/id/1234.png",
           },

@@ -147,6 +147,8 @@ export { V1FaceSwapCreateResponse404MessageEnum } from "./v1-face-swap-create-re
 export { V1FaceSwapCreateResponse422 } from "./v1-face-swap-create-response422";
 export { V1FaceSwapPhotoCreateBody } from "./v1-face-swap-photo-create-body";
 export { V1FaceSwapPhotoCreateBodyAssets } from "./v1-face-swap-photo-create-body-assets";
+export { V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem } from "./v1-face-swap-photo-create-body-assets-face-mappings-item";
+export { V1FaceSwapPhotoCreateBodyAssetsFaceSwapModeEnum } from "./v1-face-swap-photo-create-body-assets-face-swap-mode-enum";
 export { V1FaceSwapPhotoCreateResponse } from "./v1-face-swap-photo-create-response";
 export { V1FaceSwapPhotoCreateResponse400 } from "./v1-face-swap-photo-create-response400";
 export { V1FaceSwapPhotoCreateResponse401 } from "./v1-face-swap-photo-create-response401";
