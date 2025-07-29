@@ -16,6 +16,7 @@ import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-gene
 import { AiTalkingPhotoClient } from "magic-hour/resources/v1/ai-talking-photo";
 import { AnimationClient } from "magic-hour/resources/v1/animation";
 import { AutoSubtitleGeneratorClient } from "magic-hour/resources/v1/auto-subtitle-generator";
+import { FaceDetectionClient } from "magic-hour/resources/v1/face-detection";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
 import { FilesClient } from "magic-hour/resources/v1/files";
@@ -31,6 +32,7 @@ import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 export class V1Client extends CoreResourceClient {
   private _imageProjectsLazy?: ImageProjectsClient; // lazy-loading cache
   private _videoProjectsLazy?: VideoProjectsClient; // lazy-loading cache
+  private _faceDetectionLazy?: FaceDetectionClient; // lazy-loading cache
   private _aiClothesChangerLazy?: AiClothesChangerClient; // lazy-loading cache
   private _aiFaceEditorLazy?: AiFaceEditorClient; // lazy-loading cache
   private _aiGifGeneratorLazy?: AiGifGeneratorClient; // lazy-loading cache
@@ -59,6 +61,7 @@ export class V1Client extends CoreResourceClient {
     if (this._opts.lazyLoad === false) {
       this.imageProjects;
       this.videoProjects;
+      this.faceDetection;
       this.aiClothesChanger;
       this.aiFaceEditor;
       this.aiGifGenerator;
@@ -98,6 +101,16 @@ export class V1Client extends CoreResourceClient {
       this._videoProjectsLazy ??
       (this._videoProjectsLazy =
         new (require("./video-projects").VideoProjectsClient)(
+          this._client,
+          this._opts,
+        ))
+    );
+  }
+  get faceDetection(): FaceDetectionClient {
+    return (
+      this._faceDetectionLazy ??
+      (this._faceDetectionLazy =
+        new (require("./face-detection").FaceDetectionClient)(
           this._client,
           this._opts,
         ))

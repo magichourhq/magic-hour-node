@@ -84,6 +84,11 @@ const client = new Client({
 
 * [create](src/resources/v1/auto-subtitle-generator/README.md#create) - Auto Subtitle Generator
 
+### [v1.faceDetection](src/resources/v1/face-detection/README.md)
+
+* [create](src/resources/v1/face-detection/README.md#create) - Face Detection
+* [get](src/resources/v1/face-detection/README.md#get) - Get face detection details
+
 ### [v1.faceSwap](src/resources/v1/face-swap/README.md)
 
 * [create](src/resources/v1/face-swap/README.md#create) - Face Swap video
