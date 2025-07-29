@@ -29,6 +29,7 @@ export class FaceDetectionClient extends CoreResourceClient {
     return this._client.makeRequest({
       method: "get",
       path: `/v1/face-detection/${request.id}`,
+      auth: ["bearerAuth"],
       responseSchema: Schemas$V1FaceDetectionGetResponse.in,
       opts,
     });
