@@ -155,6 +155,8 @@ export { V1FaceDetectionGetResponse404MessageEnum } from "./v1-face-detection-ge
 export { V1FaceDetectionGetResponse422 } from "./v1-face-detection-get-response422";
 export { V1FaceSwapCreateBody } from "./v1-face-swap-create-body";
 export { V1FaceSwapCreateBodyAssets } from "./v1-face-swap-create-body-assets";
+export { V1FaceSwapCreateBodyAssetsFaceMappingsItem } from "./v1-face-swap-create-body-assets-face-mappings-item";
+export { V1FaceSwapCreateBodyAssetsFaceSwapModeEnum } from "./v1-face-swap-create-body-assets-face-swap-mode-enum";
 export { V1FaceSwapCreateBodyAssetsVideoSourceEnum } from "./v1-face-swap-create-body-assets-video-source-enum";
 export { V1FaceSwapCreateResponse } from "./v1-face-swap-create-response";
 export { V1FaceSwapCreateResponse400 } from "./v1-face-swap-create-response400";

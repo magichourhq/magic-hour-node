@@ -2,9 +2,9 @@ import { zodTransform } from "magic-hour/core";
 import * as z from "zod";
 
 /**
- * V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem
+ * V1FaceSwapCreateBodyAssetsFaceMappingsItem
  */
-export type V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem = {
+export type V1FaceSwapCreateBodyAssetsFaceMappingsItem = {
   /**
    * The face image that will be used to replace the face in the `original_face`. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
    */
@@ -20,19 +20,19 @@ export type V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem = {
 
 /**
  * @internal
- * V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem without any key transformation, this is what
+ * V1FaceSwapCreateBodyAssetsFaceMappingsItem without any key transformation, this is what
  * we expect to come in as network data
  */
-export type External$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem = {
+export type External$V1FaceSwapCreateBodyAssetsFaceMappingsItem = {
   new_face: string;
   original_face: string;
 };
 
 /**
- * Takes network data, validates it, and transforms keys to match typescript object V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem
+ * Takes network data, validates it, and transforms keys to match typescript object V1FaceSwapCreateBodyAssetsFaceMappingsItem
  */
-const SchemaIn$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem: z.ZodType<
-  V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem, // output type of this zod object
+const SchemaIn$V1FaceSwapCreateBodyAssetsFaceMappingsItem: z.ZodType<
+  V1FaceSwapCreateBodyAssetsFaceMappingsItem, // output type of this zod object
   z.ZodTypeDef,
   unknown
 > = z
@@ -49,12 +49,12 @@ const SchemaIn$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem: z.ZodType<
 
 /**
  * @internal
- * Takes typescript data, validates it, and maps keys to match the expected external object External$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem
+ * Takes typescript data, validates it, and maps keys to match the expected external object External$V1FaceSwapCreateBodyAssetsFaceMappingsItem
  */
-const SchemaOut$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem: z.ZodType<
-  External$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem, // output type of this zod object
+const SchemaOut$V1FaceSwapCreateBodyAssetsFaceMappingsItem: z.ZodType<
+  External$V1FaceSwapCreateBodyAssetsFaceMappingsItem, // output type of this zod object
   z.ZodTypeDef,
-  V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem // the object to be transformed
+  V1FaceSwapCreateBodyAssetsFaceMappingsItem // the object to be transformed
 > = z
   .object({
     newFace: z.string(),
@@ -67,7 +67,7 @@ const SchemaOut$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem: z.ZodType<
     });
   });
 
-export const Schemas$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem = {
-  in: SchemaIn$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
-  out: SchemaOut$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
+export const Schemas$V1FaceSwapCreateBodyAssetsFaceMappingsItem = {
+  in: SchemaIn$V1FaceSwapCreateBodyAssetsFaceMappingsItem,
+  out: SchemaOut$V1FaceSwapCreateBodyAssetsFaceMappingsItem,
 };

@@ -16,8 +16,8 @@ export type V1FaceSwapPhotoCreateBodyAssets = {
   faceMappings?: V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem[] | undefined;
   /**
    * The mode of face swap.
-   * * `all-faces` - Swap all faces in the target image. `source_file_path` is required.
-   * * `individual-faces` - Swap individual faces in the target image. `source_faces` is required.
+   * * `all-faces` - Swap all faces in the target image or video. `source_file_path` is required.
+   * * `individual-faces` - Swap individual faces in the target image or video. `source_faces` is required.
    */
   faceSwapMode?: ("all-faces" | "individual-faces") | undefined;
   /**
