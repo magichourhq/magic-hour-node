@@ -25,7 +25,7 @@ export type V1FaceSwapCreateBodyAssets = {
    *
    * This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
    */
-  imageFilePath: string;
+  imageFilePath?: string | undefined;
   /**
    * The path of the input video. This field is required if `video_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
    */
@@ -47,7 +47,7 @@ export type External$V1FaceSwapCreateBodyAssets = {
     | External$V1FaceSwapCreateBodyAssetsFaceMappingsItem[]
     | undefined;
   face_swap_mode?: ("all-faces" | "individual-faces") | undefined;
-  image_file_path: string;
+  image_file_path?: string | undefined;
   video_file_path?: string | undefined;
   video_source: "file" | "youtube";
   youtube_url?: string | undefined;
@@ -66,7 +66,7 @@ const SchemaIn$V1FaceSwapCreateBodyAssets: z.ZodType<
       .array(Schemas$V1FaceSwapCreateBodyAssetsFaceMappingsItem.in)
       .optional(),
     face_swap_mode: z.enum(["all-faces", "individual-faces"]).optional(),
-    image_file_path: z.string(),
+    image_file_path: z.string().optional(),
     video_file_path: z.string().optional(),
     video_source: z.enum(["file", "youtube"]),
     youtube_url: z.string().optional(),
@@ -96,7 +96,7 @@ const SchemaOut$V1FaceSwapCreateBodyAssets: z.ZodType<
       .array(Schemas$V1FaceSwapCreateBodyAssetsFaceMappingsItem.out)
       .optional(),
     faceSwapMode: z.enum(["all-faces", "individual-faces"]).optional(),
-    imageFilePath: z.string(),
+    imageFilePath: z.string().optional(),
     videoFilePath: z.string().optional(),
     videoSource: z.enum(["file", "youtube"]),
     youtubeUrl: z.string().optional(),
