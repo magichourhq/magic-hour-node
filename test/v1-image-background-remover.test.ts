@@ -12,12 +12,18 @@ describe("tests client.v1.imageBackgroundRemover.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.imageBackgroundRemover
           .create({
-            assets: { imageFilePath: "api-assets/id/1234.png" },
+            assets: {
+              backgroundImageFilePath: "api-assets/id/1234.png",
+              imageFilePath: "api-assets/id/1234.png",
+            },
             name: "Background Remover image",
           })
           .asResponse(),
         client.v1.imageBackgroundRemover.create({
-          assets: { imageFilePath: "api-assets/id/1234.png" },
+          assets: {
+            backgroundImageFilePath: "api-assets/id/1234.png",
+            imageFilePath: "api-assets/id/1234.png",
+          },
           name: "Background Remover image",
         }),
       ]);
