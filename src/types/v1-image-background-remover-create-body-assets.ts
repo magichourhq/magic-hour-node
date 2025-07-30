@@ -6,7 +6,13 @@ import * as z from "zod";
  */
 export type V1ImageBackgroundRemoverCreateBodyAssets = {
   /**
-   * The image used to generate the image. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   * The image used as the new background for the image_file_path. This image will be resized to match the image in image_file_path. Please make sure the resolution between the images are similar.
+   *
+   * This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   */
+  backgroundImageFilePath?: string | undefined;
+  /**
+   * The image to remove the background. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
    */
   imageFilePath: string;
 };
@@ -17,6 +23,7 @@ export type V1ImageBackgroundRemoverCreateBodyAssets = {
  * we expect to come in as network data
  */
 export type External$V1ImageBackgroundRemoverCreateBodyAssets = {
+  background_image_file_path?: string | undefined;
   image_file_path: string;
 };
 
@@ -29,10 +36,12 @@ const SchemaIn$V1ImageBackgroundRemoverCreateBodyAssets: z.ZodType<
   unknown
 > = z
   .object({
+    background_image_file_path: z.string().optional(),
     image_file_path: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      background_image_file_path: "backgroundImageFilePath",
       image_file_path: "imageFilePath",
     });
   });
@@ -47,10 +56,12 @@ const SchemaOut$V1ImageBackgroundRemoverCreateBodyAssets: z.ZodType<
   V1ImageBackgroundRemoverCreateBodyAssets // the object to be transformed
 > = z
   .object({
+    backgroundImageFilePath: z.string().optional(),
     imageFilePath: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      backgroundImageFilePath: "background_image_file_path",
       imageFilePath: "image_file_path",
     });
   });
