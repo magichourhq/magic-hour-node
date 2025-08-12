@@ -14,7 +14,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
             endSeconds: 5.0,
-            height: 960,
+            height: 123,
             name: "Image To Video video",
             resolution: "1080p",
             style: {
@@ -22,13 +22,13 @@ describe("tests client.v1.imageToVideo.create", () => {
               prompt: "a dog running",
               qualityMode: "quick",
             },
-            width: 512,
+            width: 123,
           })
           .asResponse(),
         client.v1.imageToVideo.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
           endSeconds: 5.0,
-          height: 960,
+          height: 123,
           name: "Image To Video video",
           resolution: "1080p",
           style: {
@@ -36,7 +36,7 @@ describe("tests client.v1.imageToVideo.create", () => {
             prompt: "a dog running",
             qualityMode: "quick",
           },
-          width: 512,
+          width: 123,
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
