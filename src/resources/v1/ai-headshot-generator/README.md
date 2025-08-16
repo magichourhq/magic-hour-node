@@ -10,8 +10,8 @@ Create an AI headshot. Each headshot costs 50 credits.
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for headshot photo | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `name` | ✗ | The name of image | `"Ai Headshot image"` |
-| `style` | ✗ |  | `{"prompt": "professional passport photo, business attire, smiling, good posture, light blue background, centered, plain background"}` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Ai Headshot image"` |
+| `style` | ✗ |  | `{}` |
 
 #### Example Snippet
 
@@ -32,4 +32,4 @@ const res = await client.v1.aiHeadshotGenerator.create({
 [V1AiHeadshotGeneratorCreateResponse](/src/types/v1-ai-headshot-generator-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 50, "frameCost": 50, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`

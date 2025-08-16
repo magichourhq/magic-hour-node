@@ -6,12 +6,25 @@ import * as z from "zod";
  */
 export type V1AiClothesChangerCreateBodyAssets = {
   /**
-   * The image of the outfit. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file..
+   * The image of the outfit. This value is either
+   * - a direct URL to the video file
+   * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+   *
+   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   *
    */
   garmentFilePath: string;
+  /**
+   * The type of the outfit.
+   */
   garmentType: "dresses" | "lower_body" | "upper_body";
   /**
-   * The image with the person. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file..
+   * The image with the person. This value is either
+   * - a direct URL to the video file
+   * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+   *
+   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   *
    */
   personFilePath: string;
 };

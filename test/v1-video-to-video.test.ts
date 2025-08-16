@@ -24,9 +24,9 @@ describe("tests client.v1.videoToVideo.create", () => {
             startSeconds: 0.0,
             style: {
               artStyle: "3D Render",
-              model: "Absolute Reality",
+              model: "default",
               prompt: "string",
-              promptType: "append_default",
+              promptType: "default",
               version: "default",
             },
             width: 512,
@@ -45,9 +45,9 @@ describe("tests client.v1.videoToVideo.create", () => {
           startSeconds: 0.0,
           style: {
             artStyle: "3D Render",
-            model: "Absolute Reality",
+            model: "default",
             prompt: "string",
-            promptType: "append_default",
+            promptType: "default",
             version: "default",
           },
           width: 512,

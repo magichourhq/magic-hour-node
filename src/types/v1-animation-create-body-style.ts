@@ -6,7 +6,7 @@ import * as z from "zod";
  */
 export type V1AnimationCreateBodyStyle = {
   /**
-   * The art style of the final output video
+   * The art style used to create the output video
    */
   artStyle:
     | "3D Render"
@@ -60,6 +60,9 @@ export type V1AnimationCreateBodyStyle = {
    * Describe custom art style. This field is required if `art_style` is `Custom`
    */
   artStyleCustom?: string | undefined;
+  /**
+   * The camera effect used to create the output video
+   */
   cameraEffect:
     | "Accelerate"
     | "Aggressive Zoom In - Audio Sync"
@@ -116,16 +119,18 @@ export type V1AnimationCreateBodyStyle = {
   /**
    * The prompt used for the video. Prompt is required if `prompt_type` is `custom`. Otherwise this value is ignored
    */
-  prompt: string | null;
+  prompt?: string | undefined;
   /**
    *
-   * * `custom` - use your own prompt for the video.
+   * * `custom` - Use your own prompt for the video.
    * * `use_lyrics` - Use the lyrics of the audio to create the prompt. If this option is selected, then `assets.audio_source` must be `file` or `youtube`.
    * * `ai_choose` - Let AI write the prompt. If this option is selected, then `assets.audio_source` must be `file` or `youtube`.
    */
   promptType: "ai_choose" | "custom" | "use_lyrics";
   /**
-   * Change determines how quickly the video's content changes across frames. Higher = more rapid transitions. Lower = more stable visual experience.
+   * Change determines how quickly the video's content changes across frames.
+   * * Higher = more rapid transitions.
+   * * Lower = more stable visual experience.
    */
   transitionSpeed: number;
 };
@@ -238,7 +243,7 @@ export type External$V1AnimationCreateBodyStyle = {
     | "Zoom In - Audio Sync"
     | "Zoom In and Spin - Audio Sync"
     | "Zoom Out - Audio Sync";
-  prompt: string | null;
+  prompt?: string | undefined;
   prompt_type: "ai_choose" | "custom" | "use_lyrics";
   transition_speed: number;
 };
@@ -356,7 +361,7 @@ const SchemaIn$V1AnimationCreateBodyStyle: z.ZodType<
       "Zoom In and Spin - Audio Sync",
       "Zoom Out - Audio Sync",
     ]),
-    prompt: z.string().nullable(),
+    prompt: z.string().optional(),
     prompt_type: z.enum(["ai_choose", "custom", "use_lyrics"]),
     transition_speed: z.number().int(),
   })
@@ -485,7 +490,7 @@ const SchemaOut$V1AnimationCreateBodyStyle: z.ZodType<
       "Zoom In and Spin - Audio Sync",
       "Zoom Out - Audio Sync",
     ]),
-    prompt: z.string().nullable(),
+    prompt: z.string().optional(),
     promptType: z.enum(["ai_choose", "custom", "use_lyrics"]),
     transitionSpeed: z.number().int(),
   })

@@ -10,7 +10,7 @@ Create a face swap photo. Each photo costs 5 credits. The height/width of the ou
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for face swap photo | `{"faceMappings": [{"newFace": "api-assets/id/1234.png", "originalFace": "api-assets/id/0-0.png"}], "faceSwapMode": "all-faces", "sourceFilePath": "api-assets/id/1234.png", "targetFilePath": "api-assets/id/1234.png"}` |
-| `name` | ✗ | The name of image | `"Face Swap image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Face Swap image"` |
 
 #### Example Snippet
 
@@ -41,4 +41,4 @@ const res = await client.v1.faceSwapPhoto.create({
 [V1FaceSwapPhotoCreateResponse](/src/types/v1-face-swap-photo-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 5, "frameCost": 5, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`

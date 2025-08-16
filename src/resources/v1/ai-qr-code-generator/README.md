@@ -11,7 +11,7 @@ Create an AI QR code. Each QR code costs 20 credits.
 |-----------|:--------:|-------------|--------|
 | `content` | ✓ | The content of the QR code. | `"https://magichour.ai"` |
 | `style` | ✓ |  | `{"artStyle": "Watercolor"}` |
-| `name` | ✗ | The name of image | `"Qr Code image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Qr Code image"` |
 
 #### Example Snippet
 
@@ -33,4 +33,4 @@ const res = await client.v1.aiQrCodeGenerator.create({
 [V1AiQrCodeGeneratorCreateResponse](/src/types/v1-ai-qr-code-generator-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 20, "frameCost": 20, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 20, "frameCost": 20, "id": "cuid-example"}`

@@ -1,5 +1,5 @@
 /**
- * V1AnimationCreateBodyStyleCameraEffectEnum
+ * The camera effect used to create the output video
  */
 export type V1AnimationCreateBodyStyleCameraEffectEnum =
   | "Accelerate"

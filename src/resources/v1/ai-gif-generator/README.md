@@ -10,7 +10,7 @@ Create an AI GIF. Each GIF costs 50 credits.
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
-| `name` | ✗ | The name of gif | `"Ai Gif gif"` |
+| `name` | ✗ | The name of gif. This value is mainly used for your own identification of the gif. | `"Ai Gif gif"` |
 
 #### Example Snippet
 
@@ -31,4 +31,4 @@ const res = await client.v1.aiGifGenerator.create({
 [V1AiGifGeneratorCreateResponse](/src/types/v1-ai-gif-generator-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 50, "frameCost": 50, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`

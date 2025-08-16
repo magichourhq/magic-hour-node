@@ -35,4 +35,4 @@ const res = await client.v1.aiMemeGenerator.create({
 [V1AiMemeGeneratorCreateResponse](/src/types/v1-ai-meme-generator-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 10, "frameCost": 10, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`

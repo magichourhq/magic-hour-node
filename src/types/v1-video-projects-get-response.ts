@@ -37,7 +37,7 @@ export type V1VideoProjectsGetResponse = {
    */
   enabled: boolean;
   /**
-   * The end time of the input video in seconds
+   * The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
    */
   endSeconds: number;
   /**
@@ -61,7 +61,7 @@ export type V1VideoProjectsGetResponse = {
    */
   name: string | null;
   /**
-   * The start time of the input video in seconds
+   * The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
    */
   startSeconds: number;
   /**

@@ -11,7 +11,7 @@ Edit facial features of an image using AI. Each edit costs 1 frame. The height/w
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for face editor | `{"imageFilePath": "api-assets/id/1234.png"}` |
 | `style` | ✓ | Face editing parameters | `{"enhanceFace": false, "eyeGazeHorizontal": 0.0, "eyeGazeVertical": 0.0, "eyeOpenRatio": 0.0, "eyebrowDirection": 0.0, "headPitch": 0.0, "headRoll": 0.0, "headYaw": 0.0, "lipOpenRatio": 0.0, "mouthGrim": 0.0, "mouthPositionHorizontal": 0.0, "mouthPositionVertical": 0.0, "mouthPout": 0.0, "mouthPurse": 0.0, "mouthSmile": 0.0}` |
-| `name` | ✗ | The name of image | `"Face Editor image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Face Editor image"` |
 
 #### Example Snippet
 
@@ -49,4 +49,4 @@ const res = await client.v1.aiFaceEditor.create({
 [V1AiFaceEditorCreateResponse](/src/types/v1-ai-face-editor-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 1, "frameCost": 1, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 1, "frameCost": 1, "id": "cuid-example"}`

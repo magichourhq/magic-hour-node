@@ -11,7 +11,7 @@ import * as z from "zod";
  */
 export type V1AiGifGeneratorCreateBody = {
   /**
-   * The name of gif
+   * The name of gif. This value is mainly used for your own identification of the gif.
    */
   name?: string | undefined;
   style: V1AiGifGeneratorCreateBodyStyle;

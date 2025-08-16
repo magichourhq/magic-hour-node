@@ -20,7 +20,7 @@ export type CreateRequest = {
    */
   assets: V1AnimationCreateBodyAssets;
   /**
-   * The end time of the input video in seconds
+   * This value determines the duration of the output video.
    */
   endSeconds: number;
   /**
@@ -32,7 +32,7 @@ export type CreateRequest = {
    */
   height: number;
   /**
-   * The name of video
+   * The name of video. This value is mainly used for your own identification of the video.
    */
   name?: string | undefined;
   /**
