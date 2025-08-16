@@ -16,7 +16,7 @@ export class ImageProjectsClient extends CoreResourceClient {
   /**
    * Delete image
    *
-   * Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+   * Permanently delete the rendered image(s). This action is not reversible, please be sure before deleting.
    *
    * DELETE /v1/image-projects/{id}
    */
@@ -28,7 +28,6 @@ export class ImageProjectsClient extends CoreResourceClient {
       method: "delete",
       path: `/v1/image-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseRaw: true,
       opts,
     });
   }

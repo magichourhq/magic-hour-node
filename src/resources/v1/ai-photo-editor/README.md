@@ -14,7 +14,7 @@ Edit photo using AI. Each photo costs 10 credits.
 | `assets` | ✓ | Provide the assets for photo editor | `{"imageFilePath": "api-assets/id/1234.png"}` |
 | `resolution` | ✓ | The resolution of the final output image. The allowed value is based on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details | `768` |
 | `style` | ✓ |  | `{"imageDescription": "A photo of a person", "likenessStrength": 5.2, "negativePrompt": "painting, cartoon, sketch", "prompt": "A photo portrait of a person wearing a hat", "promptStrength": 3.75, "steps": 4, "upscaleFactor": 2, "upscaleFidelity": 0.5}` |
-| `name` | ✗ | The name of image | `"Photo Editor image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Photo Editor image"` |
 | `steps` | ✗ | Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time. | `123` |
 
 #### Example Snippet
@@ -47,4 +47,4 @@ const res = await client.v1.aiPhotoEditor.create({
 [V1AiPhotoEditorCreateResponse](/src/types/v1-ai-photo-editor-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 10, "frameCost": 10, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`

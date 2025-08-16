@@ -25,9 +25,9 @@ describe("tests client.v1.animation.create", () => {
             style: {
               artStyle: "Painterly Illustration",
               artStyleCustom: "string",
-              cameraEffect: "Accelerate",
+              cameraEffect: "Simple Zoom In",
               prompt: "Cyberpunk city",
-              promptType: "ai_choose",
+              promptType: "custom",
               transitionSpeed: 5,
             },
             width: 512,
@@ -47,9 +47,9 @@ describe("tests client.v1.animation.create", () => {
           style: {
             artStyle: "Painterly Illustration",
             artStyleCustom: "string",
-            cameraEffect: "Accelerate",
+            cameraEffect: "Simple Zoom In",
             prompt: "Cyberpunk city",
-            promptType: "ai_choose",
+            promptType: "custom",
             transitionSpeed: 5,
           },
           width: 512,

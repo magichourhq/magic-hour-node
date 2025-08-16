@@ -14,7 +14,7 @@ describe("tests client.v1.aiClothesChanger.create", () => {
           .create({
             assets: {
               garmentFilePath: "api-assets/id/outfit.png",
-              garmentType: "dresses",
+              garmentType: "upper_body",
               personFilePath: "api-assets/id/model.png",
             },
             name: "Clothes Changer image",
@@ -23,7 +23,7 @@ describe("tests client.v1.aiClothesChanger.create", () => {
         client.v1.aiClothesChanger.create({
           assets: {
             garmentFilePath: "api-assets/id/outfit.png",
-            garmentType: "dresses",
+            garmentType: "upper_body",
             personFilePath: "api-assets/id/model.png",
           },
           name: "Clothes Changer image",

@@ -11,7 +11,7 @@ import * as z from "zod";
  */
 export type GetRequest = {
   /**
-   * The id of the task
+   * The id of the task. This value is returned by the [face detection API](/api-reference/files/face-detection#response-id).
    */
   id: string;
 };

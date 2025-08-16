@@ -10,9 +10,9 @@ Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale co
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for upscaling | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `scale_factor` | ✓ | How much to scale the image. Must be either 2 or 4 | `2.0` |
+| `scale_factor` | ✓ | How much to scale the image. Must be either 2 or 4.              Note: 4x upscale is only available on Creator, Pro, or Business tier. | `2.0` |
 | `style` | ✓ |  | `{"enhancement": "Balanced"}` |
-| `name` | ✗ | The name of image | `"Image Upscaler image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Image Upscaler image"` |
 
 #### Example Snippet
 
@@ -35,4 +35,4 @@ const res = await client.v1.aiImageUpscaler.create({
 [V1AiImageUpscalerCreateResponse](/src/types/v1-ai-image-upscaler-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 50, "frameCost": 50, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`

@@ -28,7 +28,6 @@ export class VideoProjectsClient extends CoreResourceClient {
       method: "delete",
       path: `/v1/video-projects/${request.id}`,
       auth: ["bearerAuth"],
-      responseRaw: true,
       opts,
     });
   }

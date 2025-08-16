@@ -10,6 +10,9 @@ import * as z from "zod";
  * CreateRequest
  */
 export type CreateRequest = {
+  /**
+   * The list of assets to upload. The response array will match the order of items in the request body.
+   */
   items: V1FilesUploadUrlsCreateBodyItemsItem[];
 };
 

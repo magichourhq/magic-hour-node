@@ -10,8 +10,8 @@ describe("tests client.v1.faceDetection.get", () => {
       });
       // Get both raw response for status and parsed response for data
       const [rawResponse, response] = await Promise.all([
-        client.v1.faceDetection.get({ id: "string" }).asResponse(),
-        client.v1.faceDetection.get({ id: "string" }),
+        client.v1.faceDetection.get({ id: "uuid-example" }).asResponse(),
+        client.v1.faceDetection.get({ id: "uuid-example" }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
       // Response body automatically validated by Zod schema during deserialization

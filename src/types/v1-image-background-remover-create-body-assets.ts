@@ -8,11 +8,21 @@ export type V1ImageBackgroundRemoverCreateBodyAssets = {
   /**
    * The image used as the new background for the image_file_path. This image will be resized to match the image in image_file_path. Please make sure the resolution between the images are similar.
    *
-   * This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   * This value is either
+   * - a direct URL to the video file
+   * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+   *
+   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   *
    */
   backgroundImageFilePath?: string | undefined;
   /**
-   * The image to remove the background. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   * The image to remove the background. This value is either
+   * - a direct URL to the video file
+   * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+   *
+   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   *
    */
   imageFilePath: string;
 };

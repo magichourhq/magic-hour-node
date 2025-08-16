@@ -10,7 +10,7 @@ export type V1FaceDetectionCreateResponse = {
    */
   creditsCharged: number;
   /**
-   * The id of the task
+   * The id of the task. Use this value in the [get face detection details API](/api-reference/files/get-face-detection-details) to get the details of the face detection task.
    */
   id: string;
 };

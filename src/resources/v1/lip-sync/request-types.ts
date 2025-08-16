@@ -15,7 +15,7 @@ export type CreateRequest = {
    */
   assets: V1LipSyncCreateBodyAssets;
   /**
-   * The end time of the input video in seconds
+   * The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
    */
   endSeconds: number;
   /**
@@ -34,11 +34,11 @@ export type CreateRequest = {
    */
   maxFpsLimit?: number | undefined;
   /**
-   * The name of video
+   * The name of video. This value is mainly used for your own identification of the video.
    */
   name?: string | undefined;
   /**
-   * The start time of the input video in seconds
+   * The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
    */
   startSeconds: number;
   /**

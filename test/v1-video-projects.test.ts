@@ -10,10 +10,8 @@ describe("tests client.v1.videoProjects.delete", () => {
       });
       // Get both raw response for status and parsed response for data
       const [rawResponse, response] = await Promise.all([
-        client.v1.videoProjects
-          .delete({ id: "cm6pvghix03bvyz0zwash6noj" })
-          .asResponse(),
-        client.v1.videoProjects.delete({ id: "cm6pvghix03bvyz0zwash6noj" }),
+        client.v1.videoProjects.delete({ id: "cuid-example" }).asResponse(),
+        client.v1.videoProjects.delete({ id: "cuid-example" }),
       ]);
       expect(rawResponse.status).toBe(204); // Exact status code match
       // Response body automatically validated by Zod schema during deserialization
@@ -33,10 +31,8 @@ describe("tests client.v1.videoProjects.get", () => {
       });
       // Get both raw response for status and parsed response for data
       const [rawResponse, response] = await Promise.all([
-        client.v1.videoProjects
-          .get({ id: "cm6pvghix03bvyz0zwash6noj" })
-          .asResponse(),
-        client.v1.videoProjects.get({ id: "cm6pvghix03bvyz0zwash6noj" }),
+        client.v1.videoProjects.get({ id: "cuid-example" }).asResponse(),
+        client.v1.videoProjects.get({ id: "cuid-example" }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
       // Response body automatically validated by Zod schema during deserialization

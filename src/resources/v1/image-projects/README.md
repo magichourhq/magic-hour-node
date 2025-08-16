@@ -1,7 +1,7 @@
 
 ### Delete image <a name="delete"></a>
 
-Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+Permanently delete the rendered image(s). This action is not reversible, please be sure before deleting.
 
 **API Endpoint**: `DELETE /v1/image-projects/{id}`
 
@@ -9,7 +9,7 @@ Permanently delete the rendered image. This action is not reversible, please be 
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |
+| `id` | ✓ | Unique ID of the image project. This value is returned by all of the POST APIs that create an image. | `"cuid-example"` |
 
 #### Example Snippet
 
@@ -17,9 +17,7 @@ Permanently delete the rendered image. This action is not reversible, please be 
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.imageProjects.delete({
-  id: "cm6pvghix03bvyz0zwash6noj",
-});
+const res = await client.v1.imageProjects.delete({ id: "cuid-example" });
 
 ```
 
@@ -42,7 +40,7 @@ The image can be one of the following status
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the image project | `"cm6pvghix03bvyz0zwash6noj"` |
+| `id` | ✓ | Unique ID of the image project. This value is returned by all of the POST APIs that create an image. | `"cuid-example"` |
 
 #### Example Snippet
 
@@ -50,9 +48,7 @@ The image can be one of the following status
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.imageProjects.get({
-  id: "cm6pvghix03bvyz0zwash6noj",
-});
+const res = await client.v1.imageProjects.get({ id: "cuid-example" });
 
 ```
 
@@ -62,4 +58,4 @@ const res = await client.v1.imageProjects.get({
 [V1ImageProjectsGetResponse](/src/types/v1-image-projects-get-response.ts)
 
 ##### Example
-`{"createdAt": "1970-01-01T00:00:00", "creditsCharged": 5, "downloads": [{"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.png"}], "enabled": true, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "id": "clx7uu86w0a5qp55yxz315r6r", "imageCount": 1, "name": "Example Name", "status": "complete", "totalFrameCost": 5, "type": "AI_IMAGE"}`
+`{"createdAt": "1970-01-01T00:00:00", "creditsCharged": 5, "downloads": [{"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.png"}], "enabled": true, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "id": "cuid-example", "imageCount": 1, "name": "Example Name", "status": "complete", "totalFrameCost": 5, "type": "AI_IMAGE"}`

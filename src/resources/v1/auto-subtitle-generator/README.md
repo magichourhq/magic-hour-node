@@ -10,10 +10,10 @@ Automatically generate subtitles for your video in multiple languages.
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for auto subtitle generator | `{"videoFilePath": "api-assets/id/1234.mp4"}` |
-| `end_seconds` | ✓ | The end time of the input video in seconds | `15.0` |
-| `start_seconds` | ✓ | The start time of the input video in seconds | `0.0` |
+| `end_seconds` | ✓ | The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds. | `15.0` |
+| `start_seconds` | ✓ | The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0. | `0.0` |
 | `style` | ✓ | Style of the subtitle. At least one of `.style.template` or `.style.custom_config` must be provided.  * If only `.style.template` is provided, default values for the template will be used. * If both are provided, the fields in `.style.custom_config` will be used to overwrite the fields in `.style.template`. * If only `.style.custom_config` is provided, then all fields in `.style.custom_config` will be used.  To use custom config only, the following `custom_config` params are required: * `.style.custom_config.font` * `.style.custom_config.text_color` * `.style.custom_config.vertical_position` * `.style.custom_config.horizontal_position`  | `{}` |
-| `name` | ✗ | The name of video | `"Auto Subtitle video"` |
+| `name` | ✗ | The name of video. This value is mainly used for your own identification of the video. | `"Auto Subtitle video"` |
 
 #### Example Snippet
 
@@ -37,4 +37,4 @@ const res = await client.v1.autoSubtitleGenerator.create({
 [V1AutoSubtitleGeneratorCreateResponse](/src/types/v1-auto-subtitle-generator-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`

@@ -6,7 +6,12 @@ import * as z from "zod";
  */
 export type V1AnimationCreateBodyAssets = {
   /**
-   * The path of the input audio. This field is required if `audio_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   * The path of the input audio. This field is required if `audio_source` is `file`. This value is either
+   * - a direct URL to the video file
+   * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+   *
+   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   *
    */
   audioFilePath?: string | undefined;
   /**
@@ -14,7 +19,12 @@ export type V1AnimationCreateBodyAssets = {
    */
   audioSource: "file" | "none" | "youtube";
   /**
-   * An initial image to use a the first frame of the video. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+   * An initial image to use a the first frame of the video. This value is either
+   * - a direct URL to the video file
+   * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+   *
+   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   *
    */
   imageFilePath?: string | undefined;
   /**

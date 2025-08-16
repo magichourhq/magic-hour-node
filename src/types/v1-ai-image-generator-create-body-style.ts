@@ -2,11 +2,11 @@ import { zodTransform } from "magic-hour/core";
 import * as z from "zod";
 
 /**
- * V1AiImageGeneratorCreateBodyStyle
+ * The art style to use for image generation.
  */
 export type V1AiImageGeneratorCreateBodyStyle = {
   /**
-   * The prompt used for the image.
+   * The prompt used for the image(s).
    */
   prompt: string;
   /**

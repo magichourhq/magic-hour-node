@@ -11,7 +11,7 @@ Edit images with AI. Each edit costs 50 credits.
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for image edit | `{"imageFilePath": "api-assets/id/1234.png"}` |
 | `style` | ✓ |  | `{"prompt": "Give me sunglasses"}` |
-| `name` | ✗ | The name of image | `"Ai Image Editor image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Ai Image Editor image"` |
 
 #### Example Snippet
 
@@ -33,4 +33,4 @@ const res = await client.v1.aiImageEditor.create({
 [V1AiImageEditorCreateResponse](/src/types/v1-ai-image-editor-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 50, "frameCost": 50, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`

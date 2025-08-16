@@ -11,14 +11,20 @@ import * as z from "zod";
  */
 export type CreateRequest = {
   /**
-   * number to images to generate
+   * Number of images to generate.
    */
   imageCount: number;
   /**
-   * The name of image
+   * The name of image. This value is mainly used for your own identification of the image.
    */
   name?: string | undefined;
+  /**
+   * The orientation of the output image(s).
+   */
   orientation: "landscape" | "portrait" | "square";
+  /**
+   * The art style to use for image generation.
+   */
   style: V1AiImageGeneratorCreateBodyStyle;
 };
 

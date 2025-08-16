@@ -6,7 +6,7 @@ import * as z from "zod";
  */
 export type DeleteRequest = {
   /**
-   * The id of the video project
+   * Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
    */
   id: string;
 };
@@ -65,7 +65,7 @@ export const Schemas$DeleteRequest = {
  */
 export type GetRequest = {
   /**
-   * The id of the video
+   * Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
    */
   id: string;
 };

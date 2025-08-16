@@ -8,63 +8,63 @@ export type V1AiFaceEditorCreateBodyStyle = {
   /**
    * Enhance face features
    */
-  enhanceFace: boolean;
+  enhanceFace?: boolean | undefined;
   /**
    * Horizontal eye gaze (-100 to 100), in increments of 5
    */
-  eyeGazeHorizontal: number;
+  eyeGazeHorizontal?: number | undefined;
   /**
    * Vertical eye gaze (-100 to 100), in increments of 5
    */
-  eyeGazeVertical: number;
+  eyeGazeVertical?: number | undefined;
   /**
    * Eye open ratio (-100 to 100), in increments of 5
    */
-  eyeOpenRatio: number;
+  eyeOpenRatio?: number | undefined;
   /**
    * Eyebrow direction (-100 to 100), in increments of 5
    */
-  eyebrowDirection: number;
+  eyebrowDirection?: number | undefined;
   /**
    * Head pitch (-100 to 100), in increments of 5
    */
-  headPitch: number;
+  headPitch?: number | undefined;
   /**
    * Head roll (-100 to 100), in increments of 5
    */
-  headRoll: number;
+  headRoll?: number | undefined;
   /**
    * Head yaw (-100 to 100), in increments of 5
    */
-  headYaw: number;
+  headYaw?: number | undefined;
   /**
    * Lip open ratio (-100 to 100), in increments of 5
    */
-  lipOpenRatio: number;
+  lipOpenRatio?: number | undefined;
   /**
    * Mouth grim (-100 to 100), in increments of 5
    */
-  mouthGrim: number;
+  mouthGrim?: number | undefined;
   /**
    * Horizontal mouth position (-100 to 100), in increments of 5
    */
-  mouthPositionHorizontal: number;
+  mouthPositionHorizontal?: number | undefined;
   /**
    * Vertical mouth position (-100 to 100), in increments of 5
    */
-  mouthPositionVertical: number;
+  mouthPositionVertical?: number | undefined;
   /**
    * Mouth pout (-100 to 100), in increments of 5
    */
-  mouthPout: number;
+  mouthPout?: number | undefined;
   /**
    * Mouth purse (-100 to 100), in increments of 5
    */
-  mouthPurse: number;
+  mouthPurse?: number | undefined;
   /**
    * Mouth smile (-100 to 100), in increments of 5
    */
-  mouthSmile: number;
+  mouthSmile?: number | undefined;
 };
 
 /**
@@ -73,21 +73,21 @@ export type V1AiFaceEditorCreateBodyStyle = {
  * we expect to come in as network data
  */
 export type External$V1AiFaceEditorCreateBodyStyle = {
-  enhance_face: boolean;
-  eye_gaze_horizontal: number;
-  eye_gaze_vertical: number;
-  eye_open_ratio: number;
-  eyebrow_direction: number;
-  head_pitch: number;
-  head_roll: number;
-  head_yaw: number;
-  lip_open_ratio: number;
-  mouth_grim: number;
-  mouth_position_horizontal: number;
-  mouth_position_vertical: number;
-  mouth_pout: number;
-  mouth_purse: number;
-  mouth_smile: number;
+  enhance_face?: boolean | undefined;
+  eye_gaze_horizontal?: number | undefined;
+  eye_gaze_vertical?: number | undefined;
+  eye_open_ratio?: number | undefined;
+  eyebrow_direction?: number | undefined;
+  head_pitch?: number | undefined;
+  head_roll?: number | undefined;
+  head_yaw?: number | undefined;
+  lip_open_ratio?: number | undefined;
+  mouth_grim?: number | undefined;
+  mouth_position_horizontal?: number | undefined;
+  mouth_position_vertical?: number | undefined;
+  mouth_pout?: number | undefined;
+  mouth_purse?: number | undefined;
+  mouth_smile?: number | undefined;
 };
 
 /**
@@ -99,21 +99,21 @@ const SchemaIn$V1AiFaceEditorCreateBodyStyle: z.ZodType<
   unknown
 > = z
   .object({
-    enhance_face: z.boolean(),
-    eye_gaze_horizontal: z.number(),
-    eye_gaze_vertical: z.number(),
-    eye_open_ratio: z.number(),
-    eyebrow_direction: z.number(),
-    head_pitch: z.number(),
-    head_roll: z.number(),
-    head_yaw: z.number(),
-    lip_open_ratio: z.number(),
-    mouth_grim: z.number(),
-    mouth_position_horizontal: z.number(),
-    mouth_position_vertical: z.number(),
-    mouth_pout: z.number(),
-    mouth_purse: z.number(),
-    mouth_smile: z.number(),
+    enhance_face: z.boolean().optional(),
+    eye_gaze_horizontal: z.number().optional(),
+    eye_gaze_vertical: z.number().optional(),
+    eye_open_ratio: z.number().optional(),
+    eyebrow_direction: z.number().optional(),
+    head_pitch: z.number().optional(),
+    head_roll: z.number().optional(),
+    head_yaw: z.number().optional(),
+    lip_open_ratio: z.number().optional(),
+    mouth_grim: z.number().optional(),
+    mouth_position_horizontal: z.number().optional(),
+    mouth_position_vertical: z.number().optional(),
+    mouth_pout: z.number().optional(),
+    mouth_purse: z.number().optional(),
+    mouth_smile: z.number().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -145,21 +145,21 @@ const SchemaOut$V1AiFaceEditorCreateBodyStyle: z.ZodType<
   V1AiFaceEditorCreateBodyStyle // the object to be transformed
 > = z
   .object({
-    enhanceFace: z.boolean(),
-    eyeGazeHorizontal: z.number(),
-    eyeGazeVertical: z.number(),
-    eyeOpenRatio: z.number(),
-    eyebrowDirection: z.number(),
-    headPitch: z.number(),
-    headRoll: z.number(),
-    headYaw: z.number(),
-    lipOpenRatio: z.number(),
-    mouthGrim: z.number(),
-    mouthPositionHorizontal: z.number(),
-    mouthPositionVertical: z.number(),
-    mouthPout: z.number(),
-    mouthPurse: z.number(),
-    mouthSmile: z.number(),
+    enhanceFace: z.boolean().optional(),
+    eyeGazeHorizontal: z.number().optional(),
+    eyeGazeVertical: z.number().optional(),
+    eyeOpenRatio: z.number().optional(),
+    eyebrowDirection: z.number().optional(),
+    headPitch: z.number().optional(),
+    headRoll: z.number().optional(),
+    headYaw: z.number().optional(),
+    lipOpenRatio: z.number().optional(),
+    mouthGrim: z.number().optional(),
+    mouthPositionHorizontal: z.number().optional(),
+    mouthPositionVertical: z.number().optional(),
+    mouthPout: z.number().optional(),
+    mouthPurse: z.number().optional(),
+    mouthSmile: z.number().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {

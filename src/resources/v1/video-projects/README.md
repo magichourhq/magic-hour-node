@@ -9,7 +9,7 @@ Permanently delete the rendered video. This action is not reversible, please be 
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the video project | `"cm6pvghix03bvyz0zwash6noj"` |
+| `id` | ✓ | Unique ID of the video project. This value is returned by all of the POST APIs that create a video. | `"cuid-example"` |
 
 #### Example Snippet
 
@@ -17,9 +17,7 @@ Permanently delete the rendered video. This action is not reversible, please be 
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.videoProjects.delete({
-  id: "cm6pvghix03bvyz0zwash6noj",
-});
+const res = await client.v1.videoProjects.delete({ id: "cuid-example" });
 
 ```
 
@@ -42,7 +40,7 @@ The video can be one of the following status
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the video | `"cm6pvghix03bvyz0zwash6noj"` |
+| `id` | ✓ | Unique ID of the video project. This value is returned by all of the POST APIs that create a video. | `"cuid-example"` |
 
 #### Example Snippet
 
@@ -50,9 +48,7 @@ The video can be one of the following status
 import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.videoProjects.get({
-  id: "cm6pvghix03bvyz0zwash6noj",
-});
+const res = await client.v1.videoProjects.get({ id: "cuid-example" });
 
 ```
 
@@ -62,4 +58,4 @@ const res = await client.v1.videoProjects.get({
 [V1VideoProjectsGetResponse](/src/types/v1-video-projects-get-response.ts)
 
 ##### Example
-`{"createdAt": "1970-01-01T00:00:00", "creditsCharged": 450, "download": {"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}, "downloads": [{"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}], "enabled": true, "endSeconds": 15.0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "fps": 30.0, "height": 960, "id": "clx7uu86w0a5qp55yxz315r6r", "name": "Example Name", "startSeconds": 0.0, "status": "complete", "totalFrameCost": 450, "type": "FACE_SWAP", "width": 512}`
+`{"createdAt": "1970-01-01T00:00:00", "creditsCharged": 450, "download": {"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}, "downloads": [{"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}], "enabled": true, "endSeconds": 15.0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "fps": 30.0, "height": 960, "id": "cuid-example", "name": "Example Name", "startSeconds": 0.0, "status": "complete", "totalFrameCost": 450, "type": "FACE_SWAP", "width": 512}`

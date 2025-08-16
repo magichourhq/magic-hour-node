@@ -20,7 +20,7 @@ export type V1AiPhotoEditorCreateBody = {
    */
   assets: V1AiPhotoEditorCreateBodyAssets;
   /**
-   * The name of image
+   * The name of image. This value is mainly used for your own identification of the image.
    */
   name?: string | undefined;
   /**

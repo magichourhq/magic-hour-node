@@ -20,11 +20,13 @@ export type CreateRequest = {
    */
   assets: V1AiImageUpscalerCreateBodyAssets;
   /**
-   * The name of image
+   * The name of image. This value is mainly used for your own identification of the image.
    */
   name?: string | undefined;
   /**
-   * How much to scale the image. Must be either 2 or 4
+   * How much to scale the image. Must be either 2 or 4.
+   *
+   * Note: 4x upscale is only available on Creator, Pro, or Business tier.
    */
   scaleFactor: number;
   style: V1AiImageUpscalerCreateBodyStyle;
