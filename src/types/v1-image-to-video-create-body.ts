@@ -24,11 +24,15 @@ export type V1ImageToVideoCreateBody = {
    */
   endSeconds: number;
   /**
-   * This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+   * `height` is deprecated and no longer influences the output video's resolution.
    *
-   * It is retained solely for backward compatibility and will be deprecated in the future.
+   * Output resolution is determined by the **minimum** of:
+   * - The resolution of the input video
+   * - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+   *
+   * This field is retained only for backward compatibility and will be removed in a future release.
    */
-  height?: number | undefined;
+  height?: number | null | undefined;
   /**
    * The name of video. This value is mainly used for your own identification of the video.
    */
@@ -49,11 +53,15 @@ export type V1ImageToVideoCreateBody = {
    */
   style?: V1ImageToVideoCreateBodyStyle | undefined;
   /**
-   * This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+   * `width` is deprecated and no longer influences the output video's resolution.
    *
-   * It is retained solely for backward compatibility and will be deprecated in the future.
+   * Output resolution is determined by the **minimum** of:
+   * - The resolution of the input video
+   * - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+   *
+   * This field is retained only for backward compatibility and will be removed in a future release.
    */
-  width?: number | undefined;
+  width?: number | null | undefined;
 };
 
 /**
@@ -64,11 +72,11 @@ export type V1ImageToVideoCreateBody = {
 export type External$V1ImageToVideoCreateBody = {
   assets: External$V1ImageToVideoCreateBodyAssets;
   end_seconds: number;
-  height?: number | undefined;
+  height?: number | null | undefined;
   name?: string | undefined;
   resolution?: ("1080p" | "480p" | "720p") | undefined;
   style?: External$V1ImageToVideoCreateBodyStyle | undefined;
-  width?: number | undefined;
+  width?: number | null | undefined;
 };
 
 /**
@@ -82,11 +90,11 @@ const SchemaIn$V1ImageToVideoCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1ImageToVideoCreateBodyAssets.in,
     end_seconds: z.number(),
-    height: z.number().int().optional(),
+    height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.in.optional(),
-    width: z.number().int().optional(),
+    width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -112,11 +120,11 @@ const SchemaOut$V1ImageToVideoCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1ImageToVideoCreateBodyAssets.out,
     endSeconds: z.number(),
-    height: z.number().int().optional(),
+    height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.out.optional(),
-    width: z.number().int().optional(),
+    width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {

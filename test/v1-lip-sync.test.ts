@@ -19,11 +19,11 @@ describe("tests client.v1.lipSync.create", () => {
               youtubeUrl: "http://www.example.com",
             },
             endSeconds: 15.0,
-            height: 960,
+            height: 123,
             maxFpsLimit: 12.0,
             name: "Lip Sync video",
             startSeconds: 0.0,
-            width: 512,
+            width: 123,
           })
           .asResponse(),
         client.v1.lipSync.create({
@@ -34,11 +34,11 @@ describe("tests client.v1.lipSync.create", () => {
             youtubeUrl: "http://www.example.com",
           },
           endSeconds: 15.0,
-          height: 960,
+          height: 123,
           maxFpsLimit: 12.0,
           name: "Lip Sync video",
           startSeconds: 0.0,
-          width: 512,
+          width: 123,
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
