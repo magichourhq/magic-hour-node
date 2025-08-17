@@ -19,7 +19,7 @@ describe("tests client.v1.videoToVideo.create", () => {
             },
             endSeconds: 15.0,
             fpsResolution: "HALF",
-            height: 960,
+            height: 123,
             name: "Video To Video video",
             startSeconds: 0.0,
             style: {
@@ -29,7 +29,7 @@ describe("tests client.v1.videoToVideo.create", () => {
               promptType: "default",
               version: "default",
             },
-            width: 512,
+            width: 123,
           })
           .asResponse(),
         client.v1.videoToVideo.create({
@@ -40,7 +40,7 @@ describe("tests client.v1.videoToVideo.create", () => {
           },
           endSeconds: 15.0,
           fpsResolution: "HALF",
-          height: 960,
+          height: 123,
           name: "Video To Video video",
           startSeconds: 0.0,
           style: {
@@ -50,7 +50,7 @@ describe("tests client.v1.videoToVideo.create", () => {
             promptType: "default",
             version: "default",
           },
-          width: 512,
+          width: 123,
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

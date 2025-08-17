@@ -30,16 +30,15 @@ export type V1VideoToVideoCreateBody = {
    */
   fpsResolution?: ("FULL" | "HALF") | undefined;
   /**
-   * Used to determine the dimensions of the output video.
+   * `height` is deprecated and no longer influences the output video's resolution.
    *
-   * * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   * Output resolution is determined by the **minimum** of:
+   * - The resolution of the input video
+   * - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
    *
-   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
-   *
-   * See our [pricing page](https://magichour.ai/pricing) for more details.
+   * This field is retained only for backward compatibility and will be removed in a future release.
    */
-  height?: number | undefined;
+  height?: number | null | undefined;
   /**
    * The name of video. This value is mainly used for your own identification of the video.
    */
@@ -50,16 +49,15 @@ export type V1VideoToVideoCreateBody = {
   startSeconds: number;
   style: V1VideoToVideoCreateBodyStyle;
   /**
-   * Used to determine the dimensions of the output video.
+   * `width` is deprecated and no longer influences the output video's resolution.
    *
-   * * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   * Output resolution is determined by the **minimum** of:
+   * - The resolution of the input video
+   * - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
    *
-   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
-   *
-   * See our [pricing page](https://magichour.ai/pricing) for more details.
+   * This field is retained only for backward compatibility and will be removed in a future release.
    */
-  width?: number | undefined;
+  width?: number | null | undefined;
 };
 
 /**
@@ -71,11 +69,11 @@ export type External$V1VideoToVideoCreateBody = {
   assets: External$V1VideoToVideoCreateBodyAssets;
   end_seconds: number;
   fps_resolution?: ("FULL" | "HALF") | undefined;
-  height?: number | undefined;
+  height?: number | null | undefined;
   name?: string | undefined;
   start_seconds: number;
   style: External$V1VideoToVideoCreateBodyStyle;
-  width?: number | undefined;
+  width?: number | null | undefined;
 };
 
 /**
@@ -90,11 +88,11 @@ const SchemaIn$V1VideoToVideoCreateBody: z.ZodType<
     assets: Schemas$V1VideoToVideoCreateBodyAssets.in,
     end_seconds: z.number(),
     fps_resolution: z.enum(["FULL", "HALF"]).optional(),
-    height: z.number().int().optional(),
+    height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
     style: Schemas$V1VideoToVideoCreateBodyStyle.in,
-    width: z.number().int().optional(),
+    width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -122,11 +120,11 @@ const SchemaOut$V1VideoToVideoCreateBody: z.ZodType<
     assets: Schemas$V1VideoToVideoCreateBodyAssets.out,
     endSeconds: z.number(),
     fpsResolution: z.enum(["FULL", "HALF"]).optional(),
-    height: z.number().int().optional(),
+    height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
     style: Schemas$V1VideoToVideoCreateBodyStyle.out,
-    width: z.number().int().optional(),
+    width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {

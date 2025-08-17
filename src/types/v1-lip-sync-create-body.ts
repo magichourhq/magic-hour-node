@@ -19,16 +19,15 @@ export type V1LipSyncCreateBody = {
    */
   endSeconds: number;
   /**
-   * Used to determine the dimensions of the output video.
+   * `height` is deprecated and no longer influences the output video's resolution.
    *
-   * * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   * Output resolution is determined by the **minimum** of:
+   * - The resolution of the input video
+   * - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
    *
-   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
-   *
-   * See our [pricing page](https://magichour.ai/pricing) for more details.
+   * This field is retained only for backward compatibility and will be removed in a future release.
    */
-  height?: number | undefined;
+  height?: number | null | undefined;
   /**
    * Defines the maximum FPS (frames per second) for the output video. If the input video's FPS is lower than this limit, the output video will retain the input FPS. This is useful for reducing unnecessary frame usage in scenarios where high FPS is not required.
    */
@@ -42,16 +41,15 @@ export type V1LipSyncCreateBody = {
    */
   startSeconds: number;
   /**
-   * Used to determine the dimensions of the output video.
+   * `width` is deprecated and no longer influences the output video's resolution.
    *
-   * * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-   * * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+   * Output resolution is determined by the **minimum** of:
+   * - The resolution of the input video
+   * - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
    *
-   * Note: if the video's original resolution is less than the maximum, the video will not be resized.
-   *
-   * See our [pricing page](https://magichour.ai/pricing) for more details.
+   * This field is retained only for backward compatibility and will be removed in a future release.
    */
-  width?: number | undefined;
+  width?: number | null | undefined;
 };
 
 /**
@@ -62,11 +60,11 @@ export type V1LipSyncCreateBody = {
 export type External$V1LipSyncCreateBody = {
   assets: External$V1LipSyncCreateBodyAssets;
   end_seconds: number;
-  height?: number | undefined;
+  height?: number | null | undefined;
   max_fps_limit?: number | undefined;
   name?: string | undefined;
   start_seconds: number;
-  width?: number | undefined;
+  width?: number | null | undefined;
 };
 
 /**
@@ -80,11 +78,11 @@ const SchemaIn$V1LipSyncCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1LipSyncCreateBodyAssets.in,
     end_seconds: z.number(),
-    height: z.number().int().optional(),
+    height: z.number().int().nullable().optional(),
     max_fps_limit: z.number().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
-    width: z.number().int().optional(),
+    width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -110,11 +108,11 @@ const SchemaOut$V1LipSyncCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1LipSyncCreateBodyAssets.out,
     endSeconds: z.number(),
-    height: z.number().int().optional(),
+    height: z.number().int().nullable().optional(),
     maxFpsLimit: z.number().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
-    width: z.number().int().optional(),
+    width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
