@@ -80,31 +80,6 @@ function processFileInput(file: FileInput): {
   }
 }
 
-/**
- * Read file content for upload, handling both file paths and file-like objects.
- */
-function prepareFileForUpload(filePath?: string, fileData?: Buffer | Readable | File): Buffer {
-  if (filePath) {
-    return fs.readFileSync(filePath);
-  } else if (fileData) {
-    if (Buffer.isBuffer(fileData)) {
-      return fileData;
-    } else if (fileData instanceof Readable) {
-      // For streams, we need to read the entire content
-      const chunks: Buffer[] = [];
-      return new Promise<Buffer>((resolve, reject) => {
-        fileData.on("data", (chunk) => chunks.push(chunk));
-        fileData.on("end", () => resolve(Buffer.concat(chunks)));
-        fileData.on("error", reject);
-      }) as any; // This needs to be handled async, but keeping sync for now
-    } else if (typeof File !== "undefined" && fileData instanceof File) {
-      // File object - need to read as buffer
-      return fileData.arrayBuffer().then((ab) => Buffer.from(ab)) as any;
-    }
-  }
-  throw new Error("Invalid file data");
-}
-
 export class FilesClient extends CoreResourceClient {
   private _uploadUrlsLazy?: UploadUrlsClient; // lazy-loading cache
 
