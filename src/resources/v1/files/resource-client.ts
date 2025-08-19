@@ -1,6 +1,5 @@
 import {CoreClient, CoreResourceClient, ResourceClientOptions, RUNTIME} from "magic-hour/core";
 import {UploadUrlsClient} from "magic-hour/resources/v1/files/upload-urls";
-import {V1FilesUploadUrlsCreateBodyItemsItem} from "magic-hour/types/v1-files-upload-urls-create-body-items-item";
 import * as fs from "fs";
 import * as path from "path";
 import {Readable} from "stream";
