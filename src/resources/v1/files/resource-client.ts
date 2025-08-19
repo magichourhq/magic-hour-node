@@ -1,10 +1,20 @@
-import {CoreClient, CoreResourceClient, ResourceClientOptions, RUNTIME} from "magic-hour/core";
-import {UploadUrlsClient} from "magic-hour/resources/v1/files/upload-urls";
+import {
+  CoreClient,
+  CoreResourceClient,
+  ResourceClientOptions,
+  RUNTIME,
+} from "magic-hour/core";
+import { UploadUrlsClient } from "magic-hour/resources/v1/files/upload-urls";
 import * as fs from "fs";
 import * as path from "path";
-import {Readable} from "stream";
+import { Readable } from "stream";
 
-export type FileInput = string | Buffer | Readable | File | NodeJS.ReadableStream;
+export type FileInput =
+  | string
+  | Buffer
+  | Readable
+  | File
+  | NodeJS.ReadableStream;
 
 /**
  * Determine file type and extension from file path or name.
@@ -20,7 +30,16 @@ function getFileTypeAndExtension(fileName: string): {
   // Audio extensions
   const audioExts = ["mp3", "mpeg", "wav", "aac", "aiff", "flac"];
   // Image extensions
-  const imageExts = ["png", "jpg", "jpeg", "webp", "avif", "jp2", "tiff", "bmp"];
+  const imageExts = [
+    "png",
+    "jpg",
+    "jpeg",
+    "webp",
+    "avif",
+    "jp2",
+    "tiff",
+    "bmp",
+  ];
 
   let fileType: "audio" | "image" | "video";
   if (videoExts.includes(ext)) {
@@ -34,11 +53,11 @@ function getFileTypeAndExtension(fileName: string): {
       `Unsupported file extension: ${ext}. ` +
         "Supported types: video (mp4, m4v, mov, webm), " +
         "audio (mp3, mpeg, wav, aac, aiff, flac), " +
-        "image (png, jpg, jpeg, webp, avif, jp2, tiff, bmp)"
+        "image (png, jpg, jpeg, webp, avif, jp2, tiff, bmp)",
     );
   }
 
-  return {fileType, extension: ext};
+  return { fileType, extension: ext };
 }
 
 /**
@@ -55,25 +74,27 @@ function processFileInput(file: FileInput): {
     if (!fs.existsSync(file)) {
       throw new Error(`File not found: ${file}`);
     }
-    const {fileType, extension} = getFileTypeAndExtension(file);
-    return {filePath: file, fileType, extension};
+    const { fileType, extension } = getFileTypeAndExtension(file);
+    return { filePath: file, fileType, extension };
   } else if (Buffer.isBuffer(file)) {
     throw new Error(
       "Buffer input requires a file name for extension detection. " +
-        "Please use a file path, File object, or stream with a name property."
+        "Please use a file path, File object, or stream with a name property.",
     );
   } else if (file instanceof Readable) {
     // Stream with path property
     const filePath = (file as any).path;
     if (typeof filePath !== "string") {
-      throw new Error("Stream must have a 'path' property for extension detection.");
+      throw new Error(
+        "Stream must have a 'path' property for extension detection.",
+      );
     }
-    const {fileType, extension} = getFileTypeAndExtension(filePath);
-    return {fileData: file, fileType, extension};
+    const { fileType, extension } = getFileTypeAndExtension(filePath);
+    return { fileData: file, fileType, extension };
   } else if (typeof File !== "undefined" && file instanceof File) {
     // File object (browser)
-    const {fileType, extension} = getFileTypeAndExtension(file.name);
-    return {fileData: file, fileType, extension};
+    const { fileType, extension } = getFileTypeAndExtension(file.name);
+    return { fileData: file, fileType, extension };
   } else {
     throw new Error("Unsupported file input type");
   }
@@ -94,7 +115,7 @@ export class FilesClient extends CoreResourceClient {
       this._uploadUrlsLazy ??
       (this._uploadUrlsLazy = new (require("./upload-urls").UploadUrlsClient)(
         this._client,
-        this._opts
+        this._opts,
       ))
     );
   }
@@ -137,7 +158,7 @@ export class FilesClient extends CoreResourceClient {
    * ```
    */
   async uploadFile(file: FileInput): Promise<string> {
-    const {filePath, fileData, fileType, extension} = processFileInput(file);
+    const { filePath, fileData, fileType, extension } = processFileInput(file);
 
     // Create upload URL
     const response = await this.uploadUrls.create({
@@ -196,7 +217,7 @@ export class FilesClient extends CoreResourceClient {
 
     if (!uploadResponse.ok) {
       throw new Error(
-        `Upload failed with status ${uploadResponse.status}: ${uploadResponse.statusText}`
+        `Upload failed with status ${uploadResponse.status}: ${uploadResponse.statusText}`,
       );
     }
 
