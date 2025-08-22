@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1FaceDetectionGetResponseFacesItem,
   Schemas$V1FaceDetectionGetResponseFacesItem,
   V1FaceDetectionGetResponseFacesItem,
 } from "./v1-face-detection-get-response-faces-item";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1FaceDetectionGetResponse

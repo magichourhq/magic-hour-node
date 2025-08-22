@@ -1,4 +1,4 @@
-import { RequestConfig } from "./core-client";
+import type { RequestConfig } from "./core-client";
 
 export class ApiError extends Error {
   request: RequestConfig;

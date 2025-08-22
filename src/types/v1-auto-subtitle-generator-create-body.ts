@@ -1,3 +1,7 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1AutoSubtitleGeneratorCreateBodyAssets,
   Schemas$V1AutoSubtitleGeneratorCreateBodyAssets,
@@ -8,8 +12,6 @@ import {
   Schemas$V1AutoSubtitleGeneratorCreateBodyStyle,
   V1AutoSubtitleGeneratorCreateBodyStyle,
 } from "./v1-auto-subtitle-generator-create-body-style";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1AutoSubtitleGeneratorCreateBody

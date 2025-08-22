@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1FaceDetectionCreateBodyAssets,
   Schemas$V1FaceDetectionCreateBodyAssets,
   V1FaceDetectionCreateBodyAssets,
 } from "./v1-face-detection-create-body-assets";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1FaceDetectionCreateBody

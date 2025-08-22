@@ -4,7 +4,7 @@ import { toBase64 } from "js-base64";
 import * as jsonpointer from "jsonpointer";
 
 import { RUNTIME } from "./runtime";
-import { RequestConfig } from "./core-client";
+import type { RequestConfig } from "./core-client";
 import { ApiError } from "./api-error";
 
 export interface AuthProvider {
@@ -256,7 +256,7 @@ export class OAuth2 implements AuthProvider {
       typeof accessTokenRaw === "string" ? accessTokenRaw : "";
 
     const expiresInRaw = jsonpointer.get(tokenResJson, expiresInPointer);
-    const expiresInSecs = typeof expiresInRaw == "number" ? expiresInRaw : 600;
+    const expiresInSecs = typeof expiresInRaw === "number" ? expiresInRaw : 600;
     const now = new Date();
     const expiresAt = new Date(now.getTime() + expiresInSecs * 1000);
 

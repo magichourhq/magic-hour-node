@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1ImageBackgroundRemoverCreateBodyAssets,
   Schemas$V1ImageBackgroundRemoverCreateBodyAssets,
   V1ImageBackgroundRemoverCreateBodyAssets,
 } from "./v1-image-background-remover-create-body-assets";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1ImageBackgroundRemoverCreateBody

@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1AiQrCodeGeneratorCreateBodyStyle,
   Schemas$V1AiQrCodeGeneratorCreateBodyStyle,
   V1AiQrCodeGeneratorCreateBodyStyle,
 } from "./v1-ai-qr-code-generator-create-body-style";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1AiQrCodeGeneratorCreateBody

@@ -14,6 +14,7 @@ export class FilesClient extends CoreResourceClient {
       this.uploadUrls;
     }
   }
+
   get uploadUrls(): UploadUrlsClient {
     return (
       this._uploadUrlsLazy ??

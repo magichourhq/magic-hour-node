@@ -1,3 +1,5 @@
+import * as z from "zod";
+
 import { zodTransform } from "magic-hour/core";
 import {
   External$V1AiTalkingPhotoCreateBodyAssets,
@@ -9,7 +11,6 @@ import {
   Schemas$V1AiTalkingPhotoCreateBodyStyle,
   V1AiTalkingPhotoCreateBodyStyle,
 } from "magic-hour/types/v1-ai-talking-photo-create-body-style";
-import * as z from "zod";
 
 /**
  * CreateRequest

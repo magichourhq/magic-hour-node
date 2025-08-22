@@ -59,9 +59,6 @@ export class V1Client extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
     if (this._opts.lazyLoad === false) {
-      this.imageProjects;
-      this.videoProjects;
-      this.faceDetection;
       this.aiClothesChanger;
       this.aiFaceEditor;
       this.aiGifGenerator;
@@ -75,17 +72,21 @@ export class V1Client extends CoreResourceClient {
       this.aiTalkingPhoto;
       this.animation;
       this.autoSubtitleGenerator;
+      this.faceDetection;
       this.faceSwap;
       this.faceSwapPhoto;
       this.files;
       this.imageBackgroundRemover;
+      this.imageProjects;
       this.imageToVideo;
       this.lipSync;
       this.photoColorizer;
       this.textToVideo;
+      this.videoProjects;
       this.videoToVideo;
     }
   }
+
   get imageProjects(): ImageProjectsClient {
     return (
       this._imageProjectsLazy ??
@@ -96,6 +97,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get videoProjects(): VideoProjectsClient {
     return (
       this._videoProjectsLazy ??
@@ -106,6 +108,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get faceDetection(): FaceDetectionClient {
     return (
       this._faceDetectionLazy ??
@@ -116,6 +119,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiClothesChanger(): AiClothesChangerClient {
     return (
       this._aiClothesChangerLazy ??
@@ -126,6 +130,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiFaceEditor(): AiFaceEditorClient {
     return (
       this._aiFaceEditorLazy ??
@@ -136,6 +141,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiGifGenerator(): AiGifGeneratorClient {
     return (
       this._aiGifGeneratorLazy ??
@@ -146,6 +152,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiHeadshotGenerator(): AiHeadshotGeneratorClient {
     return (
       this._aiHeadshotGeneratorLazy ??
@@ -156,6 +163,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiImageEditor(): AiImageEditorClient {
     return (
       this._aiImageEditorLazy ??
@@ -166,6 +174,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiImageGenerator(): AiImageGeneratorClient {
     return (
       this._aiImageGeneratorLazy ??
@@ -176,6 +185,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiImageUpscaler(): AiImageUpscalerClient {
     return (
       this._aiImageUpscalerLazy ??
@@ -186,6 +196,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiMemeGenerator(): AiMemeGeneratorClient {
     return (
       this._aiMemeGeneratorLazy ??
@@ -196,6 +207,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiPhotoEditor(): AiPhotoEditorClient {
     return (
       this._aiPhotoEditorLazy ??
@@ -206,6 +218,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiQrCodeGenerator(): AiQrCodeGeneratorClient {
     return (
       this._aiQrCodeGeneratorLazy ??
@@ -216,6 +229,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get aiTalkingPhoto(): AiTalkingPhotoClient {
     return (
       this._aiTalkingPhotoLazy ??
@@ -226,6 +240,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get animation(): AnimationClient {
     return (
       this._animationLazy ??
@@ -235,6 +250,7 @@ export class V1Client extends CoreResourceClient {
       ))
     );
   }
+
   get autoSubtitleGenerator(): AutoSubtitleGeneratorClient {
     return (
       this._autoSubtitleGeneratorLazy ??
@@ -245,6 +261,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get faceSwap(): FaceSwapClient {
     return (
       this._faceSwapLazy ??
@@ -254,6 +271,7 @@ export class V1Client extends CoreResourceClient {
       ))
     );
   }
+
   get faceSwapPhoto(): FaceSwapPhotoClient {
     return (
       this._faceSwapPhotoLazy ??
@@ -264,6 +282,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get files(): FilesClient {
     return (
       this._filesLazy ??
@@ -273,6 +292,7 @@ export class V1Client extends CoreResourceClient {
       ))
     );
   }
+
   get imageBackgroundRemover(): ImageBackgroundRemoverClient {
     return (
       this._imageBackgroundRemoverLazy ??
@@ -283,6 +303,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get imageToVideo(): ImageToVideoClient {
     return (
       this._imageToVideoLazy ??
@@ -293,6 +314,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get lipSync(): LipSyncClient {
     return (
       this._lipSyncLazy ??
@@ -302,6 +324,7 @@ export class V1Client extends CoreResourceClient {
       ))
     );
   }
+
   get photoColorizer(): PhotoColorizerClient {
     return (
       this._photoColorizerLazy ??
@@ -312,6 +335,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get textToVideo(): TextToVideoClient {
     return (
       this._textToVideoLazy ??
@@ -322,6 +346,7 @@ export class V1Client extends CoreResourceClient {
         ))
     );
   }
+
   get videoToVideo(): VideoToVideoClient {
     return (
       this._videoToVideoLazy ??

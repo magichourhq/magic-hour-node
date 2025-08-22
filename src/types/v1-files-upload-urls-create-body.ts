@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1FilesUploadUrlsCreateBodyItemsItem,
   Schemas$V1FilesUploadUrlsCreateBodyItemsItem,
   V1FilesUploadUrlsCreateBodyItemsItem,
 } from "./v1-files-upload-urls-create-body-items-item";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1FilesUploadUrlsCreateBody

@@ -1,3 +1,7 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1ImageToVideoCreateBodyAssets,
   Schemas$V1ImageToVideoCreateBodyAssets,
@@ -8,8 +12,6 @@ import {
   Schemas$V1ImageToVideoCreateBodyStyle,
   V1ImageToVideoCreateBodyStyle,
 } from "./v1-image-to-video-create-body-style";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1ImageToVideoCreateBody

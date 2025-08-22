@@ -1,5 +1,5 @@
-import * as z from "zod";
-import { ApiResponse } from "./core-client";
+import type * as z from "zod";
+import type { ApiResponse } from "./core-client";
 import { BinaryResponse } from "./binary-response";
 import { JSON_PATTERN, TEXT_PATTERN } from "./content-type";
 
@@ -52,9 +52,10 @@ export class ApiPromise<T>
 
     const contentType = response.headers.get("content-type") ?? "";
     switch (this.getResponseType(contentType)) {
-      case "json":
+      case "json": {
         const rawJson = await response.json();
         return responseSchema ? responseSchema.parse(rawJson) : rawJson;
+      }
       case "text":
         return (await response.text()) as unknown as T;
       case "binary":
