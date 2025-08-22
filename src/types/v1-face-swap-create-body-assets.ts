@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1FaceSwapCreateBodyAssetsFaceMappingsItem,
   Schemas$V1FaceSwapCreateBodyAssetsFaceMappingsItem,
   V1FaceSwapCreateBodyAssetsFaceMappingsItem,
 } from "./v1-face-swap-create-body-assets-face-mappings-item";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used

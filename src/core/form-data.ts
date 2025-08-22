@@ -1,4 +1,4 @@
-import { type ReadStream as NodeReadStream } from "node:fs";
+import type { ReadStream as NodeReadStream } from "node:fs";
 import { RUNTIME } from "./runtime";
 
 export type UploadFile = FileLike | NodeReadStream;

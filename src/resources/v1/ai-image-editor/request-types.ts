@@ -1,3 +1,5 @@
+import * as z from "zod";
+
 import { zodTransform } from "magic-hour/core";
 import {
   External$V1AiImageEditorCreateBodyAssets,
@@ -9,7 +11,6 @@ import {
   Schemas$V1AiImageEditorCreateBodyStyle,
   V1AiImageEditorCreateBodyStyle,
 } from "magic-hour/types/v1-ai-image-editor-create-body-style";
-import * as z from "zod";
 
 /**
  * CreateRequest

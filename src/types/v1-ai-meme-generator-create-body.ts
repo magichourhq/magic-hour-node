@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1AiMemeGeneratorCreateBodyStyle,
   Schemas$V1AiMemeGeneratorCreateBodyStyle,
   V1AiMemeGeneratorCreateBodyStyle,
 } from "./v1-ai-meme-generator-create-body-style";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1AiMemeGeneratorCreateBody

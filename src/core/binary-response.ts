@@ -1,4 +1,4 @@
-import { Blob as NodeBlob } from "node-fetch";
+import type { Blob as NodeBlob } from "node-fetch";
 
 export class BinaryResponse {
   content: Blob | NodeBlob;

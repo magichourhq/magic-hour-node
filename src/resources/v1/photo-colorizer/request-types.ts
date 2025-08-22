@@ -1,10 +1,11 @@
+import * as z from "zod";
+
 import { zodTransform } from "magic-hour/core";
 import {
   External$V1PhotoColorizerCreateBodyAssets,
   Schemas$V1PhotoColorizerCreateBodyAssets,
   V1PhotoColorizerCreateBodyAssets,
 } from "magic-hour/types/v1-photo-colorizer-create-body-assets";
-import * as z from "zod";
 
 /**
  * CreateRequest

@@ -1,10 +1,11 @@
+import * as z from "zod";
+
 import { zodTransform } from "magic-hour/core";
 import {
   External$V1TextToVideoCreateBodyStyle,
   Schemas$V1TextToVideoCreateBodyStyle,
   V1TextToVideoCreateBodyStyle,
 } from "magic-hour/types/v1-text-to-video-create-body-style";
-import * as z from "zod";
 
 /**
  * CreateRequest

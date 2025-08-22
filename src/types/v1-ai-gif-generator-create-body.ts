@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1AiGifGeneratorCreateBodyStyle,
   Schemas$V1AiGifGeneratorCreateBodyStyle,
   V1AiGifGeneratorCreateBodyStyle,
 } from "./v1-ai-gif-generator-create-body-style";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1AiGifGeneratorCreateBody

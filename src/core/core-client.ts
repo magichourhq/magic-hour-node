@@ -1,12 +1,12 @@
-import * as z from "zod";
-import { Response as NodeResponse } from "node-fetch";
+import type * as z from "zod";
+import type { Response as NodeResponse } from "node-fetch";
 
-import { AuthProvider } from "./auth";
+import type { AuthProvider } from "./auth";
 import { RUNTIME } from "./runtime";
 import { ApiPromise } from "./api-promise";
 import { ApiError } from "./api-error";
 import { createForm } from "./form-data";
-import { encodeQueryParam, QueryStyle } from "./query";
+import { encodeQueryParam, type QueryStyle } from "./query";
 import {
   JSON_PATTERN,
   TEXT_PATTERN,
@@ -17,6 +17,7 @@ import {
 export interface CoreClientProps {
   baseUrl: string | Record<string, string | undefined>;
   timeout?: number | undefined;
+  auths?: Record<string, AuthProvider>;
 }
 
 export type ApiResponse = Response | NodeResponse;
@@ -54,19 +55,14 @@ export class CoreClient {
   private baseUrl: Record<string, string | undefined>;
   private auths: Record<string, AuthProvider>;
   private timeout: number | undefined;
-  // private agent: any // TODO
 
   constructor(props: CoreClientProps) {
     this.baseUrl =
       typeof props.baseUrl === "string"
         ? { [_DEFAULT_SERVICE_NAME]: props.baseUrl }
         : props.baseUrl;
-    this.auths = {};
+    this.auths = props.auths ?? {};
     this.timeout = props.timeout;
-  }
-
-  registerAuth(name: string, provider: AuthProvider) {
-    this.auths[name] = provider;
   }
 
   private async applyAuths(cfg: RequestConfig): Promise<RequestConfig> {

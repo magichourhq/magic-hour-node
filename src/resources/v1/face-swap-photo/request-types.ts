@@ -1,10 +1,11 @@
+import * as z from "zod";
+
 import { zodTransform } from "magic-hour/core";
 import {
   External$V1FaceSwapPhotoCreateBodyAssets,
   Schemas$V1FaceSwapPhotoCreateBodyAssets,
   V1FaceSwapPhotoCreateBodyAssets,
 } from "magic-hour/types/v1-face-swap-photo-create-body-assets";
-import * as z from "zod";
 
 /**
  * CreateRequest

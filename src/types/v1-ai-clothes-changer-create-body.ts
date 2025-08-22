@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1AiClothesChangerCreateBodyAssets,
   Schemas$V1AiClothesChangerCreateBodyAssets,
   V1AiClothesChangerCreateBodyAssets,
 } from "./v1-ai-clothes-changer-create-body-assets";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * V1AiClothesChangerCreateBody
