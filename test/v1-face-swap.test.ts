@@ -29,6 +29,7 @@ describe("tests client.v1.faceSwap.create", () => {
             height: 123,
             name: "Face Swap video",
             startSeconds: 0.0,
+            style: { version: "default" },
             width: 123,
           })
           .asResponse(),
@@ -50,6 +51,7 @@ describe("tests client.v1.faceSwap.create", () => {
           height: 123,
           name: "Face Swap video",
           startSeconds: 0.0,
+          style: { version: "default" },
           width: 123,
         }),
       ]);
