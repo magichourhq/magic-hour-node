@@ -8,9 +8,6 @@ import {
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/image-projects/request-types";
 import { Schemas$V1ImageProjectsGetResponse } from "magic-hour/types/v1-image-projects-get-response";
-import * as fs from "fs";
-import * as path from "path";
-import fetch from "node-fetch";
 import { downloadFiles } from "magic-hour/helpers/download";
 import { sleep } from "magic-hour/helpers/sleep";
 
