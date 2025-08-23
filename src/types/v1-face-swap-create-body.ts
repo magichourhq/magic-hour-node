@@ -1,10 +1,17 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1FaceSwapCreateBodyAssets,
   Schemas$V1FaceSwapCreateBodyAssets,
   V1FaceSwapCreateBodyAssets,
 } from "./v1-face-swap-create-body-assets";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
+import {
+  External$V1FaceSwapCreateBodyStyle,
+  Schemas$V1FaceSwapCreateBodyStyle,
+  V1FaceSwapCreateBodyStyle,
+} from "./v1-face-swap-create-body-style";
 
 /**
  * V1FaceSwapCreateBody
@@ -37,6 +44,10 @@ export type V1FaceSwapCreateBody = {
    */
   startSeconds: number;
   /**
+   * Style of the face swap video.
+   */
+  style?: V1FaceSwapCreateBodyStyle | undefined;
+  /**
    * `width` is deprecated and no longer influences the output video's resolution.
    *
    * Output resolution is determined by the **minimum** of:
@@ -59,6 +70,7 @@ export type External$V1FaceSwapCreateBody = {
   height?: number | null | undefined;
   name?: string | undefined;
   start_seconds: number;
+  style?: External$V1FaceSwapCreateBodyStyle | undefined;
   width?: number | null | undefined;
 };
 
@@ -76,6 +88,7 @@ const SchemaIn$V1FaceSwapCreateBody: z.ZodType<
     height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
+    style: Schemas$V1FaceSwapCreateBodyStyle.in.optional(),
     width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
@@ -85,6 +98,7 @@ const SchemaIn$V1FaceSwapCreateBody: z.ZodType<
       height: "height",
       name: "name",
       start_seconds: "startSeconds",
+      style: "style",
       width: "width",
     });
   });
@@ -104,6 +118,7 @@ const SchemaOut$V1FaceSwapCreateBody: z.ZodType<
     height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
+    style: Schemas$V1FaceSwapCreateBodyStyle.out.optional(),
     width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
@@ -113,6 +128,7 @@ const SchemaOut$V1FaceSwapCreateBody: z.ZodType<
       height: "height",
       name: "name",
       startSeconds: "start_seconds",
+      style: "style",
       width: "width",
     });
   });

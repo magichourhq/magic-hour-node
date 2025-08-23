@@ -12,12 +12,37 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      #-----------------------------------------
+      #  -----  checkout & setup node  -----
+      #-----------------------------------------
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v3
+        id: setup-node
         with:
-          node-version: "22.x"
           registry-url: "https://registry.npmjs.org"
-      - run: npm ci
-      - run: npm publish
+          cache: "npm"
+      #----------------------------------------
+      #  -----  install dependencies -----
+      #----------------------------------------
+      - name: install dependencies
+        run: npm install
+      #-------------------------
+      #  -----  publish -----
+      #-------------------------
+      - name: build & publish
+        run: |
+          npm run build
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      #----------------------------------------------
+      #  -----  mark SDK as released in Sideko  -----
+      #----------------------------------------------
+      - name: install sideko cli
+        run: npm install -g @sideko/cli
+      - name: mark sdk as released
+        env:
+          SIDEKO_API_KEY: ${{ secrets.SIDEKO_API_KEY }}
+        run: sideko sdk released

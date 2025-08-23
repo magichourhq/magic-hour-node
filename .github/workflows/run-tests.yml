@@ -23,15 +23,6 @@ jobs:
         id: setup-node
         with:
           cache: "npm"
-      #-------------------------------------------------------
-      #  -----  load cached node_modules if cache exists -----
-      #-------------------------------------------------------
-      - name: load cached node modules
-        id: cached-poetry-dependencies
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: node-mods-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       #---------------------------------------------------------------
       #  -----  install dependencies -----
       #---------------------------------------------------------------

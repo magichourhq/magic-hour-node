@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { isUploadFile, UploadFile } from "./form-data";
+import { isUploadFile, type UploadFile } from "./form-data";
 
 /**
  * Generic function to transform an objects keys from one string to another.
@@ -11,7 +11,7 @@ export function zodTransform<
   Input extends Record<string, unknown>,
   const Transformer extends { [k in keyof Input]?: string | null },
 >(input: Input, transformer: Transformer) {
-  let transformed: any = {};
+  const transformed: any = {};
 
   for (const [key, val] of Object.entries(input)) {
     const toKey = transformer[key];

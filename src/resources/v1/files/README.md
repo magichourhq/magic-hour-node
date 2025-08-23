@@ -1,3 +1,6 @@
+# v1-files
+
+<!-- CUSTOM DOCS START -->
 ### File Uploading
 
 The client provides an easy way to upload media files to Magic Hour's cloud storage. Once uploaded, files receive a unique path that can be referenced across other Magic Hour API endpoints.
@@ -34,3 +37,9 @@ async function uploadExamples() {
 
 uploadExamples();
 ```
+<!-- CUSTOM DOCS END -->
+
+## Submodules
+- [upload-urls](upload-urls/README.md) - upload-urls
+
+

@@ -1,6 +1,6 @@
 {
   "name": "magic-hour",
-  "version": "0.35.0",
+  "version": "0.36.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -44,7 +44,8 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
-    "typescript": "^5.2.0"
+    "typescript": "^5.2.0",
+    "@biomejs/biome": "2.2.0"
   },
   "description": "Node SDK for Magic Hour API",
   "keywords": [

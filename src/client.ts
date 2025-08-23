@@ -20,13 +20,15 @@ export class Client {
     this._client = new CoreClient({
       baseUrl: opts?.baseUrl ?? opts?.environment ?? Environment.Environment,
       timeout: opts?.timeout,
+      auths: { bearerAuth: new AuthBearer(opts?.token) },
     });
-    this._opts = { lazyLoad: opts?.lazyLoad };
-    this._client.registerAuth("bearerAuth", new AuthBearer(opts?.token));
+    this._opts = opts ?? {};
+
     if (this._opts.lazyLoad === false) {
       this.v1;
     }
   }
+
   get v1(): V1Client {
     return (
       this._v1Lazy ??

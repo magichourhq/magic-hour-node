@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
   Schemas$V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
   V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
 } from "./v1-face-swap-photo-create-body-assets-face-mappings-item";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * Provide the assets for face swap photo

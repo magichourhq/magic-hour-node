@@ -32,6 +32,9 @@ const client = new Client({
 
 ## Module Documentation and Snippets
 
+### [v1](src/resources/v1/README.md)
+
+
 ### [v1.aiClothesChanger](src/resources/v1/ai-clothes-changer/README.md)
 
 * [create](src/resources/v1/ai-clothes-changer/README.md#create) - AI Clothes Changer
@@ -96,6 +99,9 @@ const client = new Client({
 ### [v1.faceSwapPhoto](src/resources/v1/face-swap-photo/README.md)
 
 * [create](src/resources/v1/face-swap-photo/README.md#create) - Face Swap Photo
+
+### [v1.files](src/resources/v1/files/README.md)
+
 
 ### [v1.files.uploadUrls](src/resources/v1/files/upload-urls/README.md)
 

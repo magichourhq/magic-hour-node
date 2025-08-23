@@ -1,10 +1,12 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig,
   Schemas$V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig,
   V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig,
 } from "./v1-auto-subtitle-generator-create-body-style-custom-config";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * Style of the subtitle. At least one of `.style.template` or `.style.custom_config` must be provided.

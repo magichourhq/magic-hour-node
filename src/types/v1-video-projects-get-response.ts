@@ -1,3 +1,7 @@
+import * as z from "zod";
+
+import { zodTransform } from "magic-hour/core";
+
 import {
   External$V1VideoProjectsGetResponseDownload,
   Schemas$V1VideoProjectsGetResponseDownload,
@@ -13,8 +17,6 @@ import {
   Schemas$V1VideoProjectsGetResponseError,
   V1VideoProjectsGetResponseError,
 } from "./v1-video-projects-get-response-error";
-import { zodTransform } from "magic-hour/core";
-import * as z from "zod";
 
 /**
  * Success
