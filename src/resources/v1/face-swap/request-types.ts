@@ -6,6 +6,11 @@ import {
   Schemas$V1FaceSwapCreateBodyAssets,
   V1FaceSwapCreateBodyAssets,
 } from "magic-hour/types/v1-face-swap-create-body-assets";
+import {
+  External$V1FaceSwapCreateBodyStyle,
+  Schemas$V1FaceSwapCreateBodyStyle,
+  V1FaceSwapCreateBodyStyle,
+} from "magic-hour/types/v1-face-swap-create-body-style";
 
 /**
  * CreateRequest
@@ -38,6 +43,10 @@ export type CreateRequest = {
    */
   startSeconds: number;
   /**
+   * Style of the face swap video.
+   */
+  style?: V1FaceSwapCreateBodyStyle | undefined;
+  /**
    * `width` is deprecated and no longer influences the output video's resolution.
    *
    * Output resolution is determined by the **minimum** of:
@@ -60,6 +69,7 @@ export type External$CreateRequest = {
   height?: number | null | undefined;
   name?: string | undefined;
   start_seconds: number;
+  style?: External$V1FaceSwapCreateBodyStyle | undefined;
   width?: number | null | undefined;
 };
 
@@ -77,6 +87,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
+    style: Schemas$V1FaceSwapCreateBodyStyle.in.optional(),
     width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
@@ -86,6 +97,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       height: "height",
       name: "name",
       start_seconds: "startSeconds",
+      style: "style",
       width: "width",
     });
   });
@@ -105,6 +117,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     height: z.number().int().nullable().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
+    style: Schemas$V1FaceSwapCreateBodyStyle.out.optional(),
     width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
@@ -114,6 +127,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       height: "height",
       name: "name",
       startSeconds: "start_seconds",
+      style: "style",
       width: "width",
     });
   });
