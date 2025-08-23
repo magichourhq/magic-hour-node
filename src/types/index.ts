@@ -68,6 +68,8 @@ export { V1FaceSwapCreateBodyAssets } from "./v1-face-swap-create-body-assets";
 export { V1FaceSwapCreateBodyAssetsFaceMappingsItem } from "./v1-face-swap-create-body-assets-face-mappings-item";
 export { V1FaceSwapCreateBodyAssetsFaceSwapModeEnum } from "./v1-face-swap-create-body-assets-face-swap-mode-enum";
 export { V1FaceSwapCreateBodyAssetsVideoSourceEnum } from "./v1-face-swap-create-body-assets-video-source-enum";
+export { V1FaceSwapCreateBodyStyle } from "./v1-face-swap-create-body-style";
+export { V1FaceSwapCreateBodyStyleVersionEnum } from "./v1-face-swap-create-body-style-version-enum";
 export { V1FaceSwapCreateResponse } from "./v1-face-swap-create-response";
 export { V1FaceSwapPhotoCreateBody } from "./v1-face-swap-photo-create-body";
 export { V1FaceSwapPhotoCreateBodyAssets } from "./v1-face-swap-photo-create-body-assets";
