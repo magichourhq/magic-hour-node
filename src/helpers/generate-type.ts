@@ -1,5 +1,8 @@
 import { RequestOptions } from "magic-hour/core";
 
+/**
+ * Options for the `generate` method.
+ */
 export type GenerateOptions = RequestOptions & {
   /**
    * Whether to wait for the generation to complete before returning the result.
