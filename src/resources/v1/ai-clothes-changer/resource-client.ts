@@ -9,12 +9,12 @@ import {
 import * as requests from "magic-hour/resources/v1/ai-clothes-changer/request-types";
 import { Schemas$V1AiClothesChangerCreateBody } from "magic-hour/types/v1-ai-clothes-changer-create-body";
 import { Schemas$V1AiClothesChangerCreateResponse } from "magic-hour/types/v1-ai-clothes-changer-create-response";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects/resource-client";
-import { FilesClient } from "../files";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import {
   GenerateOptions,
   GenerateRequestType,
-} from "../../../helpers/generate-type";
+} from "magic-hour/helpers/generate-type";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
