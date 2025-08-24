@@ -23,8 +23,21 @@ export type GenerateOptions = RequestOptions & {
 
 type WithoutFilePathKeys<T> = Omit<T, `${string}FilePath`>;
 
+/**
+ * A type that allows you to override the assets of a request.
+ *
+ * This is necessary for file_path fields, which we now support local paths.
+ *
+ * @example
+ * ```ts
+ * type GenerateRequest = GenerateRequestType<requests.CreateRequest, {
+ *   // custom jsdoc for the asset field
+ *   garmentFilePath: string;
+ * }>;
+ * ```
+ */
 export type GenerateRequestType<
-  CreateRequest extends { assets: any },
+  CreateRequest extends { assets: Record<string, any> },
   AssetOverrides,
 > = Omit<CreateRequest, "assets"> & {
   assets: Omit<CreateRequest["assets"], `${string}FilePath`> & AssetOverrides;

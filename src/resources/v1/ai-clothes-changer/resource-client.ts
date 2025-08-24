@@ -50,8 +50,6 @@ export class AiClothesChangerClient extends CoreResourceClient {
    * This method provides a convenient way to create a clothes changer request and automatically
    * wait for completion and download outputs.
    *
-   * POST /v1/ai-clothes-changer
-   *
    * @example
    * ```ts
    * const result = await client.v1.aiClothesChanger.generate({
