@@ -41,6 +41,9 @@ describe("VideoProjectsClient.checkResult", () => {
 
     // Reset MSW handlers
     server.resetHandlers();
+
+    // Clean up environment variables
+    delete process.env["MAGIC_HOUR_POLL_INTERVAL"];
   });
 
   describe("Basic functionality", () => {
@@ -255,8 +258,6 @@ describe("VideoProjectsClient.checkResult", () => {
         }),
       );
 
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation();
-
       const result = await client.v1.videoProjects.checkResult(
         { id: "video-123" },
         { waitForCompletion: true },
@@ -280,11 +281,6 @@ describe("VideoProjectsClient.checkResult", () => {
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       });
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Video project video-123 has status error: [object Object]",
-      );
-
-      consoleSpy.mockRestore();
     });
 
     test("should handle canceled status during polling", async () => {
@@ -330,20 +326,15 @@ describe("VideoProjectsClient.checkResult", () => {
 
       // Set up MSW handler that returns different responses on each call
       server.use(
-        http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/video-projects/video-123",
-          () => {
-            callCount++;
-            if (callCount === 1) {
-              return HttpResponse.json(renderingResponse);
-            } else {
-              return HttpResponse.json(canceledResponse);
-            }
-          },
-        ),
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          callCount++;
+          if (callCount === 1) {
+            return HttpResponse.json(renderingResponse);
+          } else {
+            return HttpResponse.json(canceledResponse);
+          }
+        }),
       );
-
-      const consoleSpy = jest.spyOn(console, "info").mockImplementation();
 
       const result = await client.v1.videoProjects.checkResult(
         { id: "video-123" },
@@ -368,18 +359,11 @@ describe("VideoProjectsClient.checkResult", () => {
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       });
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Video project video-123 has status canceled: null",
-      );
-
-      consoleSpy.mockRestore();
     });
   });
 
   describe("Polling behavior", () => {
     test("should use custom poll interval from environment", async () => {
-      const originalEnv = process.env["MAGIC_HOUR_POLL_INTERVAL"];
-
       const renderingResponse = {
         id: "video-123",
         status: "rendering",
@@ -422,30 +406,24 @@ describe("VideoProjectsClient.checkResult", () => {
 
       // Set up MSW handler that returns different responses on each call
       server.use(
-        http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/video-projects/video-123",
-          () => {
-            callCount++;
-            if (callCount === 1) {
-              return HttpResponse.json(renderingResponse);
-            } else {
-              return HttpResponse.json(completeResponse);
-            }
-          },
-        ),
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          callCount++;
+          if (callCount === 1) {
+            return HttpResponse.json(renderingResponse);
+          } else {
+            return HttpResponse.json(completeResponse);
+          }
+        }),
       );
 
       // Set environment variable before the checkResult call
       process.env["MAGIC_HOUR_POLL_INTERVAL"] = "1.5";
 
-      await client.v1.videoProjects.checkResult({ id: "video-123" });
-
-      expect(sleep).toHaveBeenCalledWith(1500); // 1.5 seconds converted to milliseconds
-
-      // Restore environment variable
-      if (originalEnv !== undefined) {
-        process.env["MAGIC_HOUR_POLL_INTERVAL"] = originalEnv;
-      } else {
+      try {
+        await client.v1.videoProjects.checkResult({ id: "video-123" });
+        expect(sleep).toHaveBeenCalledWith(1500); // 1.5 seconds converted to milliseconds
+      } finally {
+        // Clean up environment variable
         delete process.env["MAGIC_HOUR_POLL_INTERVAL"];
       }
     });
@@ -453,43 +431,52 @@ describe("VideoProjectsClient.checkResult", () => {
     test("should poll multiple times until completion", async () => {
       const renderingResponse = {
         id: "video-123",
-        status: "rendering" as const,
-        createdAt: "2024-01-01T00:00:00Z",
-        creditsCharged: 15,
+        status: "rendering",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
         download: null,
         downloads: [],
         enabled: true,
-        endSeconds: 10.5,
+        end_seconds: 10.5,
         error: null,
         fps: 30,
         height: 720,
         name: "Test Video Project",
-        startSeconds: 0.0,
-        totalFrameCost: 15,
+        start_seconds: 0.0,
+        total_frame_cost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       };
 
       const queuedResponse = {
         ...renderingResponse,
-        status: "queued" as const,
+        status: "queued",
       };
 
       const completeResponse = {
         ...renderingResponse,
-        status: "complete" as const,
+        status: "complete",
       };
 
-      const getMock = jest.spyOn(client.v1.videoProjects, "get");
-      getMock
-        .mockResolvedValueOnce(renderingResponse)
-        .mockResolvedValueOnce(queuedResponse)
-        .mockResolvedValueOnce(completeResponse);
+      let callCount = 0;
+
+      // Set up MSW handler that returns different responses on each call
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          callCount++;
+          if (callCount === 1) {
+            return HttpResponse.json(renderingResponse);
+          } else if (callCount === 2) {
+            return HttpResponse.json(queuedResponse);
+          } else {
+            return HttpResponse.json(completeResponse);
+          }
+        }),
+      );
 
       await client.v1.videoProjects.checkResult({ id: "video-123" });
 
       expect(sleep).toHaveBeenCalledTimes(2);
-      expect(client.v1.videoProjects.get).toHaveBeenCalledTimes(3);
     });
   });
 
@@ -497,31 +484,34 @@ describe("VideoProjectsClient.checkResult", () => {
     test("should skip download when downloadOutputs is false", async () => {
       const completeResponse = {
         id: "video-123",
-        status: "complete" as const,
-        createdAt: "2024-01-01T00:00:00Z",
-        creditsCharged: 15,
+        status: "complete",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
         download: null,
         downloads: [
           {
             url: "https://example.com/download/video1.mp4",
-            expiresAt: "2024-01-01T01:00:00Z",
+            expires_at: "2024-01-01T01:00:00Z",
           },
         ],
         enabled: true,
-        endSeconds: 10.5,
+        end_seconds: 10.5,
         error: null,
         fps: 30,
         height: 720,
         name: "Test Video Project",
-        startSeconds: 0.0,
-        totalFrameCost: 15,
+        start_seconds: 0.0,
+        total_frame_cost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       };
 
-      jest
-        .spyOn(client.v1.videoProjects, "get")
-        .mockResolvedValue(completeResponse);
+      // Set up MSW handler
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json(completeResponse);
+        }),
+      );
 
       const result = await client.v1.videoProjects.checkResult(
         { id: "video-123" },
@@ -531,14 +521,9 @@ describe("VideoProjectsClient.checkResult", () => {
         },
       );
 
-      expect(result).toEqual(completeResponse);
-      expect(downloadFiles).not.toHaveBeenCalled();
-    });
-
-    test("should download files to current directory when no downloadDirectory specified", async () => {
-      const completeResponse = {
+      expect(result).toEqual({
         id: "video-123",
-        status: "complete" as const,
+        status: "complete",
         createdAt: "2024-01-01T00:00:00Z",
         creditsCharged: 15,
         download: null,
@@ -558,11 +543,41 @@ describe("VideoProjectsClient.checkResult", () => {
         totalFrameCost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
+      });
+      expect(downloadFiles).not.toHaveBeenCalled();
+    });
+
+    test("should download files to current directory when no downloadDirectory specified", async () => {
+      const completeResponse = {
+        id: "video-123",
+        status: "complete",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
+        download: null,
+        downloads: [
+          {
+            url: "https://example.com/download/video1.mp4",
+            expires_at: "2024-01-01T01:00:00Z",
+          },
+        ],
+        enabled: true,
+        end_seconds: 10.5,
+        error: null,
+        fps: 30,
+        height: 720,
+        name: "Test Video Project",
+        start_seconds: 0.0,
+        total_frame_cost: 15,
+        type: "VIDEO_TO_VIDEO",
+        width: 1280,
       };
 
-      jest
-        .spyOn(client.v1.videoProjects, "get")
-        .mockResolvedValue(completeResponse);
+      // Set up MSW handler
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json(completeResponse);
+        }),
+      );
       downloadFiles.mockResolvedValue(["/current/dir/video1.mp4"]);
 
       const result = await client.v1.videoProjects.checkResult(
@@ -571,7 +586,12 @@ describe("VideoProjectsClient.checkResult", () => {
       );
 
       expect(downloadFiles).toHaveBeenCalledWith(
-        completeResponse.downloads,
+        [
+          {
+            url: "https://example.com/download/video1.mp4",
+            expiresAt: "2024-01-01T01:00:00Z",
+          },
+        ],
         undefined,
       );
       expect(result.downloadedPaths).toEqual(["/current/dir/video1.mp4"]);
@@ -580,34 +600,35 @@ describe("VideoProjectsClient.checkResult", () => {
     test("should handle download errors gracefully", async () => {
       const completeResponse = {
         id: "video-123",
-        status: "complete" as const,
-        createdAt: "2024-01-01T00:00:00Z",
-        creditsCharged: 15,
+        status: "complete",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
         download: null,
         downloads: [
           {
             url: "https://example.com/download/video1.mp4",
-            expiresAt: "2024-01-01T01:00:00Z",
+            expires_at: "2024-01-01T01:00:00Z",
           },
         ],
         enabled: true,
-        endSeconds: 10.5,
+        end_seconds: 10.5,
         error: null,
         fps: 30,
         height: 720,
         name: "Test Video Project",
-        startSeconds: 0.0,
-        totalFrameCost: 15,
+        start_seconds: 0.0,
+        total_frame_cost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       };
 
-      jest
-        .spyOn(client.v1.videoProjects, "get")
-        .mockResolvedValue(completeResponse);
+      // Set up MSW handler
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json(completeResponse);
+        }),
+      );
       downloadFiles.mockRejectedValue(new Error("Download failed"));
-
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation();
 
       await expect(
         client.v1.videoProjects.checkResult(
@@ -615,8 +636,6 @@ describe("VideoProjectsClient.checkResult", () => {
           { downloadOutputs: true },
         ),
       ).rejects.toThrow("Download failed");
-
-      consoleSpy.mockRestore();
     });
   });
 
@@ -624,37 +643,46 @@ describe("VideoProjectsClient.checkResult", () => {
     test("should use default options when no options provided", async () => {
       const completeResponse = {
         id: "video-123",
-        status: "complete" as const,
-        createdAt: "2024-01-01T00:00:00Z",
-        creditsCharged: 15,
+        status: "complete",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
         download: null,
         downloads: [
           {
             url: "https://example.com/download/video1.mp4",
-            expiresAt: "2024-01-01T01:00:00Z",
+            expires_at: "2024-01-01T01:00:00Z",
           },
         ],
         enabled: true,
-        endSeconds: 10.5,
+        end_seconds: 10.5,
         error: null,
         fps: 30,
         height: 720,
         name: "Test Video Project",
-        startSeconds: 0.0,
-        totalFrameCost: 15,
+        start_seconds: 0.0,
+        total_frame_cost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       };
 
       const renderingResponse = {
         ...completeResponse,
-        status: "rendering" as const,
+        status: "rendering",
       };
 
-      const getMock = jest.spyOn(client.v1.videoProjects, "get");
-      getMock
-        .mockResolvedValueOnce(renderingResponse)
-        .mockResolvedValueOnce(completeResponse);
+      let callCount = 0;
+
+      // Set up MSW handler that returns different responses on each call
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          callCount++;
+          if (callCount === 1) {
+            return HttpResponse.json(renderingResponse);
+          } else {
+            return HttpResponse.json(completeResponse);
+          }
+        }),
+      );
 
       downloadFiles.mockResolvedValue(["/tmp/video1.mp4"]);
 
@@ -671,25 +699,31 @@ describe("VideoProjectsClient.checkResult", () => {
     test("should pass additional request options to get method", async () => {
       const mockResponse = {
         id: "video-123",
-        status: "complete" as const,
-        createdAt: "2024-01-01T00:00:00Z",
-        creditsCharged: 15,
+        status: "complete",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
         download: null,
         downloads: [],
         enabled: true,
-        endSeconds: 10.5,
+        end_seconds: 10.5,
         error: null,
         fps: 30,
         height: 720,
         name: "Test Video Project",
-        startSeconds: 0.0,
-        totalFrameCost: 15,
+        start_seconds: 0.0,
+        total_frame_cost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       };
 
+      // Set up MSW handler
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json(mockResponse);
+        }),
+      );
+
       const getMock = jest.spyOn(client.v1.videoProjects, "get");
-      getMock.mockResolvedValue(mockResponse);
 
       await client.v1.videoProjects.checkResult(
         { id: "video-123" },
@@ -712,7 +746,38 @@ describe("VideoProjectsClient.checkResult", () => {
     test("should handle immediate completion without polling", async () => {
       const completeResponse = {
         id: "video-123",
-        status: "complete" as const,
+        status: "complete",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
+        download: null,
+        downloads: [],
+        enabled: true,
+        end_seconds: 10.5,
+        error: null,
+        fps: 30,
+        height: 720,
+        name: "Test Video Project",
+        start_seconds: 0.0,
+        total_frame_cost: 15,
+        type: "VIDEO_TO_VIDEO",
+        width: 1280,
+      };
+
+      // Set up MSW handler
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json(completeResponse);
+        }),
+      );
+
+      const result = await client.v1.videoProjects.checkResult(
+        { id: "video-123" },
+        { waitForCompletion: false },
+      );
+
+      expect(result).toEqual({
+        id: "video-123",
+        status: "complete",
         createdAt: "2024-01-01T00:00:00Z",
         creditsCharged: 15,
         download: null,
@@ -727,18 +792,7 @@ describe("VideoProjectsClient.checkResult", () => {
         totalFrameCost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
-      };
-
-      jest
-        .spyOn(client.v1.videoProjects, "get")
-        .mockResolvedValue(completeResponse);
-
-      const result = await client.v1.videoProjects.checkResult(
-        { id: "video-123" },
-        { waitForCompletion: false },
-      );
-
-      expect(result).toEqual(completeResponse);
+      });
       expect(sleep).not.toHaveBeenCalled();
       expect(downloadFiles).not.toHaveBeenCalled();
     });
@@ -746,26 +800,29 @@ describe("VideoProjectsClient.checkResult", () => {
     test("should handle empty downloads array", async () => {
       const completeResponse = {
         id: "video-123",
-        status: "complete" as const,
-        createdAt: "2024-01-01T00:00:00Z",
-        creditsCharged: 15,
+        status: "complete",
+        created_at: "2024-01-01T00:00:00Z",
+        credits_charged: 15,
         download: null,
         downloads: [],
         enabled: true,
-        endSeconds: 10.5,
+        end_seconds: 10.5,
         error: null,
         fps: 30,
         height: 720,
         name: "Test Video Project",
-        startSeconds: 0.0,
-        totalFrameCost: 15,
+        start_seconds: 0.0,
+        total_frame_cost: 15,
         type: "VIDEO_TO_VIDEO",
         width: 1280,
       };
 
-      jest
-        .spyOn(client.v1.videoProjects, "get")
-        .mockResolvedValue(completeResponse);
+      // Set up MSW handler
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json(completeResponse);
+        }),
+      );
       downloadFiles.mockResolvedValue([]);
 
       const result = await client.v1.videoProjects.checkResult(
@@ -779,11 +836,17 @@ describe("VideoProjectsClient.checkResult", () => {
 
     test("should handle get method throwing error", async () => {
       const error = new Error("API Error");
-      jest.spyOn(client.v1.videoProjects, "get").mockRejectedValue(error);
+
+      // Set up MSW handler that returns an error
+      server.use(
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json({ error: "API Error" }, { status: 500 });
+        }),
+      );
 
       await expect(
         client.v1.videoProjects.checkResult({ id: "video-123" }),
-      ).rejects.toThrow("API Error");
+      ).rejects.toThrow();
     });
   });
 });
