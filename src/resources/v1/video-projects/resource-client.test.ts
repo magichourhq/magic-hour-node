@@ -34,7 +34,6 @@ describe("VideoProjectsClient.checkResult", () => {
   beforeEach(() => {
     client = new Client({
       token: "API_TOKEN",
-      environment: Environment.MockServer,
     });
 
     // Reset all mocks
@@ -67,12 +66,9 @@ describe("VideoProjectsClient.checkResult", () => {
 
       // Set up MSW handler for the API call
       server.use(
-        http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/video-projects/video-123",
-          () => {
-            return HttpResponse.json(mockResponse);
-          },
-        ),
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          return HttpResponse.json(mockResponse);
+        }),
       );
 
       const result = await client.v1.videoProjects.checkResult(
@@ -149,17 +145,14 @@ describe("VideoProjectsClient.checkResult", () => {
 
       // Set up MSW handler that returns different responses on each call
       server.use(
-        http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/video-projects/video-123",
-          () => {
-            callCount++;
-            if (callCount === 1) {
-              return HttpResponse.json(renderingResponse);
-            } else {
-              return HttpResponse.json(completeResponse);
-            }
-          },
-        ),
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          callCount++;
+          if (callCount === 1) {
+            return HttpResponse.json(renderingResponse);
+          } else {
+            return HttpResponse.json(completeResponse);
+          }
+        }),
       );
 
       downloadFiles.mockResolvedValue(["/tmp/video1.mp4"]);
@@ -252,17 +245,14 @@ describe("VideoProjectsClient.checkResult", () => {
 
       // Set up MSW handler that returns different responses on each call
       server.use(
-        http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/video-projects/video-123",
-          () => {
-            callCount++;
-            if (callCount === 1) {
-              return HttpResponse.json(renderingResponse);
-            } else {
-              return HttpResponse.json(errorResponse);
-            }
-          },
-        ),
+        http.get("https://api.magichour.ai/v1/video-projects/video-123", () => {
+          callCount++;
+          if (callCount === 1) {
+            return HttpResponse.json(renderingResponse);
+          } else {
+            return HttpResponse.json(errorResponse);
+          }
+        }),
       );
 
       const consoleSpy = jest.spyOn(console, "error").mockImplementation();

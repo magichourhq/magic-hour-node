@@ -34,7 +34,6 @@ describe("ImageProjectsClient.checkResult", () => {
   beforeEach(() => {
     client = new Client({
       token: "API_TOKEN",
-      environment: Environment.MockServer,
     });
 
     // Reset all mocks
@@ -63,7 +62,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler for the API call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             return HttpResponse.json(mockResponse);
           },
@@ -130,7 +129,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
@@ -218,7 +217,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
@@ -291,7 +290,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
@@ -368,7 +367,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
