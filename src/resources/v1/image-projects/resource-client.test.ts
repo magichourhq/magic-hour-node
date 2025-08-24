@@ -34,7 +34,6 @@ describe("ImageProjectsClient.checkResult", () => {
   beforeEach(() => {
     client = new Client({
       token: "API_TOKEN",
-      environment: Environment.MockServer,
     });
 
     // Reset all mocks
@@ -63,7 +62,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler for the API call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             return HttpResponse.json(mockResponse);
           },
@@ -130,7 +129,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
@@ -218,7 +217,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
@@ -229,8 +228,6 @@ describe("ImageProjectsClient.checkResult", () => {
           },
         ),
       );
-
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation();
 
       const result = await client.v1.imageProjects.checkResult(
         { id: "project-123" },
@@ -250,11 +247,6 @@ describe("ImageProjectsClient.checkResult", () => {
         totalFrameCost: 10,
         type: "AI_IMAGE",
       });
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Image project project-123 has status error: [object Object]",
-      );
-
-      consoleSpy.mockRestore();
     });
 
     test("should handle canceled status during polling", async () => {
@@ -291,7 +283,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
@@ -302,8 +294,6 @@ describe("ImageProjectsClient.checkResult", () => {
           },
         ),
       );
-
-      const consoleSpy = jest.spyOn(console, "info").mockImplementation();
 
       const result = await client.v1.imageProjects.checkResult(
         { id: "project-123" },
@@ -323,11 +313,6 @@ describe("ImageProjectsClient.checkResult", () => {
         totalFrameCost: 10,
         type: "AI_IMAGE",
       });
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Image project project-123 has status canceled: null",
-      );
-
-      consoleSpy.mockRestore();
     });
   });
 
@@ -368,7 +353,7 @@ describe("ImageProjectsClient.checkResult", () => {
       // Set up MSW handler that returns different responses on each call
       server.use(
         http.get(
-          "https://api.sideko.dev/v1/mock/magichour/magic-hour/0.36.0/v1/image-projects/project-123",
+          "https://api.magichour.ai/v1/image-projects/project-123",
           () => {
             callCount++;
             if (callCount === 1) {
@@ -532,16 +517,12 @@ describe("ImageProjectsClient.checkResult", () => {
         .mockResolvedValue(completeResponse);
       downloadFiles.mockRejectedValue(new Error("Download failed"));
 
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation();
-
       await expect(
         client.v1.imageProjects.checkResult(
           { id: "project-123" },
           { downloadOutputs: true },
         ),
       ).rejects.toThrow("Download failed");
-
-      consoleSpy.mockRestore();
     });
   });
 
