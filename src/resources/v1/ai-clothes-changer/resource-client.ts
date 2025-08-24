@@ -11,27 +11,32 @@ import { Schemas$V1AiClothesChangerCreateBody } from "magic-hour/types/v1-ai-clo
 import { Schemas$V1AiClothesChangerCreateResponse } from "magic-hour/types/v1-ai-clothes-changer-create-response";
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects/resource-client";
 import { FilesClient } from "../files";
+import {
+  GenerateOptions,
+  GenerateRequestType,
+} from "../../../helpers/generate-type";
 
-type GenerateOptions = RequestOptions & {
-  /**
-   * Whether to wait for the generation to complete before returning the result.
-   *
-   * @default true
-   */
-  waitForCompletion?: boolean;
-  /**
-   * Whether to download the generated outputs to local disk.
-   *
-   * @default true
-   */
-  downloadOutputs?: boolean;
-  /**
-   * The directory to save the downloaded outputs.
-   *
-   * @default undefined
-   */
-  downloadDirectory?: string | undefined;
-};
+type GenerateRequest = GenerateRequestType<
+  requests.CreateRequest,
+  {
+    /**
+     * The image of the outfit. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
+    garmentFilePath: string;
+    /**
+     * The image of the person. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
+    personFilePath: string;
+  }
+>;
 
 export class AiClothesChangerClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
@@ -46,8 +51,20 @@ export class AiClothesChangerClient extends CoreResourceClient {
    * wait for completion and download outputs.
    *
    * POST /v1/ai-clothes-changer
+   *
+   * @example
+   * ```ts
+   * const result = await client.v1.aiClothesChanger.generate({
+   *   assets: {
+   *     garmentFilePath: "path/to/garment.jpg",
+   *     garmentType: "upper_body",
+   *     personFilePath: "path/to/person.jpg",
+   *   },
+   *   name: "my-clothes-changer",
+   * });
+   * ```
    */
-  async generate(request: requests.CreateRequest, opts: GenerateOptions = {}) {
+  async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
     const {
       waitForCompletion = true,
       downloadOutputs = true,
@@ -57,25 +74,25 @@ export class AiClothesChangerClient extends CoreResourceClient {
 
     const fileClient = new FilesClient(this._client, this._opts);
 
+    const { garmentFilePath, personFilePath, garmentType } = request.assets;
+
     const [uploadedGarmentFilePath, uploadedPersonFilePath] = await Promise.all(
       [
-        fileClient.uploadFile(request.assets.garmentFilePath),
-        fileClient.uploadFile(request.assets.personFilePath),
+        fileClient.uploadFile(garmentFilePath),
+        fileClient.uploadFile(personFilePath),
       ],
     );
 
-    const requestWithUploadedFiles = {
-      ...request,
-      assets: {
-        ...request.assets,
-        garmentFilePath: uploadedGarmentFilePath,
-        personFilePath: uploadedPersonFilePath,
-      },
-    };
-
     // Create the initial request
     const createResponse = await this.create(
-      requestWithUploadedFiles,
+      {
+        ...request,
+        assets: {
+          garmentType,
+          garmentFilePath: uploadedGarmentFilePath,
+          personFilePath: uploadedPersonFilePath,
+        },
+      },
       createOpts,
     );
 
