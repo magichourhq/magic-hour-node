@@ -10,6 +10,7 @@ import * as requests from "magic-hour/resources/v1/image-projects/request-types"
 import { Schemas$V1ImageProjectsGetResponse } from "magic-hour/types/v1-image-projects-get-response";
 import { downloadFiles } from "magic-hour/helpers/download";
 import { sleep } from "magic-hour/helpers/sleep";
+import { GenerateOptions } from "magic-hour/helpers/generate-type";
 
 /**
  * Extended response interface that includes downloaded paths
@@ -40,21 +41,7 @@ export class ImageProjectsClient extends CoreResourceClient {
    */
   async checkResult(
     request: requests.GetRequest,
-    opts?: RequestOptions & {
-      /**
-       * Whether to wait for the image project to complete
-       */
-      waitForCompletion?: boolean;
-      /**
-       * Whether to download the outputs
-       */
-      downloadOutputs?: boolean;
-      /**
-       * The directory to download the outputs to. If not provided,
-       * the outputs will be downloaded to the current working directory
-       */
-      downloadDirectory?: string | undefined;
-    },
+    opts?: GenerateOptions,
   ): Promise<V1ImageProjectsGetResponseWithDownloads> {
     const {
       waitForCompletion = true,
