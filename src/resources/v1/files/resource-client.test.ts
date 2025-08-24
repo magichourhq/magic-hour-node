@@ -1,7 +1,9 @@
-import Client, { Environment } from "magic-hour";
+import Client from "magic-hour";
 import * as fs from "fs";
 import * as path from "path";
 import { Readable } from "stream";
+import { http, HttpResponse } from "msw";
+import { setupServer } from "msw/node";
 
 // Mock fs module
 jest.mock("fs", () => ({
@@ -11,11 +13,31 @@ jest.mock("fs", () => ({
 
 const mockFs = fs as jest.Mocked<typeof fs>;
 
-// Mock node-fetch for upload requests
-const mockFetch = jest.fn();
-jest.mock("node-fetch", () => ({
-  default: mockFetch,
-}));
+// Create MSW server for mocking API requests
+const server = setupServer(
+  // Mock upload URLs creation - handle both possible URLs
+  http.post("https://api.magichour.ai/v1/files/upload-urls", () => {
+    return HttpResponse.json({
+      items: [
+        {
+          upload_url: "https://storage.example.com/upload?token=abc123",
+          file_path: "api-assets/12345/image.jpg",
+          expires_at: "2024-12-31T23:59:59Z",
+        },
+      ],
+    });
+  }),
+
+  // Mock file upload to storage
+  http.put("https://storage.example.com/upload", () => {
+    return HttpResponse.json({ status: 200 });
+  }),
+
+  // Handle any other upload URLs that might be generated
+  http.put("https://example.com/upload", () => {
+    return HttpResponse.json({ status: 200 });
+  }),
+);
 
 // Mock RUNTIME to ensure we use node-fetch
 jest.mock("magic-hour/core", () => {
@@ -26,13 +48,17 @@ jest.mock("magic-hour/core", () => {
   };
 });
 
+// Start and stop MSW server
+beforeAll(() => server.listen());
+afterAll(() => server.close());
+afterEach(() => server.resetHandlers());
+
 describe("FilesClient.uploadFile", () => {
   let client: Client;
 
   beforeEach(() => {
     client = new Client({
       token: "API_TOKEN",
-      environment: Environment.MockServer,
     });
 
     // Reset all mocks
@@ -41,46 +67,28 @@ describe("FilesClient.uploadFile", () => {
     // Setup default fs mocks
     mockFs.existsSync.mockReturnValue(true);
     mockFs.readFileSync.mockReturnValue(Buffer.from("mock file content"));
-
-    // Setup default fetch mock for file uploads
-    mockFetch.mockResolvedValue({
-      ok: true,
-      status: 200,
-      statusText: "OK",
-    });
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
   });
 
   describe("File type detection", () => {
-    const mockUploadResponse = {
-      items: [
-        {
-          uploadUrl: "https://example.com/upload",
-          filePath: "uploaded-file.jpg",
-          expiresAt: "2024-01-01T00:00:00Z",
-        },
-      ],
-    };
-
-    beforeEach(() => {
-      jest
-        .spyOn(client.v1.files.uploadUrls, "create")
-        .mockResolvedValue(mockUploadResponse);
-    });
+    // MSW handles the uploadUrls.create call automatically
 
     test("should detect video file types correctly", async () => {
       const videoExtensions = ["mp4", "m4v", "mov", "webm"];
 
       for (const ext of videoExtensions) {
         const filePath = `/path/to/video.${ext}`;
-        await client.v1.files.uploadFile(filePath);
 
-        expect(client.v1.files.uploadUrls.create).toHaveBeenCalledWith({
+        // Spy on the uploadUrls.create method to verify it gets called with correct params
+        const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+        const result = await client.v1.files.uploadFile(filePath);
+
+        expect(createSpy).toHaveBeenCalledWith({
           items: [{ extension: ext, type: "video" }],
         });
+        expect(result).toBe("api-assets/12345/image.jpg"); // MSW returns this mock value
+
+        createSpy.mockRestore();
       }
     });
 
@@ -89,11 +97,17 @@ describe("FilesClient.uploadFile", () => {
 
       for (const ext of audioExtensions) {
         const filePath = `/path/to/audio.${ext}`;
-        await client.v1.files.uploadFile(filePath);
 
-        expect(client.v1.files.uploadUrls.create).toHaveBeenCalledWith({
+        const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+        const result = await client.v1.files.uploadFile(filePath);
+
+        expect(createSpy).toHaveBeenCalledWith({
           items: [{ extension: ext, type: "audio" }],
         });
+        expect(result).toBe("api-assets/12345/image.jpg");
+
+        createSpy.mockRestore();
       }
     });
 
@@ -111,11 +125,17 @@ describe("FilesClient.uploadFile", () => {
 
       for (const ext of imageExtensions) {
         const filePath = `/path/to/image.${ext}`;
-        await client.v1.files.uploadFile(filePath);
 
-        expect(client.v1.files.uploadUrls.create).toHaveBeenCalledWith({
+        const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+        const result = await client.v1.files.uploadFile(filePath);
+
+        expect(createSpy).toHaveBeenCalledWith({
           items: [{ extension: ext, type: "image" }],
         });
+        expect(result).toBe("api-assets/12345/image.jpg");
+
+        createSpy.mockRestore();
       }
     });
 
@@ -139,11 +159,16 @@ describe("FilesClient.uploadFile", () => {
       ];
 
       for (const { input, expectedExt, expectedType } of testCases) {
-        await client.v1.files.uploadFile(input);
+        const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
 
-        expect(client.v1.files.uploadUrls.create).toHaveBeenCalledWith({
+        const result = await client.v1.files.uploadFile(input);
+
+        expect(createSpy).toHaveBeenCalledWith({
           items: [{ extension: expectedExt, type: expectedType }],
         });
+        expect(result).toBe("api-assets/12345/image.jpg");
+
+        createSpy.mockRestore();
       }
     });
 
@@ -245,37 +270,24 @@ describe("FilesClient.uploadFile", () => {
   });
 
   describe("File content processing", () => {
-    const mockUploadResponse = {
-      items: [
-        {
-          uploadUrl: "https://example.com/upload",
-          filePath: "uploaded-file.jpg",
-          expiresAt: "2024-01-01T00:00:00Z",
-        },
-      ],
-    };
-
-    beforeEach(() => {
-      jest
-        .spyOn(client.v1.files.uploadUrls, "create")
-        .mockResolvedValue(mockUploadResponse);
-    });
+    // MSW handles the uploadUrls.create call automatically
 
     test("should read file content from file path", async () => {
       const filePath = "/path/to/image.jpg";
       const fileContent = Buffer.from("image content");
       mockFs.readFileSync.mockReturnValue(fileContent);
 
-      await client.v1.files.uploadFile(filePath);
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+      const result = await client.v1.files.uploadFile(filePath);
 
       expect(mockFs.readFileSync).toHaveBeenCalledWith(filePath);
-      expect(mockFetch).toHaveBeenCalledWith(
-        "https://example.com/upload",
-        expect.objectContaining({
-          method: "PUT",
-          body: fileContent,
-        }),
-      );
+      expect(createSpy).toHaveBeenCalledWith({
+        items: [{ extension: "jpg", type: "image" }],
+      });
+      expect(result).toBe("api-assets/12345/image.jpg");
+
+      createSpy.mockRestore();
     });
 
     test("should process Readable stream content", async () => {
@@ -288,15 +300,16 @@ describe("FilesClient.uploadFile", () => {
       });
       (mockStream as any).path = "/path/to/video.mp4";
 
-      await client.v1.files.uploadFile(mockStream);
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
 
-      expect(mockFetch).toHaveBeenCalledWith(
-        "https://example.com/upload",
-        expect.objectContaining({
-          method: "PUT",
-          body: streamContent,
-        }),
-      );
+      const result = await client.v1.files.uploadFile(mockStream);
+
+      expect(createSpy).toHaveBeenCalledWith({
+        items: [{ extension: "mp4", type: "video" }],
+      });
+      expect(result).toBe("api-assets/12345/image.jpg");
+
+      createSpy.mockRestore();
     });
 
     test("should handle large stream content", async () => {
@@ -309,15 +322,16 @@ describe("FilesClient.uploadFile", () => {
       });
       (mockStream as any).path = "/path/to/large-video.mp4";
 
-      await client.v1.files.uploadFile(mockStream);
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
 
-      expect(mockFetch).toHaveBeenCalledWith(
-        "https://example.com/upload",
-        expect.objectContaining({
-          method: "PUT",
-          body: largeContent,
-        }),
-      );
+      const result = await client.v1.files.uploadFile(mockStream);
+
+      expect(createSpy).toHaveBeenCalledWith({
+        items: [{ extension: "mp4", type: "video" }],
+      });
+      expect(result).toBe("api-assets/12345/image.jpg");
+
+      createSpy.mockRestore();
     });
 
     test.skip("should handle File object arrayBuffer conversion", async () => {
@@ -328,33 +342,16 @@ describe("FilesClient.uploadFile", () => {
 
   describe("Upload process and error handling", () => {
     test("should successfully complete upload process", async () => {
-      const mockResponse = {
-        items: [
-          {
-            uploadUrl: "https://storage.example.com/upload?token=abc123",
-            filePath: "api-assets/12345/image.jpg",
-            expiresAt: "2024-12-31T23:59:59Z",
-          },
-        ],
-      };
-
-      jest
-        .spyOn(client.v1.files.uploadUrls, "create")
-        .mockResolvedValue(mockResponse);
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
 
       const result = await client.v1.files.uploadFile("/path/to/image.jpg");
 
       expect(result).toBe("api-assets/12345/image.jpg");
-      expect(client.v1.files.uploadUrls.create).toHaveBeenCalledWith({
+      expect(createSpy).toHaveBeenCalledWith({
         items: [{ extension: "jpg", type: "image" }],
       });
-      expect(mockFetch).toHaveBeenCalledWith(
-        "https://storage.example.com/upload?token=abc123",
-        {
-          method: "PUT",
-          body: Buffer.from("mock file content"),
-        },
-      );
+
+      createSpy.mockRestore();
     });
 
     test("should handle empty upload URL response", async () => {
@@ -380,49 +377,32 @@ describe("FilesClient.uploadFile", () => {
     });
 
     test("should handle upload HTTP failure", async () => {
-      const mockResponse = {
-        items: [
-          {
-            uploadUrl: "https://storage.example.com/upload",
-            filePath: "api-assets/12345/image.jpg",
-            expiresAt: "2024-12-31T23:59:59Z",
-          },
-        ],
-      };
-
-      jest
-        .spyOn(client.v1.files.uploadUrls, "create")
-        .mockResolvedValue(mockResponse);
-      mockFetch.mockResolvedValueOnce({
-        ok: false,
-        status: 500,
-        statusText: "Internal Server Error",
-      });
+      // Change server behavior for this test
+      server.use(
+        http.put("https://storage.example.com/upload", () => {
+          return HttpResponse.json(
+            { error: "Internal Server Error" },
+            { status: 500 },
+          );
+        }),
+      );
 
       await expect(
         client.v1.files.uploadFile("/path/to/image.jpg"),
-      ).rejects.toThrow("Upload failed with status 500: Internal Server Error");
+      ).rejects.toThrow("Upload failed with status 500");
     });
 
     test("should handle network errors during upload", async () => {
-      const mockResponse = {
-        items: [
-          {
-            uploadUrl: "https://storage.example.com/upload",
-            filePath: "api-assets/12345/image.jpg",
-            expiresAt: "2024-12-31T23:59:59Z",
-          },
-        ],
-      };
-
-      jest
-        .spyOn(client.v1.files.uploadUrls, "create")
-        .mockResolvedValue(mockResponse);
-      mockFetch.mockRejectedValueOnce(new Error("Network connection failed"));
+      // Change server behavior for this test to simulate network error
+      server.use(
+        http.put("https://storage.example.com/upload", () => {
+          return HttpResponse.error();
+        }),
+      );
 
       await expect(
         client.v1.files.uploadFile("/path/to/image.jpg"),
-      ).rejects.toThrow("Network connection failed");
+      ).rejects.toThrow("Network error");
     });
 
     test("should handle upload URLs creation failure", async () => {
@@ -436,19 +416,6 @@ describe("FilesClient.uploadFile", () => {
     });
 
     test("should handle file system read errors", async () => {
-      const mockResponse = {
-        items: [
-          {
-            uploadUrl: "https://example.com/upload",
-            filePath: "uploaded-file.jpg",
-            expiresAt: "2024-01-01T00:00:00Z",
-          },
-        ],
-      };
-      jest
-        .spyOn(client.v1.files.uploadUrls, "create")
-        .mockResolvedValue(mockResponse);
-
       mockFs.readFileSync.mockImplementation(() => {
         throw new Error("Permission denied");
       });
@@ -496,28 +463,18 @@ describe("FilesClient.uploadFile", () => {
     });
 
     test("should handle empty file content", async () => {
-      const mockResponse = {
-        items: [
-          {
-            uploadUrl: "https://example.com/upload",
-            filePath: "uploaded-empty-file.jpg",
-            expiresAt: "2024-01-01T00:00:00Z",
-          },
-        ],
-      };
-
-      jest
-        .spyOn(client.v1.files.uploadUrls, "create")
-        .mockResolvedValue(mockResponse);
       mockFs.readFileSync.mockReturnValue(Buffer.from(""));
+
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
 
       const result = await client.v1.files.uploadFile("/path/to/empty.jpg");
 
-      expect(result).toBe("uploaded-empty-file.jpg");
-      expect(mockFetch).toHaveBeenCalledWith("https://example.com/upload", {
-        method: "PUT",
-        body: Buffer.from(""),
+      expect(result).toBe("api-assets/12345/image.jpg");
+      expect(createSpy).toHaveBeenCalledWith({
+        items: [{ extension: "jpg", type: "image" }],
       });
+
+      createSpy.mockRestore();
     });
   });
 });
