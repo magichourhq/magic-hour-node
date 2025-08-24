@@ -10,6 +10,7 @@ import * as requests from "magic-hour/resources/v1/video-projects/request-types"
 import { Schemas$V1VideoProjectsGetResponse } from "magic-hour/types/v1-video-projects-get-response";
 import { downloadFiles } from "magic-hour/helpers/download";
 import { sleep } from "magic-hour/helpers/sleep";
+import { GenerateOptions } from "magic-hour/helpers/generate-type";
 
 /**
  * Extended response interface that includes downloaded paths
@@ -40,26 +41,12 @@ export class VideoProjectsClient extends CoreResourceClient {
    */
   async checkResult(
     request: requests.GetRequest,
-    opts?: RequestOptions & {
-      /**
-       * Whether to wait for the video project to complete
-       */
-      waitForCompletion?: boolean;
-      /**
-       * Whether to download the outputs
-       */
-      downloadOutputs?: boolean;
-      /**
-       * The directory to download the outputs to. If not provided,
-       * the outputs will be downloaded to the current working directory
-       */
-      downloadDirectory?: string;
-    },
+    opts?: GenerateOptions,
   ): Promise<V1VideoProjectsGetResponseWithDownloads> {
     const {
       waitForCompletion = true,
       downloadOutputs = true,
-      downloadDirectory,
+      downloadDirectory = undefined,
       ...requestOpts
     } = opts || {};
 
