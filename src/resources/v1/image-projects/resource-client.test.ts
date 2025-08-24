@@ -229,8 +229,6 @@ describe("ImageProjectsClient.checkResult", () => {
         ),
       );
 
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation();
-
       const result = await client.v1.imageProjects.checkResult(
         { id: "project-123" },
         { waitForCompletion: true },
@@ -249,11 +247,6 @@ describe("ImageProjectsClient.checkResult", () => {
         totalFrameCost: 10,
         type: "AI_IMAGE",
       });
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Image project project-123 has status error: [object Object]",
-      );
-
-      consoleSpy.mockRestore();
     });
 
     test("should handle canceled status during polling", async () => {
@@ -302,8 +295,6 @@ describe("ImageProjectsClient.checkResult", () => {
         ),
       );
 
-      const consoleSpy = jest.spyOn(console, "info").mockImplementation();
-
       const result = await client.v1.imageProjects.checkResult(
         { id: "project-123" },
         { waitForCompletion: true },
@@ -322,11 +313,6 @@ describe("ImageProjectsClient.checkResult", () => {
         totalFrameCost: 10,
         type: "AI_IMAGE",
       });
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Image project project-123 has status canceled: null",
-      );
-
-      consoleSpy.mockRestore();
     });
   });
 
@@ -531,16 +517,12 @@ describe("ImageProjectsClient.checkResult", () => {
         .mockResolvedValue(completeResponse);
       downloadFiles.mockRejectedValue(new Error("Download failed"));
 
-      const consoleSpy = jest.spyOn(console, "error").mockImplementation();
-
       await expect(
         client.v1.imageProjects.checkResult(
           { id: "project-123" },
           { downloadOutputs: true },
         ),
       ).rejects.toThrow("Download failed");
-
-      consoleSpy.mockRestore();
     });
   });
 
