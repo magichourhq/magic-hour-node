@@ -46,7 +46,7 @@ export class VideoProjectsClient extends CoreResourceClient {
     const {
       waitForCompletion = true,
       downloadOutputs = true,
-      downloadDirectory,
+      downloadDirectory = undefined,
       ...requestOpts
     } = opts || {};
 
