@@ -8,11 +8,105 @@ import {
 } from "magic-hour/core";
 import * as requests from "magic-hour/resources/v1/video-projects/request-types";
 import { Schemas$V1VideoProjectsGetResponse } from "magic-hour/types/v1-video-projects-get-response";
+import { downloadFiles } from "magic-hour/helpers/download";
+import { sleep } from "magic-hour/helpers/sleep";
+
+/**
+ * Extended response interface that includes downloaded paths
+ */
+export interface V1VideoProjectsGetResponseWithDownloads
+  extends types.V1VideoProjectsGetResponse {
+  /**
+   * The paths to the downloaded files.
+   * This field is only populated if `download_outputs` is True and the video project is complete.
+   */
+  downloadedPaths?: string[];
+}
 
 export class VideoProjectsClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
   }
+
+  /**
+   * Check the result of a video project with optional waiting and downloading.
+   *
+   * This method retrieves the status of a video project and optionally waits for completion
+   * and downloads the output files.
+   *
+   * @param request - Request object containing the video project ID
+   * @param opts - Additional request options
+   * @returns The video project response with optional downloaded file paths included
+   */
+  async checkResult(
+    request: requests.GetRequest,
+    opts?: RequestOptions & {
+      /**
+       * Whether to wait for the video project to complete
+       */
+      waitForCompletion?: boolean;
+      /**
+       * Whether to download the outputs
+       */
+      downloadOutputs?: boolean;
+      /**
+       * The directory to download the outputs to. If not provided,
+       * the outputs will be downloaded to the current working directory
+       */
+      downloadDirectory?: string;
+    },
+  ): Promise<V1VideoProjectsGetResponseWithDownloads> {
+    const {
+      waitForCompletion = true,
+      downloadOutputs = true,
+      downloadDirectory,
+      ...requestOpts
+    } = opts || {};
+
+    let apiResponse = await this.get({ id: request.id }, requestOpts);
+
+    if (!waitForCompletion) {
+      return {
+        ...apiResponse,
+      };
+    }
+
+    const pollInterval = parseFloat(
+      process.env["MAGIC_HOUR_POLL_INTERVAL"] || "0.5",
+    );
+
+    while (!["complete", "error", "canceled"].includes(apiResponse.status)) {
+      await sleep(pollInterval * 1000); // Convert seconds to milliseconds
+      apiResponse = await this.get({ id: request.id }, requestOpts);
+    }
+
+    if (apiResponse.status !== "complete") {
+      const log = apiResponse.status === "error" ? console.error : console.info;
+      log(
+        `Video project ${request.id} has status ${apiResponse.status}: ${apiResponse.error}`,
+      );
+      return {
+        ...apiResponse,
+      };
+    }
+
+    if (!downloadOutputs) {
+      return {
+        ...apiResponse,
+      };
+    }
+
+    const downloadedPaths = await downloadFiles(
+      apiResponse.downloads,
+      downloadDirectory,
+    );
+
+    return {
+      ...apiResponse,
+      downloadedPaths,
+    };
+  }
+
   /**
    * Delete video
    *
