@@ -53,13 +53,13 @@ export class ImageProjectsClient extends CoreResourceClient {
        * The directory to download the outputs to. If not provided,
        * the outputs will be downloaded to the current working directory
        */
-      downloadDirectory?: string;
+      downloadDirectory?: string | undefined;
     },
   ): Promise<V1ImageProjectsGetResponseWithDownloads> {
     const {
       waitForCompletion = true,
       downloadOutputs = true,
-      downloadDirectory,
+      downloadDirectory = undefined,
       ...requestOpts
     } = opts || {};
 
