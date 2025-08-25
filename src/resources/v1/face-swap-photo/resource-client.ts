@@ -22,6 +22,25 @@ type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
     /**
+     * Array of face mappings for individual face swaps. Each newFace will be uploaded if it's a local file path.
+     */
+    faceMappings?:
+      | {
+          /**
+           * The face image that will be used to replace the face in the original_face. This value is either
+           * - a direct URL to the image file
+           * - a path to a local file
+           *
+           * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+           */
+          newFace: string;
+          /**
+           * The face detected from the target image. This should correspond to the response from the face detection API.
+           */
+          originalFace: string;
+        }[]
+      | undefined;
+    /**
      * This is the image from which the face is extracted. This value is either
      * - a direct URL to the image file
      * - a path to a local file
@@ -89,8 +108,10 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-    const { sourceFilePath, targetFilePath, ...restAssets } = request.assets;
+    const { sourceFilePath, targetFilePath, faceMappings, ...restAssets } =
+      request.assets;
 
+    // Upload main files
     if (sourceFilePath) {
       getLogger().debug(
         `Uploading file ${sourceFilePath} to Magic Hour's storage`,
@@ -116,6 +137,44 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
       `Uploaded file ${targetFilePath} to Magic Hour's storage as ${uploadedTargetFilePath}`,
     );
 
+    // Upload faceMappings newFace files if they exist
+    let updatedFaceMappings = faceMappings;
+    if (faceMappings && faceMappings.length > 0) {
+      getLogger().debug(
+        `Uploading ${faceMappings.length} newFace files for face mappings`,
+      );
+
+      const uploadPromises = faceMappings.map(async (mapping, index) => {
+        const { newFace, originalFace } = mapping;
+
+        // Check if newFace needs to be uploaded (not already uploaded and not a URL)
+        if (
+          newFace &&
+          !newFace.startsWith("api-assets/") &&
+          !newFace.startsWith("http")
+        ) {
+          getLogger().debug(
+            `Uploading newFace file ${newFace} for face mapping ${index}`,
+          );
+          const uploadedNewFace = await fileClient.uploadFile(newFace);
+          getLogger().info(
+            `Uploaded newFace file ${newFace} as ${uploadedNewFace} for face mapping ${index}`,
+          );
+          return {
+            newFace: uploadedNewFace,
+            originalFace,
+          };
+        } else {
+          return {
+            newFace,
+            originalFace,
+          };
+        }
+      });
+
+      updatedFaceMappings = await Promise.all(uploadPromises);
+    }
+
     const createResponse = await this.create(
       {
         ...request,
@@ -125,6 +184,7 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
             ? uploadedSourceFilePath
             : sourceFilePath,
           targetFilePath: uploadedTargetFilePath,
+          ...(updatedFaceMappings && { faceMappings: updatedFaceMappings }),
         },
       },
       createOpts,

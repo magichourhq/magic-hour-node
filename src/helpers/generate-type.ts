@@ -46,14 +46,14 @@ export type GenerateRequestType<
   CreateRequest,
   AssetOverrides extends CreateRequest extends { assets: Record<string, any> }
     ? FilePathProps<CreateRequest["assets"]> & {
-        // 🚫 forbid extra keys:
+        // 🚫 forbid extra keys (except faceMappings):
         [K in Exclude<
           keyof AssetOverrides,
-          FilePathKeys<CreateRequest["assets"]>
+          FilePathKeys<CreateRequest["assets"]> | "faceMappings"
         >]: {
           ERROR: `AssetOverrides can only contain ${FilePathKeys<
             CreateRequest["assets"]
-          >}`;
+          >} or faceMappings`;
         };
       }
     : {},
