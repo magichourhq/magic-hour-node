@@ -20,17 +20,21 @@ import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** The image used as the new background for the image_file_path. This value is either
+    /**
+     * The image used as the new background for the image_file_path. This value is either
      * - a direct URL to the image file
      * - a path to a local file
      *
-     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
     backgroundImageFilePath: string;
-    /** The image to remove the background. This value is either
+    /**
+     * The image to remove the background. This value is either
      * - a direct URL to the image file
      * - a path to a local file
      *
-     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
     imageFilePath: string;
   }
 >;
