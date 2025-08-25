@@ -63,19 +63,28 @@ export class VideoProjectsClient extends CoreResourceClient {
       process.env["MAGIC_HOUR_POLL_INTERVAL"] || "0.5",
     );
 
+    getLogger().debug(
+      `Polling video project ${request.id} every ${pollInterval} seconds`,
+    );
+
     while (!["complete", "error", "canceled"].includes(apiResponse.status)) {
       await sleep(pollInterval * 1000); // Convert seconds to milliseconds
       apiResponse = await this.get({ id: request.id }, requestOpts);
+      getLogger().info(
+        `Video project ${request.id} status: ${apiResponse.status}, waiting for ${pollInterval} seconds and checking again`,
+      );
     }
 
     if (apiResponse.status !== "complete") {
-      const message = `Video project ${request.id} has status ${
-        apiResponse.status
-      }: ${JSON.stringify(apiResponse.error)}`;
       if (apiResponse.status === "error") {
+        const message = `Video project ${request.id} has status ${
+          apiResponse.status
+        }: ${JSON.stringify(apiResponse.error)}`;
         getLogger().error(message);
       } else {
-        getLogger().info(message);
+        getLogger().info(
+          `Video project ${request.id} has status ${apiResponse.status}. Stopping polling.`,
+        );
       }
       return {
         ...apiResponse,
@@ -83,14 +92,27 @@ export class VideoProjectsClient extends CoreResourceClient {
     }
 
     if (!downloadOutputs) {
+      getLogger().info(
+        `Download outputs is disabled. Returning video project ${request.id} with status ${apiResponse.status}`,
+      );
       return {
         ...apiResponse,
       };
     }
 
+    getLogger().debug(
+      `Downloading outputs for video project ${request.id} to ${
+        downloadDirectory ?? "current directory"
+      }`,
+    );
+
     const downloadedPaths = await downloadFiles(
       apiResponse.downloads,
       downloadDirectory,
+    );
+
+    getLogger().info(
+      `Downloaded outputs for video project ${request.id} to ${downloadedPaths}`,
     );
 
     return {
