@@ -6,15 +6,17 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/ai-qr-code-generator/request-types";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1AiQrCodeGeneratorCreateBody } from "magic-hour/types/v1-ai-qr-code-generator-create-body";
 import { Schemas$V1AiQrCodeGeneratorCreateResponse } from "magic-hour/types/v1-ai-qr-code-generator-create-response";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { getLogger } from "magic-hour/logger";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 
@@ -64,7 +66,15 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
       createOpts,
     );
 
+    getLogger().info(
+      `Created AiQrCodeGeneratorClient project ${createResponse.id}`,
+    );
+
     const projectsClient = new ImageProjectsClient(this._client, this._opts);
+
+    getLogger().debug(
+      `Checking result for AiQrCodeGeneratorClient project ${createResponse.id}`,
+    );
 
     const result = await projectsClient.checkResult(
       { id: createResponse.id },
@@ -75,13 +85,6 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
         ...createOpts,
       },
     );
-
-    if (downloadOutputs) {
-      result.downloadedPaths = await downloadFiles(
-        result.downloads,
-        downloadDirectory,
-      );
-    }
 
     return result;
   }

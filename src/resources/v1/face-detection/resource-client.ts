@@ -6,7 +6,7 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,

@@ -6,16 +6,17 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/animation/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1AnimationCreateBody } from "magic-hour/types/v1-animation-create-body";
 import { Schemas$V1AnimationCreateResponse } from "magic-hour/types/v1-animation-create-response";
+import { getLogger } from "magic-hour/logger";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -96,10 +97,24 @@ export class AnimationClient extends CoreResourceClient {
 
     const { audioFilePath, imageFilePath, ...restAssets } = request.assets;
 
+    getLogger().debug(
+      `Uploading file ${audioFilePath} to Magic Hour's storage`,
+    );
+    getLogger().debug(
+      `Uploading file ${imageFilePath} to Magic Hour's storage`,
+    );
+
     const [uploadedAudioFilePath, uploadedImageFilePath] = await Promise.all([
       fileClient.uploadFile(audioFilePath),
       fileClient.uploadFile(imageFilePath),
     ]);
+
+    getLogger().info(
+      `Uploaded file ${audioFilePath} to Magic Hour's storage as ${uploadedAudioFilePath}`,
+    );
+    getLogger().info(
+      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
+    );
 
     const createResponse = await this.create(
       {
@@ -113,7 +128,13 @@ export class AnimationClient extends CoreResourceClient {
       createOpts,
     );
 
+    getLogger().info(`Created AnimationClient project ${createResponse.id}`);
+
     const projectsClient = new VideoProjectsClient(this._client, this._opts);
+
+    getLogger().debug(
+      `Checking result for AnimationClient project ${createResponse.id}`,
+    );
 
     const result = await projectsClient.checkResult(
       { id: createResponse.id },
@@ -124,13 +145,6 @@ export class AnimationClient extends CoreResourceClient {
         ...createOpts,
       },
     );
-
-    if (downloadOutputs) {
-      result.downloadedPaths = await downloadFiles(
-        result.downloads,
-        downloadDirectory,
-      );
-    }
 
     return result;
   }

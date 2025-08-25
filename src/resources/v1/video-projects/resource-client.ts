@@ -7,6 +7,7 @@ import {
   ResourceClientOptions,
 } from "magic-hour/core";
 import { downloadFiles } from "magic-hour/helpers/download";
+
 import { GenerateOptions } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
 import { getLogger } from "magic-hour/logger";

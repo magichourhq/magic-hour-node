@@ -6,16 +6,17 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { FilesClient } from "magic-hour/resources/v1/files";
 import * as requests from "magic-hour/resources/v1/image-to-video/request-types";
-import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1ImageToVideoCreateBody } from "magic-hour/types/v1-image-to-video-create-body";
 import { Schemas$V1ImageToVideoCreateResponse } from "magic-hour/types/v1-image-to-video-create-response";
+import { getLogger } from "magic-hour/logger";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -75,9 +76,17 @@ export class ImageToVideoClient extends CoreResourceClient {
 
     const { imageFilePath, ...restAssets } = request.assets;
 
+    getLogger().debug(
+      `Uploading file ${imageFilePath} to Magic Hour's storage`,
+    );
+
     const [uploadedImageFilePath] = await Promise.all([
       fileClient.uploadFile(imageFilePath),
     ]);
+
+    getLogger().info(
+      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
+    );
 
     const createResponse = await this.create(
       {
@@ -90,7 +99,13 @@ export class ImageToVideoClient extends CoreResourceClient {
       createOpts,
     );
 
+    getLogger().info(`Created ImageToVideoClient project ${createResponse.id}`);
+
     const projectsClient = new VideoProjectsClient(this._client, this._opts);
+
+    getLogger().debug(
+      `Checking result for ImageToVideoClient project ${createResponse.id}`,
+    );
 
     const result = await projectsClient.checkResult(
       { id: createResponse.id },
@@ -101,13 +116,6 @@ export class ImageToVideoClient extends CoreResourceClient {
         ...createOpts,
       },
     );
-
-    if (downloadOutputs) {
-      result.downloadedPaths = await downloadFiles(
-        result.downloads,
-        downloadDirectory,
-      );
-    }
 
     return result;
   }

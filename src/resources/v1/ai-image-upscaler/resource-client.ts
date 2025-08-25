@@ -6,16 +6,17 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/ai-image-upscaler/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1AiImageUpscalerCreateBody } from "magic-hour/types/v1-ai-image-upscaler-create-body";
 import { Schemas$V1AiImageUpscalerCreateResponse } from "magic-hour/types/v1-ai-image-upscaler-create-response";
+import { getLogger } from "magic-hour/logger";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -75,9 +76,17 @@ export class AiImageUpscalerClient extends CoreResourceClient {
 
     const { imageFilePath, ...restAssets } = request.assets;
 
+    getLogger().debug(
+      `Uploading file ${imageFilePath} to Magic Hour's storage`,
+    );
+
     const [uploadedImageFilePath] = await Promise.all([
       fileClient.uploadFile(imageFilePath),
     ]);
+
+    getLogger().info(
+      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
+    );
 
     const createResponse = await this.create(
       {
@@ -90,7 +99,15 @@ export class AiImageUpscalerClient extends CoreResourceClient {
       createOpts,
     );
 
+    getLogger().info(
+      `Created AiImageUpscalerClient project ${createResponse.id}`,
+    );
+
     const projectsClient = new ImageProjectsClient(this._client, this._opts);
+
+    getLogger().debug(
+      `Checking result for AiImageUpscalerClient project ${createResponse.id}`,
+    );
 
     const result = await projectsClient.checkResult(
       { id: createResponse.id },
@@ -101,13 +118,6 @@ export class AiImageUpscalerClient extends CoreResourceClient {
         ...createOpts,
       },
     );
-
-    if (downloadOutputs) {
-      result.downloadedPaths = await downloadFiles(
-        result.downloads,
-        downloadDirectory,
-      );
-    }
 
     return result;
   }

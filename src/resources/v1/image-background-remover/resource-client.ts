@@ -6,16 +6,17 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { FilesClient } from "magic-hour/resources/v1/files";
 import * as requests from "magic-hour/resources/v1/image-background-remover/request-types";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1ImageBackgroundRemoverCreateBody } from "magic-hour/types/v1-image-background-remover-create-body";
 import { Schemas$V1ImageBackgroundRemoverCreateResponse } from "magic-hour/types/v1-image-background-remover-create-response";
+import { getLogger } from "magic-hour/logger";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -85,11 +86,25 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
     const { backgroundImageFilePath, imageFilePath, ...restAssets } =
       request.assets;
 
+    getLogger().debug(
+      `Uploading file ${backgroundImageFilePath} to Magic Hour's storage`,
+    );
+    getLogger().debug(
+      `Uploading file ${imageFilePath} to Magic Hour's storage`,
+    );
+
     const [uploadedBackgroundImageFilePath, uploadedImageFilePath] =
       await Promise.all([
         fileClient.uploadFile(backgroundImageFilePath),
         fileClient.uploadFile(imageFilePath),
       ]);
+
+    getLogger().info(
+      `Uploaded file ${backgroundImageFilePath} to Magic Hour's storage as ${uploadedBackgroundImageFilePath}`,
+    );
+    getLogger().info(
+      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
+    );
 
     const createResponse = await this.create(
       {
@@ -103,7 +118,15 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
       createOpts,
     );
 
+    getLogger().info(
+      `Created ImageBackgroundRemoverClient project ${createResponse.id}`,
+    );
+
     const projectsClient = new ImageProjectsClient(this._client, this._opts);
+
+    getLogger().debug(
+      `Checking result for ImageBackgroundRemoverClient project ${createResponse.id}`,
+    );
 
     const result = await projectsClient.checkResult(
       { id: createResponse.id },
@@ -114,13 +137,6 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
         ...createOpts,
       },
     );
-
-    if (downloadOutputs) {
-      result.downloadedPaths = await downloadFiles(
-        result.downloads,
-        downloadDirectory,
-      );
-    }
 
     return result;
   }

@@ -7,8 +7,10 @@ import {
   ResourceClientOptions,
 } from "magic-hour/core";
 import { downloadFiles } from "magic-hour/helpers/download";
+
 import { GenerateOptions } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/image-projects/request-types";
 import { Schemas$V1ImageProjectsGetResponse } from "magic-hour/types/v1-image-projects-get-response";
 
@@ -70,9 +72,9 @@ export class ImageProjectsClient extends CoreResourceClient {
     if (apiResponse.status !== "complete") {
       const message = `Image project ${request.id} has status ${apiResponse.status}: ${apiResponse.error}`;
       if (apiResponse.status === "error") {
-        this._client.logger.error(message);
+        getLogger().error(message);
       } else {
-        this._client.logger.info(message);
+        getLogger().info(message);
       }
       return {
         ...apiResponse,
