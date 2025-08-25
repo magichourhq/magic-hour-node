@@ -43,6 +43,34 @@ export class AiPhotoEditorClient extends CoreResourceClient {
    *
    * This method provides a convenient way to create a request and automatically wait for completion and download outputs.
    *
+   * @example
+   * ```typescript
+   * import Client from "magic-hour";
+   *
+   * const client = new Client({ token: process.env["API_TOKEN"]!! });
+   * const res = await client.v1.aiPhotoEditor.generate(
+   *   {
+   *     assets: { imageFilePath: "/path/to/1234.png" },
+   *     name: "Photo Editor image",
+   *     resolution: 768,
+   *     style: {
+   *       imageDescription: "A photo of a person",
+   *       likenessStrength: 5.2,
+   *       negativePrompt: "painting, cartoon, sketch",
+   *       prompt: "A photo portrait of a person wearing a hat",
+   *       promptStrength: 3.75,
+   *       steps: 4,
+   *       upscaleFactor: 2,
+   *       upscaleFidelity: 0.5,
+   *     },
+   *   },
+   *   {
+   *     waitForCompletion: true,
+   *     downloadOutputs: true,
+   *     downloadDirectory: "outputs",
+   *   },
+   * );
+   * ```
    */
   async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
     const {

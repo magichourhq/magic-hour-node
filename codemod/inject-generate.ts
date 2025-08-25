@@ -1,5 +1,5 @@
 // scripts/add-generate-methods.ts
-import { Project, Node } from "ts-morph";
+import { Project, Node, PropertyAssignment, SyntaxKind } from "ts-morph";
 import fg from "fast-glob";
 import prettier from "prettier";
 import fs from "fs";
@@ -85,6 +85,111 @@ function isVideoClient(filePath: string): boolean {
   return videoClients.some((client) => filePath.includes(`/${client}/`));
 }
 
+// Example extraction and transformation functions
+interface TransformOptions {
+  waitForDownload?: boolean;
+  outputDir?: string;
+}
+
+function extractCodeSnippet(markdownContent: string): string | null {
+  // Find the first TypeScript code block
+  const codeBlockRegex = /```typescript\s*\n([\s\S]*?)```/g;
+  const match = codeBlockRegex.exec(markdownContent);
+
+  if (!match || !match[1]) {
+    return null;
+  }
+
+  return match[1].trim();
+}
+
+async function transformExampleSnippet(
+  code: string,
+  options: TransformOptions = {},
+): Promise<string> {
+  const exampleProject = new Project();
+  const sourceFile = exampleProject.createSourceFile("temp.ts", code, {
+    overwrite: true,
+  });
+
+  const createCall = sourceFile
+    .getDescendantsOfKind(SyntaxKind.CallExpression)
+    .find((c) => c.getExpression().getText().endsWith(".create"));
+
+  if (!createCall) {
+    console.log("No create call found");
+    return code;
+  }
+
+  // Change .create -> .generate
+  const expr = createCall.getExpression();
+  expr.replaceWithText(expr.getText().replace(/\.create$/, ".generate"));
+
+  // Add 2nd argument
+  createCall.addArgument(`{
+    waitForCompletion: true,
+    downloadOutputs: true,
+    downloadDirectory: 'outputs'
+  }`);
+
+  // Update asset paths
+  const firstArg = createCall.getArguments()[0];
+  if (firstArg && firstArg.asKind(SyntaxKind.ObjectLiteralExpression)) {
+    const obj = firstArg.asKindOrThrow(SyntaxKind.ObjectLiteralExpression);
+
+    const assetsProp = obj.getProperty("assets");
+    if (assetsProp && assetsProp.asKind(SyntaxKind.PropertyAssignment)) {
+      const initializer = (
+        assetsProp as PropertyAssignment
+      ).getInitializerIfKind(SyntaxKind.ObjectLiteralExpression);
+      if (initializer) {
+        // Narrow to PropertyAssignment before calling getInitializer
+        const assetProps = initializer
+          .getProperties()
+          .filter((p) =>
+            p.asKind(SyntaxKind.PropertyAssignment),
+          ) as PropertyAssignment[];
+
+        assetProps.forEach((prop) => {
+          const val = prop.getInitializerIfKind(SyntaxKind.StringLiteral);
+          if (val) {
+            val.setLiteralValue(
+              val.getLiteralValue().replace("api-assets/id", "/path/to"),
+            );
+          }
+        });
+      }
+    }
+  }
+
+  const prettierConfig = (await prettier.resolveConfig(".")) || {};
+  const formatted = prettier.format(sourceFile.getFullText(), {
+    ...prettierConfig,
+    parser: "typescript",
+  });
+
+  return formatted;
+}
+
+async function extractAndTransformExample(
+  readmePath: string,
+): Promise<string | null> {
+  try {
+    const content = fs.readFileSync(readmePath, "utf-8");
+    const codeSnippet = extractCodeSnippet(content);
+
+    if (!codeSnippet) {
+      return null;
+    }
+
+    const transformedSnippet = await transformExampleSnippet(codeSnippet);
+    return transformedSnippet;
+  } catch (error) {
+    console.warn(`Error processing ${readmePath}:`, error);
+    return null;
+  }
+}
+
 async function main() {
   const files = await fg("src/resources/**/resource-client.ts", {
     ignore: [
@@ -98,6 +203,10 @@ async function main() {
   for (const filePath of files) {
     const source = project.addSourceFileAtPath(filePath);
     console.log(`Processing ${filePath}`);
+
+    // Extract example from corresponding README
+    const readmePath = path.join(path.dirname(filePath), "README.md");
+    const exampleCode = await extractAndTransformExample(readmePath);
 
     // --- Ensure imports ---
     const isVideo = isVideoClient(filePath);
@@ -323,12 +432,23 @@ return result;
         ? createJsDocs.map((d) => d.getInnerText().trim()).join("\n")
         : "AI generate helper with automatic polling and downloading.\n";
 
+    let description = `${createDocText.split(".")[0]?.trim()}
+
+This method provides a convenient way to create a request and automatically wait for completion and download outputs.`;
+
+    // Add example code if available
+    if (exampleCode) {
+      description += `
+
+@example
+\`\`\`typescript
+${exampleCode.trim()}
+\`\`\``;
+    }
+
     const docs = [
       {
-        description: `${createDocText.split(".")[0]?.trim()}
-
-This method provides a convenient way to create a request and automatically wait for completion and download outputs.
-`,
+        description,
       },
     ];
 

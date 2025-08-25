@@ -51,6 +51,36 @@ export class FaceSwapClient extends CoreResourceClient {
    *
    * This method provides a convenient way to create a request and automatically wait for completion and download outputs.
    *
+   * @example
+   * ```typescript
+   * import Client from "magic-hour";
+   *
+   * const client = new Client({ token: process.env["API_TOKEN"]!! });
+   * const res = await client.v1.faceSwap.generate(
+   *   {
+   *     assets: {
+   *       faceMappings: [
+   *         {
+   *           newFace: "api-assets/id/1234.png",
+   *           originalFace: "api-assets/id/0-0.png",
+   *         },
+   *       ],
+   *       faceSwapMode: "all-faces",
+   *       imageFilePath: "image/id/1234.png",
+   *       videoFilePath: "/path/to/1234.mp4",
+   *       videoSource: "file",
+   *     },
+   *     endSeconds: 15.0,
+   *     name: "Face Swap video",
+   *     startSeconds: 0.0,
+   *   },
+   *   {
+   *     waitForCompletion: true,
+   *     downloadOutputs: true,
+   *     downloadDirectory: "outputs",
+   *   },
+   * );
+   * ```
    */
   async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
     const {

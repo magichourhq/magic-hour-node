@@ -31,6 +31,26 @@ export class TextToVideoClient extends CoreResourceClient {
    *
    * This method provides a convenient way to create a request and automatically wait for completion and download outputs.
    *
+   * @example
+   * ```typescript
+   * import Client from "magic-hour";
+   *
+   * const client = new Client({ token: process.env["API_TOKEN"]!! });
+   * const res = await client.v1.textToVideo.generate(
+   *   {
+   *     endSeconds: 5.0,
+   *     name: "Text To Video video",
+   *     orientation: "landscape",
+   *     resolution: "720p",
+   *     style: { prompt: "a dog running" },
+   *   },
+   *   {
+   *     waitForCompletion: true,
+   *     downloadOutputs: true,
+   *     downloadDirectory: "outputs",
+   *   },
+   * );
+   * ```
    */
   async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
     const {

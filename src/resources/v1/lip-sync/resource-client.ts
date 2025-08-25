@@ -51,6 +51,30 @@ export class LipSyncClient extends CoreResourceClient {
    *
    * This method provides a convenient way to create a request and automatically wait for completion and download outputs.
    *
+   * @example
+   * ```typescript
+   * import Client from "magic-hour";
+   *
+   * const client = new Client({ token: process.env["API_TOKEN"]!! });
+   * const res = await client.v1.lipSync.generate(
+   *   {
+   *     assets: {
+   *       audioFilePath: "/path/to/1234.mp3",
+   *       videoFilePath: "/path/to/1234.mp4",
+   *       videoSource: "file",
+   *     },
+   *     endSeconds: 15.0,
+   *     maxFpsLimit: 12.0,
+   *     name: "Lip Sync video",
+   *     startSeconds: 0.0,
+   *   },
+   *   {
+   *     waitForCompletion: true,
+   *     downloadOutputs: true,
+   *     downloadDirectory: "outputs",
+   *   },
+   * );
+   * ```
    */
   async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
     const {
