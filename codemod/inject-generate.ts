@@ -166,14 +166,14 @@ async function main() {
         moduleSpecifier: "magic-hour/resources/v1/files",
         namedImports: ["FilesClient"],
       },
+      {
+        moduleSpecifier: "magic-hour/logger",
+        namedImports: ["getLogger"],
+      },
       projectsClientImport,
       {
         moduleSpecifier: "magic-hour/helpers/generate-type",
         namedImports: ["GenerateOptions", "GenerateRequestType"],
-      },
-      {
-        moduleSpecifier: "magic-hour/helpers/download",
-        namedImports: ["downloadFiles"],
       },
     ];
     for (const imp of importsToAdd) {
@@ -287,15 +287,30 @@ ${
   !assetsProp
     ? ""
     : filePathKeys.length > 0
-      ? `const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets;`
-      : `const restAssets = request.assets;`
+    ? `const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets;`
+    : `const restAssets = request.assets;`
 }
 
 ${
-  filePathKeys.length
-    ? `const [${filePathKeys.map((k) => "uploaded" + pascalCase(k)).join(", ")}] = await Promise.all([
-  ${uploadLines},
-]);`
+  filePathKeys.length > 0
+    ? `${filePathKeys
+        .map((key) => {
+          return `getLogger().debug(\`Uploading file \${${key}} to Magic Hour's storage\`);`;
+        })
+        .join("\n")}
+
+const [${filePathKeys
+        .map((k) => "uploaded" + pascalCase(k))
+        .join(", ")}] = await Promise.all([${uploadLines},]);
+
+${filePathKeys
+  .map((key) => {
+    return `getLogger().info(\`Uploaded file \${${key}} to Magic Hour's storage as \${uploaded${pascalCase(
+      key,
+    )}}\`);`;
+  })
+  .join("\n")}
+`
     : ""
 }
 
@@ -317,12 +332,15 @@ const createResponse = await this.create(
   createOpts,
 );
 
+getLogger().info(\`Created ${classDecl.getName()} project \$\{createResponse.id\}\`);
 
 const projectsClient = ${
       isVideo
         ? "new VideoProjectsClient(this._client, this._opts)"
         : "new ImageProjectsClient(this._client, this._opts)"
     };
+
+getLogger().debug(\`Checking result for ${classDecl.getName()} project \$\{createResponse.id\}\`);
 
 const result = await projectsClient.checkResult(
   { id: createResponse.id },
@@ -333,13 +351,6 @@ const result = await projectsClient.checkResult(
     ...createOpts,
   },
 );
-
-if (downloadOutputs) {
-  result.downloadedPaths = await downloadFiles(
-    result.downloads,
-    downloadDirectory,
-  );
-}
 
 return result;
 `;

@@ -6,16 +6,17 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/ai-clothes-changer/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1AiClothesChangerCreateBody } from "magic-hour/types/v1-ai-clothes-changer-create-body";
 import { Schemas$V1AiClothesChangerCreateResponse } from "magic-hour/types/v1-ai-clothes-changer-create-response";
+import { getLogger } from "magic-hour/logger";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -85,11 +86,25 @@ export class AiClothesChangerClient extends CoreResourceClient {
 
     const { garmentFilePath, personFilePath, ...restAssets } = request.assets;
 
+    getLogger().debug(
+      `Uploading file ${garmentFilePath} to Magic Hour's storage`,
+    );
+    getLogger().debug(
+      `Uploading file ${personFilePath} to Magic Hour's storage`,
+    );
+
     const [uploadedGarmentFilePath, uploadedPersonFilePath] = await Promise.all(
       [
         fileClient.uploadFile(garmentFilePath),
         fileClient.uploadFile(personFilePath),
       ],
+    );
+
+    getLogger().info(
+      `Uploaded file ${garmentFilePath} to Magic Hour's storage as ${uploadedGarmentFilePath}`,
+    );
+    getLogger().info(
+      `Uploaded file ${personFilePath} to Magic Hour's storage as ${uploadedPersonFilePath}`,
     );
 
     const createResponse = await this.create(
@@ -104,7 +119,15 @@ export class AiClothesChangerClient extends CoreResourceClient {
       createOpts,
     );
 
+    getLogger().info(
+      `Created AiClothesChangerClient project ${createResponse.id}`,
+    );
+
     const projectsClient = new ImageProjectsClient(this._client, this._opts);
+
+    getLogger().debug(
+      `Checking result for AiClothesChangerClient project ${createResponse.id}`,
+    );
 
     const result = await projectsClient.checkResult(
       { id: createResponse.id },
@@ -115,13 +138,6 @@ export class AiClothesChangerClient extends CoreResourceClient {
         ...createOpts,
       },
     );
-
-    if (downloadOutputs) {
-      result.downloadedPaths = await downloadFiles(
-        result.downloads,
-        downloadDirectory,
-      );
-    }
 
     return result;
   }

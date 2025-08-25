@@ -2,6 +2,7 @@ import { types } from "magic-hour";
 import * as fs from "fs";
 import * as path from "path";
 import fetch from "node-fetch";
+import { getLogger } from "magic-hour/logger";
 
 /**
  * Download files from the given download URLs
@@ -23,7 +24,10 @@ export async function downloadFiles(
     fs.mkdirSync(baseDir, { recursive: true });
   }
 
+  getLogger().debug(`Downloading outputs to ${baseDir}`);
+
   for (const download of downloads) {
+    getLogger().debug(`Downloading output from ${download.url}`);
     try {
       const response = await fetch(download.url);
       if (!response.ok) {
@@ -40,9 +44,12 @@ export async function downloadFiles(
       const filePath = path.join(baseDir, filename);
 
       fs.writeFileSync(filePath, Buffer.from(buffer));
+      getLogger().debug(`Downloaded output to ${filePath}`);
       downloadedPaths.push(filePath);
     } catch (error) {
-      console.error(`Error downloading file from ${download.url}:`, error);
+      getLogger().error(
+        `Error downloading file from ${download.url}: ${error}`,
+      );
     }
   }
 

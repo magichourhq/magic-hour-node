@@ -7,11 +7,13 @@ import {
   ResourceClientOptions,
 } from "magic-hour/core";
 import { downloadFiles } from "magic-hour/helpers/download";
+
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/face-detection/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
 import { Schemas$V1FaceDetectionCreateBody } from "magic-hour/types/v1-face-detection-create-body";
@@ -82,24 +84,44 @@ export class FaceDetectionClient extends CoreResourceClient {
       process.env["MAGIC_HOUR_POLL_INTERVAL"] || "0.5",
     );
 
+    getLogger().debug(
+      `Polling face detection ${createResponse.id} every ${pollInterval} seconds`,
+    );
+
     while (!["complete", "error", "canceled"].includes(apiResponse.status)) {
       await sleep(pollInterval * 1000); // Convert seconds to milliseconds
       apiResponse = await this.get({ id: createResponse.id }, requestOpts);
+      getLogger().info(
+        `Face detection ${createResponse.id} status: ${apiResponse.status}, waiting for ${pollInterval} seconds and checking again`,
+      );
     }
 
     if (apiResponse.status !== "complete") {
-      const log = apiResponse.status === "error" ? console.error : console.info;
-      log(`Face detection ${apiResponse.id} has status ${apiResponse.status}`);
+      const message = `Face detection ${apiResponse.id} has status ${apiResponse.status}`;
+      if (apiResponse.status === "error") {
+        getLogger().error(message);
+      } else {
+        getLogger().info(message);
+      }
       return {
         ...apiResponse,
       };
     }
 
     if (!downloadOutputs) {
+      getLogger().info(
+        `Download outputs is disabled. Returning face detection ${apiResponse.id} with status ${apiResponse.status}`,
+      );
       return {
         ...apiResponse,
       };
     }
+
+    getLogger().debug(
+      `Downloading outputs for face detection ${apiResponse.id} to ${
+        downloadDirectory ?? "current directory"
+      }`,
+    );
 
     const downloadedPaths = await downloadFiles(
       apiResponse.faces.map((f) => ({
@@ -107,6 +129,10 @@ export class FaceDetectionClient extends CoreResourceClient {
         expiresAt: "ignore",
       })),
       downloadDirectory,
+    );
+
+    getLogger().info(
+      `Downloaded outputs for face detection ${apiResponse.id} to ${downloadedPaths}`,
     );
 
     return {

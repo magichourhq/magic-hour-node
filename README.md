@@ -27,6 +27,28 @@ const client = new Client({
 });
 ```
 
+## Logging
+
+### Logging Levels
+
+- `none` - Disable all logging
+- `error` - Only error messages
+- `warn` - Warnings and errors
+- `info` - Info, warnings, and errors
+- `debug` - All messages including request/response details
+
+### Environment Variable Configuration
+
+You can also configure the logging level using the `MAGIC_HOUR_LOG_LEVEL` environment variable:
+
+```bash
+export MAGIC_HOUR_LOG_LEVEL=debug  # Enable debug logging
+# or
+export MAGIC_HOUR_LOG_LEVEL=error  # Only show errors
+```
+
+Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). If not set, defaults to `info`.
+
 > [!WARNING]
 > Any API call that renders a video will utilize frames in your account.
 

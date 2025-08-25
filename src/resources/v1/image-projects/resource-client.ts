@@ -7,8 +7,10 @@ import {
   ResourceClientOptions,
 } from "magic-hour/core";
 import { downloadFiles } from "magic-hour/helpers/download";
+
 import { GenerateOptions } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/image-projects/request-types";
 import { Schemas$V1ImageProjectsGetResponse } from "magic-hour/types/v1-image-projects-get-response";
 
@@ -62,30 +64,52 @@ export class ImageProjectsClient extends CoreResourceClient {
       process.env["MAGIC_HOUR_POLL_INTERVAL"] || "0.5",
     );
 
+    getLogger().debug(
+      `Polling image project ${request.id} every ${pollInterval} seconds`,
+    );
+
     while (!["complete", "error", "canceled"].includes(apiResponse.status)) {
       await sleep(pollInterval * 1000); // Convert seconds to milliseconds
+      getLogger().info(
+        `Image project ${apiResponse.id} status: ${apiResponse.status}, waiting for ${pollInterval} seconds and checking again`,
+      );
       apiResponse = await this.get({ id: request.id }, requestOpts);
     }
 
     if (apiResponse.status !== "complete") {
-      const log = apiResponse.status === "error" ? console.error : console.info;
-      log(
-        `Image project ${request.id} has status ${apiResponse.status}: ${apiResponse.error}`,
-      );
+      const message = `Image project ${request.id} has status ${apiResponse.status}: ${apiResponse.error}`;
+      if (apiResponse.status === "error") {
+        getLogger().error(message);
+      } else {
+        getLogger().info(message);
+      }
       return {
         ...apiResponse,
       };
     }
 
     if (!downloadOutputs) {
+      getLogger().info(
+        `Download outputs is disabled. Returning image project ${request.id} with status ${apiResponse.status}`,
+      );
       return {
         ...apiResponse,
       };
     }
 
+    getLogger().debug(
+      `Downloading outputs for image project ${request.id} to ${
+        downloadDirectory ?? "current directory"
+      }`,
+    );
+
     const downloadedPaths = await downloadFiles(
       apiResponse.downloads,
       downloadDirectory,
+    );
+
+    getLogger().info(
+      `Downloaded outputs for image project ${request.id} to ${downloadedPaths}`,
     );
 
     return {
