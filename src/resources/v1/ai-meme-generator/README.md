@@ -1,4 +1,6 @@
+# v1-aimemegenerator
 
+## Module Functions
 ### AI Meme Generator <a name="create"></a>
 
 Create an AI generated meme. Each meme costs 10 credits.
@@ -10,6 +12,9 @@ Create an AI generated meme. Each meme costs 10 credits.
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `style` | ✓ |  | `{"searchWeb": false, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
+| `└─ searchWeb` | ✗ | Whether to search the web for meme content. | `false` |
+| `└─ template` | ✓ | To use our templates, pass in one of the enum values. | `"Drake Hotline Bling"` |
+| `└─ topic` | ✓ | The topic of the meme. | `"When the code finally works"` |
 | `name` | ✗ | The name of the meme. | `"My Funny Meme"` |
 
 #### Example Snippet
@@ -36,3 +41,7 @@ const res = await client.v1.aiMemeGenerator.create({
 
 ##### Example
 `{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+

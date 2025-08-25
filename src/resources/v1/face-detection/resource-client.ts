@@ -6,17 +6,17 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import * as requests from "magic-hour/resources/v1/face-detection/request-types";
-import { Schemas$V1FaceDetectionCreateBody } from "magic-hour/types/v1-face-detection-create-body";
-import { Schemas$V1FaceDetectionCreateResponse } from "magic-hour/types/v1-face-detection-create-response";
-import { Schemas$V1FaceDetectionGetResponse } from "magic-hour/types/v1-face-detection-get-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
+import { downloadFiles } from "magic-hour/helpers/download";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
-import { downloadFiles } from "magic-hour/helpers/download";
 import { sleep } from "magic-hour/helpers/sleep";
+import * as requests from "magic-hour/resources/v1/face-detection/request-types";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { Schemas$V1FaceDetectionCreateBody } from "magic-hour/types/v1-face-detection-create-body";
+import { Schemas$V1FaceDetectionCreateResponse } from "magic-hour/types/v1-face-detection-create-response";
+import { Schemas$V1FaceDetectionGetResponse } from "magic-hour/types/v1-face-detection-get-response";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

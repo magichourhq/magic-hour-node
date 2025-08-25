@@ -6,16 +6,16 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import * as requests from "magic-hour/resources/v1/animation/request-types";
-import { Schemas$V1AnimationCreateBody } from "magic-hour/types/v1-animation-create-body";
-import { Schemas$V1AnimationCreateResponse } from "magic-hour/types/v1-animation-create-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
+import { downloadFiles } from "magic-hour/helpers/download";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
-import { downloadFiles } from "magic-hour/helpers/download";
+import * as requests from "magic-hour/resources/v1/animation/request-types";
+import { FilesClient } from "magic-hour/resources/v1/files";
 import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
+import { Schemas$V1AnimationCreateBody } from "magic-hour/types/v1-animation-create-body";
+import { Schemas$V1AnimationCreateResponse } from "magic-hour/types/v1-animation-create-response";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

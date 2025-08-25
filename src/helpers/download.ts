@@ -1,4 +1,4 @@
-import {types} from "magic-hour";
+import { types } from "magic-hour";
 import * as fs from "fs";
 import * as path from "path";
 import fetch from "node-fetch";
@@ -11,7 +11,7 @@ export async function downloadFiles(
     | types.V1ImageProjectsGetResponseDownloadsItem
     | types.V1VideoProjectsGetResponseDownloadsItem
   )[],
-  downloadDirectory?: string
+  downloadDirectory?: string,
 ): Promise<string[]> {
   const downloadedPaths: string[] = [];
 
@@ -20,14 +20,16 @@ export async function downloadFiles(
 
   // Ensure the download directory exists
   if (!fs.existsSync(baseDir)) {
-    fs.mkdirSync(baseDir, {recursive: true});
+    fs.mkdirSync(baseDir, { recursive: true });
   }
 
   for (const download of downloads) {
     try {
       const response = await fetch(download.url);
       if (!response.ok) {
-        throw new Error(`Failed to download from ${download.url}: ${response.statusText}`);
+        throw new Error(
+          `Failed to download from ${download.url}: ${response.statusText}`,
+        );
       }
 
       const buffer = await response.arrayBuffer();

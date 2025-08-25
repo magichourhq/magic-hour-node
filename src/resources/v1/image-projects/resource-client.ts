@@ -6,11 +6,11 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
+import { downloadFiles } from "magic-hour/helpers/download";
+import { GenerateOptions } from "magic-hour/helpers/generate-type";
+import { sleep } from "magic-hour/helpers/sleep";
 import * as requests from "magic-hour/resources/v1/image-projects/request-types";
 import { Schemas$V1ImageProjectsGetResponse } from "magic-hour/types/v1-image-projects-get-response";
-import { downloadFiles } from "magic-hour/helpers/download";
-import { sleep } from "magic-hour/helpers/sleep";
-import { GenerateOptions } from "magic-hour/helpers/generate-type";
 
 /**
  * Extended response interface that includes downloaded paths
