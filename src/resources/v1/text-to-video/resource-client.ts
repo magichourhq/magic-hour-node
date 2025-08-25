@@ -12,9 +12,10 @@ import {
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/text-to-video/request-types";
-import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1TextToVideoCreateBody } from "magic-hour/types/v1-text-to-video-create-body";
 import { Schemas$V1TextToVideoCreateResponse } from "magic-hour/types/v1-text-to-video-create-response";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 

@@ -13,9 +13,9 @@ import {
 } from "magic-hour/helpers/generate-type";
 import { FilesClient } from "magic-hour/resources/v1/files";
 import * as requests from "magic-hour/resources/v1/lip-sync/request-types";
-import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1LipSyncCreateBody } from "magic-hour/types/v1-lip-sync-create-body";
 import { Schemas$V1LipSyncCreateResponse } from "magic-hour/types/v1-lip-sync-create-response";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

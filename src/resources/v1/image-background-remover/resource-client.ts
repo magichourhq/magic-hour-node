@@ -13,9 +13,9 @@ import {
 } from "magic-hour/helpers/generate-type";
 import { FilesClient } from "magic-hour/resources/v1/files";
 import * as requests from "magic-hour/resources/v1/image-background-remover/request-types";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1ImageBackgroundRemoverCreateBody } from "magic-hour/types/v1-image-background-remover-create-body";
 import { Schemas$V1ImageBackgroundRemoverCreateResponse } from "magic-hour/types/v1-image-background-remover-create-response";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
