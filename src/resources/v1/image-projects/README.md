@@ -1,6 +1,11 @@
 # v1-imageprojects
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Delete image <a name="delete"></a>
 
 Permanently delete the rendered image(s). This action is not reversible, please be sure before deleting.

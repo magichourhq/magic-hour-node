@@ -1,6 +1,11 @@
 # v1-facedetection
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Get face detection details <a name="get"></a>
 
 Get the details of a face detection task. 

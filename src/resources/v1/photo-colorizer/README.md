@@ -1,6 +1,11 @@
 # v1-photocolorizer
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Photo Colorizer <a name="create"></a>
 
 Colorize image. Each image costs 5 credits.

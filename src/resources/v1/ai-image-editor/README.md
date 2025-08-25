@@ -1,6 +1,11 @@
 # v1-aiimageeditor
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Image Editor <a name="create"></a>
 
 Edit images with AI. Each edit costs 50 credits.

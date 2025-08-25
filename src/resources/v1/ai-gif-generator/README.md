@@ -1,6 +1,11 @@
 # v1-aigifgenerator
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI GIFs <a name="create"></a>
 
 Create an AI GIF. Each GIF costs 50 credits.

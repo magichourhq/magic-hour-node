@@ -1,6 +1,11 @@
 # v1-aitalkingphoto
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Talking Photo <a name="create"></a>
 
 Create a talking photo from an image and audio or text input.

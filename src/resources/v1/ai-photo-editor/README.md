@@ -1,6 +1,11 @@
 # v1-aiphotoeditor
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Photo Editor <a name="create"></a>
 
 > **NOTE**: this API is still in early development stages, and should be avoided. Please reach out to us if you're interested in this API. 

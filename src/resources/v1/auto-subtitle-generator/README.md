@@ -1,6 +1,11 @@
 # v1-autosubtitlegenerator
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Auto Subtitle Generator <a name="create"></a>
 
 Automatically generate subtitles for your video in multiple languages.

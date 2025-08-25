@@ -1,6 +1,11 @@
 # v1-imagebackgroundremover
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Image Background Remover <a name="create"></a>
 
 Remove background from image. Each image costs 5 credits.

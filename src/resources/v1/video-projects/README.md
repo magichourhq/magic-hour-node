@@ -1,6 +1,11 @@
 # v1-videoprojects
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Delete video <a name="delete"></a>
 
 Permanently delete the rendered video. This action is not reversible, please be sure before deleting.

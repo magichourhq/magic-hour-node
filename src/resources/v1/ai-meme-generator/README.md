@@ -1,6 +1,11 @@
 # v1-aimemegenerator
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Meme Generator <a name="create"></a>
 
 Create an AI generated meme. Each meme costs 10 credits.
