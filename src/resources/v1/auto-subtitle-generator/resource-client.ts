@@ -10,12 +10,12 @@ import * as requests from "magic-hour/resources/v1/auto-subtitle-generator/reque
 import { Schemas$V1AutoSubtitleGeneratorCreateBody } from "magic-hour/types/v1-auto-subtitle-generator-create-body";
 import { Schemas$V1AutoSubtitleGeneratorCreateResponse } from "magic-hour/types/v1-auto-subtitle-generator-create-response";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { downloadFiles } from "magic-hour/helpers/download";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -70,13 +70,10 @@ export class AutoSubtitleGeneratorClient extends CoreResourceClient {
       createOpts,
     );
 
-    // Create image projects client to check result
-    const imageProjectsClient = new ImageProjectsClient(
-      this._client,
-      this._opts,
-    );
+    // Create projects client to check result
+    const projectsClient = new VideoProjectsClient(this._client, this._opts);
 
-    const result = await imageProjectsClient.checkResult(
+    const result = await projectsClient.checkResult(
       { id: createResponse.id },
       {
         waitForCompletion,

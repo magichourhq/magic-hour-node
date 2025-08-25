@@ -10,12 +10,12 @@ import * as requests from "magic-hour/resources/v1/ai-clothes-changer/request-ty
 import { Schemas$V1AiClothesChangerCreateBody } from "magic-hour/types/v1-ai-clothes-changer-create-body";
 import { Schemas$V1AiClothesChangerCreateResponse } from "magic-hour/types/v1-ai-clothes-changer-create-response";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { downloadFiles } from "magic-hour/helpers/download";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -80,13 +80,10 @@ export class AiClothesChangerClient extends CoreResourceClient {
       createOpts,
     );
 
-    // Create image projects client to check result
-    const imageProjectsClient = new ImageProjectsClient(
-      this._client,
-      this._opts,
-    );
+    // Create projects client to check result
+    const projectsClient = new ImageProjectsClient(this._client, this._opts);
 
-    const result = await imageProjectsClient.checkResult(
+    const result = await projectsClient.checkResult(
       { id: createResponse.id },
       {
         waitForCompletion,

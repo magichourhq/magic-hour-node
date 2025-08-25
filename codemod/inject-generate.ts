@@ -68,6 +68,23 @@ function pascalCase(str: string) {
   return str.replace(/(^|[-_])(.)/g, (_, __, c) => c.toUpperCase());
 }
 
+function isVideoClient(filePath: string): boolean {
+  // Video clients based on directory names
+  const videoClients = [
+    "animation",
+    "ai-talking-photo",
+    "auto-subtitle-generator",
+    "face-swap",
+    "image-to-video",
+    "lip-sync",
+    "text-to-video",
+    "video-to-video",
+  ];
+
+  // Check if any video client name is in the file path
+  return videoClients.some((client) => filePath.includes(`/${client}/`));
+}
+
 async function main() {
   const files = await fg("src/resources/**/resource-client.ts");
 
@@ -76,15 +93,43 @@ async function main() {
     console.log(`Processing ${filePath}`);
 
     // --- Ensure imports ---
+    const isVideo = isVideoClient(filePath);
+
+    // Remove existing projects client imports to avoid conflicts
+    const existingImageProjectsImport = source.getImportDeclaration(
+      (d) =>
+        d.getModuleSpecifierValue() ===
+        "magic-hour/resources/v1/image-projects",
+    );
+    if (existingImageProjectsImport) {
+      existingImageProjectsImport.remove();
+    }
+
+    const existingVideoProjectsImport = source.getImportDeclaration(
+      (d) =>
+        d.getModuleSpecifierValue() ===
+        "magic-hour/resources/v1/video-projects",
+    );
+    if (existingVideoProjectsImport) {
+      existingVideoProjectsImport.remove();
+    }
+
+    const projectsClientImport = isVideo
+      ? {
+          moduleSpecifier: "magic-hour/resources/v1/video-projects",
+          namedImports: ["VideoProjectsClient"],
+        }
+      : {
+          moduleSpecifier: "magic-hour/resources/v1/image-projects",
+          namedImports: ["ImageProjectsClient"],
+        };
+
     const importsToAdd = [
       {
         moduleSpecifier: "magic-hour/resources/v1/files",
         namedImports: ["FilesClient"],
       },
-      {
-        moduleSpecifier: "magic-hour/resources/v1/image-projects",
-        namedImports: ["ImageProjectsClient"],
-      },
+      projectsClientImport,
       {
         moduleSpecifier: "magic-hour/helpers/generate-type",
         namedImports: ["GenerateOptions", "GenerateRequestType"],
@@ -237,10 +282,14 @@ const createResponse = await this.create(
   createOpts,
 );
 
-// Create image projects client to check result
-const imageProjectsClient = new ImageProjectsClient(this._client, this._opts);
+// Create projects client to check result
+const projectsClient = ${
+      isVideo
+        ? "new VideoProjectsClient(this._client, this._opts)"
+        : "new ImageProjectsClient(this._client, this._opts)"
+    };
 
-const result = await imageProjectsClient.checkResult(
+const result = await projectsClient.checkResult(
   { id: createResponse.id },
   {
     waitForCompletion,

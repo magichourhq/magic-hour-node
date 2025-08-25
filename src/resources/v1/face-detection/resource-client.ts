@@ -11,12 +11,12 @@ import { Schemas$V1FaceDetectionCreateBody } from "magic-hour/types/v1-face-dete
 import { Schemas$V1FaceDetectionCreateResponse } from "magic-hour/types/v1-face-detection-create-response";
 import { Schemas$V1FaceDetectionGetResponse } from "magic-hour/types/v1-face-detection-get-response";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { downloadFiles } from "magic-hour/helpers/download";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -71,13 +71,10 @@ export class FaceDetectionClient extends CoreResourceClient {
       createOpts,
     );
 
-    // Create image projects client to check result
-    const imageProjectsClient = new ImageProjectsClient(
-      this._client,
-      this._opts,
-    );
+    // Create projects client to check result
+    const projectsClient = new ImageProjectsClient(this._client, this._opts);
 
-    const result = await imageProjectsClient.checkResult(
+    const result = await projectsClient.checkResult(
       { id: createResponse.id },
       {
         waitForCompletion,
