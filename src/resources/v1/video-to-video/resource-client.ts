@@ -15,6 +15,7 @@ import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
+import { downloadFiles } from "magic-hour/helpers/download";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -84,6 +85,13 @@ export class VideoToVideoClient extends CoreResourceClient {
         ...createOpts,
       },
     );
+
+    if (downloadOutputs) {
+      result.downloadedPaths = await downloadFiles(
+        result.downloads,
+        downloadDirectory,
+      );
+    }
 
     return result;
   }

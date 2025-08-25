@@ -89,6 +89,10 @@ async function main() {
         moduleSpecifier: "magic-hour/helpers/generate-type",
         namedImports: ["GenerateOptions", "GenerateRequestType"],
       },
+      {
+        moduleSpecifier: "magic-hour/helpers/download",
+        namedImports: ["downloadFiles"],
+      },
     ];
     for (const imp of importsToAdd) {
       if (
@@ -245,6 +249,13 @@ const result = await imageProjectsClient.checkResult(
     ...createOpts,
   },
 );
+
+if (downloadOutputs) {
+  result.downloadedPaths = await downloadFiles(
+    result.downloads,
+    downloadDirectory,
+  );
+}
 
 return result;
 `;
