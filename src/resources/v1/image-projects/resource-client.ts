@@ -64,9 +64,16 @@ export class ImageProjectsClient extends CoreResourceClient {
       process.env["MAGIC_HOUR_POLL_INTERVAL"] || "0.5",
     );
 
+    getLogger().debug(
+      `Polling image project ${request.id} every ${pollInterval} seconds`,
+    );
+
     while (!["complete", "error", "canceled"].includes(apiResponse.status)) {
       await sleep(pollInterval * 1000); // Convert seconds to milliseconds
       apiResponse = await this.get({ id: request.id }, requestOpts);
+      getLogger().info(
+        `Image project ${request.id} status: ${apiResponse.status}, waiting for ${pollInterval} seconds and checking again`,
+      );
     }
 
     if (apiResponse.status !== "complete") {
@@ -82,14 +89,27 @@ export class ImageProjectsClient extends CoreResourceClient {
     }
 
     if (!downloadOutputs) {
+      getLogger().info(
+        `Download outputs is disabled. Returning image project ${request.id} with status ${apiResponse.status}`,
+      );
       return {
         ...apiResponse,
       };
     }
 
+    getLogger().debug(
+      `Downloading outputs for image project ${request.id} to ${
+        downloadDirectory ?? "current directory"
+      }`,
+    );
+
     const downloadedPaths = await downloadFiles(
       apiResponse.downloads,
       downloadDirectory,
+    );
+
+    getLogger().info(
+      `Downloaded outputs for image project ${request.id} to ${downloadedPaths}`,
     );
 
     return {
