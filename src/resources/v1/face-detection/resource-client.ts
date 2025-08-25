@@ -16,7 +16,7 @@ import {
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { downloadFiles } from "magic-hour/helpers/download";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
+import { sleep } from "magic-hour/helpers/sleep";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -48,7 +48,7 @@ export class FaceDetectionClient extends CoreResourceClient {
       waitForCompletion = true,
       downloadOutputs = true,
       downloadDirectory = undefined,
-      ...createOpts
+      ...requestOpts
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
@@ -68,30 +68,52 @@ export class FaceDetectionClient extends CoreResourceClient {
           targetFilePath: uploadedTargetFilePath,
         },
       },
-      createOpts,
+      requestOpts,
     );
 
-    // Create projects client to check result
-    const projectsClient = new ImageProjectsClient(this._client, this._opts);
+    let apiResponse = await this.get({ id: createResponse.id }, requestOpts);
 
-    const result = await projectsClient.checkResult(
-      { id: createResponse.id },
-      {
-        waitForCompletion,
-        downloadOutputs,
-        downloadDirectory,
-        ...createOpts,
-      },
-    );
-
-    if (downloadOutputs) {
-      result.downloadedPaths = await downloadFiles(
-        result.downloads,
-        downloadDirectory,
-      );
+    if (!waitForCompletion) {
+      return {
+        ...apiResponse,
+      };
     }
 
-    return result;
+    const pollInterval = parseFloat(
+      process.env["MAGIC_HOUR_POLL_INTERVAL"] || "0.5",
+    );
+
+    while (!["complete", "error", "canceled"].includes(apiResponse.status)) {
+      await sleep(pollInterval * 1000); // Convert seconds to milliseconds
+      apiResponse = await this.get({ id: createResponse.id }, requestOpts);
+    }
+
+    if (apiResponse.status !== "complete") {
+      const log = apiResponse.status === "error" ? console.error : console.info;
+      log(`Face detection ${apiResponse.id} has status ${apiResponse.status}`);
+      return {
+        ...apiResponse,
+      };
+    }
+
+    if (!downloadOutputs) {
+      return {
+        ...apiResponse,
+      };
+    }
+
+    const downloadedPaths = await downloadFiles(
+      apiResponse.faces.map((f) => ({
+        url: f.url,
+        expiresAt: "ignore",
+      })),
+      downloadDirectory,
+    );
+
+    return {
+      ...apiResponse,
+      downloadedPaths,
+    };
   }
 
   /**

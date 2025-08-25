@@ -86,7 +86,14 @@ function isVideoClient(filePath: string): boolean {
 }
 
 async function main() {
-  const files = await fg("src/resources/**/resource-client.ts");
+  const files = await fg("src/resources/**/resource-client.ts", {
+    ignore: [
+      "**/face-detection/**",
+      "**/files/**",
+      "**/image-projects/**",
+      "**/video-projects/**",
+    ],
+  });
 
   for (const filePath of files) {
     const source = project.addSourceFileAtPath(filePath);
