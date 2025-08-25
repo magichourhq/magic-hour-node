@@ -20,7 +20,11 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** This is the image or video where the face will be detected. */
+    /** This is the image or video where the face will be detected. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
     targetFilePath: string;
   }
 >;

@@ -41,7 +41,21 @@ function extractAssetFieldComments(
               // Extract first sentence
               const parts = comment.split(".");
               const firstSentence = parts[0]?.trim();
-              assetProps[name] = firstSentence ? firstSentence + "." : comment;
+
+              // For file path fields, add additional documentation
+              if (name.endsWith("FilePath")) {
+                assetProps[name] = `${
+                  firstSentence ? firstSentence + "." : comment
+                } This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with \`api-assets\`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.`;
+              } else {
+                assetProps[name] = firstSentence
+                  ? firstSentence + "."
+                  : comment;
+              }
             }
           }
         }

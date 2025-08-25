@@ -19,9 +19,17 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** The audio file to sync with the image. */
+    /** The audio file to sync with the image. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
     audioFilePath: string;
-    /** The source image to animate. */
+    /** The source image to animate. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
     imageFilePath: string;
   }
 >;

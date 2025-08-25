@@ -19,9 +19,17 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** This is the image from which the face is extracted. */
+    /** This is the image from which the face is extracted. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
     sourceFilePath: string;
-    /** This is the image where the face from the source image will be placed. */
+    /** This is the image where the face from the source image will be placed. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
     targetFilePath: string;
   }
 >;

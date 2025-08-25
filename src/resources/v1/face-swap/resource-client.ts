@@ -19,9 +19,17 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** The path of the input image with the face to be swapped. */
+    /** The path of the input image with the face to be swapped. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
     imageFilePath: string;
-    /** Required if `video_source` is `file`. */
+    /** Required if `video_source` is `file`. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again. */
     videoFilePath: string;
   }
 >;
