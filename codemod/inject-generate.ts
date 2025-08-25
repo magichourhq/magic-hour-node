@@ -229,6 +229,9 @@ async function main() {
       "**/files/**",
       "**/image-projects/**",
       "**/video-projects/**",
+      // skip face-swap-photo and face-swap for now, they have special handling for faceMappings
+      "**/face-swap-photo/**",
+      "**/face-swap/**",
     ],
   });
 
