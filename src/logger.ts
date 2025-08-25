@@ -99,6 +99,17 @@ class NoOpLogger implements Logger {
 }
 
 /**
+ * Get log level from environment variable or default
+ */
+function getLogLevelFromEnv(): PossibleLogLevel {
+  const envLevel = process.env["MAGIC_HOUR_LOG_LEVEL"]?.toLowerCase();
+  if (envLevel && envLevel in LogLevel) {
+    return envLevel as PossibleLogLevel;
+  }
+  return "info";
+}
+
+/**
  * Default logger configuration
  */
 export const DEFAULT_LOGGER_CONFIG: LoggerConfig = {
@@ -121,7 +132,10 @@ const globalForLogger = globalThis as unknown as {
 
 export function getLogger(): Logger {
   if (!globalForLogger.logger) {
-    globalForLogger.logger = setupLogger(DEFAULT_LOGGER_CONFIG);
+    const config: LoggerConfig = {
+      level: getLogLevelFromEnv(),
+    };
+    globalForLogger.logger = setupLogger(config);
   }
   return globalForLogger.logger;
 }
