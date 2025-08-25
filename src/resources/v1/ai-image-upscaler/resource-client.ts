@@ -13,9 +13,9 @@ import {
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/ai-image-upscaler/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1AiImageUpscalerCreateBody } from "magic-hour/types/v1-ai-image-upscaler-create-body";
 import { Schemas$V1AiImageUpscalerCreateResponse } from "magic-hour/types/v1-ai-image-upscaler-create-response";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

@@ -12,10 +12,9 @@ import {
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/ai-gif-generator/request-types";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1AiGifGeneratorCreateBody } from "magic-hour/types/v1-ai-gif-generator-create-body";
 import { Schemas$V1AiGifGeneratorCreateResponse } from "magic-hour/types/v1-ai-gif-generator-create-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 
