@@ -13,9 +13,9 @@ import {
 } from "magic-hour/helpers/generate-type";
 import * as requests from "magic-hour/resources/v1/face-swap/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1FaceSwapCreateBody } from "magic-hour/types/v1-face-swap-create-body";
 import { Schemas$V1FaceSwapCreateResponse } from "magic-hour/types/v1-face-swap-create-response";
-import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

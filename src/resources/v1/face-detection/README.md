@@ -30,7 +30,7 @@ import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.faceDetection.create(
+const res = await client.v1.faceDetection.generate(
   {
     assets: { targetFilePath: "/path/to/1234.png" },
     confidenceScore: 0.5,

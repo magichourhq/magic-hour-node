@@ -4,6 +4,36 @@
 
 <!-- CUSTOM DOCS START -->
 
+### Check results <a name="check-result"></a>
+
+Poll the details API to check on the status of the rendering. Optionally can also download the output
+
+#### Parameters
+
+| Parameter            | Required | Description                                                                                          | Example          |
+| -------------------- | :------: | ---------------------------------------------------------------------------------------------------- | ---------------- |
+| `id`                 |    ✓     | Unique ID of the image project. This value is returned by all of the POST APIs that create an image. | `"cuid-example"` |
+| `waitForCompletion`  |    ✗     | Whether to wait for the project to complete.                                                         | `True`           |
+| `downloadOutputs`    |    ✗     | Whether to download the generated files                                                              | `True`           |
+| `downloadDirectory`  |    ✗     | Directory to save downloaded files (defaults to current directory)                                   | `"./outputs"`    |
+
+#### Synchronous Client
+
+```typescript
+import Client from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+
+const result = await client.v1.videoProjects.checkResult(
+    { id: "cuid-example" },
+    {
+        waitForCompletion: true,
+        downloadOutputs: true,
+        downloadDirectory: "outputs",
+    },
+);
+```
+
 <!-- CUSTOM DOCS END -->
 
 ### Delete video <a name="delete"></a>
