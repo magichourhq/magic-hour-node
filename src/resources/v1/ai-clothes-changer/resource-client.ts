@@ -10,11 +10,12 @@ import * as requests from "magic-hour/resources/v1/ai-clothes-changer/request-ty
 import { Schemas$V1AiClothesChangerCreateBody } from "magic-hour/types/v1-ai-clothes-changer-create-body";
 import { Schemas$V1AiClothesChangerCreateResponse } from "magic-hour/types/v1-ai-clothes-changer-create-response";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
+import { downloadFiles } from "magic-hour/helpers/download";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
@@ -28,7 +29,7 @@ type GenerateRequest = GenerateRequestType<
      */
     garmentFilePath: string;
     /**
-     * The image of the person. This value is either
+     * The image with the person. This value is either
      * - a direct URL to the image file
      * - a path to a local file
      *
@@ -44,22 +45,32 @@ export class AiClothesChangerClient extends CoreResourceClient {
   }
 
   /**
-   * AI Clothes Changer - Generate with automatic polling and downloading
+   * AI Clothes Changer
    *
-   * Change outfits in photos in seconds with just a photo reference. Each photo costs 25 credits.
-   * This method provides a convenient way to create a clothes changer request and automatically
-   * wait for completion and download outputs.
+   * Change outfits in photos in seconds with just a photo reference
+   *
+   * This method provides a convenient way to create a request and automatically wait for completion and download outputs.
    *
    * @example
-   * ```ts
-   * const result = await client.v1.aiClothesChanger.generate({
-   *   assets: {
-   *     garmentFilePath: "path/to/garment.jpg",
-   *     garmentType: "upper_body",
-   *     personFilePath: "path/to/person.jpg",
+   * ```typescript
+   * import Client from "magic-hour";
+   *
+   * const client = new Client({ token: process.env["API_TOKEN"]!! });
+   * const res = await client.v1.aiClothesChanger.generate(
+   *   {
+   *     assets: {
+   *       garmentFilePath: "/path/to/outfit.png",
+   *       garmentType: "upper_body",
+   *       personFilePath: "/path/to/model.png",
+   *     },
+   *     name: "Clothes Changer image",
    *   },
-   *   name: "my-clothes-changer",
-   * });
+   *   {
+   *     waitForCompletion: true,
+   *     downloadOutputs: true,
+   *     downloadDirectory: "outputs",
+   *   },
+   * );
    * ```
    */
   async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
@@ -72,7 +83,7 @@ export class AiClothesChangerClient extends CoreResourceClient {
 
     const fileClient = new FilesClient(this._client, this._opts);
 
-    const { garmentFilePath, personFilePath, garmentType } = request.assets;
+    const { garmentFilePath, personFilePath, ...restAssets } = request.assets;
 
     const [uploadedGarmentFilePath, uploadedPersonFilePath] = await Promise.all(
       [
@@ -81,12 +92,11 @@ export class AiClothesChangerClient extends CoreResourceClient {
       ],
     );
 
-    // Create the initial request
     const createResponse = await this.create(
       {
         ...request,
         assets: {
-          garmentType,
+          ...restAssets,
           garmentFilePath: uploadedGarmentFilePath,
           personFilePath: uploadedPersonFilePath,
         },
@@ -94,13 +104,9 @@ export class AiClothesChangerClient extends CoreResourceClient {
       createOpts,
     );
 
-    // Create image projects client to check result
-    const imageProjectsClient = new ImageProjectsClient(
-      this._client,
-      this._opts,
-    );
+    const projectsClient = new ImageProjectsClient(this._client, this._opts);
 
-    const result = await imageProjectsClient.checkResult(
+    const result = await projectsClient.checkResult(
       { id: createResponse.id },
       {
         waitForCompletion,
@@ -109,6 +115,13 @@ export class AiClothesChangerClient extends CoreResourceClient {
         ...createOpts,
       },
     );
+
+    if (downloadOutputs) {
+      result.downloadedPaths = await downloadFiles(
+        result.downloads,
+        downloadDirectory,
+      );
+    }
 
     return result;
   }

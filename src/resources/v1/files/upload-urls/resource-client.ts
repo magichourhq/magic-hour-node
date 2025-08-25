@@ -14,6 +14,7 @@ export class UploadUrlsClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
   }
+
   /**
    * Generate asset upload urls
    *

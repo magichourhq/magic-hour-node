@@ -40,20 +40,25 @@ type FilePathKeys<T> = Extract<keyof T, `${string}FilePath`>;
  * ```
  */
 export type GenerateRequestType<
-  CreateRequest extends { assets: Record<string, any> },
-  AssetOverrides extends {
-    [K in FilePathKeys<CreateRequest["assets"]>]: string;
-  } & {
-    // 🚫 forbid extra keys:
-    [K in Exclude<
-      keyof AssetOverrides,
-      FilePathKeys<CreateRequest["assets"]>
-    >]: {
-      ERROR: `AssetOverrides can only contain ${FilePathKeys<
-        CreateRequest["assets"]
-      >}`;
-    };
-  },
-> = Omit<CreateRequest, "assets"> & {
-  assets: Omit<CreateRequest["assets"], `${string}FilePath`> & AssetOverrides;
-};
+  CreateRequest,
+  AssetOverrides extends CreateRequest extends { assets: Record<string, any> }
+    ? {
+        [K in FilePathKeys<CreateRequest["assets"]>]: string;
+      } & {
+        // 🚫 forbid extra keys:
+        [K in Exclude<
+          keyof AssetOverrides,
+          FilePathKeys<CreateRequest["assets"]>
+        >]: {
+          ERROR: `AssetOverrides can only contain ${FilePathKeys<
+            CreateRequest["assets"]
+          >}`;
+        };
+      }
+    : {},
+> = CreateRequest extends { assets: Record<string, any> }
+  ? Omit<CreateRequest, "assets"> & {
+      assets: Omit<CreateRequest["assets"], `${string}FilePath`> &
+        AssetOverrides;
+    }
+  : CreateRequest;

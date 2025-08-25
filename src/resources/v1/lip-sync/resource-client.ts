@@ -9,11 +9,124 @@ import {
 import * as requests from "magic-hour/resources/v1/lip-sync/request-types";
 import { Schemas$V1LipSyncCreateBody } from "magic-hour/types/v1-lip-sync-create-body";
 import { Schemas$V1LipSyncCreateResponse } from "magic-hour/types/v1-lip-sync-create-response";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import {
+  GenerateOptions,
+  GenerateRequestType,
+} from "magic-hour/helpers/generate-type";
+import { downloadFiles } from "magic-hour/helpers/download";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
+
+type GenerateRequest = GenerateRequestType<
+  requests.CreateRequest,
+  {
+    /**
+     * The path of the audio file. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
+    audioFilePath: string;
+    /**
+     * Required if `video_source` is `file`. This value is either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
+    videoFilePath: string;
+  }
+>;
 
 export class LipSyncClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
   }
+
+  /**
+   * Lip Sync
+   *
+   * Create a Lip Sync video
+   *
+   * This method provides a convenient way to create a request and automatically wait for completion and download outputs.
+   *
+   * @example
+   * ```typescript
+   * import Client from "magic-hour";
+   *
+   * const client = new Client({ token: process.env["API_TOKEN"]!! });
+   * const res = await client.v1.lipSync.generate(
+   *   {
+   *     assets: {
+   *       audioFilePath: "/path/to/1234.mp3",
+   *       videoFilePath: "/path/to/1234.mp4",
+   *       videoSource: "file",
+   *     },
+   *     endSeconds: 15.0,
+   *     maxFpsLimit: 12.0,
+   *     name: "Lip Sync video",
+   *     startSeconds: 0.0,
+   *   },
+   *   {
+   *     waitForCompletion: true,
+   *     downloadOutputs: true,
+   *     downloadDirectory: "outputs",
+   *   },
+   * );
+   * ```
+   */
+  async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
+    const {
+      waitForCompletion = true,
+      downloadOutputs = true,
+      downloadDirectory = undefined,
+      ...createOpts
+    } = opts;
+
+    const fileClient = new FilesClient(this._client, this._opts);
+
+    const { audioFilePath, videoFilePath, ...restAssets } = request.assets;
+
+    const [uploadedAudioFilePath, uploadedVideoFilePath] = await Promise.all([
+      fileClient.uploadFile(audioFilePath),
+      fileClient.uploadFile(videoFilePath),
+    ]);
+
+    const createResponse = await this.create(
+      {
+        ...request,
+        assets: {
+          ...restAssets,
+          audioFilePath: uploadedAudioFilePath,
+          videoFilePath: uploadedVideoFilePath,
+        },
+      },
+      createOpts,
+    );
+
+    const projectsClient = new VideoProjectsClient(this._client, this._opts);
+
+    const result = await projectsClient.checkResult(
+      { id: createResponse.id },
+      {
+        waitForCompletion,
+        downloadOutputs,
+        downloadDirectory,
+        ...createOpts,
+      },
+    );
+
+    if (downloadOutputs) {
+      result.downloadedPaths = await downloadFiles(
+        result.downloads,
+        downloadDirectory,
+      );
+    }
+
+    return result;
+  }
+
   /**
    * Lip Sync
    *
