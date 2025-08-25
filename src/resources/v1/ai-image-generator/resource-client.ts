@@ -6,16 +6,15 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import * as requests from "magic-hour/resources/v1/ai-image-generator/request-types";
-import { Schemas$V1AiImageGeneratorCreateBody } from "magic-hour/types/v1-ai-image-generator-create-body";
-import { Schemas$V1AiImageGeneratorCreateResponse } from "magic-hour/types/v1-ai-image-generator-create-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
+import { downloadFiles } from "magic-hour/helpers/download";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
-import { downloadFiles } from "magic-hour/helpers/download";
+import * as requests from "magic-hour/resources/v1/ai-image-generator/request-types";
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
+import { Schemas$V1AiImageGeneratorCreateBody } from "magic-hour/types/v1-ai-image-generator-create-body";
+import { Schemas$V1AiImageGeneratorCreateResponse } from "magic-hour/types/v1-ai-image-generator-create-response";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 

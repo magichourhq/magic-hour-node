@@ -6,16 +6,16 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-import * as requests from "magic-hour/resources/v1/face-swap/request-types";
-import { Schemas$V1FaceSwapCreateBody } from "magic-hour/types/v1-face-swap-create-body";
-import { Schemas$V1FaceSwapCreateResponse } from "magic-hour/types/v1-face-swap-create-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
+import { downloadFiles } from "magic-hour/helpers/download";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
-import { downloadFiles } from "magic-hour/helpers/download";
+import * as requests from "magic-hour/resources/v1/face-swap/request-types";
+import { FilesClient } from "magic-hour/resources/v1/files";
 import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
+import { Schemas$V1FaceSwapCreateBody } from "magic-hour/types/v1-face-swap-create-body";
+import { Schemas$V1FaceSwapCreateResponse } from "magic-hour/types/v1-face-swap-create-response";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

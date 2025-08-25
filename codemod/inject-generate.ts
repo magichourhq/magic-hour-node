@@ -366,15 +366,13 @@ ${
   !assetsProp
     ? ""
     : filePathKeys.length > 0
-    ? `const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets;`
-    : `const restAssets = request.assets;`
+      ? `const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets;`
+      : `const restAssets = request.assets;`
 }
 
 ${
   filePathKeys.length
-    ? `const [${filePathKeys
-        .map((k) => "uploaded" + pascalCase(k))
-        .join(", ")}] = await Promise.all([
+    ? `const [${filePathKeys.map((k) => "uploaded" + pascalCase(k)).join(", ")}] = await Promise.all([
   ${uploadLines},
 ]);`
     : ""

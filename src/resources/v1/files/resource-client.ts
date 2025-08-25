@@ -1,13 +1,14 @@
-import {
-  CoreClient,
-  CoreResourceClient,
-  ResourceClientOptions,
-  RUNTIME,
-} from "magic-hour/core";
-import { UploadUrlsClient } from "magic-hour/resources/v1/files/upload-urls";
 import * as fs from "fs";
 import * as path from "path";
 import { Readable } from "stream";
+
+import {
+  CoreClient,
+  CoreResourceClient,
+  RUNTIME,
+  ResourceClientOptions,
+} from "magic-hour/core";
+import { UploadUrlsClient } from "magic-hour/resources/v1/files/upload-urls";
 
 export type FileInput =
   | string

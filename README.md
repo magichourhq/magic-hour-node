@@ -102,6 +102,7 @@ const client = new Client({
 
 ### [v1.files](src/resources/v1/files/README.md)
 
+* [upload-file](src/resources/v1/files/README.md#upload-file) - Upload File
 
 ### [v1.files.uploadUrls](src/resources/v1/files/upload-urls/README.md)
 
