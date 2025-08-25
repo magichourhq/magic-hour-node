@@ -29,7 +29,6 @@ const res = await client.v1.aiClothesChanger.create({
     garmentType: "upper_body",
     personFilePath: "api-assets/id/model.png",
   },
-  name: "Clothes Changer image",
 });
 
 ```
