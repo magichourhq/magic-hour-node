@@ -19,7 +19,7 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** Required if `video_source` is `file`. */
     videoFilePath: string;
   }
 >;

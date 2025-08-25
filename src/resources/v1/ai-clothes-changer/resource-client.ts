@@ -19,9 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The image of the outfit. */
     garmentFilePath: string;
-    /** File input */
+    /** The image with the person. */
     personFilePath: string;
   }
 >;

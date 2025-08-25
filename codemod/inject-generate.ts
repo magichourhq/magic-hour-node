@@ -1,12 +1,58 @@
 // scripts/add-generate-methods.ts
-import { Project } from "ts-morph";
+import { Project, Node } from "ts-morph";
 import fg from "fast-glob";
 import prettier from "prettier";
 import fs from "fs";
+import * as path from "path";
 
 const project = new Project({
   tsConfigFilePath: "tsconfig.json",
 });
+
+// Function to extract JSDoc comments from asset types
+function extractAssetFieldComments(
+  assetsTypeName: string,
+): Record<string, string> {
+  const assetProps: Record<string, string> = {};
+
+  try {
+    // Find the type definition file for this assets type
+    const typeFiles = project
+      .getSourceFiles()
+      .filter(
+        (file) =>
+          file.getFilePath().includes("types") &&
+          file.getTypeAlias(assetsTypeName),
+      );
+
+    // Type file is already loaded
+    const typeAlias = typeFiles[0]?.getTypeAlias(assetsTypeName);
+    if (typeAlias) {
+      const typeNode = typeAlias.getTypeNode();
+      if (typeNode && Node.isTypeLiteral(typeNode)) {
+        for (const member of typeNode.getMembers()) {
+          if (Node.isPropertySignature(member)) {
+            const name = member.getName();
+            const jsDocs = member.getJsDocs();
+            if (jsDocs.length > 0) {
+              const comment = jsDocs
+                .map((d) => d.getInnerText().trim())
+                .join("\n");
+              // Extract first sentence
+              const parts = comment.split(".");
+              const firstSentence = parts[0]?.trim();
+              assetProps[name] = firstSentence ? firstSentence + "." : comment;
+            }
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.warn(`Could not extract comments for ${assetsTypeName}:`, error);
+  }
+
+  return assetProps;
+}
 
 function pascalCase(str: string) {
   return str.replace(/(^|[-_])(.)/g, (_, __, c) => c.toUpperCase());
@@ -79,19 +125,34 @@ async function main() {
 
     const assetsProp = reqType.getProperty("assets");
     let filePathKeys: string[] = [];
+    let assetComments: Record<string, string> = {};
+
     if (assetsProp) {
       const assetsType = assetsProp.getTypeAtLocation(source);
       filePathKeys = assetsType
         .getProperties()
         .map((p) => p.getName())
         .filter((n) => n.endsWith("FilePath"));
+
+      // Extract the assets type name to get JSDoc comments
+      const assetsTypeText = assetsType.getText();
+      // Extract type name from something like "V1AiClothesChangerCreateBodyAssets"
+      const assetsTypeMatch = assetsTypeText.match(/(\w+Assets)/);
+      if (assetsTypeMatch && assetsTypeMatch[1]) {
+        const assetsTypeName = assetsTypeMatch[1];
+        assetComments = extractAssetFieldComments(assetsTypeName);
+        console.log(`Extracted comments for ${assetsTypeName}:`, assetComments);
+      }
     }
 
     // --- Insert or update GenerateRequest type alias after last import ---
     let genType = source.getTypeAlias("GenerateRequest");
     const fields = filePathKeys.length
       ? filePathKeys
-          .map((k) => `/** File input */\n    ${k}: string;`)
+          .map((k) => {
+            const comment = assetComments[k] || "File input";
+            return `/** ${comment} */\n    ${k}: string;`;
+          })
           .join("\n    ")
       : "";
     const typeText = `GenerateRequestType<${reqTypeText}, {${
@@ -188,7 +249,12 @@ return result;
               classDecl.getNameOrThrow()[0]!.toLowerCase() +
               classDecl.getNameOrThrow().slice(1).replace("Client", "") +
               `.generate({\n  assets: {\n    ${filePathKeys
-                .map((k) => `${k}: "path/to/file.jpg"`)
+                .map(
+                  (k) =>
+                    `${k}: "path/to/file.jpg" // ${
+                      assetComments[k] || "File input"
+                    }`,
+                )
                 .join(",\n    ")}\n  },\n});\n\`\`\``,
           },
         ],

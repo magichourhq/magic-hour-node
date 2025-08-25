@@ -19,7 +19,7 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The image used in the edit. */
     imageFilePath: string;
   }
 >;

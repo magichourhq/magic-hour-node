@@ -19,9 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The audio file to sync with the image. */
     audioFilePath: string;
-    /** File input */
+    /** The source image to animate. */
     imageFilePath: string;
   }
 >;

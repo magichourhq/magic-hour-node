@@ -20,7 +20,7 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** This is the image or video where the face will be detected. */
     targetFilePath: string;
   }
 >;

@@ -19,9 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The image used as the new background for the image_file_path. */
     backgroundImageFilePath: string;
-    /** File input */
+    /** The image to remove the background. */
     imageFilePath: string;
   }
 >;

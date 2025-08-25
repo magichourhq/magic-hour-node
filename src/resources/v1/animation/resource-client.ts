@@ -19,9 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The path of the input audio. */
     audioFilePath: string;
-    /** File input */
+    /** An initial image to use a the first frame of the video. */
     imageFilePath: string;
   }
 >;

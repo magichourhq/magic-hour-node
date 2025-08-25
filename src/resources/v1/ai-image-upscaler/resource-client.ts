@@ -19,7 +19,7 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The image to upscale. */
     imageFilePath: string;
   }
 >;

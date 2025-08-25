@@ -19,9 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The path of the audio file. */
     audioFilePath: string;
-    /** File input */
+    /** Required if `video_source` is `file`. */
     videoFilePath: string;
   }
 >;

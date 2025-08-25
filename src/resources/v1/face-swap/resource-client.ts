@@ -19,9 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** The path of the input image with the face to be swapped. */
     imageFilePath: string;
-    /** File input */
+    /** Required if `video_source` is `file`. */
     videoFilePath: string;
   }
 >;

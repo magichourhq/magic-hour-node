@@ -19,7 +19,7 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** This is the image whose face will be edited. */
     imageFilePath: string;
   }
 >;

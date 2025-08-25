@@ -19,7 +19,7 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** This is the video used to add subtitles. */
     videoFilePath: string;
   }
 >;

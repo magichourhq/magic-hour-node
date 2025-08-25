@@ -19,9 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /** File input */
+    /** This is the image from which the face is extracted. */
     sourceFilePath: string;
-    /** File input */
+    /** This is the image where the face from the source image will be placed. */
     targetFilePath: string;
   }
 >;
