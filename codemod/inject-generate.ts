@@ -16,7 +16,6 @@ function extractAssetFieldComments(
   const assetProps: Record<string, string> = {};
 
   try {
-    // Find the type definition file for this assets type
     const typeFiles = project
       .getSourceFiles()
       .filter(
@@ -25,7 +24,6 @@ function extractAssetFieldComments(
           file.getTypeAlias(assetsTypeName),
       );
 
-    // Type file is already loaded
     const typeAlias = typeFiles[0]?.getTypeAlias(assetsTypeName);
     if (typeAlias) {
       const typeNode = typeAlias.getTypeNode();
@@ -38,11 +36,9 @@ function extractAssetFieldComments(
               const comment = jsDocs
                 .map((d) => d.getInnerText().trim())
                 .join("\n");
-              // Extract first sentence
               const parts = comment.split(".");
               const firstSentence = parts[0]?.trim();
 
-              // For file path fields, add additional documentation
               if (name.endsWith("FilePath")) {
                 assetProps[name] = `${
                   firstSentence ? firstSentence + "." : comment
@@ -148,9 +144,7 @@ async function main() {
         .map((p) => p.getName())
         .filter((n) => n.endsWith("FilePath"));
 
-      // Extract the assets type name to get JSDoc comments
       const assetsTypeText = assetsType.getText();
-      // Extract type name from something like "V1AiClothesChangerCreateBodyAssets"
       const assetsTypeMatch = assetsTypeText.match(/(\w+Assets)/);
       if (assetsTypeMatch && assetsTypeMatch[1]) {
         const assetsTypeName = assetsTypeMatch[1];
@@ -182,6 +176,25 @@ async function main() {
     } else {
       genType.setType(typeText);
     }
+
+    // --- Prepare example fields for generate() docs ---
+    const allProps = reqType.getProperties().map((p) => p.getName());
+    const nonFileProps = allProps.filter((p) => p !== "assets");
+
+    const exampleAssetFields = filePathKeys
+      .map(
+        (k) =>
+          `${k}: "path/to/file.jpg" // ${assetComments[k] || "File input"}`,
+      )
+      .join(",\n    ");
+
+    const exampleNonAssetFields = nonFileProps
+      .map((p) => `${p}: "..."`)
+      .join(",\n    ");
+
+    const exampleFields = [exampleAssetFields, exampleNonAssetFields]
+      .filter(Boolean)
+      .join(",\n    ");
 
     // --- Insert or update generate() method below constructor ---
     let genMethod = classDecl.getMethod("generate");
@@ -271,17 +284,20 @@ return result;
           {
             description:
               "AI generate helper with automatic polling and downloading.\n" +
-              "@example\n```ts\nconst result = await client.v1." +
-              classDecl.getNameOrThrow()[0]!.toLowerCase() +
-              classDecl.getNameOrThrow().slice(1).replace("Client", "") +
-              `.generate({\n  assets: {\n    ${filePathKeys
-                .map(
-                  (k) =>
-                    `${k}: "path/to/file.jpg" // ${
-                      assetComments[k] || "File input"
-                    }`,
-                )
-                .join(",\n    ")}\n  },\n});\n\`\`\``,
+              `@example
+\`\`\`ts
+const result = await client.v1.${classDecl
+                .getNameOrThrow()[0]!
+                .toLowerCase()}${classDecl
+                .getNameOrThrow()
+                .slice(1)
+                .replace("Client", "")}.generate({
+  assets: {
+    ${exampleFields}
+  },
+});
+\`\`\`
+`,
           },
         ],
       });
