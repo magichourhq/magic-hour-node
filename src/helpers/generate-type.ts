@@ -26,6 +26,9 @@ export type GenerateOptions = RequestOptions & {
 
 type FilePathKeys<T> = Extract<keyof T, `${string}FilePath`>;
 
+// Extract FilePath properties as they are (preserving optional/required)
+type FilePathProps<T> = Pick<T, FilePathKeys<T>>;
+
 /**
  * A type that allows you to override the `${string}FilePath` fields of the assets object.
  *
@@ -42,9 +45,7 @@ type FilePathKeys<T> = Extract<keyof T, `${string}FilePath`>;
 export type GenerateRequestType<
   CreateRequest,
   AssetOverrides extends CreateRequest extends { assets: Record<string, any> }
-    ? {
-        [K in FilePathKeys<CreateRequest["assets"]>]: string;
-      } & {
+    ? FilePathProps<CreateRequest["assets"]> & {
         // 🚫 forbid extra keys:
         [K in Exclude<
           keyof AssetOverrides,

@@ -28,7 +28,7 @@ type GenerateRequest = GenerateRequestType<
      *
      * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
      */
-    backgroundImageFilePath: string;
+    backgroundImageFilePath?: string | undefined;
     /**
      * The image to remove the background. This value is either
      * - a direct URL to the image file
@@ -82,26 +82,31 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { backgroundImageFilePath, imageFilePath, ...restAssets } =
       request.assets;
 
-    getLogger().debug(
-      `Uploading file ${backgroundImageFilePath} to Magic Hour's storage`,
-    );
+    if (backgroundImageFilePath) {
+      getLogger().debug(
+        `Uploading file ${backgroundImageFilePath} to Magic Hour's storage`,
+      );
+    }
     getLogger().debug(
       `Uploading file ${imageFilePath} to Magic Hour's storage`,
     );
 
     const [uploadedBackgroundImageFilePath, uploadedImageFilePath] =
       await Promise.all([
-        fileClient.uploadFile(backgroundImageFilePath),
+        backgroundImageFilePath
+          ? fileClient.uploadFile(backgroundImageFilePath)
+          : Promise.resolve(backgroundImageFilePath),
         fileClient.uploadFile(imageFilePath),
       ]);
 
-    getLogger().info(
-      `Uploaded file ${backgroundImageFilePath} to Magic Hour's storage as ${uploadedBackgroundImageFilePath}`,
-    );
+    if (backgroundImageFilePath) {
+      getLogger().info(
+        `Uploaded file ${backgroundImageFilePath} to Magic Hour's storage as ${uploadedBackgroundImageFilePath}`,
+      );
+    }
     getLogger().info(
       `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
     );
@@ -111,7 +116,9 @@ export class ImageBackgroundRemoverClient extends CoreResourceClient {
         ...request,
         assets: {
           ...restAssets,
-          backgroundImageFilePath: uploadedBackgroundImageFilePath,
+          backgroundImageFilePath: backgroundImageFilePath
+            ? uploadedBackgroundImageFilePath
+            : backgroundImageFilePath,
           imageFilePath: uploadedImageFilePath,
         },
       },

@@ -28,7 +28,7 @@ type GenerateRequest = GenerateRequestType<
      *
      * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
      */
-    imageFilePath: string;
+    imageFilePath?: string | undefined;
     /**
      * Required if `video_source` is `file`. This value is either
      * - a direct URL to the image file
@@ -36,7 +36,7 @@ type GenerateRequest = GenerateRequestType<
      *
      * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
      */
-    videoFilePath: string;
+    videoFilePath?: string | undefined;
   }
 >;
 
@@ -93,35 +93,46 @@ export class FaceSwapClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { imageFilePath, videoFilePath, ...restAssets } = request.assets;
 
-    getLogger().debug(
-      `Uploading file ${imageFilePath} to Magic Hour's storage`,
-    );
-    getLogger().debug(
-      `Uploading file ${videoFilePath} to Magic Hour's storage`,
-    );
+    if (imageFilePath) {
+      getLogger().debug(
+        `Uploading file ${imageFilePath} to Magic Hour's storage`,
+      );
+    }
+    if (videoFilePath) {
+      getLogger().debug(
+        `Uploading file ${videoFilePath} to Magic Hour's storage`,
+      );
+    }
 
     const [uploadedImageFilePath, uploadedVideoFilePath] = await Promise.all([
-      fileClient.uploadFile(imageFilePath),
-      fileClient.uploadFile(videoFilePath),
+      imageFilePath
+        ? fileClient.uploadFile(imageFilePath)
+        : Promise.resolve(imageFilePath),
+      videoFilePath
+        ? fileClient.uploadFile(videoFilePath)
+        : Promise.resolve(videoFilePath),
     ]);
 
-    getLogger().info(
-      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
-    );
-    getLogger().info(
-      `Uploaded file ${videoFilePath} to Magic Hour's storage as ${uploadedVideoFilePath}`,
-    );
+    if (imageFilePath) {
+      getLogger().info(
+        `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
+      );
+    }
+    if (videoFilePath) {
+      getLogger().info(
+        `Uploaded file ${videoFilePath} to Magic Hour's storage as ${uploadedVideoFilePath}`,
+      );
+    }
 
     const createResponse = await this.create(
       {
         ...request,
         assets: {
           ...restAssets,
-          imageFilePath: uploadedImageFilePath,
-          videoFilePath: uploadedVideoFilePath,
+          imageFilePath: imageFilePath ? uploadedImageFilePath : imageFilePath,
+          videoFilePath: videoFilePath ? uploadedVideoFilePath : videoFilePath,
         },
       },
       createOpts,

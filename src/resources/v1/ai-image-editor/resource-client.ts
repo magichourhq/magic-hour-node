@@ -72,7 +72,6 @@ export class AiImageEditorClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { imageFilePath, ...restAssets } = request.assets;
 
     getLogger().debug(
