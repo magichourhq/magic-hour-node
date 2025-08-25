@@ -70,10 +70,10 @@ export class VideoProjectsClient extends CoreResourceClient {
 
     while (!["complete", "error", "canceled"].includes(apiResponse.status)) {
       await sleep(pollInterval * 1000); // Convert seconds to milliseconds
-      apiResponse = await this.get({ id: request.id }, requestOpts);
       getLogger().info(
         `Video project ${request.id} status: ${apiResponse.status}, waiting for ${pollInterval} seconds and checking again`,
       );
+      apiResponse = await this.get({ id: request.id }, requestOpts);
     }
 
     if (apiResponse.status !== "complete") {
