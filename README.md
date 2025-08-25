@@ -27,6 +27,109 @@ const client = new Client({
 });
 ```
 
+## Logging
+
+The SDK includes a comprehensive logging system that allows you to monitor API requests, responses, and operation status. You can configure logging levels and use custom loggers.
+
+### Basic Logging
+
+```ts
+import Client, { LogLevel } from "magic-hour";
+
+const client = new Client({
+  token: "my api key",
+  logger: {
+    level: LogLevel.INFO, // Show info, warn, and error messages
+    includeTimestamp: true, // Include timestamps in log messages
+  },
+});
+```
+
+### Logging Levels
+
+- `LogLevel.NONE` - Disable all logging
+- `LogLevel.ERROR` - Only error messages
+- `LogLevel.WARN` - Warnings and errors
+- `LogLevel.INFO` - Info, warnings, and errors
+- `LogLevel.DEBUG` - All messages including request/response details
+
+### Custom Logger
+
+```ts
+import Client, { Logger, LogLevel } from "magic-hour";
+
+class CustomLogger implements Logger {
+  error(message: string, ...args: any[]): void {
+    console.error(`[MYAPP] ${message}`, ...args);
+  }
+
+  warn(message: string, ...args: any[]): void {
+    console.warn(`[MYAPP] ${message}`, ...args);
+  }
+
+  info(message: string, ...args: any[]): void {
+    console.info(`[MYAPP] ${message}`, ...args);
+  }
+
+  debug(message: string, ...args: any[]): void {
+    console.debug(`[MYAPP] ${message}`, ...args);
+  }
+}
+
+const client = new Client({
+  token: "my api key",
+  logger: {
+    level: LogLevel.DEBUG,
+    logger: new CustomLogger(),
+  },
+});
+```
+
+### Integration with External Logging Libraries
+
+```ts
+import winston from "winston";
+import Client, { Logger, LogLevel } from "magic-hour";
+
+class WinstonLoggerAdapter implements Logger {
+  error(message: string, ...args: any[]): void {
+    winstonLogger.error(message, ...args);
+  }
+
+  warn(message: string, ...args: any[]): void {
+    winstonLogger.warn(message, ...args);
+  }
+
+  info(message: string, ...args: any[]): void {
+    winstonLogger.info(message, ...args);
+  }
+
+  debug(message: string, ...args: any[]): void {
+    winstonLogger.debug(message, ...args);
+  }
+}
+
+const winstonLogger = winston.createLogger({
+  level: "info",
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: "magic-hour.log" }),
+  ],
+});
+
+const client = new Client({
+  token: "my api key",
+  logger: {
+    level: LogLevel.INFO,
+    logger: new WinstonLoggerAdapter(),
+  },
+});
+```
+
 > [!WARNING]
 > Any API call that renders a video will utilize frames in your account.
 

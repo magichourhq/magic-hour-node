@@ -68,12 +68,14 @@ export class VideoProjectsClient extends CoreResourceClient {
     }
 
     if (apiResponse.status !== "complete") {
-      const log = apiResponse.status === "error" ? console.error : console.info;
-      log(
-        `Video project ${request.id} has status ${
-          apiResponse.status
-        }: ${JSON.stringify(apiResponse.error)}`,
-      );
+      const message = `Video project ${request.id} has status ${
+        apiResponse.status
+      }: ${JSON.stringify(apiResponse.error)}`;
+      if (apiResponse.status === "error") {
+        this._client.logger.error(message);
+      } else {
+        this._client.logger.info(message);
+      }
       return {
         ...apiResponse,
       };

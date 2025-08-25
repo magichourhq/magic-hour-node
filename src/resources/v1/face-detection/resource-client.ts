@@ -88,8 +88,12 @@ export class FaceDetectionClient extends CoreResourceClient {
     }
 
     if (apiResponse.status !== "complete") {
-      const log = apiResponse.status === "error" ? console.error : console.info;
-      log(`Face detection ${apiResponse.id} has status ${apiResponse.status}`);
+      const message = `Face detection ${apiResponse.id} has status ${apiResponse.status}`;
+      if (apiResponse.status === "error") {
+        this._client.logger.error(message);
+      } else {
+        this._client.logger.info(message);
+      }
       return {
         ...apiResponse,
       };
