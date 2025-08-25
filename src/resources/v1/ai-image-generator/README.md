@@ -1,6 +1,11 @@
 # v1-aiimagegenerator
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Images <a name="create"></a>
 
 Create an AI image. Each image costs 5 credits.
@@ -40,7 +45,4 @@ const res = await client.v1.aiImageGenerator.create({
 
 ##### Example
 `{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

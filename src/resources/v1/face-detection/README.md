@@ -1,6 +1,11 @@
 # v1-facedetection
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Get face detection details <a name="get"></a>
 
 Get the details of a face detection task. 
@@ -71,7 +76,4 @@ const res = await client.v1.faceDetection.create({
 
 ##### Example
 `{"creditsCharged": 123, "id": "uuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

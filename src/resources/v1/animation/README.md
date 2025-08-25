@@ -1,6 +1,11 @@
 # v1-animation
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Animation <a name="create"></a>
 
 Create a Animation video. The estimated frame cost is calculated based on the `fps` and `end_seconds` input.
@@ -64,7 +69,4 @@ const res = await client.v1.animation.create({
 
 ##### Example
 `{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 
