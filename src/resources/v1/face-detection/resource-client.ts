@@ -59,7 +59,6 @@ export class FaceDetectionClient extends CoreResourceClient {
       fileClient.uploadFile(targetFilePath),
     ]);
 
-    // Create the initial request
     const createResponse = await this.create(
       {
         ...request,

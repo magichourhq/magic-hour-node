@@ -271,7 +271,7 @@ ${
     : ""
 }
 
-// Create the initial request
+
 const createResponse = await this.create(
   {
     ...request,
@@ -289,7 +289,7 @@ const createResponse = await this.create(
   createOpts,
 );
 
-// Create projects client to check result
+
 const projectsClient = ${
       isVideo
         ? "new VideoProjectsClient(this._client, this._opts)"

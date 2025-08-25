@@ -60,7 +60,6 @@ export class AutoSubtitleGeneratorClient extends CoreResourceClient {
       fileClient.uploadFile(videoFilePath),
     ]);
 
-    // Create the initial request
     const createResponse = await this.create(
       {
         ...request,
@@ -72,7 +71,6 @@ export class AutoSubtitleGeneratorClient extends CoreResourceClient {
       createOpts,
     );
 
-    // Create projects client to check result
     const projectsClient = new VideoProjectsClient(this._client, this._opts);
 
     const result = await projectsClient.checkResult(

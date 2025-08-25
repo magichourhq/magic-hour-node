@@ -40,7 +40,6 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
       ...createOpts
     } = opts;
 
-    // Create the initial request
     const createResponse = await this.create(
       {
         ...request,
@@ -48,7 +47,6 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
       createOpts,
     );
 
-    // Create projects client to check result
     const projectsClient = new ImageProjectsClient(this._client, this._opts);
 
     const result = await projectsClient.checkResult(
