@@ -35,7 +35,4 @@ const res = await client.v1.aiGifGenerator.create({
 
 ##### Example
 `{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

@@ -41,7 +41,4 @@ const res = await client.v1.aiClothesChanger.create({
 
 ##### Example
 `{"creditsCharged": 25, "frameCost": 25, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

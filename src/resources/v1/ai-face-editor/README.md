@@ -68,7 +68,4 @@ const res = await client.v1.aiFaceEditor.create({
 
 ##### Example
 `{"creditsCharged": 1, "frameCost": 1, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

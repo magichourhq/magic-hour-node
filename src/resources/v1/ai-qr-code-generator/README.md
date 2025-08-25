@@ -37,7 +37,4 @@ const res = await client.v1.aiQrCodeGenerator.create({
 
 ##### Example
 `{"creditsCharged": 20, "frameCost": 20, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

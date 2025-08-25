@@ -63,7 +63,4 @@ const res = await client.v1.faceSwap.create({
 
 ##### Example
 `{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

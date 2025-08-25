@@ -41,7 +41,4 @@ const res = await client.v1.aiImageUpscaler.create({
 
 ##### Example
 `{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

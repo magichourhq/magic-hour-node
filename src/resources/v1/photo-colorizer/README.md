@@ -35,7 +35,4 @@ const res = await client.v1.photoColorizer.create({
 
 ##### Example
 `{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

@@ -41,7 +41,4 @@ const res = await client.v1.aiMemeGenerator.create({
 
 ##### Example
 `{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

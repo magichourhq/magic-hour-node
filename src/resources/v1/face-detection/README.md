@@ -71,7 +71,4 @@ const res = await client.v1.faceDetection.create({
 
 ##### Example
 `{"creditsCharged": 123, "id": "uuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 
