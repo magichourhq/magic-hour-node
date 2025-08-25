@@ -325,11 +325,9 @@ return result;
 
     const docs = [
       {
-        description: `${createDocText
-          .split(".")[0]
-          ?.trim()} - Generate with automatic polling and downloading
+        description: `${createDocText.split(".")[0]?.trim()}
 
-- This method provides a convenient way to create a request and automatically wait for completion and download outputs.
+This method provides a convenient way to create a request and automatically wait for completion and download outputs.
 `,
       },
     ];
