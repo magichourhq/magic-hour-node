@@ -177,33 +177,11 @@ async function main() {
       genType.setType(typeText);
     }
 
-    // --- Prepare example fields for generate() docs ---
-    const allProps = reqType.getProperties().map((p) => p.getName());
-    const nonFileProps = allProps.filter((p) => p !== "assets");
-
-    const exampleAssetFields = filePathKeys
-      .map(
-        (k) =>
-          `${k}: "path/to/file.jpg" // ${assetComments[k] || "File input"}`,
-      )
-      .join(",\n    ");
-
-    const exampleNonAssetFields = nonFileProps
-      .map((p) => `${p}: "..."`)
-      .join(",\n    ");
-
-    const exampleFields = [exampleAssetFields, exampleNonAssetFields]
-      .filter(Boolean)
-      .join(",\n    ");
-
     // --- Insert or update generate() method below constructor ---
     let genMethod = classDecl.getMethod("generate");
     const uploadLines = filePathKeys
       .map((k) => `fileClient.uploadFile(${k})`)
       .join(",\n        ");
-    const assignLines = filePathKeys
-      .map((k) => `${k}: uploaded${pascalCase(k)}`)
-      .join(",\n          ");
 
     const methodBody = `
 const {
@@ -271,6 +249,24 @@ const result = await imageProjectsClient.checkResult(
 return result;
 `;
 
+    const createJsDocs = createMethod.getJsDocs();
+
+    const createDocText =
+      createJsDocs.length > 0
+        ? createJsDocs.map((d) => d.getInnerText().trim()).join("\n")
+        : "AI generate helper with automatic polling and downloading.\n";
+
+    const docs = [
+      {
+        description: `${createDocText
+          .split(".")[0]
+          ?.trim()} - Generate with automatic polling and downloading
+
+- This method provides a convenient way to create a request and automatically wait for completion and download outputs.
+`,
+      },
+    ];
+
     if (!genMethod) {
       classDecl.insertMethod(ctor.getChildIndex() + 1, {
         isAsync: true,
@@ -280,29 +276,12 @@ return result;
           { name: "opts", type: "GenerateOptions = {}" },
         ],
         statements: methodBody,
-        docs: [
-          {
-            description:
-              "AI generate helper with automatic polling and downloading.\n" +
-              `@example
-\`\`\`ts
-const result = await client.v1.${classDecl
-                .getNameOrThrow()[0]!
-                .toLowerCase()}${classDecl
-                .getNameOrThrow()
-                .slice(1)
-                .replace("Client", "")}.generate({
-  assets: {
-    ${exampleFields}
-  },
-});
-\`\`\`
-`,
-          },
-        ],
+        docs: docs,
       });
     } else {
       genMethod.setBodyText(methodBody);
+      genMethod.getJsDocs().forEach((d) => d.remove());
+      genMethod.addJsDocs(docs);
     }
 
     // --- Format with Prettier ---
