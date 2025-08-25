@@ -241,14 +241,70 @@ async function main() {
 
     // --- Insert or update GenerateRequest type alias after last import ---
     let genType = source.getTypeAlias("GenerateRequest");
+
+    // Extract the original property signatures for file path keys
     const fields = filePathKeys.length
-      ? filePathKeys
-          .map((k) => {
-            const comment = assetComments[k] || "File input";
-            return `/** ${comment} */\n    ${k}: string;`;
-          })
-          .join("\n    ")
+      ? (() => {
+          const originalFields: string[] = [];
+
+          if (assetsProp) {
+            const assetsType = assetsProp.getTypeAtLocation(source);
+            const assetsTypeText = assetsType.getText();
+            const assetsTypeMatch = assetsTypeText.match(/(\w+Assets)/);
+
+            if (assetsTypeMatch && assetsTypeMatch[1]) {
+              const assetsTypeName = assetsTypeMatch[1];
+              const assetsTypeAlias = project
+                .getSourceFiles()
+                .filter((file) => file.getFilePath().includes("types"))
+                .map((file) => file.getTypeAlias(assetsTypeName))
+                .find(Boolean);
+
+              if (assetsTypeAlias) {
+                const typeNode = assetsTypeAlias.getTypeNode();
+                if (typeNode && Node.isTypeLiteral(typeNode)) {
+                  for (const member of typeNode.getMembers()) {
+                    if (Node.isPropertySignature(member)) {
+                      const name = member.getName();
+                      if (filePathKeys.includes(name)) {
+                        const comment = assetComments[name] || "File input";
+                        const typeText =
+                          member.getTypeNode()?.getText() || "string";
+                        const questionToken = member.getQuestionTokenNode();
+                        const optionalMark = questionToken ? "?" : "";
+                        originalFields.push(
+                          `/** ${comment} */\n    ${name}${optionalMark}: ${typeText};`,
+                        );
+                      }
+                    }
+                  }
+                }
+              } else {
+                // Fallback: if we can't find the type alias, use the original approach
+                filePathKeys.forEach((k) => {
+                  const comment = assetComments[k] || "File input";
+                  originalFields.push(`/** ${comment} */\n    ${k}: string;`);
+                });
+              }
+            } else {
+              // Fallback: if we can't match the assets type, use the original approach
+              filePathKeys.forEach((k) => {
+                const comment = assetComments[k] || "File input";
+                originalFields.push(`/** ${comment} */\n    ${k}: string;`);
+              });
+            }
+          } else {
+            // Fallback: if we can't access assets type, use the original approach
+            filePathKeys.forEach((k) => {
+              const comment = assetComments[k] || "File input";
+              originalFields.push(`/** ${comment} */\n    ${k}: string;`);
+            });
+          }
+
+          return originalFields;
+        })().join("\n    ")
       : "";
+
     const typeText = `GenerateRequestType<${reqTypeText}, {${
       fields ? "\n    " + fields + "\n  " : ""
     }}>`;
