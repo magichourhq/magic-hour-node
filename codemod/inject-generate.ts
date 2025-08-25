@@ -200,10 +200,16 @@ const {
   ...createOpts
 } = opts;
 
-const fileClient = new FilesClient(this._client, this._opts);
+${
+  assetsProp
+    ? `const fileClient = new FilesClient(this._client, this._opts);`
+    : ""
+}
 
 ${
-  filePathKeys.length > 0
+  !assetsProp
+    ? ""
+    : filePathKeys.length > 0
     ? `const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets;`
     : `const restAssets = request.assets;`
 }
@@ -222,10 +228,16 @@ ${
 const createResponse = await this.create(
   {
     ...request,
-    assets: {
+    ${
+      assetsProp
+        ? `assets: {
       ...restAssets,
-      ${filePathKeys.length ? assignLines : ""}
-    },
+      ${filePathKeys
+        .map((k) => `${k}: uploaded${pascalCase(k)}`)
+        .join(",\n      ")}
+    },`
+        : ""
+    }
   },
   createOpts,
 );

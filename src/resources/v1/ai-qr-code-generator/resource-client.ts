@@ -42,17 +42,10 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
       ...createOpts
     } = opts;
 
-    const fileClient = new FilesClient(this._client, this._opts);
-
-    const restAssets = request.assets;
-
     // Create the initial request
     const createResponse = await this.create(
       {
         ...request,
-        assets: {
-          ...restAssets,
-        },
       },
       createOpts,
     );
