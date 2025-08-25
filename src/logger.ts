@@ -9,6 +9,8 @@ export const LogLevel = {
   debug: 4,
 } as const;
 
+const logLevelOrder = ["none", "error", "warn", "info", "debug"];
+
 export type PossibleLogLevel = keyof typeof LogLevel;
 
 /**
@@ -54,7 +56,9 @@ class ConsoleLogger implements Logger {
   }
 
   private shouldLog(level: PossibleLogLevel): boolean {
-    return level <= this.config.level;
+    return (
+      logLevelOrder.indexOf(level) <= logLevelOrder.indexOf(this.config.level)
+    );
   }
 
   private formatMessage(level: string, message: string): string {
