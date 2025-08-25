@@ -60,12 +60,7 @@ export class AiImageGeneratorClient extends CoreResourceClient {
       ...createOpts
     } = opts;
 
-    const createResponse = await this.create(
-      {
-        ...request,
-      },
-      createOpts,
-    );
+    const createResponse = await this.create(request, createOpts);
 
     getLogger().info(
       `Created AiImageGeneratorClient project ${createResponse.id}`,

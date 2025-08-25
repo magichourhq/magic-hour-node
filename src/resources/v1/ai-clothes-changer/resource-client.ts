@@ -83,7 +83,6 @@ export class AiClothesChangerClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { garmentFilePath, personFilePath, ...restAssets } = request.assets;
 
     getLogger().debug(

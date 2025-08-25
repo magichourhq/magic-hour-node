@@ -86,27 +86,32 @@ export class LipSyncClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { audioFilePath, videoFilePath, ...restAssets } = request.assets;
 
     getLogger().debug(
       `Uploading file ${audioFilePath} to Magic Hour's storage`,
     );
-    getLogger().debug(
-      `Uploading file ${videoFilePath} to Magic Hour's storage`,
-    );
+    if (videoFilePath) {
+      getLogger().debug(
+        `Uploading file ${videoFilePath} to Magic Hour's storage`,
+      );
+    }
 
     const [uploadedAudioFilePath, uploadedVideoFilePath] = await Promise.all([
       fileClient.uploadFile(audioFilePath),
-      fileClient.uploadFile(videoFilePath),
+      videoFilePath
+        ? fileClient.uploadFile(videoFilePath)
+        : Promise.resolve(videoFilePath),
     ]);
 
     getLogger().info(
       `Uploaded file ${audioFilePath} to Magic Hour's storage as ${uploadedAudioFilePath}`,
     );
-    getLogger().info(
-      `Uploaded file ${videoFilePath} to Magic Hour's storage as ${uploadedVideoFilePath}`,
-    );
+    if (videoFilePath) {
+      getLogger().info(
+        `Uploaded file ${videoFilePath} to Magic Hour's storage as ${uploadedVideoFilePath}`,
+      );
+    }
 
     const createResponse = await this.create(
       {
@@ -114,7 +119,7 @@ export class LipSyncClient extends CoreResourceClient {
         assets: {
           ...restAssets,
           audioFilePath: uploadedAudioFilePath,
-          videoFilePath: uploadedVideoFilePath,
+          videoFilePath: videoFilePath ? uploadedVideoFilePath : videoFilePath,
         },
       },
       createOpts,

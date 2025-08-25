@@ -58,12 +58,7 @@ export class AiGifGeneratorClient extends CoreResourceClient {
       ...createOpts
     } = opts;
 
-    const createResponse = await this.create(
-      {
-        ...request,
-      },
-      createOpts,
-    );
+    const createResponse = await this.create(request, createOpts);
 
     getLogger().info(
       `Created AiGifGeneratorClient project ${createResponse.id}`,

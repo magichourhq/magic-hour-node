@@ -94,35 +94,46 @@ export class AnimationClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { audioFilePath, imageFilePath, ...restAssets } = request.assets;
 
-    getLogger().debug(
-      `Uploading file ${audioFilePath} to Magic Hour's storage`,
-    );
-    getLogger().debug(
-      `Uploading file ${imageFilePath} to Magic Hour's storage`,
-    );
+    if (audioFilePath) {
+      getLogger().debug(
+        `Uploading file ${audioFilePath} to Magic Hour's storage`,
+      );
+    }
+    if (imageFilePath) {
+      getLogger().debug(
+        `Uploading file ${imageFilePath} to Magic Hour's storage`,
+      );
+    }
 
     const [uploadedAudioFilePath, uploadedImageFilePath] = await Promise.all([
-      fileClient.uploadFile(audioFilePath),
-      fileClient.uploadFile(imageFilePath),
+      audioFilePath
+        ? fileClient.uploadFile(audioFilePath)
+        : Promise.resolve(audioFilePath),
+      imageFilePath
+        ? fileClient.uploadFile(imageFilePath)
+        : Promise.resolve(imageFilePath),
     ]);
 
-    getLogger().info(
-      `Uploaded file ${audioFilePath} to Magic Hour's storage as ${uploadedAudioFilePath}`,
-    );
-    getLogger().info(
-      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
-    );
+    if (audioFilePath) {
+      getLogger().info(
+        `Uploaded file ${audioFilePath} to Magic Hour's storage as ${uploadedAudioFilePath}`,
+      );
+    }
+    if (imageFilePath) {
+      getLogger().info(
+        `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
+      );
+    }
 
     const createResponse = await this.create(
       {
         ...request,
         assets: {
           ...restAssets,
-          audioFilePath: uploadedAudioFilePath,
-          imageFilePath: uploadedImageFilePath,
+          audioFilePath: audioFilePath ? uploadedAudioFilePath : audioFilePath,
+          imageFilePath: imageFilePath ? uploadedImageFilePath : imageFilePath,
         },
       },
       createOpts,

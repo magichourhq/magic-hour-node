@@ -81,27 +81,32 @@ export class VideoToVideoClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { videoFilePath, ...restAssets } = request.assets;
 
-    getLogger().debug(
-      `Uploading file ${videoFilePath} to Magic Hour's storage`,
-    );
+    if (videoFilePath) {
+      getLogger().debug(
+        `Uploading file ${videoFilePath} to Magic Hour's storage`,
+      );
+    }
 
     const [uploadedVideoFilePath] = await Promise.all([
-      fileClient.uploadFile(videoFilePath),
+      videoFilePath
+        ? fileClient.uploadFile(videoFilePath)
+        : Promise.resolve(videoFilePath),
     ]);
 
-    getLogger().info(
-      `Uploaded file ${videoFilePath} to Magic Hour's storage as ${uploadedVideoFilePath}`,
-    );
+    if (videoFilePath) {
+      getLogger().info(
+        `Uploaded file ${videoFilePath} to Magic Hour's storage as ${uploadedVideoFilePath}`,
+      );
+    }
 
     const createResponse = await this.create(
       {
         ...request,
         assets: {
           ...restAssets,
-          videoFilePath: uploadedVideoFilePath,
+          videoFilePath: videoFilePath ? uploadedVideoFilePath : videoFilePath,
         },
       },
       createOpts,

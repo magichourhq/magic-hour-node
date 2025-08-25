@@ -89,24 +89,29 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { sourceFilePath, targetFilePath, ...restAssets } = request.assets;
 
-    getLogger().debug(
-      `Uploading file ${sourceFilePath} to Magic Hour's storage`,
-    );
+    if (sourceFilePath) {
+      getLogger().debug(
+        `Uploading file ${sourceFilePath} to Magic Hour's storage`,
+      );
+    }
     getLogger().debug(
       `Uploading file ${targetFilePath} to Magic Hour's storage`,
     );
 
     const [uploadedSourceFilePath, uploadedTargetFilePath] = await Promise.all([
-      fileClient.uploadFile(sourceFilePath),
+      sourceFilePath
+        ? fileClient.uploadFile(sourceFilePath)
+        : Promise.resolve(sourceFilePath),
       fileClient.uploadFile(targetFilePath),
     ]);
 
-    getLogger().info(
-      `Uploaded file ${sourceFilePath} to Magic Hour's storage as ${uploadedSourceFilePath}`,
-    );
+    if (sourceFilePath) {
+      getLogger().info(
+        `Uploaded file ${sourceFilePath} to Magic Hour's storage as ${uploadedSourceFilePath}`,
+      );
+    }
     getLogger().info(
       `Uploaded file ${targetFilePath} to Magic Hour's storage as ${uploadedTargetFilePath}`,
     );
@@ -116,7 +121,9 @@ export class FaceSwapPhotoClient extends CoreResourceClient {
         ...request,
         assets: {
           ...restAssets,
-          sourceFilePath: uploadedSourceFilePath,
+          sourceFilePath: sourceFilePath
+            ? uploadedSourceFilePath
+            : sourceFilePath,
           targetFilePath: uploadedTargetFilePath,
         },
       },

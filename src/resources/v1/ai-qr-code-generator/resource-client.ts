@@ -59,12 +59,7 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
       ...createOpts
     } = opts;
 
-    const createResponse = await this.create(
-      {
-        ...request,
-      },
-      createOpts,
-    );
+    const createResponse = await this.create(request, createOpts);
 
     getLogger().info(
       `Created AiQrCodeGeneratorClient project ${createResponse.id}`,

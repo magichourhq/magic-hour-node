@@ -62,12 +62,7 @@ export class AiMemeGeneratorClient extends CoreResourceClient {
       ...createOpts
     } = opts;
 
-    const createResponse = await this.create(
-      {
-        ...request,
-      },
-      createOpts,
-    );
+    const createResponse = await this.create(request, createOpts);
 
     getLogger().info(
       `Created AiMemeGeneratorClient project ${createResponse.id}`,

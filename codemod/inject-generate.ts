@@ -69,6 +69,117 @@ function pascalCase(str: string) {
   return str.replace(/(^|[-_])(.)/g, (_, __, c) => c.toUpperCase());
 }
 
+function generateAssetsHandling(
+  isAssetsOptional: boolean,
+  filePathKeys: string[],
+  optionalFilePathKeys: string[],
+  classDecl: any,
+) {
+  if (!filePathKeys.length) {
+    return `
+const createResponse = await this.create(request, createOpts);`;
+  }
+
+  const debugLogs = filePathKeys
+    .map((key) => {
+      const isOptional = optionalFilePathKeys.includes(key);
+      return isOptional
+        ? `if (${key}) {
+      getLogger().debug(\`Uploading file \${${key}} to Magic Hour's storage\`);
+    }`
+        : `getLogger().debug(\`Uploading file \${${key}} to Magic Hour's storage\`);`;
+    })
+    .join("\n  ");
+
+  const uploadPromises = filePathKeys
+    .map((key) => {
+      const isOptional = optionalFilePathKeys.includes(key);
+      return isOptional
+        ? `${key} ? fileClient.uploadFile(${key}) : Promise.resolve(${key})`
+        : `fileClient.uploadFile(${key})`;
+    })
+    .join(",\n    ");
+
+  const infoLogs = filePathKeys
+    .map((key) => {
+      const isOptional = optionalFilePathKeys.includes(key);
+      return isOptional
+        ? `if (${key}) {
+      getLogger().info(\`Uploaded file \${${key}} to Magic Hour's storage as \${uploaded${pascalCase(
+            key,
+          )}}\`);
+    }`
+        : `getLogger().info(\`Uploaded file \${${key}} to Magic Hour's storage as \${uploaded${pascalCase(
+            key,
+          )}}\`);`;
+    })
+    .join("\n  ");
+
+  const uploadedVars = filePathKeys
+    .map((k) => "uploaded" + pascalCase(k))
+    .join(", ");
+
+  const assetsMapping = filePathKeys
+    .map((key) => {
+      const isOptional = optionalFilePathKeys.includes(key);
+      return isOptional
+        ? `${key}: ${key} ? uploaded${pascalCase(key)} : ${key}`
+        : `${key}: uploaded${pascalCase(key)}`;
+    })
+    .join(",\n      ");
+
+  if (isAssetsOptional) {
+    return `
+if (request.assets) {
+  const fileClient = new FilesClient(this._client, this._opts);
+  const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets || {};
+
+  ${debugLogs}
+
+  const [${uploadedVars}] = await Promise.all([
+    ${uploadPromises}
+  ]);
+
+  ${infoLogs}
+
+  const processedAssets = {
+    ...restAssets,
+    ${assetsMapping}
+  };
+
+  const createRequest = {
+    ...request,
+    assets: processedAssets
+  };
+
+  const createResponse = await this.create(createRequest, createOpts);
+}`;
+  } else {
+    return `
+const fileClient = new FilesClient(this._client, this._opts);
+const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets;
+
+${debugLogs}
+
+const [${uploadedVars}] = await Promise.all([
+  ${uploadPromises}
+]);
+
+${infoLogs}
+
+const createResponse = await this.create(
+  {
+    ...request,
+    assets: {
+      ...restAssets,
+      ${assetsMapping}
+    }
+  },
+  createOpts,
+);`;
+  }
+}
+
 function isVideoClient(filePath: string): boolean {
   // Video clients based on directory names
   const videoClients = [
@@ -222,13 +333,46 @@ async function main() {
     const assetsProp = reqType.getProperty("assets");
     let filePathKeys: string[] = [];
     let assetComments: Record<string, string> = {};
+    let isAssetsOptional = false;
 
     if (assetsProp) {
-      const assetsType = assetsProp.getTypeAtLocation(source);
-      filePathKeys = assetsType
+      // Check if assets property is optional
+      const assetsProperty = reqType
         .getProperties()
-        .map((p) => p.getName())
-        .filter((n) => n.endsWith("FilePath"));
+        .find((p) => p.getName() === "assets");
+      isAssetsOptional =
+        assetsProperty
+          ?.getDeclarations()
+          ?.some(
+            (decl) =>
+              decl.getText().includes("assets?") ||
+              decl.getText().includes("assets?:"),
+          ) ?? false;
+
+      const assetsType = assetsProp.getTypeAtLocation(source);
+
+      // Get file path keys with their optional status
+      const filePathProps = assetsType
+        .getProperties()
+        .filter((p) => p.getName().endsWith("FilePath"));
+
+      filePathKeys = filePathProps.map((p) => p.getName());
+
+      // Check which file path properties are optional
+      const optionalFilePathKeys: string[] = [];
+      for (const prop of filePathProps) {
+        const isOptional =
+          prop
+            .getDeclarations()
+            ?.some(
+              (decl) =>
+                decl.getText().includes("?") || decl.getText().includes("?:"),
+            ) ?? false;
+
+        if (isOptional) {
+          optionalFilePathKeys.push(prop.getName());
+        }
+      }
 
       const assetsTypeText = assetsType.getText();
       const assetsTypeMatch = assetsTypeText.match(/(\w+Assets)/);
@@ -237,6 +381,9 @@ async function main() {
         assetComments = extractAssetFieldComments(assetsTypeName);
         console.log(`Extracted comments for ${assetsTypeName}:`, assetComments);
       }
+
+      // Store optional file path keys for later use
+      (globalThis as any).optionalFilePathKeys = optionalFilePathKeys;
     }
 
     // --- Insert or update GenerateRequest type alias after last import ---
@@ -321,9 +468,14 @@ async function main() {
 
     // --- Insert or update generate() method below constructor ---
     let genMethod = classDecl.getMethod("generate");
-    const uploadLines = filePathKeys
-      .map((k) => `fileClient.uploadFile(${k})`)
-      .join(",\n        ");
+
+    // Generate the final assets handling code using the helper function
+    const assetsHandling = generateAssetsHandling(
+      isAssetsOptional,
+      filePathKeys,
+      (globalThis as any).optionalFilePathKeys || [],
+      classDecl,
+    );
 
     const methodBody = `
 const {
@@ -333,60 +485,7 @@ const {
   ...createOpts
 } = opts;
 
-${
-  assetsProp
-    ? `const fileClient = new FilesClient(this._client, this._opts);`
-    : ""
-}
-
-${
-  !assetsProp
-    ? ""
-    : filePathKeys.length > 0
-    ? `const { ${filePathKeys.join(", ")}, ...restAssets } = request.assets;`
-    : `const restAssets = request.assets;`
-}
-
-${
-  filePathKeys.length > 0
-    ? `${filePathKeys
-        .map((key) => {
-          return `getLogger().debug(\`Uploading file \${${key}} to Magic Hour's storage\`);`;
-        })
-        .join("\n")}
-
-const [${filePathKeys
-        .map((k) => "uploaded" + pascalCase(k))
-        .join(", ")}] = await Promise.all([${uploadLines},]);
-
-${filePathKeys
-  .map((key) => {
-    return `getLogger().info(\`Uploaded file \${${key}} to Magic Hour's storage as \${uploaded${pascalCase(
-      key,
-    )}}\`);`;
-  })
-  .join("\n")}
-`
-    : ""
-}
-
-
-const createResponse = await this.create(
-  {
-    ...request,
-    ${
-      assetsProp
-        ? `assets: {
-      ...restAssets,
-      ${filePathKeys
-        .map((k) => `${k}: uploaded${pascalCase(k)}`)
-        .join(",\n      ")}
-    },`
-        : ""
-    }
-  },
-  createOpts,
-);
+${assetsHandling}
 
 getLogger().info(\`Created ${classDecl.getName()} project \$\{createResponse.id\}\`);
 

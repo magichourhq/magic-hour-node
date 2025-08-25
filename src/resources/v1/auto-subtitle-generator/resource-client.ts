@@ -74,7 +74,6 @@ export class AutoSubtitleGeneratorClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-
     const { videoFilePath, ...restAssets } = request.assets;
 
     getLogger().debug(
