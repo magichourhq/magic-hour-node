@@ -41,9 +41,6 @@ export interface Logger {
  */
 export interface LoggerConfig {
   level: PossibleLogLevel;
-  logger?: Logger;
-  includeTimestamp?: boolean;
-  includeRequestId?: boolean;
 }
 
 /**
@@ -61,11 +58,9 @@ class ConsoleLogger implements Logger {
   }
 
   private formatMessage(level: string, message: string): string {
-    const timestamp = this.config.includeTimestamp
-      ? `[${new Date().toISOString()}]`
-      : "";
+    const timestamp = `[${new Date().toISOString()}]`;
     const levelStr = `[${level.toUpperCase()}]`;
-    return [timestamp, levelStr, message].filter(Boolean).join(" ");
+    return [timestamp, levelStr, message].join(" ");
   }
 
   error(message: string, ...args: any[]): void {
@@ -104,25 +99,29 @@ class NoOpLogger implements Logger {
 }
 
 /**
- * Create a logger instance based on configuration
- */
-export function createLogger(config: LoggerConfig): Logger {
-  if (config.level === "none") {
-    return new NoOpLogger();
-  }
-
-  if (config.logger) {
-    return config.logger;
-  }
-
-  return new ConsoleLogger(config);
-}
-
-/**
  * Default logger configuration
  */
 export const DEFAULT_LOGGER_CONFIG: LoggerConfig = {
   level: "info",
-  includeTimestamp: false,
-  includeRequestId: false,
 };
+
+/**
+ * Create a logger instance based on configuration
+ *
+ */
+export function setupLogger(config: LoggerConfig): Logger {
+  globalForLogger.logger =
+    config.level === "none" ? new NoOpLogger() : new ConsoleLogger(config);
+  return globalForLogger.logger;
+}
+
+const globalForLogger = globalThis as unknown as {
+  logger: Logger | undefined;
+};
+
+export function getLogger(): Logger {
+  if (!globalForLogger.logger) {
+    globalForLogger.logger = setupLogger(DEFAULT_LOGGER_CONFIG);
+  }
+  return globalForLogger.logger;
+}

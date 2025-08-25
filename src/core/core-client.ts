@@ -55,7 +55,6 @@ export class CoreClient {
   private baseUrl: Record<string, string | undefined>;
   private auths: Record<string, AuthProvider>;
   private timeout: number | undefined;
-  public logger: any;
 
   constructor(props: CoreClientProps) {
     this.baseUrl =

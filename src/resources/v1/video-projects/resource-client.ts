@@ -9,6 +9,7 @@ import {
 import { downloadFiles } from "magic-hour/helpers/download";
 import { GenerateOptions } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/video-projects/request-types";
 import { Schemas$V1VideoProjectsGetResponse } from "magic-hour/types/v1-video-projects-get-response";
 
@@ -72,9 +73,9 @@ export class VideoProjectsClient extends CoreResourceClient {
         apiResponse.status
       }: ${JSON.stringify(apiResponse.error)}`;
       if (apiResponse.status === "error") {
-        this._client.logger.error(message);
+        getLogger().error(message);
       } else {
-        this._client.logger.info(message);
+        getLogger().info(message);
       }
       return {
         ...apiResponse,
