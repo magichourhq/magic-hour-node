@@ -9,11 +9,88 @@ import {
 import * as requests from "magic-hour/resources/v1/lip-sync/request-types";
 import { Schemas$V1LipSyncCreateBody } from "magic-hour/types/v1-lip-sync-create-body";
 import { Schemas$V1LipSyncCreateResponse } from "magic-hour/types/v1-lip-sync-create-response";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
+import {
+  GenerateOptions,
+  GenerateRequestType,
+} from "magic-hour/helpers/generate-type";
+
+type GenerateRequest = GenerateRequestType<
+  requests.CreateRequest,
+  {
+    /** File input */
+    audioFilePath: string;
+    /** File input */
+    videoFilePath: string;
+  }
+>;
 
 export class LipSyncClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
   }
+
+  /**
+   * AI generate helper with automatic polling and downloading.
+   * @example
+   * ```ts
+   * const result = await client.v1.lipSync.generate({
+   *   assets: {
+   *
+   *   },
+   * });
+   * ```
+   */
+  async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
+    const {
+      waitForCompletion = true,
+      downloadOutputs = true,
+      downloadDirectory = undefined,
+      ...createOpts
+    } = opts;
+
+    const fileClient = new FilesClient(this._client, this._opts);
+
+    const { audioFilePath, videoFilePath, ...restAssets } = request.assets;
+
+    const [uploadedAudioFilePath, uploadedVideoFilePath] = await Promise.all([
+      fileClient.uploadFile(audioFilePath),
+      fileClient.uploadFile(videoFilePath),
+    ]);
+
+    // Create the initial request
+    const createResponse = await this.create(
+      {
+        ...request,
+        assets: {
+          ...restAssets,
+          audioFilePath: uploadedAudioFilePath,
+          videoFilePath: uploadedVideoFilePath,
+        },
+      },
+      createOpts,
+    );
+
+    // Create image projects client to check result
+    const imageProjectsClient = new ImageProjectsClient(
+      this._client,
+      this._opts,
+    );
+
+    const result = await imageProjectsClient.checkResult(
+      { id: createResponse.id },
+      {
+        waitForCompletion,
+        downloadOutputs,
+        downloadDirectory,
+        ...createOpts,
+      },
+    );
+
+    return result;
+  }
+
   /**
    * Lip Sync
    *

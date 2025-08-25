@@ -19,21 +19,9 @@ import {
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,
   {
-    /**
-     * The image of the outfit. This value is either
-     * - a direct URL to the image file
-     * - a path to a local file
-     *
-     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
-     */
+    /** File input */
     garmentFilePath: string;
-    /**
-     * The image of the person. This value is either
-     * - a direct URL to the image file
-     * - a path to a local file
-     *
-     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
-     */
+    /** File input */
     personFilePath: string;
   }
 >;
@@ -72,7 +60,7 @@ export class AiClothesChangerClient extends CoreResourceClient {
 
     const fileClient = new FilesClient(this._client, this._opts);
 
-    const { garmentFilePath, personFilePath, garmentType } = request.assets;
+    const { garmentFilePath, personFilePath, ...restAssets } = request.assets;
 
     const [uploadedGarmentFilePath, uploadedPersonFilePath] = await Promise.all(
       [
@@ -86,7 +74,7 @@ export class AiClothesChangerClient extends CoreResourceClient {
       {
         ...request,
         assets: {
-          garmentType,
+          ...restAssets,
           garmentFilePath: uploadedGarmentFilePath,
           personFilePath: uploadedPersonFilePath,
         },

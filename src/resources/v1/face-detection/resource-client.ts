@@ -10,11 +10,84 @@ import * as requests from "magic-hour/resources/v1/face-detection/request-types"
 import { Schemas$V1FaceDetectionCreateBody } from "magic-hour/types/v1-face-detection-create-body";
 import { Schemas$V1FaceDetectionCreateResponse } from "magic-hour/types/v1-face-detection-create-response";
 import { Schemas$V1FaceDetectionGetResponse } from "magic-hour/types/v1-face-detection-get-response";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
+import {
+  GenerateOptions,
+  GenerateRequestType,
+} from "magic-hour/helpers/generate-type";
+
+type GenerateRequest = GenerateRequestType<
+  requests.CreateRequest,
+  {
+    /** File input */
+    targetFilePath: string;
+  }
+>;
 
 export class FaceDetectionClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
   }
+
+  /**
+   * AI generate helper with automatic polling and downloading.
+   * @example
+   * ```ts
+   * const result = await client.v1.faceDetection.generate({
+   *   assets: {
+   *
+   *   },
+   * });
+   * ```
+   */
+  async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
+    const {
+      waitForCompletion = true,
+      downloadOutputs = true,
+      downloadDirectory = undefined,
+      ...createOpts
+    } = opts;
+
+    const fileClient = new FilesClient(this._client, this._opts);
+
+    const { targetFilePath, ...restAssets } = request.assets;
+
+    const [uploadedTargetFilePath] = await Promise.all([
+      fileClient.uploadFile(targetFilePath),
+    ]);
+
+    // Create the initial request
+    const createResponse = await this.create(
+      {
+        ...request,
+        assets: {
+          ...restAssets,
+          targetFilePath: uploadedTargetFilePath,
+        },
+      },
+      createOpts,
+    );
+
+    // Create image projects client to check result
+    const imageProjectsClient = new ImageProjectsClient(
+      this._client,
+      this._opts,
+    );
+
+    const result = await imageProjectsClient.checkResult(
+      { id: createResponse.id },
+      {
+        waitForCompletion,
+        downloadOutputs,
+        downloadDirectory,
+        ...createOpts,
+      },
+    );
+
+    return result;
+  }
+
   /**
    * Get face detection details
    *
