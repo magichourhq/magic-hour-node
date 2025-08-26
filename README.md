@@ -26,8 +26,8 @@ const res = await client.v1.faceSwapPhoto.generate(
   {
     assets: {
       faceSwapMode: "all-faces",
-      sourceFilePath: "/path/to/1234.png",
-      targetFilePath: "/path/to/1234.png",
+      sourceFilePath: "/path/to/source/image.png",
+      targetFilePath: "/path/to/target/image.png",
     },
     name: "Face Swap image",
   },
@@ -98,12 +98,16 @@ The `create()` function provides granular control:
 - Requires manual status checking and file downloading
 
 ```ts
+// upload the files to Magic Hour's storage or you can use direct URLs
+const sourceFilePath = await client.v1.files.uploadFile("/path/to/source/image.png")
+const targetFilePath = await client.v1.files.uploadFile("/path/to/target/image.png")
+
 // Create function - only starts the process
 const createResponse = await client.v1.faceSwapPhoto.create({
   assets: {
     faceSwapMode: "all-faces",
-    sourceFilePath: "/path/to/source/image.png",
-    targetFilePath: "/path/to/target/image.png",
+    sourceFilePath: sourceFilePath,
+    targetFilePath: targetFilePath,
   },
   name: "Face Swap image"
 });
