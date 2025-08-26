@@ -77,7 +77,7 @@ export class ImageProjectsClient extends CoreResourceClient {
     }
 
     if (apiResponse.status !== "complete") {
-      const message = `Image project ${request.id} has status ${apiResponse.status}: ${apiResponse.error}`;
+      const message = `Image project ${request.id} has status ${apiResponse.status}: [${apiResponse.error?.code}] ${apiResponse.error?.message}`;
       if (apiResponse.status === "error") {
         getLogger().error(message);
       } else {
