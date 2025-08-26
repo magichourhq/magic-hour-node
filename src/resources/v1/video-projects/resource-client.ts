@@ -78,9 +78,7 @@ export class VideoProjectsClient extends CoreResourceClient {
 
     if (apiResponse.status !== "complete") {
       if (apiResponse.status === "error") {
-        const message = `Video project ${request.id} has status ${
-          apiResponse.status
-        }: ${JSON.stringify(apiResponse.error)}`;
+        const message = `Video project ${request.id} has status ${apiResponse.status}: [${apiResponse.error?.code}] ${apiResponse.error?.message}`;
         getLogger().error(message);
       } else {
         getLogger().info(
