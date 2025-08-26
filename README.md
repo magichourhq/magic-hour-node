@@ -143,6 +143,38 @@ const downloadUrls = result.downloads;
 - You want to separate generation initiation from completion handling
 - You need fine-grained control over the entire workflow
 
+## Error Handling
+
+The Magic Hour SDK includes the `ApiError` class, which includes the request and response data.
+
+### Basic Error Handling
+
+```ts
+try {
+  await client.v1.imageToVideo.generate(
+    {
+      assets: {
+        imageFilePath: "/Users/dhu/Desktop/test-files/suit.jpg",
+      },
+      endSeconds: 0,
+    },
+  );
+} catch (error) {
+  if (error instanceof ApiError) {
+    console.error(`API Error: ${error.message}`); // API Error: 400 was returned from post /v1/image-to-video
+
+    try {
+      const errorData = await error.response.json();
+      console.error(`Error Message: ${errorData.message}`); // Error Message: end_seconds must be at least 5
+    } catch (parseError) {
+      console.error("Could not parse error response");
+    }
+  } else {
+    console.error("Unexpected error:", error);
+  }
+}
+```
+
 ## Logging
 
 ### Logging Levels
