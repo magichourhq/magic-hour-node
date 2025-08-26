@@ -1,10 +1,12 @@
-# Magic Hour Typescript SDK
+# Magic Hour Node SDK
 
 [![NPM Version](https://img.shields.io/npm/v/magic-hour)](https://www.npmjs.com/package/magic-hour)
 
-Magic Hour provides an API (beta) that can be integrated into your own application to generate videos and images using AI.
+The Magic Hour Node SDK provides convenient access to the Magic Hour API via server-side TypeScript or JavaScript.
 
-Webhook documentation can be found [here](https://magichour.ai/docs/webhook).
+## Documentation
+
+For full documentation of all APIs, please visit https://docs.magichour.ai
 
 If you have any questions, please reach out to us via [discord](https://discord.gg/JX5rgsZaJp).
 
@@ -16,8 +18,6 @@ npm install magic-hour
 
 ## Usage
 
-Initialize the client
-
 ```ts
 import Client from "magic-hour";
 
@@ -26,6 +26,126 @@ const client = new Client({
   token: "my api key",
 });
 ```
+
+```ts
+import Client from "magic-hour";
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+const res = await client.v1.faceSwapPhoto.generate(
+  {
+    assets: {
+      faceSwapMode: "all-faces",
+      sourceFilePath: "/path/to/1234.png",
+      targetFilePath: "/path/to/1234.png",
+    },
+    name: "Face Swap image",
+  },
+  {
+    waitForCompletion: true,
+    downloadOutputs: true,
+    downloadDirectory: "outputs",
+  },
+);
+
+console.log(`Project ID: ${response.id}`)
+console.log(`Status: ${response.status}`)
+console.log(`Downloaded files: ${response.downloaded_paths}`)
+```
+
+## Client Functions
+
+Most resources that generate media content support two methods:
+
+- **`generate()`** - A high-level convenience method that handles the entire workflow
+- **`create()`** - A low-level method that only initiates the generation process
+
+### Generate Function
+
+The `generate()` function provides a complete end-to-end solution:
+
+- Uploads local files to Magic Hour storage
+- Calls the API to start generation
+- Automatically polls for completion
+- Downloads generated files to your local machine
+- Returns both API response data and local file paths
+
+**Additional Parameters:**
+
+- `waitForCompletion` (boolean, default true): Whether to wait for the project to complete
+- `downloadOutputs` (boolean, default true): Whether to download the generated files
+- `downloadDirectory` (string, optional): Directory to save downloaded files (defaults to current directory)
+
+```ts
+const response = await client.v1.faceSwapPhoto.generate(
+  {
+    assets: {
+      faceSwapMode: "all-faces",
+      sourceFilePath: "/path/to/source/image.png",
+      targetFilePath: "/path/to/target/image.png",
+    },
+    name: "Face Swap image",
+  },
+  {
+    waitForCompletion: true,       // Wait for status to be complete/error/canceled
+    downloadOutputs: true,         // Download files automatically
+    downloadDirectory: "./outputs/" // Where to save files
+  }
+);
+
+// You get both the API response AND downloaded file paths
+console.log(`Project ID: ${response.id}`);
+console.log(`Status: ${response.status}`);
+console.log(`Downloaded files: ${response.downloadedPaths}`);
+```
+
+### Create Function
+
+The `create()` function provides granular control:
+
+- Only calls the API to start the generation process
+- Returns immediately with a project ID and amount of credits used
+- Requires manual status checking and file downloading
+
+```ts
+// Create function - only starts the process
+const createResponse = await client.v1.faceSwapPhoto.create({
+  assets: {
+    faceSwapMode: "all-faces",
+    sourceFilePath: "/path/to/source/image.png",
+    targetFilePath: "/path/to/target/image.png",
+  },
+  name: "Face Swap image"
+});
+
+// You get just the project ID and initial response
+const projectId = createResponse.id;
+console.log(`Started project: ${projectId}`);
+
+// You must handle the rest:
+// 1. Poll for completion using the image/video projects API
+const result = await client.v1.imageProjects.checkResults(projectId, {
+  waitForCompletion: true,
+  downloadOutputs: false,
+});
+
+// 2. Download files using the download URLs
+const downloadUrls = result.downloads;
+// Download the files using your preferred method
+```
+
+### Choosing Between Which Function to Use
+
+**Use `generate()` when:**
+
+- You want a simple, one-call solution
+- You're building a straightforward application
+- You don't need custom polling or download logic
+
+**Use `create()` when:**
+
+- You need custom status checking logic
+- You're integrating with existing job processing systems
+- You want to separate generation initiation from completion handling
+- You need fine-grained control over the entire workflow
 
 ## Logging
 
@@ -48,9 +168,6 @@ export MAGIC_HOUR_LOG_LEVEL=error  # Only show errors
 ```
 
 Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). If not set, defaults to `info`.
-
-> [!WARNING]
-> Any API call that renders a video will utilize frames in your account.
 
 ## Module Documentation and Snippets
 
