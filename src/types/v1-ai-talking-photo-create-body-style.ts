@@ -1,6 +1,5 @@
+import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
-
-import { zodTransform } from "magic-hour/core";
 
 /**
  * Attributes used to dictate the style of the output
@@ -8,10 +7,11 @@ import { zodTransform } from "magic-hour/core";
 export type V1AiTalkingPhotoCreateBodyStyle = {
   /**
    * Controls overall motion style.
+   * * `pro` -  Realistic, high fidelity, accurate lip sync, slower.
    * * `expressive` - More motion and facial expressiveness; may introduce visual artifacts.
-   * * `stable` -  Reduced motion for cleaner output; may result in minimal animation.
+   * * `stable` -  Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`)
    */
-  generationMode?: ("expressive" | "stable") | undefined;
+  generationMode?: ("expressive" | "pro" | "stable") | undefined;
   /**
    * Note: this value is only applicable when generation_mode is `expressive`. The value can include up to 2 decimal places.
    * * Lower values yield more stability but can suppress mouth movement.
@@ -26,7 +26,7 @@ export type V1AiTalkingPhotoCreateBodyStyle = {
  * we expect to come in as network data
  */
 export type External$V1AiTalkingPhotoCreateBodyStyle = {
-  generation_mode?: ("expressive" | "stable") | undefined;
+  generation_mode?: ("expressive" | "pro" | "stable") | undefined;
   intensity?: number | undefined;
 };
 
@@ -39,7 +39,7 @@ const SchemaIn$V1AiTalkingPhotoCreateBodyStyle: z.ZodType<
   unknown
 > = z
   .object({
-    generation_mode: z.enum(["expressive", "stable"]).optional(),
+    generation_mode: z.enum(["expressive", "pro", "stable"]).optional(),
     intensity: z.number().optional(),
   })
   .transform((obj) => {
@@ -59,7 +59,7 @@ const SchemaOut$V1AiTalkingPhotoCreateBodyStyle: z.ZodType<
   V1AiTalkingPhotoCreateBodyStyle // the object to be transformed
 > = z
   .object({
-    generationMode: z.enum(["expressive", "stable"]).optional(),
+    generationMode: z.enum(["expressive", "pro", "stable"]).optional(),
     intensity: z.number().optional(),
   })
   .transform((obj) => {

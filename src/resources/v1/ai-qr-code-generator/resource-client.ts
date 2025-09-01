@@ -6,17 +6,15 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-qr-code-generator/request-types";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1AiQrCodeGeneratorCreateBody } from "magic-hour/types/v1-ai-qr-code-generator-create-body";
 import { Schemas$V1AiQrCodeGeneratorCreateResponse } from "magic-hour/types/v1-ai-qr-code-generator-create-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
-import { getLogger } from "magic-hour/logger";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 

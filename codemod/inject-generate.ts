@@ -106,8 +106,8 @@ const createResponse = await this.create(request, createOpts);`;
       return isOptional
         ? `if (${key}) {
       getLogger().info(\`Uploaded file \${${key}} to Magic Hour's storage as \${uploaded${pascalCase(
-            key,
-          )}}\`);
+        key,
+      )}}\`);
     }`
         : `getLogger().info(\`Uploaded file \${${key}} to Magic Hour's storage as \${uploaded${pascalCase(
             key,

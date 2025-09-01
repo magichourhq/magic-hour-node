@@ -6,17 +6,16 @@ import {
   RequestOptions,
   ResourceClientOptions,
 } from "magic-hour/core";
-
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
 import { FilesClient } from "magic-hour/resources/v1/files";
 import * as requests from "magic-hour/resources/v1/image-to-video/request-types";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1ImageToVideoCreateBody } from "magic-hour/types/v1-image-to-video-create-body";
 import { Schemas$V1ImageToVideoCreateResponse } from "magic-hour/types/v1-image-to-video-create-response";
-import { getLogger } from "magic-hour/logger";
-import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

@@ -1,6 +1,6 @@
 {
   "name": "magic-hour",
-  "version": "0.37.0",
+  "version": "0.38.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -31,7 +31,8 @@
     "jsonpointer": "^5.0.1",
     "node-fetch": "^2.7.0",
     "qs": "^6.12.1",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "make-api-request-js": "^0.1.9"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",

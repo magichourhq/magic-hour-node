@@ -1,6 +1,5 @@
+import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
-
-import { zodTransform } from "magic-hour/core";
 
 /**
  * Deprecated: Please use `.downloads` instead. The download url and expiration date of the video project
