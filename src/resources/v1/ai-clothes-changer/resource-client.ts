@@ -1,11 +1,12 @@
-import { types } from "magic-hour";
 import {
   ApiPromise,
   CoreClient,
   CoreResourceClient,
   RequestOptions,
   ResourceClientOptions,
-} from "magic-hour/core";
+} from "make-api-request-js";
+
+import { types } from "magic-hour";
 import {
   GenerateOptions,
   GenerateRequestType,

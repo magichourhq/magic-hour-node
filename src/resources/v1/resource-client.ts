@@ -2,7 +2,8 @@ import {
   CoreClient,
   CoreResourceClient,
   ResourceClientOptions,
-} from "magic-hour/core";
+} from "make-api-request-js";
+
 import { AiClothesChangerClient } from "magic-hour/resources/v1/ai-clothes-changer";
 import { AiFaceEditorClient } from "magic-hour/resources/v1/ai-face-editor";
 import { AiGifGeneratorClient } from "magic-hour/resources/v1/ai-gif-generator";

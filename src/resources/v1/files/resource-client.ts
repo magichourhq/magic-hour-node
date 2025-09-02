@@ -1,13 +1,13 @@
 import * as fs from "fs";
-import * as path from "path";
-import { Readable } from "stream";
-
 import {
   CoreClient,
   CoreResourceClient,
   RUNTIME,
   ResourceClientOptions,
-} from "magic-hour/core";
+} from "make-api-request-js";
+import * as path from "path";
+import { Readable } from "stream";
+
 import { UploadUrlsClient } from "magic-hour/resources/v1/files/upload-urls";
 
 export type FileInput =

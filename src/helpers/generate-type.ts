@@ -1,4 +1,4 @@
-import { RequestOptions } from "magic-hour/core";
+import { RequestOptions } from "make-api-request-js";
 
 /**
  * Options for the `generate` method.

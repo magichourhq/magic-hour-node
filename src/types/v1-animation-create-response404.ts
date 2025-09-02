@@ -1,4 +1,4 @@
-import { zodTransform } from "magic-hour/core";
+import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
 
 /**

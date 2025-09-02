@@ -40,8 +40,8 @@ const server = setupServer(
 );
 
 // Mock RUNTIME to ensure we use node-fetch
-jest.mock("magic-hour/core", () => {
-  const actual = jest.requireActual("magic-hour/core");
+jest.mock("make-api-request-js", () => {
+  const actual = jest.requireActual("make-api-request-js");
   return {
     ...actual,
     RUNTIME: { type: "node" },

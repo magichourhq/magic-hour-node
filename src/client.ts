@@ -1,4 +1,9 @@
-import { AuthBearer, CoreClient, ResourceClientOptions } from "magic-hour/core";
+import {
+  AuthBearer,
+  CoreClient,
+  ResourceClientOptions,
+} from "make-api-request-js";
+
 import { Environment } from "magic-hour/environment";
 import { V1Client } from "magic-hour/resources/v1";
 
