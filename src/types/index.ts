@@ -7,6 +7,7 @@ export { V1AiFaceEditorCreateBodyAssets } from "./v1-ai-face-editor-create-body-
 export { V1AiFaceEditorCreateBodyStyle } from "./v1-ai-face-editor-create-body-style";
 export { V1AiFaceEditorCreateResponse } from "./v1-ai-face-editor-create-response";
 export { V1AiGifGeneratorCreateBody } from "./v1-ai-gif-generator-create-body";
+export { V1AiGifGeneratorCreateBodyOutputFormatEnum } from "./v1-ai-gif-generator-create-body-output-format-enum";
 export { V1AiGifGeneratorCreateBodyStyle } from "./v1-ai-gif-generator-create-body-style";
 export { V1AiGifGeneratorCreateResponse } from "./v1-ai-gif-generator-create-response";
 export { V1AiHeadshotGeneratorCreateBody } from "./v1-ai-headshot-generator-create-body";
