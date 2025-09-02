@@ -1,3 +1,1085 @@
 {
-  "id": "7c4864ae-d825-4740-b039-0039a27f62f6"
+  "id": "91492d51-1540-4af9-8b6d-0f588c81d791",
+  "tracked_paths": [
+    {
+      "editable": true,
+      "path": ".gitignore"
+    },
+    {
+      "editable": false,
+      "path": "biome.json"
+    },
+    {
+      "editable": false,
+      "path": "jest.config.json"
+    },
+    {
+      "editable": false,
+      "path": "jest.setup.js"
+    },
+    {
+      "editable": true,
+      "path": "package.json"
+    },
+    {
+      "editable": true,
+      "path": "src/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/client.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/environment.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/request-types.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/index.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-clothes-changer/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-clothes-changer/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-clothes-changer/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-clothes-changer/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-face-editor/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-face-editor/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-face-editor/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-face-editor/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-gif-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-gif-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-gif-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-gif-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-headshot-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-headshot-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-headshot-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-headshot-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-editor/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-editor/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-image-editor/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-editor/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-image-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-upscaler/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-upscaler/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-image-upscaler/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-image-upscaler/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-meme-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-meme-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-meme-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-meme-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-photo-editor/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-photo-editor/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-photo-editor/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-photo-editor/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-qr-code-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-qr-code-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-qr-code-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-qr-code-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-talking-photo/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-talking-photo/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-talking-photo/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-talking-photo/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/animation/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/animation/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/animation/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/animation/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/auto-subtitle-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/auto-subtitle-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/auto-subtitle-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/auto-subtitle-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-detection/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-detection/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/face-detection/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-detection/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-swap/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-swap/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/face-swap/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-swap/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-swap-photo/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-swap-photo/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/face-swap-photo/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/face-swap-photo/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/files/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/files/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/files/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/files/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/files/upload-urls/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/files/upload-urls/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/files/upload-urls/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/files/upload-urls/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-background-remover/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-background-remover/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/image-background-remover/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-background-remover/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-projects/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-projects/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/image-projects/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-projects/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-to-video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-to-video/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/image-to-video/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/image-to-video/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/index.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/lip-sync/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/lip-sync/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/lip-sync/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/lip-sync/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/photo-colorizer/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/photo-colorizer/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/photo-colorizer/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/photo-colorizer/resource-client.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/text-to-video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/text-to-video/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/text-to-video/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/text-to-video/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/video-projects/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/video-projects/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/video-projects/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/video-projects/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/video-to-video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/video-to-video/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/video-to-video/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/video-to-video/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/types/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-clothes-changer-create-body-assets-garment-type-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-clothes-changer-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-clothes-changer-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-clothes-changer-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-face-editor-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-face-editor-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-face-editor-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-face-editor-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-gif-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-gif-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-gif-generator-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-headshot-generator-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-headshot-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-headshot-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-headshot-generator-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-editor-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-editor-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-editor-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-editor-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-generator-create-body-orientation-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-generator-create-body-style-tool-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-generator-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-upscaler-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-upscaler-create-body-style-enhancement-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-upscaler-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-upscaler-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-upscaler-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-meme-generator-create-body-style-template-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-meme-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-meme-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-meme-generator-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-photo-editor-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-photo-editor-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-photo-editor-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-photo-editor-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-qr-code-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-qr-code-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-qr-code-generator-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-talking-photo-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-talking-photo-create-body-style-generation-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-talking-photo-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-talking-photo-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-talking-photo-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-body-assets-audio-source-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-body-style-art-style-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-body-style-camera-effect-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-body-style-prompt-type-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-animation-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-auto-subtitle-generator-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-auto-subtitle-generator-create-body-style-custom-config.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-auto-subtitle-generator-create-body-style-template-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-auto-subtitle-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-auto-subtitle-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-auto-subtitle-generator-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-detection-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-detection-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-detection-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-detection-get-response-faces-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-detection-get-response-status-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-detection-get-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-body-assets-face-mappings-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-body-assets-face-swap-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-body-assets-video-source-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-body-style-version-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-photo-create-body-assets-face-mappings-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-photo-create-body-assets-face-swap-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-photo-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-photo-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-swap-photo-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-files-upload-urls-create-body-items-item-type-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-files-upload-urls-create-body-items-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-files-upload-urls-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-files-upload-urls-create-response-items-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-files-upload-urls-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-background-remover-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-background-remover-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-background-remover-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-projects-get-response-downloads-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-projects-get-response-error.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-projects-get-response-status-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-projects-get-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-to-video-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-to-video-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-to-video-create-body-style-quality-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-to-video-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-to-video-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-image-to-video-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-lip-sync-create-body-assets-video-source-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-lip-sync-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-lip-sync-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-lip-sync-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-photo-colorizer-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-photo-colorizer-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-photo-colorizer-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-text-to-video-create-body-orientation-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-text-to-video-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-text-to-video-create-body-style-quality-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-text-to-video-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-text-to-video-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-text-to-video-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-projects-get-response-download.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-projects-get-response-downloads-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-projects-get-response-error.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-projects-get-response-status-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-projects-get-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-assets-video-source-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-fps-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-style-art-style-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-style-model-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-style-prompt-type-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-style-version-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-video-to-video-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-clothes-changer.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-face-editor.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-gif-generator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-headshot-generator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-image-editor.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-image-generator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-image-upscaler.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-meme-generator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-photo-editor.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-qr-code-generator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-talking-photo.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-animation.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-auto-subtitle-generator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-face-detection.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-face-swap-photo.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-face-swap.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-files-upload-urls.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-image-background-remover.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-image-projects.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-image-to-video.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-lip-sync.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-photo-colorizer.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-text-to-video.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-video-projects.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-video-to-video.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "tsconfig.json"
+    }
+  ]
 }

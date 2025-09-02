@@ -1,6 +1,5 @@
+import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
-
-import { zodTransform } from "magic-hour/core";
 
 /**
  * In the case of an error, this object will contain the error encountered during video render

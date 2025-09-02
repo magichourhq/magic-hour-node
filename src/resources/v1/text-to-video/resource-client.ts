@@ -1,22 +1,21 @@
-import { types } from "magic-hour";
 import {
   ApiPromise,
   CoreClient,
   CoreResourceClient,
   RequestOptions,
   ResourceClientOptions,
-} from "magic-hour/core";
+} from "make-api-request-js";
 
+import { types } from "magic-hour";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/text-to-video/request-types";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1TextToVideoCreateBody } from "magic-hour/types/v1-text-to-video-create-body";
 import { Schemas$V1TextToVideoCreateResponse } from "magic-hour/types/v1-text-to-video-create-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
-import { getLogger } from "magic-hour/logger";
-import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 

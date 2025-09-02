@@ -1,6 +1,6 @@
+import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
 
-import { zodTransform } from "magic-hour/core";
 import {
   External$V1AiFaceEditorCreateBodyAssets,
   Schemas$V1AiFaceEditorCreateBodyAssets,

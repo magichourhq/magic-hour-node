@@ -1,13 +1,13 @@
-import { types } from "magic-hour";
 import {
   ApiPromise,
   CoreClient,
   CoreResourceClient,
   RequestOptions,
   ResourceClientOptions,
-} from "magic-hour/core";
-import { downloadFiles } from "magic-hour/helpers/download";
+} from "make-api-request-js";
 
+import { types } from "magic-hour";
+import { downloadFiles } from "magic-hour/helpers/download";
 import { GenerateOptions } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
 import { getLogger } from "magic-hour/logger";

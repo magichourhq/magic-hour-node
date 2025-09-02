@@ -1,22 +1,22 @@
-import { types } from "magic-hour";
 import {
   ApiPromise,
   CoreClient,
   CoreResourceClient,
   RequestOptions,
   ResourceClientOptions,
-} from "magic-hour/core";
+} from "make-api-request-js";
 
+import { types } from "magic-hour";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { getLogger } from "magic-hour/logger";
 import { FilesClient } from "magic-hour/resources/v1/files";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import * as requests from "magic-hour/resources/v1/photo-colorizer/request-types";
 import { Schemas$V1PhotoColorizerCreateBody } from "magic-hour/types/v1-photo-colorizer-create-body";
 import { Schemas$V1PhotoColorizerCreateResponse } from "magic-hour/types/v1-photo-colorizer-create-response";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<
   requests.CreateRequest,

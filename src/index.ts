@@ -1,4 +1,3 @@
-export { Client as default } from "magic-hour/client";
 export {
   ApiError,
   ApiResponse,
@@ -6,7 +5,9 @@ export {
   RequestOptions,
   UploadFile,
   isUploadFile,
-} from "magic-hour/core";
+} from "make-api-request-js";
+
+export { Client as default } from "magic-hour/client";
 export { Environment } from "magic-hour/environment";
 export * as resources from "magic-hour/resources";
 export * as types from "magic-hour/types";

@@ -1,6 +1,5 @@
+import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
-
-import { zodTransform } from "magic-hour/core";
 
 /**
  * Provide the assets for lip-sync. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used

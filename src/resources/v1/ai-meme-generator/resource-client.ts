@@ -1,22 +1,21 @@
-import { types } from "magic-hour";
 import {
   ApiPromise,
   CoreClient,
   CoreResourceClient,
   RequestOptions,
   ResourceClientOptions,
-} from "magic-hour/core";
+} from "make-api-request-js";
 
+import { types } from "magic-hour";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-meme-generator/request-types";
+import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { Schemas$V1AiMemeGeneratorCreateBody } from "magic-hour/types/v1-ai-meme-generator-create-body";
 import { Schemas$V1AiMemeGeneratorCreateResponse } from "magic-hour/types/v1-ai-meme-generator-create-response";
-import { FilesClient } from "magic-hour/resources/v1/files";
-import { getLogger } from "magic-hour/logger";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 
