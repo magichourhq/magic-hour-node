@@ -1,5 +1,5 @@
 {
-  "id": "91492d51-1540-4af9-8b6d-0f588c81d791",
+  "id": "9196a167-76dd-4823-bd31-2f487937133a",
   "tracked_paths": [
     {
       "editable": true,
@@ -512,6 +512,10 @@
     {
       "editable": false,
       "path": "src/types/v1-ai-face-editor-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-gif-generator-create-body-output-format-enum.ts"
     },
     {
       "editable": false,

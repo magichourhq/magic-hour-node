@@ -13,11 +13,13 @@ describe("tests client.v1.aiGifGenerator.create", () => {
         client.v1.aiGifGenerator
           .create({
             name: "Ai Gif gif",
+            outputFormat: "gif",
             style: { prompt: "Cute dancing cat, pixel art" },
           })
           .asResponse(),
         client.v1.aiGifGenerator.create({
           name: "Ai Gif gif",
+          outputFormat: "gif",
           style: { prompt: "Cute dancing cat, pixel art" },
         }),
       ]);

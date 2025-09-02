@@ -15,6 +15,10 @@ export type CreateRequest = {
    * The name of gif. This value is mainly used for your own identification of the gif.
    */
   name?: string | undefined;
+  /**
+   * The output file format for the generated animation.
+   */
+  outputFormat?: ("gif" | "mp4" | "webm") | undefined;
   style: V1AiGifGeneratorCreateBodyStyle;
 };
 
@@ -25,6 +29,7 @@ export type CreateRequest = {
  */
 export type External$CreateRequest = {
   name?: string | undefined;
+  output_format?: ("gif" | "mp4" | "webm") | undefined;
   style: External$V1AiGifGeneratorCreateBodyStyle;
 };
 
@@ -38,11 +43,13 @@ const SchemaIn$CreateRequest: z.ZodType<
 > = z
   .object({
     name: z.string().optional(),
+    output_format: z.enum(["gif", "mp4", "webm"]).optional(),
     style: Schemas$V1AiGifGeneratorCreateBodyStyle.in,
   })
   .transform((obj) => {
     return zodTransform(obj, {
       name: "name",
+      output_format: "outputFormat",
       style: "style",
     });
   });
@@ -58,11 +65,13 @@ const SchemaOut$CreateRequest: z.ZodType<
 > = z
   .object({
     name: z.string().optional(),
+    outputFormat: z.enum(["gif", "mp4", "webm"]).optional(),
     style: Schemas$V1AiGifGeneratorCreateBodyStyle.out,
   })
   .transform((obj) => {
     return zodTransform(obj, {
       name: "name",
+      outputFormat: "output_format",
       style: "style",
     });
   });
