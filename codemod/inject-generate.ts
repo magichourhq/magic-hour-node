@@ -559,7 +559,7 @@ ${exampleCode.trim()}
 
     // --- Format with Prettier ---
     const prettierConfig = (await prettier.resolveConfig(filePath)) || {};
-    const formatted = prettier.format(source.getFullText(), {
+    const formatted = await prettier.format(source.getFullText(), {
       ...prettierConfig,
       parser: "typescript",
     });
