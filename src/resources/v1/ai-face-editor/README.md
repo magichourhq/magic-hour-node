@@ -1,67 +1,6 @@
-# v1-aifaceeditor
+# v1.ai-face-editor
 
 ## Module Functions
-
-<!-- CUSTOM DOCS START -->
-### AI Face Editor Generate Workflow <a name="generate"></a>
-
-The workflow performs the following action
-
-1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
-2. trigger a generation
-3. poll for a completion status. This is configurable
-4. if success, download the output to local directory
-
-> [!TIP]
-> This is the recommended way to use the SDK unless you have specific needs where it is necessary to split up the actions.
-
-#### Parameters
-
-In addition to the parameters listed in the `create` section below, `generate` introduces 3 new parameters:
-
-- `waitForCompletion` (boolean, default true): Whether to wait for the project to complete.
-- `downloadOutputs` (boolean, default true): Whether to download the generated files
-- `downloadDirectory` (string, optional): Directory to save downloaded files (defaults to current directory)
-
-#### Example Snippet
-
-```typescript
-import Client from "magic-hour";
-
-const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.aiFaceEditor.generate(
-  {
-    assets: { imageFilePath: "/path/to/1234.png" },
-    name: "Face Editor image",
-    style: {
-      enhanceFace: false,
-      eyeGazeHorizontal: 0.0,
-      eyeGazeVertical: 0.0,
-      eyeOpenRatio: 0.0,
-      eyebrowDirection: 0.0,
-      headPitch: 0.0,
-      headRoll: 0.0,
-      headYaw: 0.0,
-      lipOpenRatio: 0.0,
-      mouthGrim: 0.0,
-      mouthPositionHorizontal: 0.0,
-      mouthPositionVertical: 0.0,
-      mouthPout: 0.0,
-      mouthPurse: 0.0,
-      mouthSmile: 0.0,
-    },
-  },
-  {
-    waitForCompletion: true,
-    downloadOutputs: true,
-    downloadDirectory: "outputs",
-  },
-);
-
-```
-
-<!-- CUSTOM DOCS END -->
-
 ### AI Face Editor <a name="create"></a>
 
 Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
@@ -129,4 +68,63 @@ const res = await client.v1.aiFaceEditor.create({
 
 ##### Example
 `{"creditsCharged": 1, "frameCost": 1, "id": "cuid-example"}`
+<!-- CUSTOM DOCS START -->
+### AI Face Editor Generate Workflow <a name="generate"></a>
+
+The workflow performs the following action
+
+1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
+2. trigger a generation
+3. poll for a completion status. This is configurable
+4. if success, download the output to local directory
+
+> [!TIP]
+> This is the recommended way to use the SDK unless you have specific needs where it is necessary to split up the actions.
+
+#### Parameters
+
+In addition to the parameters listed in the `create` section below, `generate` introduces 3 new parameters:
+
+- `waitForCompletion` (boolean, default true): Whether to wait for the project to complete.
+- `downloadOutputs` (boolean, default true): Whether to download the generated files
+- `downloadDirectory` (string, optional): Directory to save downloaded files (defaults to current directory)
+
+#### Example Snippet
+
+```typescript
+import Client from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+const res = await client.v1.aiFaceEditor.generate(
+  {
+    assets: { imageFilePath: "/path/to/1234.png" },
+    name: "Face Editor image",
+    style: {
+      enhanceFace: false,
+      eyeGazeHorizontal: 0.0,
+      eyeGazeVertical: 0.0,
+      eyeOpenRatio: 0.0,
+      eyebrowDirection: 0.0,
+      headPitch: 0.0,
+      headRoll: 0.0,
+      headYaw: 0.0,
+      lipOpenRatio: 0.0,
+      mouthGrim: 0.0,
+      mouthPositionHorizontal: 0.0,
+      mouthPositionVertical: 0.0,
+      mouthPout: 0.0,
+      mouthPurse: 0.0,
+      mouthSmile: 0.0,
+    },
+  },
+  {
+    waitForCompletion: true,
+    downloadOutputs: true,
+    downloadDirectory: "outputs",
+  },
+);
+
+```
+
+<!-- CUSTOM DOCS END -->
 

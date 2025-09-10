@@ -49,6 +49,7 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Oil Painting"
     | "On Fire"
     | "Origami"
+    | "Painterly Anime"
     | "Pixar"
     | "Pixel"
     | "Power Armor"
@@ -146,6 +147,7 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Oil Painting"
     | "On Fire"
     | "Origami"
+    | "Painterly Anime"
     | "Pixar"
     | "Pixel"
     | "Power Armor"
@@ -227,6 +229,7 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Oil Painting",
       "On Fire",
       "Origami",
+      "Painterly Anime",
       "Pixar",
       "Pixel",
       "Power Armor",
@@ -324,6 +327,7 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Oil Painting",
       "On Fire",
       "Origami",
+      "Painterly Anime",
       "Pixar",
       "Pixel",
       "Power Armor",

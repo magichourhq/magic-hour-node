@@ -1,7 +1,46 @@
-# v1-aimemegenerator
+# v1.ai-meme-generator
 
 ## Module Functions
+### AI Meme Generator <a name="create"></a>
 
+Create an AI generated meme. Each meme costs 10 credits.
+
+**API Endpoint**: `POST /v1/ai-meme-generator`
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"searchWeb": false, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
+| `└─ searchWeb` | ✗ | Whether to search the web for meme content. | `false` |
+| `└─ template` | ✓ | To use our templates, pass in one of the enum values. | `"Drake Hotline Bling"` |
+| `└─ topic` | ✓ | The topic of the meme. | `"When the code finally works"` |
+| `name` | ✗ | The name of the meme. | `"My Funny Meme"` |
+
+#### Example Snippet
+
+```typescript
+import Client from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+const res = await client.v1.aiMemeGenerator.create({
+  name: "My Funny Meme",
+  style: {
+    searchWeb: false,
+    template: "Drake Hotline Bling",
+    topic: "When the code finally works",
+  },
+});
+
+```
+
+#### Response
+
+##### Type
+[V1AiMemeGeneratorCreateResponse](/src/types/v1-ai-meme-generator-create-response.ts)
+
+##### Example
+`{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`
 <!-- CUSTOM DOCS START -->
 ### AI Meme Generator Generate Workflow <a name="generate"></a>
 
@@ -48,45 +87,4 @@ const res = await client.v1.aiMemeGenerator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
-### AI Meme Generator <a name="create"></a>
-
-Create an AI generated meme. Each meme costs 10 credits.
-
-**API Endpoint**: `POST /v1/ai-meme-generator`
-
-#### Parameters
-
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `style` | ✓ |  | `{"searchWeb": false, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
-| `└─ searchWeb` | ✗ | Whether to search the web for meme content. | `false` |
-| `└─ template` | ✓ | To use our templates, pass in one of the enum values. | `"Drake Hotline Bling"` |
-| `└─ topic` | ✓ | The topic of the meme. | `"When the code finally works"` |
-| `name` | ✗ | The name of the meme. | `"My Funny Meme"` |
-
-#### Example Snippet
-
-```typescript
-import Client from "magic-hour";
-
-const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.aiMemeGenerator.create({
-  name: "My Funny Meme",
-  style: {
-    searchWeb: false,
-    template: "Drake Hotline Bling",
-    topic: "When the code finally works",
-  },
-});
-
-```
-
-#### Response
-
-##### Type
-[V1AiMemeGeneratorCreateResponse](/src/types/v1-ai-meme-generator-create-response.ts)
-
-##### Example
-`{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`
 
