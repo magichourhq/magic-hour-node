@@ -1,61 +1,6 @@
-# v1-aiphotoeditor
+# v1.ai-photo-editor
 
 ## Module Functions
-
-<!-- CUSTOM DOCS START -->
-### AI Photo Editor Generate Workflow <a name="generate"></a>
-
-The workflow performs the following action
-
-1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
-2. trigger a generation
-3. poll for a completion status. This is configurable
-4. if success, download the output to local directory
-
-> [!TIP]
-> This is the recommended way to use the SDK unless you have specific needs where it is necessary to split up the actions.
-
-#### Parameters
-
-In addition to the parameters listed in the `create` section below, `generate` introduces 3 new parameters:
-
-- `waitForCompletion` (boolean, default true): Whether to wait for the project to complete.
-- `downloadOutputs` (boolean, default true): Whether to download the generated files
-- `downloadDirectory` (string, optional): Directory to save downloaded files (defaults to current directory)
-
-#### Example Snippet
-
-```typescript
-import Client from "magic-hour";
-
-const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.aiPhotoEditor.generate(
-  {
-    assets: { imageFilePath: "/path/to/1234.png" },
-    name: "Photo Editor image",
-    resolution: 768,
-    style: {
-      imageDescription: "A photo of a person",
-      likenessStrength: 5.2,
-      negativePrompt: "painting, cartoon, sketch",
-      prompt: "A photo portrait of a person wearing a hat",
-      promptStrength: 3.75,
-      steps: 4,
-      upscaleFactor: 2,
-      upscaleFidelity: 0.5,
-    },
-  },
-  {
-    waitForCompletion: true,
-    downloadOutputs: true,
-    downloadDirectory: "outputs",
-  },
-);
-
-```
-
-<!-- CUSTOM DOCS END -->
-
 ### AI Photo Editor <a name="create"></a>
 
 > **NOTE**: this API is still in early development stages, and should be avoided. Please reach out to us if you're interested in this API. 
@@ -114,4 +59,57 @@ const res = await client.v1.aiPhotoEditor.create({
 
 ##### Example
 `{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`
+<!-- CUSTOM DOCS START -->
+### AI Photo Editor Generate Workflow <a name="generate"></a>
+
+The workflow performs the following action
+
+1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
+2. trigger a generation
+3. poll for a completion status. This is configurable
+4. if success, download the output to local directory
+
+> [!TIP]
+> This is the recommended way to use the SDK unless you have specific needs where it is necessary to split up the actions.
+
+#### Parameters
+
+In addition to the parameters listed in the `create` section below, `generate` introduces 3 new parameters:
+
+- `waitForCompletion` (boolean, default true): Whether to wait for the project to complete.
+- `downloadOutputs` (boolean, default true): Whether to download the generated files
+- `downloadDirectory` (string, optional): Directory to save downloaded files (defaults to current directory)
+
+#### Example Snippet
+
+```typescript
+import Client from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+const res = await client.v1.aiPhotoEditor.generate(
+  {
+    assets: { imageFilePath: "/path/to/1234.png" },
+    name: "Photo Editor image",
+    resolution: 768,
+    style: {
+      imageDescription: "A photo of a person",
+      likenessStrength: 5.2,
+      negativePrompt: "painting, cartoon, sketch",
+      prompt: "A photo portrait of a person wearing a hat",
+      promptStrength: 3.75,
+      steps: 4,
+      upscaleFactor: 2,
+      upscaleFidelity: 0.5,
+    },
+  },
+  {
+    waitForCompletion: true,
+    downloadOutputs: true,
+    downloadDirectory: "outputs",
+  },
+);
+
+```
+
+<!-- CUSTOM DOCS END -->
 
