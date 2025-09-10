@@ -1,4 +1,4 @@
-# v1-files-uploadurls
+# v1.files.upload-urls
 
 ## Module Functions
 ### Generate asset upload urls <a name="create"></a>

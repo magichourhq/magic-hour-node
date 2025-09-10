@@ -45,6 +45,7 @@ export type V1VideoToVideoCreateBodyStyleArtStyleEnum =
   | "Oil Painting"
   | "On Fire"
   | "Origami"
+  | "Painterly Anime"
   | "Pixar"
   | "Pixel"
   | "Power Armor"
