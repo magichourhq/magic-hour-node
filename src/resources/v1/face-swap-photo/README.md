@@ -1,6 +1,7 @@
-# v1-faceswapphoto
+# v1.face-swap-photo
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### Face Swap Photo Generate Workflow <a name="generate"></a>
@@ -54,7 +55,6 @@ const res = await client.v1.faceSwapPhoto.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Face Swap Photo <a name="create"></a>
 
 Create a face swap photo. Each photo costs 5 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](https://magichour.ai/pricing) page for more details
@@ -102,4 +102,5 @@ const res = await client.v1.faceSwapPhoto.create({
 
 ##### Example
 `{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
+
 

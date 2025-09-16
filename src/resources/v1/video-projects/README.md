@@ -1,6 +1,7 @@
-# v1-videoprojects
+# v1.video-projects
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -35,7 +36,6 @@ const result = await client.v1.videoProjects.checkResult(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Delete video <a name="delete"></a>
 
 Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
@@ -96,4 +96,5 @@ const res = await client.v1.videoProjects.get({ id: "cuid-example" });
 
 ##### Example
 `{"createdAt": "1970-01-01T00:00:00", "creditsCharged": 450, "download": {"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}, "downloads": [{"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}], "enabled": true, "endSeconds": 15.0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "fps": 30.0, "height": 960, "id": "cuid-example", "name": "Example Name", "startSeconds": 0.0, "status": "complete", "totalFrameCost": 450, "type": "FACE_SWAP", "width": 512}`
+
 

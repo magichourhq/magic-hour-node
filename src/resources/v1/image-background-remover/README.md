@@ -1,6 +1,7 @@
-# v1-imagebackgroundremover
+# v1.image-background-remover
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### Image Background Remover Generate Workflow <a name="generate"></a>
@@ -47,7 +48,6 @@ const res = await client.v1.imageBackgroundRemover.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Image Background Remover <a name="create"></a>
 
 Remove background from image. Each image costs 5 credits.
@@ -86,4 +86,5 @@ const res = await client.v1.imageBackgroundRemover.create({
 
 ##### Example
 `{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
+
 

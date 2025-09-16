@@ -1,6 +1,7 @@
-# v1-aimemegenerator
+# v1.ai-meme-generator
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### AI Meme Generator Generate Workflow <a name="generate"></a>
@@ -48,7 +49,6 @@ const res = await client.v1.aiMemeGenerator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### AI Meme Generator <a name="create"></a>
 
 Create an AI generated meme. Each meme costs 10 credits.
@@ -89,4 +89,5 @@ const res = await client.v1.aiMemeGenerator.create({
 
 ##### Example
 `{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`
+
 

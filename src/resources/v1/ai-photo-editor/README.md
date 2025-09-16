@@ -1,6 +1,7 @@
-# v1-aiphotoeditor
+# v1.ai-photo-editor
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### AI Photo Editor Generate Workflow <a name="generate"></a>
@@ -55,7 +56,6 @@ const res = await client.v1.aiPhotoEditor.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### AI Photo Editor <a name="create"></a>
 
 > **NOTE**: this API is still in early development stages, and should be avoided. Please reach out to us if you're interested in this API. 
@@ -114,4 +114,5 @@ const res = await client.v1.aiPhotoEditor.create({
 
 ##### Example
 `{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}`
+
 

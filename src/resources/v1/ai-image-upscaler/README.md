@@ -1,6 +1,7 @@
-# v1-aiimageupscaler
+# v1.ai-image-upscaler
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### AI Image Upscaler Generate Workflow <a name="generate"></a>
@@ -46,7 +47,6 @@ const res = await client.v1.aiImageUpscaler.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### AI Image Upscaler <a name="create"></a>
 
 Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale costs 200 credits.
@@ -87,4 +87,5 @@ const res = await client.v1.aiImageUpscaler.create({
 
 ##### Example
 `{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
+
 

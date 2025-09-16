@@ -1,6 +1,7 @@
-# v1-photocolorizer
+# v1.photo-colorizer
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### Photo Colorizer Generate Workflow <a name="generate"></a>
@@ -44,7 +45,6 @@ const res = await client.v1.photoColorizer.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Photo Colorizer <a name="create"></a>
 
 Colorize image. Each image costs 5 credits.
@@ -79,4 +79,5 @@ const res = await client.v1.photoColorizer.create({
 
 ##### Example
 `{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
+
 

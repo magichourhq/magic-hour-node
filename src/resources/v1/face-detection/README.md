@@ -1,6 +1,7 @@
-# v1-facedetection
+# v1.face-detection
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### Face Detection Generate Workflow <a name="generate"></a>
@@ -45,7 +46,6 @@ const res = await client.v1.faceDetection.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Get face detection details <a name="get"></a>
 
 Get the details of a face detection task. 
@@ -116,4 +116,5 @@ const res = await client.v1.faceDetection.create({
 
 ##### Example
 `{"creditsCharged": 123, "id": "uuid-example"}`
+
 
