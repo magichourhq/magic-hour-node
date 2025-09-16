@@ -1,6 +1,7 @@
-# v1-aitalkingphoto
+# v1.ai-talking-photo
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### AI Talking Photo Generate Workflow <a name="generate"></a>
@@ -49,7 +50,6 @@ const res = await client.v1.aiTalkingPhoto.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### AI Talking Photo <a name="create"></a>
 
 Create a talking photo from an image and audio or text input.
@@ -67,7 +67,7 @@ Create a talking photo from an image and audio or text input.
 | `startSeconds` | ✓ | The start time of the input audio in seconds. The maximum duration allowed is 60 seconds. | `0.0` |
 | `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Talking Photo image"` |
 | `style` | ✗ | Attributes used to dictate the style of the output | `{"generationMode": "expressive", "intensity": 1.5}` |
-| `└─ generationMode` | ✗ | Controls overall motion style. * `expressive` - More motion and facial expressiveness; may introduce visual artifacts. * `stable` -  Reduced motion for cleaner output; may result in minimal animation. | `"expressive"` |
+| `└─ generationMode` | ✗ | Controls overall motion style. * `pro` -  Realistic, high fidelity, accurate lip sync, slower. * `expressive` - More motion and facial expressiveness; may introduce visual artifacts. * `stable` -  Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`) | `"expressive"` |
 | `└─ intensity` | ✗ | Note: this value is only applicable when generation_mode is `expressive`. The value can include up to 2 decimal places. * Lower values yield more stability but can suppress mouth movement. * Higher values increase motion and expressiveness, with a higher risk of distortion. | `1.5` |
 
 #### Example Snippet
@@ -95,4 +95,5 @@ const res = await client.v1.aiTalkingPhoto.create({
 
 ##### Example
 `{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`
+
 

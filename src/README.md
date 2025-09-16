@@ -1,8 +1,6 @@
-# Root Client
+# Base Client
 
-<!-- CUSTOM DOCS START -->
 
-<!-- CUSTOM DOCS END -->
 
 ## Submodules
 - [ai-clothes-changer](resources/v1/ai-clothes-changer/README.md) - ai-clothes-changer
@@ -16,7 +14,9 @@
 - [ai-photo-editor](resources/v1/ai-photo-editor/README.md) - ai-photo-editor
 - [ai-qr-code-generator](resources/v1/ai-qr-code-generator/README.md) - ai-qr-code-generator
 - [ai-talking-photo](resources/v1/ai-talking-photo/README.md) - ai-talking-photo
+- [ai-voice-generator](resources/v1/ai-voice-generator/README.md) - ai-voice-generator
 - [animation](resources/v1/animation/README.md) - animation
+- [audio-projects](resources/v1/audio-projects/README.md) - audio-projects
 - [auto-subtitle-generator](resources/v1/auto-subtitle-generator/README.md) - auto-subtitle-generator
 - [face-detection](resources/v1/face-detection/README.md) - face-detection
 - [face-swap-photo](resources/v1/face-swap-photo/README.md) - face-swap-photo

@@ -1,8 +1,6 @@
 # v1
 
-<!-- CUSTOM DOCS START -->
 
-<!-- CUSTOM DOCS END -->
 
 ## Submodules
 - [ai-clothes-changer](ai-clothes-changer/README.md) - ai-clothes-changer
@@ -16,7 +14,9 @@
 - [ai-photo-editor](ai-photo-editor/README.md) - ai-photo-editor
 - [ai-qr-code-generator](ai-qr-code-generator/README.md) - ai-qr-code-generator
 - [ai-talking-photo](ai-talking-photo/README.md) - ai-talking-photo
+- [ai-voice-generator](ai-voice-generator/README.md) - ai-voice-generator
 - [animation](animation/README.md) - animation
+- [audio-projects](audio-projects/README.md) - audio-projects
 - [auto-subtitle-generator](auto-subtitle-generator/README.md) - auto-subtitle-generator
 - [face-detection](face-detection/README.md) - face-detection
 - [face-swap](face-swap/README.md) - face-swap

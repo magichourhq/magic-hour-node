@@ -44,6 +44,10 @@ export { V1AiTalkingPhotoCreateBodyAssets } from "./v1-ai-talking-photo-create-b
 export { V1AiTalkingPhotoCreateBodyStyle } from "./v1-ai-talking-photo-create-body-style";
 export { V1AiTalkingPhotoCreateBodyStyleGenerationModeEnum } from "./v1-ai-talking-photo-create-body-style-generation-mode-enum";
 export { V1AiTalkingPhotoCreateResponse } from "./v1-ai-talking-photo-create-response";
+export { V1AiVoiceGeneratorCreateBody } from "./v1-ai-voice-generator-create-body";
+export { V1AiVoiceGeneratorCreateBodyStyle } from "./v1-ai-voice-generator-create-body-style";
+export { V1AiVoiceGeneratorCreateBodyStyleVoiceNameEnum } from "./v1-ai-voice-generator-create-body-style-voice-name-enum";
+export { V1AiVoiceGeneratorCreateResponse } from "./v1-ai-voice-generator-create-response";
 export { V1AnimationCreateBody } from "./v1-animation-create-body";
 export { V1AnimationCreateBodyAssets } from "./v1-animation-create-body-assets";
 export { V1AnimationCreateBodyAssetsAudioSourceEnum } from "./v1-animation-create-body-assets-audio-source-enum";
@@ -52,6 +56,10 @@ export { V1AnimationCreateBodyStyleArtStyleEnum } from "./v1-animation-create-bo
 export { V1AnimationCreateBodyStyleCameraEffectEnum } from "./v1-animation-create-body-style-camera-effect-enum";
 export { V1AnimationCreateBodyStylePromptTypeEnum } from "./v1-animation-create-body-style-prompt-type-enum";
 export { V1AnimationCreateResponse } from "./v1-animation-create-response";
+export { V1AudioProjectsGetResponse } from "./v1-audio-projects-get-response";
+export { V1AudioProjectsGetResponseDownloadsItem } from "./v1-audio-projects-get-response-downloads-item";
+export { V1AudioProjectsGetResponseError } from "./v1-audio-projects-get-response-error";
+export { V1AudioProjectsGetResponseStatusEnum } from "./v1-audio-projects-get-response-status-enum";
 export { V1AutoSubtitleGeneratorCreateBody } from "./v1-auto-subtitle-generator-create-body";
 export { V1AutoSubtitleGeneratorCreateBodyAssets } from "./v1-auto-subtitle-generator-create-body-assets";
 export { V1AutoSubtitleGeneratorCreateBodyStyle } from "./v1-auto-subtitle-generator-create-body-style";
