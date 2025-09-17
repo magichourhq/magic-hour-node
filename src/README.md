@@ -1,8 +1,6 @@
-# Root Client
+# Base Client
 
-<!-- CUSTOM DOCS START -->
 
-<!-- CUSTOM DOCS END -->
 
 ## Submodules
 - [ai-clothes-changer](resources/v1/ai-clothes-changer/README.md) - ai-clothes-changer

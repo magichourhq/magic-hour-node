@@ -1,8 +1,6 @@
 # v1
 
-<!-- CUSTOM DOCS START -->
 
-<!-- CUSTOM DOCS END -->
 
 ## Submodules
 - [ai-clothes-changer](ai-clothes-changer/README.md) - ai-clothes-changer

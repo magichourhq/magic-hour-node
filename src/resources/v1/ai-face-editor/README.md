@@ -1,6 +1,7 @@
-# v1-aifaceeditor
+# v1.ai-face-editor
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### AI Face Editor Generate Workflow <a name="generate"></a>
@@ -61,7 +62,6 @@ const res = await client.v1.aiFaceEditor.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### AI Face Editor <a name="create"></a>
 
 Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
@@ -129,4 +129,5 @@ const res = await client.v1.aiFaceEditor.create({
 
 ##### Example
 `{"creditsCharged": 1, "frameCost": 1, "id": "cuid-example"}`
+
 

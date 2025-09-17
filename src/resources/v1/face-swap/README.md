@@ -1,6 +1,7 @@
-# v1-faceswap
+# v1.face-swap
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 ### Face Swap Generate Workflow <a name="generate"></a>
@@ -58,7 +59,6 @@ const res = await client.v1.faceSwap.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Face Swap video <a name="create"></a>
 
 Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
@@ -121,4 +121,5 @@ const res = await client.v1.faceSwap.create({
 
 ##### Example
 `{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`
+
 

@@ -1,4 +1,5 @@
-# v1-files
+# v1.files
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -32,6 +33,7 @@ const result = await client.v1.aiImageUpscaler.create({
 ```
 
 <!-- CUSTOM DOCS END -->
+
 
 ## Submodules
 - [upload-urls](upload-urls/README.md) - upload-urls
