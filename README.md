@@ -260,6 +260,7 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 ### [v1.aiVoiceGenerator](src/resources/v1/ai-voice-generator/README.md)
 
 * [create](src/resources/v1/ai-voice-generator/README.md#create) - AI Voice Generator
+* [generate](src/resources/v1/ai-voice-generator/README.md#generate) - AI Voice Generator Generate Workflow
 
 ### [v1.animation](src/resources/v1/animation/README.md)
 
