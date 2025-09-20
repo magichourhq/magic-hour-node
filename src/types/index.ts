@@ -106,6 +106,8 @@ export { V1ImageToVideoCreateResponse } from "./v1-image-to-video-create-respons
 export { V1LipSyncCreateBody } from "./v1-lip-sync-create-body";
 export { V1LipSyncCreateBodyAssets } from "./v1-lip-sync-create-body-assets";
 export { V1LipSyncCreateBodyAssetsVideoSourceEnum } from "./v1-lip-sync-create-body-assets-video-source-enum";
+export { V1LipSyncCreateBodyStyle } from "./v1-lip-sync-create-body-style";
+export { V1LipSyncCreateBodyStyleGenerationModeEnum } from "./v1-lip-sync-create-body-style-generation-mode-enum";
 export { V1LipSyncCreateResponse } from "./v1-lip-sync-create-response";
 export { V1PhotoColorizerCreateBody } from "./v1-photo-colorizer-create-body";
 export { V1PhotoColorizerCreateBodyAssets } from "./v1-photo-colorizer-create-body-assets";

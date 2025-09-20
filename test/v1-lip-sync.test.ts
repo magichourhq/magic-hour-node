@@ -23,6 +23,7 @@ describe("tests client.v1.lipSync.create", () => {
             maxFpsLimit: 12.0,
             name: "Lip Sync video",
             startSeconds: 0.0,
+            style: { generationMode: "lite" },
             width: 123,
           })
           .asResponse(),
@@ -38,6 +39,7 @@ describe("tests client.v1.lipSync.create", () => {
           maxFpsLimit: 12.0,
           name: "Lip Sync video",
           startSeconds: 0.0,
+          style: { generationMode: "lite" },
           width: 123,
         }),
       ]);

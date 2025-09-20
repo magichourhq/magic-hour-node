@@ -19,7 +19,7 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
             endSeconds: 15.0,
             name: "Talking Photo image",
             startSeconds: 0.0,
-            style: { generationMode: "expressive", intensity: 1.5 },
+            style: { generationMode: "pro", intensity: 1.5 },
           })
           .asResponse(),
         client.v1.aiTalkingPhoto.create({
@@ -30,7 +30,7 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
           endSeconds: 15.0,
           name: "Talking Photo image",
           startSeconds: 0.0,
-          style: { generationMode: "expressive", intensity: 1.5 },
+          style: { generationMode: "pro", intensity: 1.5 },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

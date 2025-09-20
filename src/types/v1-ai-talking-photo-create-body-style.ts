@@ -7,11 +7,13 @@ import * as z from "zod";
 export type V1AiTalkingPhotoCreateBodyStyle = {
   /**
    * Controls overall motion style.
-   * * `pro` -  Realistic, high fidelity, accurate lip sync, slower.
-   * * `expressive` - More motion and facial expressiveness; may introduce visual artifacts.
+   * * `pro` -  Higher fidelity, realistic detail, accurate lip sync, and faster generation.
+   * * `standard` -  More expressive motion, but lower visual fidelity.
+   *
+   * * `expressive` - More motion and facial expressiveness; may introduce visual artifacts. (Deprecated: passing this value will be treated as `standard`)
    * * `stable` -  Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`)
    */
-  generationMode?: ("expressive" | "pro" | "stable") | undefined;
+  generationMode?: ("expressive" | "pro" | "stable" | "standard") | undefined;
   /**
    * Note: this value is only applicable when generation_mode is `expressive`. The value can include up to 2 decimal places.
    * * Lower values yield more stability but can suppress mouth movement.
@@ -26,7 +28,7 @@ export type V1AiTalkingPhotoCreateBodyStyle = {
  * we expect to come in as network data
  */
 export type External$V1AiTalkingPhotoCreateBodyStyle = {
-  generation_mode?: ("expressive" | "pro" | "stable") | undefined;
+  generation_mode?: ("expressive" | "pro" | "stable" | "standard") | undefined;
   intensity?: number | undefined;
 };
 
@@ -39,7 +41,9 @@ const SchemaIn$V1AiTalkingPhotoCreateBodyStyle: z.ZodType<
   unknown
 > = z
   .object({
-    generation_mode: z.enum(["expressive", "pro", "stable"]).optional(),
+    generation_mode: z
+      .enum(["expressive", "pro", "stable", "standard"])
+      .optional(),
     intensity: z.number().optional(),
   })
   .transform((obj) => {
@@ -59,7 +63,9 @@ const SchemaOut$V1AiTalkingPhotoCreateBodyStyle: z.ZodType<
   V1AiTalkingPhotoCreateBodyStyle // the object to be transformed
 > = z
   .object({
-    generationMode: z.enum(["expressive", "pro", "stable"]).optional(),
+    generationMode: z
+      .enum(["expressive", "pro", "stable", "standard"])
+      .optional(),
     intensity: z.number().optional(),
   })
   .transform((obj) => {

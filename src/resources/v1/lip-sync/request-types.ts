@@ -6,6 +6,11 @@ import {
   Schemas$V1LipSyncCreateBodyAssets,
   V1LipSyncCreateBodyAssets,
 } from "magic-hour/types/v1-lip-sync-create-body-assets";
+import {
+  External$V1LipSyncCreateBodyStyle,
+  Schemas$V1LipSyncCreateBodyStyle,
+  V1LipSyncCreateBodyStyle,
+} from "magic-hour/types/v1-lip-sync-create-body-style";
 
 /**
  * CreateRequest
@@ -42,6 +47,10 @@ export type CreateRequest = {
    */
   startSeconds: number;
   /**
+   * Attributes used to dictate the style of the output
+   */
+  style?: V1LipSyncCreateBodyStyle | undefined;
+  /**
    * `width` is deprecated and no longer influences the output video's resolution.
    *
    * Output resolution is determined by the **minimum** of:
@@ -65,6 +74,7 @@ export type External$CreateRequest = {
   max_fps_limit?: number | undefined;
   name?: string | undefined;
   start_seconds: number;
+  style?: External$V1LipSyncCreateBodyStyle | undefined;
   width?: number | null | undefined;
 };
 
@@ -83,6 +93,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     max_fps_limit: z.number().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
+    style: Schemas$V1LipSyncCreateBodyStyle.in.optional(),
     width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
@@ -93,6 +104,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       max_fps_limit: "maxFpsLimit",
       name: "name",
       start_seconds: "startSeconds",
+      style: "style",
       width: "width",
     });
   });
@@ -113,6 +125,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     maxFpsLimit: z.number().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
+    style: Schemas$V1LipSyncCreateBodyStyle.out.optional(),
     width: z.number().int().nullable().optional(),
   })
   .transform((obj) => {
@@ -123,6 +136,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       maxFpsLimit: "max_fps_limit",
       name: "name",
       startSeconds: "start_seconds",
+      style: "style",
       width: "width",
     });
   });

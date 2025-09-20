@@ -1,5 +1,5 @@
 {
-  "id": "efe25d79-fd74-485d-ab71-dbbcd9d68b8d",
+  "id": "31df0519-cea5-43da-929f-50f1bfbc429b",
   "tracked_paths": [
     {
       "editable": true,
@@ -940,6 +940,14 @@
     {
       "editable": false,
       "path": "src/types/v1-lip-sync-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-lip-sync-create-body-style-generation-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-lip-sync-create-body-style.ts"
     },
     {
       "editable": false,

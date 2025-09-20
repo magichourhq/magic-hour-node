@@ -45,7 +45,7 @@ export type V1AudioProjectsGetResponse = {
    */
   status: "canceled" | "complete" | "draft" | "error" | "queued" | "rendering";
   /**
-   * The type of the audio project. Possible values are VOICE_GENERATOR
+   * The type of the audio project. Possible values are VOICE_GENERATOR, VOICE_CHANGER
    */
   type: string;
 };
