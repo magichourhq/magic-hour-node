@@ -6,16 +6,16 @@ import {
   ResourceClientOptions,
 } from "make-api-request-js";
 
-import * as requests from "magic-hour/resources/v1/ai-voice-generator/request-types";
-import * as types from "magic-hour/types";
-import { Schemas$V1AiVoiceGeneratorCreateBody } from "magic-hour/types/v1-ai-voice-generator-create-body";
-import { Schemas$V1AiVoiceGeneratorCreateResponse } from "magic-hour/types/v1-ai-voice-generator-create-response";
-import { getLogger } from "magic-hour/logger";
 import {
   GenerateOptions,
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
+import * as requests from "magic-hour/resources/v1/ai-voice-generator/request-types";
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
+import * as types from "magic-hour/types";
+import { Schemas$V1AiVoiceGeneratorCreateBody } from "magic-hour/types/v1-ai-voice-generator-create-body";
+import { Schemas$V1AiVoiceGeneratorCreateResponse } from "magic-hour/types/v1-ai-voice-generator-create-response";
 
 type GenerateRequest = GenerateRequestType<requests.CreateRequest, {}>;
 

@@ -3,6 +3,7 @@
 ## Module Functions
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Check results <a name="check-result"></a>
@@ -60,7 +61,7 @@ const res = await client.v1.audioProjects.delete({ id: "cuid-example" });
 
 ### Get audio details <a name="get"></a>
 
-Get the details of an audio project. The `downloads` field will be empty unless the audio was successfully rendered.
+Get the details of a audio project. The `downloads` field will be empty unless the audio was successfully rendered.
 
 The audio can be one of the following status
 - `draft` - not currently used
