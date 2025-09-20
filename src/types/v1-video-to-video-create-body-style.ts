@@ -15,6 +15,7 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Avatar"
     | "Black Spiderman"
     | "Boba Fett"
+    | "Bold Anime"
     | "Celestial Skin"
     | "Chinese Swordsmen"
     | "Clay"
@@ -54,6 +55,7 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Pixel"
     | "Power Armor"
     | "Power Ranger"
+    | "Realistic Anime"
     | "Retro Anime"
     | "Retro Sci-Fi"
     | "Samurai"
@@ -78,23 +80,25 @@ export type V1VideoToVideoCreateBodyStyle = {
    * * `Flat 2D Anime` - best for a flat illustration style that's common in most anime.
    * * `default` - use the default recommended model for the selected art style.
    */
-  model: "Absolute Reality" | "Dreamshaper" | "Flat 2D Anime" | "default";
+  model?:
+    | ("Absolute Reality" | "Dreamshaper" | "Flat 2D Anime" | "default")
+    | undefined;
   /**
    * The prompt used for the video. Prompt is required if `prompt_type` is `custom` or `append_default`. If `prompt_type` is `default`, then the `prompt` value passed will be ignored.
    */
-  prompt: string | null;
+  prompt?: string | null | undefined;
   /**
    * * `default` - Use the default recommended prompt for the art style.
    * * `custom` - Only use the prompt passed in the API. Note: for v1, lora prompt will still be auto added to apply the art style properly.
    * * `append_default` - Add the default recommended prompt to the end of the prompt passed in the API.
    */
-  promptType: "append_default" | "custom" | "default";
+  promptType?: ("append_default" | "custom" | "default") | undefined;
   /**
    * * `v1` - more detail, closer prompt adherence, and frame-by-frame previews.
    * * `v2` - faster, more consistent, and less noisy.
    * * `default` - use the default version for the selected art style.
    */
-  version: "default" | "v1" | "v2";
+  version?: ("default" | "v1" | "v2") | undefined;
 };
 
 /**
@@ -113,6 +117,7 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Avatar"
     | "Black Spiderman"
     | "Boba Fett"
+    | "Bold Anime"
     | "Celestial Skin"
     | "Chinese Swordsmen"
     | "Clay"
@@ -152,6 +157,7 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Pixel"
     | "Power Armor"
     | "Power Ranger"
+    | "Realistic Anime"
     | "Retro Anime"
     | "Retro Sci-Fi"
     | "Samurai"
@@ -170,10 +176,12 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Watercolor"
     | "Wu Kong"
     | "Zelda";
-  model: "Absolute Reality" | "Dreamshaper" | "Flat 2D Anime" | "default";
-  prompt: string | null;
-  prompt_type: "append_default" | "custom" | "default";
-  version: "default" | "v1" | "v2";
+  model?:
+    | ("Absolute Reality" | "Dreamshaper" | "Flat 2D Anime" | "default")
+    | undefined;
+  prompt?: string | null | undefined;
+  prompt_type?: ("append_default" | "custom" | "default") | undefined;
+  version?: ("default" | "v1" | "v2") | undefined;
 };
 
 /**
@@ -195,6 +203,7 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Avatar",
       "Black Spiderman",
       "Boba Fett",
+      "Bold Anime",
       "Celestial Skin",
       "Chinese Swordsmen",
       "Clay",
@@ -234,6 +243,7 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Pixel",
       "Power Armor",
       "Power Ranger",
+      "Realistic Anime",
       "Retro Anime",
       "Retro Sci-Fi",
       "Samurai",
@@ -253,15 +263,12 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Wu Kong",
       "Zelda",
     ]),
-    model: z.enum([
-      "Absolute Reality",
-      "Dreamshaper",
-      "Flat 2D Anime",
-      "default",
-    ]),
-    prompt: z.string().nullable(),
-    prompt_type: z.enum(["append_default", "custom", "default"]),
-    version: z.enum(["default", "v1", "v2"]),
+    model: z
+      .enum(["Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"])
+      .optional(),
+    prompt: z.string().nullable().optional(),
+    prompt_type: z.enum(["append_default", "custom", "default"]).optional(),
+    version: z.enum(["default", "v1", "v2"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -293,6 +300,7 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Avatar",
       "Black Spiderman",
       "Boba Fett",
+      "Bold Anime",
       "Celestial Skin",
       "Chinese Swordsmen",
       "Clay",
@@ -332,6 +340,7 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Pixel",
       "Power Armor",
       "Power Ranger",
+      "Realistic Anime",
       "Retro Anime",
       "Retro Sci-Fi",
       "Samurai",
@@ -351,15 +360,12 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Wu Kong",
       "Zelda",
     ]),
-    model: z.enum([
-      "Absolute Reality",
-      "Dreamshaper",
-      "Flat 2D Anime",
-      "default",
-    ]),
-    prompt: z.string().nullable(),
-    promptType: z.enum(["append_default", "custom", "default"]),
-    version: z.enum(["default", "v1", "v2"]),
+    model: z
+      .enum(["Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"])
+      .optional(),
+    prompt: z.string().nullable().optional(),
+    promptType: z.enum(["append_default", "custom", "default"]).optional(),
+    version: z.enum(["default", "v1", "v2"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {

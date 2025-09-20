@@ -1,5 +1,5 @@
 {
-  "id": "8831bf6a-d4af-4357-a54a-44dea2383d2d",
+  "id": "efe25d79-fd74-485d-ab71-dbbcd9d68b8d",
   "tracked_paths": [
     {
       "editable": true,
@@ -227,6 +227,22 @@
     },
     {
       "editable": true,
+      "path": "src/resources/v1/ai-voice-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-voice-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-voice-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-voice-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
       "path": "src/resources/v1/animation/README.md"
     },
     {
@@ -240,6 +256,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/animation/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/audio-projects/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/audio-projects/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/audio-projects/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/audio-projects/resource-client.ts"
     },
     {
       "editable": true,
@@ -667,6 +699,22 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-voice-generator-create-body-style-voice-name-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-voice-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-voice-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-voice-generator-create-response.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-animation-create-body-assets-audio-source-enum.ts"
     },
     {
@@ -696,6 +744,22 @@
     {
       "editable": false,
       "path": "src/types/v1-animation-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-projects-get-response-downloads-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-projects-get-response-error.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-projects-get-response-status-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-projects-get-response.ts"
     },
     {
       "editable": false,
@@ -1027,7 +1091,15 @@
     },
     {
       "editable": false,
+      "path": "test/v1-ai-voice-generator.test.ts"
+    },
+    {
+      "editable": false,
       "path": "test/v1-animation.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-audio-projects.test.ts"
     },
     {
       "editable": false,
