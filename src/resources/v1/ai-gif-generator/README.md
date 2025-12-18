@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### AI Gif Generator Generate Workflow <a name="generate"></a>
 
@@ -46,7 +47,7 @@ const res = await client.v1.aiGifGenerator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-### AI GIFs <a name="create"></a>
+### AI GIF Generator <a name="create"></a>
 
 Create an AI GIF. Each GIF costs 50 credits.
 
@@ -82,5 +83,4 @@ const res = await client.v1.aiGifGenerator.create({
 
 ##### Example
 `{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
-
 

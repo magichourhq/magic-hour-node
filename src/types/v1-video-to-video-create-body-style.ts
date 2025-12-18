@@ -27,6 +27,7 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Future Bot"
     | "Futuristic Fantasy"
     | "GTA"
+    | "Ghibli Anime"
     | "Ghost"
     | "Gundam"
     | "Hologram"
@@ -55,11 +56,15 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Pixel"
     | "Power Armor"
     | "Power Ranger"
+    | "Radiant Anime"
     | "Realistic Anime"
+    | "Realistic Pixar"
     | "Retro Anime"
     | "Retro Sci-Fi"
     | "Samurai"
     | "Samurai Bot"
+    | "Sharp Anime"
+    | "Soft Anime"
     | "Solid Snake"
     | "Spartan"
     | "Starfield"
@@ -72,7 +77,9 @@ export type V1VideoToVideoCreateBodyStyle = {
     | "Van Gogh"
     | "Viking"
     | "Watercolor"
+    | "Western Anime"
     | "Wu Kong"
+    | "Wuxia Anime"
     | "Zelda";
   /**
    * * `Dreamshaper` - a good all-around model that works for both animations as well as realism.
@@ -81,7 +88,16 @@ export type V1VideoToVideoCreateBodyStyle = {
    * * `default` - use the default recommended model for the selected art style.
    */
   model?:
-    | ("Absolute Reality" | "Dreamshaper" | "Flat 2D Anime" | "default")
+    | (
+        | "3D Anime"
+        | "Absolute Reality"
+        | "Dreamshaper"
+        | "Flat 2D Anime"
+        | "Kaywaii"
+        | "Soft Anime"
+        | "Western Anime"
+        | "default"
+      )
     | undefined;
   /**
    * The prompt used for the video. Prompt is required if `prompt_type` is `custom` or `append_default`. If `prompt_type` is `default`, then the `prompt` value passed will be ignored.
@@ -129,6 +145,7 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Future Bot"
     | "Futuristic Fantasy"
     | "GTA"
+    | "Ghibli Anime"
     | "Ghost"
     | "Gundam"
     | "Hologram"
@@ -157,11 +174,15 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Pixel"
     | "Power Armor"
     | "Power Ranger"
+    | "Radiant Anime"
     | "Realistic Anime"
+    | "Realistic Pixar"
     | "Retro Anime"
     | "Retro Sci-Fi"
     | "Samurai"
     | "Samurai Bot"
+    | "Sharp Anime"
+    | "Soft Anime"
     | "Solid Snake"
     | "Spartan"
     | "Starfield"
@@ -174,10 +195,21 @@ export type External$V1VideoToVideoCreateBodyStyle = {
     | "Van Gogh"
     | "Viking"
     | "Watercolor"
+    | "Western Anime"
     | "Wu Kong"
+    | "Wuxia Anime"
     | "Zelda";
   model?:
-    | ("Absolute Reality" | "Dreamshaper" | "Flat 2D Anime" | "default")
+    | (
+        | "3D Anime"
+        | "Absolute Reality"
+        | "Dreamshaper"
+        | "Flat 2D Anime"
+        | "Kaywaii"
+        | "Soft Anime"
+        | "Western Anime"
+        | "default"
+      )
     | undefined;
   prompt?: string | null | undefined;
   prompt_type?: ("append_default" | "custom" | "default") | undefined;
@@ -215,6 +247,7 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Future Bot",
       "Futuristic Fantasy",
       "GTA",
+      "Ghibli Anime",
       "Ghost",
       "Gundam",
       "Hologram",
@@ -243,11 +276,15 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Pixel",
       "Power Armor",
       "Power Ranger",
+      "Radiant Anime",
       "Realistic Anime",
+      "Realistic Pixar",
       "Retro Anime",
       "Retro Sci-Fi",
       "Samurai",
       "Samurai Bot",
+      "Sharp Anime",
+      "Soft Anime",
       "Solid Snake",
       "Spartan",
       "Starfield",
@@ -260,11 +297,22 @@ const SchemaIn$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Van Gogh",
       "Viking",
       "Watercolor",
+      "Western Anime",
       "Wu Kong",
+      "Wuxia Anime",
       "Zelda",
     ]),
     model: z
-      .enum(["Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"])
+      .enum([
+        "3D Anime",
+        "Absolute Reality",
+        "Dreamshaper",
+        "Flat 2D Anime",
+        "Kaywaii",
+        "Soft Anime",
+        "Western Anime",
+        "default",
+      ])
       .optional(),
     prompt: z.string().nullable().optional(),
     prompt_type: z.enum(["append_default", "custom", "default"]).optional(),
@@ -312,6 +360,7 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Future Bot",
       "Futuristic Fantasy",
       "GTA",
+      "Ghibli Anime",
       "Ghost",
       "Gundam",
       "Hologram",
@@ -340,11 +389,15 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Pixel",
       "Power Armor",
       "Power Ranger",
+      "Radiant Anime",
       "Realistic Anime",
+      "Realistic Pixar",
       "Retro Anime",
       "Retro Sci-Fi",
       "Samurai",
       "Samurai Bot",
+      "Sharp Anime",
+      "Soft Anime",
       "Solid Snake",
       "Spartan",
       "Starfield",
@@ -357,11 +410,22 @@ const SchemaOut$V1VideoToVideoCreateBodyStyle: z.ZodType<
       "Van Gogh",
       "Viking",
       "Watercolor",
+      "Western Anime",
       "Wu Kong",
+      "Wuxia Anime",
       "Zelda",
     ]),
     model: z
-      .enum(["Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"])
+      .enum([
+        "3D Anime",
+        "Absolute Reality",
+        "Dreamshaper",
+        "Flat 2D Anime",
+        "Kaywaii",
+        "Soft Anime",
+        "Western Anime",
+        "default",
+      ])
       .optional(),
     prompt: z.string().nullable().optional(),
     promptType: z.enum(["append_default", "custom", "default"]).optional(),

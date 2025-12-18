@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### AI Image Upscaler Generate Workflow <a name="generate"></a>
 
@@ -88,5 +89,4 @@ const res = await client.v1.aiImageUpscaler.create({
 
 ##### Example
 `{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
-
 

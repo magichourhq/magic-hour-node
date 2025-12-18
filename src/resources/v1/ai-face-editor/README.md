@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### AI Face Editor Generate Workflow <a name="generate"></a>
 
@@ -130,5 +131,4 @@ const res = await client.v1.aiFaceEditor.create({
 
 ##### Example
 `{"creditsCharged": 1, "frameCost": 1, "id": "cuid-example"}`
-
 

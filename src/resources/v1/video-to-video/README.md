@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### Video To Video Generate Workflow <a name="generate"></a>
 
@@ -77,11 +78,11 @@ Get more information about this mode at our [product page](https://magichour.ai/
 | `startSeconds` | ✓ | ✗ | The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0. | `0.0` |
 | `style` | ✓ | ✗ |  | `{"artStyle": "3D Render", "model": "default", "promptType": "default", "version": "default"}` |
 | `└─ artStyle` | ✓ | — |  | `"3D Render"` |
-| `└─ model` | ✗ | — | * `Dreamshaper` - a good all-around model that works for both animations as well as realism.  * `Absolute Reality` - better at realism, but you'll often get similar results with Dreamshaper as well.  * `Flat 2D Anime` - best for a flat illustration style that's common in most anime. * `default` - use the default recommended model for the selected art style. | `"default"` |
+| `└─ model` | ✗ | — | * `Dreamshaper` - a good all-around model that works for both animations as well as realism. * `Absolute Reality` - better at realism, but you'll often get similar results with Dreamshaper as well. * `Flat 2D Anime` - best for a flat illustration style that's common in most anime. * `default` - use the default recommended model for the selected art style. | `"default"` |
 | `└─ prompt` | ✗ | — | The prompt used for the video. Prompt is required if `prompt_type` is `custom` or `append_default`. If `prompt_type` is `default`, then the `prompt` value passed will be ignored. | `"string"` |
 | `└─ promptType` | ✗ | — | * `default` - Use the default recommended prompt for the art style. * `custom` - Only use the prompt passed in the API. Note: for v1, lora prompt will still be auto added to apply the art style properly. * `append_default` - Add the default recommended prompt to the end of the prompt passed in the API. | `"default"` |
 | `└─ version` | ✗ | — | * `v1` - more detail, closer prompt adherence, and frame-by-frame previews. * `v2` - faster, more consistent, and less noisy. * `default` - use the default version for the selected art style. | `"default"` |
-| `fpsResolution` | ✗ | ✗ | Determines whether the resulting video will have the same frame per second as the original video, or half.  * `FULL` - the result video will have the same FPS as the input video * `HALF` - the result video will have half the FPS as the input video | `"HALF"` |
+| `fpsResolution` | ✗ | ✗ | Determines whether the resulting video will have the same frame per second as the original video, or half. * `FULL` - the result video will have the same FPS as the input video * `HALF` - the result video will have half the FPS as the input video | `"HALF"` |
 | `height` | ✗ | ✓ | `height` is deprecated and no longer influences the output video's resolution.  Output resolution is determined by the **minimum** of: - The resolution of the input video - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.  This field is retained only for backward compatibility and will be removed in a future release. | `123` |
 | `name` | ✗ | ✗ | The name of video. This value is mainly used for your own identification of the video. | `"Video To Video video"` |
 | `width` | ✗ | ✓ | `width` is deprecated and no longer influences the output video's resolution.  Output resolution is determined by the **minimum** of: - The resolution of the input video - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.  This field is retained only for backward compatibility and will be removed in a future release. | `123` |
@@ -115,5 +116,4 @@ const res = await client.v1.videoToVideo.create({
 
 ##### Example
 `{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`
-
 

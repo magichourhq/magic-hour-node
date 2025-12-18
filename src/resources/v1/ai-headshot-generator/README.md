@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### AI Headshot Generator Generate Workflow <a name="generate"></a>
 
@@ -46,7 +47,7 @@ const res = await client.v1.aiHeadshotGenerator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-### AI Headshots <a name="create"></a>
+### AI Headshot Generator <a name="create"></a>
 
 Create an AI headshot. Each headshot costs 50 credits.
 
@@ -82,5 +83,4 @@ const res = await client.v1.aiHeadshotGenerator.create({
 
 ##### Example
 `{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
-
 

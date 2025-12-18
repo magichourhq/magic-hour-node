@@ -84,9 +84,9 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
   }
 
   /**
-   * AI QR Code
+   * AI QR Code Generator
    *
-   * Create an AI QR code. Each QR code costs 20 credits.
+   * Create an AI QR code. Each QR code costs 0 credits.
    *
    * POST /v1/ai-qr-code-generator
    */

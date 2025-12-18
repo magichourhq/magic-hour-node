@@ -6,14 +6,23 @@ import * as z from "zod";
  */
 export type V1AiImageEditorCreateBodyAssets = {
   /**
-   * The image used in the edit. This value is either
+   * Deprecated: Please use `image_file_paths` instead as edits with multiple images are now supported. The image used in the edit. This value is either
    * - a direct URL to the video file
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
    *
    * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
    *
    */
-  imageFilePath: string;
+  imageFilePath?: string | undefined;
+  /**
+   * The image(s) used in the edit, maximum of 10 images. This value is either
+   * - a direct URL to the video file
+   * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+   *
+   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   *
+   */
+  imageFilePaths?: string[] | undefined;
 };
 
 /**
@@ -22,7 +31,8 @@ export type V1AiImageEditorCreateBodyAssets = {
  * we expect to come in as network data
  */
 export type External$V1AiImageEditorCreateBodyAssets = {
-  image_file_path: string;
+  image_file_path?: string | undefined;
+  image_file_paths?: string[] | undefined;
 };
 
 /**
@@ -34,11 +44,13 @@ const SchemaIn$V1AiImageEditorCreateBodyAssets: z.ZodType<
   unknown
 > = z
   .object({
-    image_file_path: z.string(),
+    image_file_path: z.string().optional(),
+    image_file_paths: z.array(z.string()).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       image_file_path: "imageFilePath",
+      image_file_paths: "imageFilePaths",
     });
   });
 
@@ -52,11 +64,13 @@ const SchemaOut$V1AiImageEditorCreateBodyAssets: z.ZodType<
   V1AiImageEditorCreateBodyAssets // the object to be transformed
 > = z
   .object({
-    imageFilePath: z.string(),
+    imageFilePath: z.string().optional(),
+    imageFilePaths: z.array(z.string()).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       imageFilePath: "image_file_path",
+      imageFilePaths: "image_file_paths",
     });
   });
 

@@ -17,10 +17,12 @@ export { V1AiHeadshotGeneratorCreateResponse } from "./v1-ai-headshot-generator-
 export { V1AiImageEditorCreateBody } from "./v1-ai-image-editor-create-body";
 export { V1AiImageEditorCreateBodyAssets } from "./v1-ai-image-editor-create-body-assets";
 export { V1AiImageEditorCreateBodyStyle } from "./v1-ai-image-editor-create-body-style";
+export { V1AiImageEditorCreateBodyStyleModelEnum } from "./v1-ai-image-editor-create-body-style-model-enum";
 export { V1AiImageEditorCreateResponse } from "./v1-ai-image-editor-create-response";
 export { V1AiImageGeneratorCreateBody } from "./v1-ai-image-generator-create-body";
 export { V1AiImageGeneratorCreateBodyOrientationEnum } from "./v1-ai-image-generator-create-body-orientation-enum";
 export { V1AiImageGeneratorCreateBodyStyle } from "./v1-ai-image-generator-create-body-style";
+export { V1AiImageGeneratorCreateBodyStyleQualityModeEnum } from "./v1-ai-image-generator-create-body-style-quality-mode-enum";
 export { V1AiImageGeneratorCreateBodyStyleToolEnum } from "./v1-ai-image-generator-create-body-style-tool-enum";
 export { V1AiImageGeneratorCreateResponse } from "./v1-ai-image-generator-create-response";
 export { V1AiImageUpscalerCreateBody } from "./v1-ai-image-upscaler-create-body";

@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### AI Talking Photo Generate Workflow <a name="generate"></a>
 
@@ -96,5 +97,4 @@ const res = await client.v1.aiTalkingPhoto.create({
 
 ##### Example
 `{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`
-
 

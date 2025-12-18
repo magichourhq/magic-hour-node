@@ -1,7 +1,5 @@
 # v1
 
-
-
 ## Submodules
 - [ai-clothes-changer](ai-clothes-changer/README.md) - ai-clothes-changer
 - [ai-face-editor](ai-face-editor/README.md) - ai-face-editor
