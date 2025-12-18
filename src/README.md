@@ -1,7 +1,5 @@
 # Base Client
 
-
-
 ## Submodules
 - [ai-clothes-changer](resources/v1/ai-clothes-changer/README.md) - ai-clothes-changer
 - [ai-face-editor](resources/v1/ai-face-editor/README.md) - ai-face-editor

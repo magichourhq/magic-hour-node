@@ -6,7 +6,7 @@ import * as z from "zod";
  */
 export type V1FilesUploadUrlsCreateBodyItemsItem = {
   /**
-   * The extension of the file to upload. Do not include the dot (.) before the extension. Possible extensions are mp4,m4v,mov,webm,mp3,mpeg,wav,aac,aiff,flac,png,jpg,jpeg,webp,avif,jp2,tiff,bmp
+   * The extension of the file to upload. Do not include the dot (.) before the extension. Possible extensions are mp4,m4v,mov,webm,mp3,wav,aac,flac,webm,png,jpg,jpeg,heic,webp,avif,jp2,tiff,bmp,gif,webp,webm
    */
   extension: string;
   /**

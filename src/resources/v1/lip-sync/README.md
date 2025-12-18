@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### Lip Sync Generate Workflow <a name="generate"></a>
 
@@ -107,5 +108,4 @@ const res = await client.v1.lipSync.create({
 
 ##### Example
 `{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}`
-
 

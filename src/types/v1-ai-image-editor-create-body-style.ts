@@ -6,6 +6,12 @@ import * as z from "zod";
  */
 export type V1AiImageEditorCreateBodyStyle = {
   /**
+   * The AI model to use for image editing. * `Nano Banana` - Precise, realistic edits with consistent results
+   * * `Seedream` - Creative, imaginative images with artistic freedom
+   * * `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
+   */
+  model?: ("Nano Banana" | "Seedream" | "default") | undefined;
+  /**
    * The prompt used to edit the image.
    */
   prompt: string;
@@ -17,6 +23,7 @@ export type V1AiImageEditorCreateBodyStyle = {
  * we expect to come in as network data
  */
 export type External$V1AiImageEditorCreateBodyStyle = {
+  model?: ("Nano Banana" | "Seedream" | "default") | undefined;
   prompt: string;
 };
 
@@ -29,10 +36,12 @@ const SchemaIn$V1AiImageEditorCreateBodyStyle: z.ZodType<
   unknown
 > = z
   .object({
+    model: z.enum(["Nano Banana", "Seedream", "default"]).optional(),
     prompt: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      model: "model",
       prompt: "prompt",
     });
   });
@@ -47,10 +56,12 @@ const SchemaOut$V1AiImageEditorCreateBodyStyle: z.ZodType<
   V1AiImageEditorCreateBodyStyle // the object to be transformed
 > = z
   .object({
+    model: z.enum(["Nano Banana", "Seedream", "default"]).optional(),
     prompt: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      model: "model",
       prompt: "prompt",
     });
   });

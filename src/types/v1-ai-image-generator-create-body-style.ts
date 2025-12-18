@@ -10,6 +10,16 @@ export type V1AiImageGeneratorCreateBodyStyle = {
    */
   prompt: string;
   /**
+   * Controls the quality of the generated image. Defaults to 'standard' if not specified.
+   *
+   * **Options:**
+   * - `standard` - Standard quality generation. Cost: 5 credits per image.
+   * - `pro` - Pro quality generation with enhanced details and quality. Cost: 30 credits per image.
+   *
+   * Note: Pro mode is available for users on Creator, Pro, or Business tier.
+   */
+  qualityMode?: ("pro" | "standard") | undefined;
+  /**
    * The art style to use for image generation. Defaults to 'general' if not provided.
    */
   tool?:
@@ -60,6 +70,7 @@ export type V1AiImageGeneratorCreateBodyStyle = {
  */
 export type External$V1AiImageGeneratorCreateBodyStyle = {
   prompt: string;
+  quality_mode?: ("pro" | "standard") | undefined;
   tool?:
     | (
         | "ai-anime-generator"
@@ -111,6 +122,7 @@ const SchemaIn$V1AiImageGeneratorCreateBodyStyle: z.ZodType<
 > = z
   .object({
     prompt: z.string(),
+    quality_mode: z.enum(["pro", "standard"]).optional(),
     tool: z
       .enum([
         "ai-anime-generator",
@@ -154,6 +166,7 @@ const SchemaIn$V1AiImageGeneratorCreateBodyStyle: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       prompt: "prompt",
+      quality_mode: "qualityMode",
       tool: "tool",
     });
   });
@@ -169,6 +182,7 @@ const SchemaOut$V1AiImageGeneratorCreateBodyStyle: z.ZodType<
 > = z
   .object({
     prompt: z.string(),
+    qualityMode: z.enum(["pro", "standard"]).optional(),
     tool: z
       .enum([
         "ai-anime-generator",
@@ -212,6 +226,7 @@ const SchemaOut$V1AiImageGeneratorCreateBodyStyle: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       prompt: "prompt",
+      qualityMode: "quality_mode",
       tool: "tool",
     });
   });

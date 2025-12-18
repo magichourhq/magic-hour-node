@@ -12,15 +12,27 @@ describe("tests client.v1.aiImageEditor.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.aiImageEditor
           .create({
-            assets: { imageFilePath: "api-assets/id/1234.png" },
+            assets: {
+              imageFilePath: "api-assets/id/1234.png",
+              imageFilePaths: [
+                "api-assets/id/1234.png",
+                "api-assets/id/1235.png",
+              ],
+            },
             name: "Ai Image Editor image",
-            style: { prompt: "Give me sunglasses" },
+            style: { model: "Nano Banana", prompt: "Give me sunglasses" },
           })
           .asResponse(),
         client.v1.aiImageEditor.create({
-          assets: { imageFilePath: "api-assets/id/1234.png" },
+          assets: {
+            imageFilePath: "api-assets/id/1234.png",
+            imageFilePaths: [
+              "api-assets/id/1234.png",
+              "api-assets/id/1235.png",
+            ],
+          },
           name: "Ai Image Editor image",
-          style: { prompt: "Give me sunglasses" },
+          style: { model: "Nano Banana", prompt: "Give me sunglasses" },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

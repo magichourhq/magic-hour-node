@@ -83,7 +83,7 @@ export class AiGifGeneratorClient extends CoreResourceClient {
   }
 
   /**
-   * AI GIFs
+   * AI GIF Generator
    *
    * Create an AI GIF. Each GIF costs 50 credits.
    *

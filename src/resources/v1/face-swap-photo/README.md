@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### Face Swap Photo Generate Workflow <a name="generate"></a>
 
@@ -103,5 +104,4 @@ const res = await client.v1.faceSwapPhoto.create({
 
 ##### Example
 `{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
-
 

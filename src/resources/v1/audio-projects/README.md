@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Check results <a name="check-result"></a>
@@ -71,7 +72,6 @@ The audio can be one of the following status
 - `error` - an error occurred during rendering
 - `canceled` - audio render is canceled by the user
 
-
 **API Endpoint**: `GET /v1/audio-projects/{id}`
 
 #### Parameters
@@ -97,5 +97,4 @@ const res = await client.v1.audioProjects.get({ id: "cuid-example" });
 
 ##### Example
 `{"createdAt": "1970-01-01T00:00:00", "creditsCharged": 2, "downloads": [{"expiresAt": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.wav"}], "enabled": true, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "id": "cuid-example", "name": "Example Name", "status": "complete", "type": "VOICE_GENERATOR"}`
-
 
