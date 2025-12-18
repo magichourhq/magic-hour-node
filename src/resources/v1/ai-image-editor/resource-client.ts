@@ -27,8 +27,18 @@ type GenerateRequest = GenerateRequestType<
      * - a path to a local file
      *
      * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     *
+     * @deprecated Please use `imageFilePaths` instead as edits with multiple images are now supported.
      */
-    imageFilePath?: string;
+    imageFilePath?: string | undefined;
+    /**
+     * The image(s) used in the edit. The values in the list are either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
+    imageFilePaths?: string[] | undefined;
   }
 >;
 
