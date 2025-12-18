@@ -34,7 +34,7 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageEditor.generate(
   {
-    assets: { imageFilePath: "/path/to/1234.png" },
+    assets: { imageFilePaths: ["/path/to/1234.png", "/path/to/1235.png"] },
     name: "Ai Image Editor image",
     style: { prompt: "Give me sunglasses" },
   },
