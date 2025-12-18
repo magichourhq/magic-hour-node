@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### AI Qr Code Generator Generate Workflow <a name="generate"></a>
 
@@ -47,9 +48,9 @@ const res = await client.v1.aiQrCodeGenerator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-### AI QR Code <a name="create"></a>
+### AI QR Code Generator <a name="create"></a>
 
-Create an AI QR code. Each QR code costs 20 credits.
+Create an AI QR code. Each QR code costs 0 credits.
 
 **API Endpoint**: `POST /v1/ai-qr-code-generator`
 
@@ -82,6 +83,5 @@ const res = await client.v1.aiQrCodeGenerator.create({
 [V1AiQrCodeGeneratorCreateResponse](/src/types/v1-ai-qr-code-generator-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 20, "frameCost": 20, "id": "cuid-example"}`
-
+`{"creditsCharged": 0, "frameCost": 0, "id": "cuid-example"}`
 

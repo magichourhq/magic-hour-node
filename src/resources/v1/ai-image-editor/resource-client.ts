@@ -27,8 +27,18 @@ type GenerateRequest = GenerateRequestType<
      * - a path to a local file
      *
      * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     *
+     * @deprecated Please use `imageFilePaths` instead as edits with multiple images are now supported.
      */
-    imageFilePath: string;
+    imageFilePath?: string | undefined;
+    /**
+     * The image(s) used in the edit. The values in the list are either
+     * - a direct URL to the image file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
+    imageFilePaths?: string[] | undefined;
   }
 >;
 
@@ -51,7 +61,7 @@ export class AiImageEditorClient extends CoreResourceClient {
    * const client = new Client({ token: process.env["API_TOKEN"]!! });
    * const res = await client.v1.aiImageEditor.generate(
    *   {
-   *     assets: { imageFilePath: "/path/to/1234.png" },
+   *     assets: { imageFilePaths: ["/path/to/1234.png", "/path/to/5678.png"] },
    *     name: "Ai Image Editor image",
    *     style: { prompt: "Give me sunglasses" },
    *   },
@@ -72,18 +82,28 @@ export class AiImageEditorClient extends CoreResourceClient {
     } = opts;
 
     const fileClient = new FilesClient(this._client, this._opts);
-    const { imageFilePath, ...restAssets } = request.assets;
+    const { imageFilePath, imageFilePaths, ...restAssets } = request.assets;
 
     getLogger().debug(
       `Uploading file ${imageFilePath} to Magic Hour's storage`,
     );
 
-    const [uploadedImageFilePath] = await Promise.all([
-      fileClient.uploadFile(imageFilePath),
-    ]);
+    let imageFilePathsForApi: string[] = [];
+
+    if (imageFilePath) {
+      const uploadedImageFilePath = await fileClient.uploadFile(imageFilePath);
+      imageFilePathsForApi.push(uploadedImageFilePath);
+    }
+
+    if (imageFilePaths) {
+      const uploadedImageFilePaths = await Promise.all(
+        imageFilePaths.map((filePath) => fileClient.uploadFile(filePath)),
+      );
+      imageFilePathsForApi.push(...uploadedImageFilePaths);
+    }
 
     getLogger().info(
-      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${uploadedImageFilePath}`,
+      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${imageFilePathsForApi.join(",")}`,
     );
 
     const createResponse = await this.create(
@@ -91,7 +111,7 @@ export class AiImageEditorClient extends CoreResourceClient {
         ...request,
         assets: {
           ...restAssets,
-          imageFilePath: uploadedImageFilePath,
+          imageFilePaths: imageFilePathsForApi,
         },
       },
       createOpts,

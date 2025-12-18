@@ -5,7 +5,11 @@
  * * `default` - use the default recommended model for the selected art style.
  */
 export type V1VideoToVideoCreateBodyStyleModelEnum =
+  | "3D Anime"
   | "Absolute Reality"
   | "Dreamshaper"
   | "Flat 2D Anime"
+  | "Kaywaii"
+  | "Soft Anime"
+  | "Western Anime"
   | "default";

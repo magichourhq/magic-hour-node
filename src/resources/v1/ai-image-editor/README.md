@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 ### AI Image Editor Generate Workflow <a name="generate"></a>
 
@@ -33,7 +34,7 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageEditor.generate(
   {
-    assets: { imageFilePath: "/path/to/1234.png" },
+    assets: { imageFilePaths: ["/path/to/1234.png", "/path/to/1235.png"] },
     name: "Ai Image Editor image",
     style: { prompt: "Give me sunglasses" },
   },
@@ -57,9 +58,11 @@ Edit images with AI. Each edit costs 50 credits.
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for image edit | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `└─ imageFilePath` | ✓ | The image used in the edit. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/1234.png"` |
-| `style` | ✓ |  | `{"prompt": "Give me sunglasses"}` |
+| `assets` | ✓ | Provide the assets for image edit | `{"imageFilePath": "api-assets/id/1234.png", "imageFilePaths": ["api-assets/id/1234.png", "api-assets/id/1235.png"]}` |
+| `└─ imageFilePath` | ✗ | Deprecated: Please use `image_file_paths` instead as edits with multiple images are now supported. The image used in the edit. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/1234.png"` |
+| `└─ imageFilePaths` | ✗ | The image(s) used in the edit, maximum of 10 images. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `["api-assets/id/1234.png", "api-assets/id/1235.png"]` |
+| `style` | ✓ |  | `{"model": "Nano Banana", "prompt": "Give me sunglasses"}` |
+| `└─ model` | ✗ | The AI model to use for image editing. * `Nano Banana` - Precise, realistic edits with consistent results * `Seedream` - Creative, imaginative images with artistic freedom * `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior. | `"Nano Banana"` |
 | `└─ prompt` | ✓ | The prompt used to edit the image. | `"Give me sunglasses"` |
 | `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Ai Image Editor image"` |
 
@@ -70,9 +73,12 @@ import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageEditor.create({
-  assets: { imageFilePath: "api-assets/id/1234.png" },
+  assets: {
+    imageFilePath: "api-assets/id/1234.png",
+    imageFilePaths: ["api-assets/id/1234.png", "api-assets/id/1235.png"],
+  },
   name: "Ai Image Editor image",
-  style: { prompt: "Give me sunglasses" },
+  style: { model: "Nano Banana", prompt: "Give me sunglasses" },
 });
 
 ```
@@ -84,5 +90,4 @@ const res = await client.v1.aiImageEditor.create({
 
 ##### Example
 `{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
-
 

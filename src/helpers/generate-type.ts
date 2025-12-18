@@ -24,7 +24,10 @@ export type GenerateOptions = RequestOptions & {
   downloadDirectory?: string | undefined;
 };
 
-type FilePathKeys<T> = Extract<keyof T, `${string}FilePath`>;
+type FilePathKeys<T> = Extract<
+  keyof T,
+  `${string}FilePath` | `${string}FilePaths`
+>;
 
 // Extract FilePath properties as they are (preserving optional/required)
 type FilePathProps<T> = Pick<T, FilePathKeys<T>>;
