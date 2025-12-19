@@ -103,7 +103,9 @@ export class AiImageEditorClient extends CoreResourceClient {
     }
 
     getLogger().info(
-      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${imageFilePathsForApi.join(",")}`,
+      `Uploaded file ${imageFilePath} to Magic Hour's storage as ${imageFilePathsForApi.join(
+        ",",
+      )}`,
     );
 
     const createResponse = await this.create(
