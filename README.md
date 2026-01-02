@@ -38,9 +38,9 @@ const res = await client.v1.faceSwapPhoto.generate(
   },
 );
 
-console.log(`Project ID: ${response.id}`)
-console.log(`Status: ${response.status}`)
-console.log(`Downloaded files: ${response.downloaded_paths}`)
+console.log(`Project ID: ${response.id}`);
+console.log(`Status: ${response.status}`);
+console.log(`Downloaded files: ${response.downloaded_paths}`);
 ```
 
 ## Client Functions
@@ -77,10 +77,10 @@ const response = await client.v1.faceSwapPhoto.generate(
     name: "Face Swap image",
   },
   {
-    waitForCompletion: true,       // Wait for status to be complete/error/canceled
-    downloadOutputs: true,         // Download files automatically
-    downloadDirectory: "./outputs/" // Where to save files
-  }
+    waitForCompletion: true, // Wait for status to be complete/error/canceled
+    downloadOutputs: true, // Download files automatically
+    downloadDirectory: "./outputs/", // Where to save files
+  },
 );
 
 // You get both the API response AND downloaded file paths
@@ -99,8 +99,12 @@ The `create()` function provides granular control:
 
 ```ts
 // upload the files to Magic Hour's storage or you can use direct URLs
-const sourceFilePath = await client.v1.files.uploadFile("/path/to/source/image.png")
-const targetFilePath = await client.v1.files.uploadFile("/path/to/target/image.png")
+const sourceFilePath = await client.v1.files.uploadFile(
+  "/path/to/source/image.png",
+);
+const targetFilePath = await client.v1.files.uploadFile(
+  "/path/to/target/image.png",
+);
 
 // Create function - only starts the process
 const createResponse = await client.v1.faceSwapPhoto.create({
@@ -109,7 +113,7 @@ const createResponse = await client.v1.faceSwapPhoto.create({
     sourceFilePath: sourceFilePath,
     targetFilePath: targetFilePath,
   },
-  name: "Face Swap image"
+  name: "Face Swap image",
 });
 
 // You get just the project ID and initial response
@@ -151,14 +155,12 @@ The Magic Hour SDK includes the `ApiError` class, which includes the request and
 
 ```ts
 try {
-  await client.v1.imageToVideo.generate(
-    {
-      assets: {
-        imageFilePath: "/Users/dhu/Desktop/test-files/suit.jpg",
-      },
-      endSeconds: 0,
+  await client.v1.imageToVideo.generate({
+    assets: {
+      imageFilePath: "/Users/dhu/Desktop/test-files/suit.jpg",
     },
-  );
+    endSeconds: 0,
+  });
 } catch (error) {
   if (error instanceof ApiError) {
     console.error(`API Error: ${error.message}`); // API Error: 400 was returned from post /v1/image-to-video
@@ -257,6 +259,7 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 ### [v1.aiVoiceCloner](src/resources/v1/ai-voice-cloner/README.md)
 
 - [create](src/resources/v1/ai-voice-cloner/README.md#create) - AI Voice Cloner
+- [generate](src/resources/v1/ai-voice-cloner/README.md#generate) - AI Voice Cloner Workflow
 
 ### [v1.aiVoiceGenerator](src/resources/v1/ai-voice-generator/README.md)
 
