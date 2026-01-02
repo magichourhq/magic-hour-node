@@ -2,11 +2,8 @@
 
 ## Module Functions
 
-
-
-
-
 <!-- CUSTOM DOCS START -->
+
 ### Face Detection Generate Workflow <a name="generate"></a>
 
 The workflow performs the following action
@@ -45,13 +42,13 @@ const res = await client.v1.faceDetection.generate(
     downloadDirectory: "outputs",
   },
 });
-
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### Get face detection details <a name="get"></a>
 
-Get the details of a face detection task. 
+Get the details of a face detection task.
 
 Use this API to get the list of faces detected in the image or video to use in the [face swap photo](/api-reference/face-swap-photo/face-swap-photo) or [face swap video](/api-reference/face-swap/face-swap-video) API calls for multi-face swaps.
 
@@ -59,9 +56,9 @@ Use this API to get the list of faces detected in the image or video to use in t
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the task. This value is returned by the [face detection API](/api-reference/files/face-detection#response-id). | `"uuid-example"` |
+| Parameter | Required | Description                                                                                                              | Example          |
+| --------- | :------: | ------------------------------------------------------------------------------------------------------------------------ | ---------------- |
+| `id`      |    ✓     | The id of the task. This value is returned by the [face detection API](/api-reference/files/face-detection#response-id). | `"uuid-example"` |
 
 #### Example Snippet
 
@@ -70,21 +67,24 @@ import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.faceDetection.get({ id: "uuid-example" });
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1FaceDetectionGetResponse](/src/types/v1-face-detection-get-response.ts)
 
 ##### Example
-`{"creditsCharged": 0, "faces": [{"path": "api-assets/id/0-0.png", "url": "https://videos.magichour.ai/api-assets/id/0-0.png"}], "id": "uuid-example", "status": "complete"}`
+
+```typescript
+{"creditsCharged": 0, "faces": [{"path": "api-assets/id/0-0.png", "url": "https://videos.magichour.ai/api-assets/id/0-0.png"}], "id": "uuid-example", "status": "complete"}
+```
 
 ### Face Detection <a name="create"></a>
 
-Detect faces in an image or video. 
-      
+Detect faces in an image or video.
+
 Use this API to get the list of faces detected in the image or video to use in the [face swap photo](/api-reference/face-swap-photo/face-swap-photo) or [face swap video](/api-reference/face-swap/face-swap-video) API calls for multi-face swaps.
 
 Note: Face detection is free to use for the near future. Pricing may change in the future.
@@ -93,11 +93,11 @@ Note: Face detection is free to use for the near future. Pricing may change in t
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for face detection | `{"targetFilePath": "api-assets/id/1234.png"}` |
-| `└─ targetFilePath` | ✓ | This is the image or video where the face will be detected. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/1234.png"` |
-| `confidenceScore` | ✗ | Confidence threshold for filtering detected faces.  * Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives.  * Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections. | `0.5` |
+| Parameter           | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                    | Example                                        |
+| ------------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `assets`            |    ✓     | Provide the assets for face detection                                                                                                                                                                                                                                                                                                                                                                          | `{"targetFilePath": "api-assets/id/1234.png"}` |
+| `└─ targetFilePath` |    ✓     | This is the image or video where the face will be detected. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more. | `"api-assets/id/1234.png"`                     |
+| `confidenceScore`   |    ✗     | Confidence threshold for filtering detected faces. * Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives. * Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections.                                                                                                                                                  | `0.5`                                          |
 
 #### Example Snippet
 
@@ -109,14 +109,16 @@ const res = await client.v1.faceDetection.create({
   assets: { targetFilePath: "api-assets/id/1234.png" },
   confidenceScore: 0.5,
 });
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1FaceDetectionCreateResponse](/src/types/v1-face-detection-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 123, "id": "uuid-example"}`
 
+```typescript
+{"creditsCharged": 123, "id": "uuid-example"}
+```

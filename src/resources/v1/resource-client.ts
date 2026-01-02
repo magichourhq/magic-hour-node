@@ -15,6 +15,7 @@ import { AiMemeGeneratorClient } from "magic-hour/resources/v1/ai-meme-generator
 import { AiPhotoEditorClient } from "magic-hour/resources/v1/ai-photo-editor";
 import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-generator";
 import { AiTalkingPhotoClient } from "magic-hour/resources/v1/ai-talking-photo";
+import { AiVoiceClonerClient } from "magic-hour/resources/v1/ai-voice-cloner";
 import { AiVoiceGeneratorClient } from "magic-hour/resources/v1/ai-voice-generator";
 import { AnimationClient } from "magic-hour/resources/v1/animation";
 import { AudioProjectsClient } from "magic-hour/resources/v1/audio-projects";
@@ -33,6 +34,7 @@ import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 
 export class V1Client extends CoreResourceClient {
+  private _aiVoiceClonerLazy?: AiVoiceClonerClient; // lazy-loading cache
   private _audioProjectsLazy?: AudioProjectsClient; // lazy-loading cache
   private _aiVoiceGeneratorLazy?: AiVoiceGeneratorClient; // lazy-loading cache
   private _imageProjectsLazy?: ImageProjectsClient; // lazy-loading cache
@@ -75,6 +77,7 @@ export class V1Client extends CoreResourceClient {
       this.aiPhotoEditor;
       this.aiQrCodeGenerator;
       this.aiTalkingPhoto;
+      this.aiVoiceCloner;
       this.aiVoiceGenerator;
       this.animation;
       this.audioProjects;
@@ -381,6 +384,17 @@ export class V1Client extends CoreResourceClient {
       this._audioProjectsLazy ??
       (this._audioProjectsLazy =
         new (require("./audio-projects").AudioProjectsClient)(
+          this._client,
+          this._opts,
+        ))
+    );
+  }
+
+  get aiVoiceCloner(): AiVoiceClonerClient {
+    return (
+      this._aiVoiceClonerLazy ??
+      (this._aiVoiceClonerLazy =
+        new (require("./ai-voice-cloner").AiVoiceClonerClient)(
           this._client,
           this._opts,
         ))

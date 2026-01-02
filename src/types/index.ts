@@ -46,6 +46,10 @@ export { V1AiTalkingPhotoCreateBodyAssets } from "./v1-ai-talking-photo-create-b
 export { V1AiTalkingPhotoCreateBodyStyle } from "./v1-ai-talking-photo-create-body-style";
 export { V1AiTalkingPhotoCreateBodyStyleGenerationModeEnum } from "./v1-ai-talking-photo-create-body-style-generation-mode-enum";
 export { V1AiTalkingPhotoCreateResponse } from "./v1-ai-talking-photo-create-response";
+export { V1AiVoiceClonerCreateBody } from "./v1-ai-voice-cloner-create-body";
+export { V1AiVoiceClonerCreateBodyAssets } from "./v1-ai-voice-cloner-create-body-assets";
+export { V1AiVoiceClonerCreateBodyStyle } from "./v1-ai-voice-cloner-create-body-style";
+export { V1AiVoiceClonerCreateResponse } from "./v1-ai-voice-cloner-create-response";
 export { V1AiVoiceGeneratorCreateBody } from "./v1-ai-voice-generator-create-body";
 export { V1AiVoiceGeneratorCreateBodyStyle } from "./v1-ai-voice-generator-create-body-style";
 export { V1AiVoiceGeneratorCreateBodyStyleVoiceNameEnum } from "./v1-ai-voice-generator-create-body-style-voice-name-enum";

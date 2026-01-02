@@ -1,5 +1,5 @@
 {
-  "id": "b502eefd-759e-4a98-a74c-bbb3116b8593",
+  "id": "e5c69478-9633-4833-9e69-48a4deff0956",
   "tracked_paths": [
     {
       "editable": true,
@@ -224,6 +224,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/ai-talking-photo/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-voice-cloner/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-voice-cloner/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-voice-cloner/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-voice-cloner/resource-client.ts"
     },
     {
       "editable": true,
@@ -707,6 +723,22 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-voice-cloner-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-voice-cloner-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-voice-cloner-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-voice-cloner-create-response.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-ai-voice-generator-create-body-style-voice-name-enum.ts"
     },
     {
@@ -1104,6 +1136,10 @@
     {
       "editable": false,
       "path": "test/v1-ai-talking-photo.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-voice-cloner.test.ts"
     },
     {
       "editable": false,
