@@ -2,11 +2,8 @@
 
 ## Module Functions
 
-
-
-
-
 <!-- CUSTOM DOCS START -->
+
 ### AI Image Upscaler Generate Workflow <a name="generate"></a>
 
 The workflow performs the following action
@@ -46,10 +43,10 @@ const res = await client.v1.aiImageUpscaler.generate(
     downloadDirectory: "outputs",
   },
 );
-
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### AI Image Upscaler <a name="create"></a>
 
 Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale costs 200 credits.
@@ -58,15 +55,15 @@ Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale co
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for upscaling | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `└─ imageFilePath` | ✓ | The image to upscale. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/1234.png"` |
-| `scaleFactor` | ✓ | How much to scale the image. Must be either 2 or 4.              Note: 4x upscale is only available on Creator, Pro, or Business tier. | `2.0` |
-| `style` | ✓ |  | `{"enhancement": "Balanced"}` |
-| `└─ enhancement` | ✓ |  | `"Balanced"` |
-| `└─ prompt` | ✗ | A prompt to guide the final image. This value is ignored if `enhancement` is not Creative | `"string"` |
-| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Image Upscaler image"` |
+| Parameter          | Required | Description                                                                                                                                                                                                                                                                                                                                                              | Example                                       |
+| ------------------ | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| `assets`           |    ✓     | Provide the assets for upscaling                                                                                                                                                                                                                                                                                                                                         | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `└─ imageFilePath` |    ✓     | The image to upscale. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more. | `"api-assets/id/1234.png"`                    |
+| `scaleFactor`      |    ✓     | How much to scale the image. Must be either 2 or 4. Note: 4x upscale is only available on Creator, Pro, or Business tier.                                                                                                                                                                                                                                                | `2.0`                                         |
+| `style`            |    ✓     |                                                                                                                                                                                                                                                                                                                                                                          | `{"enhancement": "Balanced"}`                 |
+| `└─ enhancement`   |    ✓     |                                                                                                                                                                                                                                                                                                                                                                          | `"Balanced"`                                  |
+| `└─ prompt`        |    ✗     | A prompt to guide the final image. This value is ignored if `enhancement` is not Creative                                                                                                                                                                                                                                                                                | `"string"`                                    |
+| `name`             |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                                                                                                                                                   | `"Image Upscaler image"`                      |
 
 #### Example Snippet
 
@@ -80,14 +77,16 @@ const res = await client.v1.aiImageUpscaler.create({
   scaleFactor: 2.0,
   style: { enhancement: "Balanced" },
 });
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1AiImageUpscalerCreateResponse](/src/types/v1-ai-image-upscaler-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}`
 
+```typescript
+{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}
+```

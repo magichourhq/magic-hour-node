@@ -9,6 +9,7 @@ Generates a list of pre-signed upload URLs for the assets required. This API is 
 The response array will match the order of items in the request body.
 
 **Valid file extensions per asset type**:
+
 - video: mp4, m4v, mov, webm
 - audio: mp3, wav, aac, flac, webm
 - image: png, jpg, jpeg, heic, webp, avif, jp2, tiff, bmp
@@ -29,9 +30,9 @@ curl -X PUT --data '@/path/to/file/video.mp4' \
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `items` | ✓ | The list of assets to upload. The response array will match the order of items in the request body. | `[{"extension": "mp4", "type": "video"}, {"extension": "mp3", "type": "audio"}]` |
+| Parameter | Required | Description                                                                                         | Example                                                                          |
+| --------- | :------: | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `items`   |    ✓     | The list of assets to upload. The response array will match the order of items in the request body. | `[{"extension": "mp4", "type": "video"}, {"extension": "mp3", "type": "audio"}]` |
 
 #### Example Snippet
 
@@ -45,14 +46,16 @@ const res = await client.v1.files.uploadUrls.create({
     { extension: "mp3", type: "audio" },
   ],
 });
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1FilesUploadUrlsCreateResponse](/src/types/v1-files-upload-urls-create-response.ts)
 
 ##### Example
-`{"items": [{"expiresAt": "2024-07-25T16:56:21.932Z", "filePath": "api-assets/id/video.mp4", "uploadUrl": "https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890"}, {"expiresAt": "2024-07-25T16:56:21.932Z", "filePath": "api-assets/id/audio.mp3", "uploadUrl": "https://videos.magichour.ai/api-assets/id/audio.mp3?auth-value=1234567890"}]}`
 
+```typescript
+{"items": [{"expiresAt": "2024-07-25T16:56:21.932Z", "filePath": "api-assets/id/video.mp4", "uploadUrl": "https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890"}, {"expiresAt": "2024-07-25T16:56:21.932Z", "filePath": "api-assets/id/audio.mp3", "uploadUrl": "https://videos.magichour.ai/api-assets/id/audio.mp3?auth-value=1234567890"}]}
+```

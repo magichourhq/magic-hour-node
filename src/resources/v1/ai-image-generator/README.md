@@ -2,11 +2,8 @@
 
 ## Module Functions
 
-
-
-
-
 <!-- CUSTOM DOCS START -->
+
 ### AI Image Generator Generate Workflow <a name="generate"></a>
 
 The workflow performs the following action
@@ -46,10 +43,10 @@ const res = await client.v1.aiImageGenerator.generate(
     downloadDirectory: "outputs",
   },
 );
-
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### AI Image Generator <a name="create"></a>
 
 Create an AI image. Each standard image costs 5 credits. Pro quality images cost 30 credits.
@@ -58,15 +55,15 @@ Create an AI image. Each standard image costs 5 credits. Pro quality images cost
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `imageCount` | ✓ | Number of images to generate. | `1` |
-| `orientation` | ✓ | The orientation of the output image(s). | `"landscape"` |
-| `style` | ✓ | The art style to use for image generation. | `{"prompt": "Cool image", "qualityMode": "standard", "tool": "ai-anime-generator"}` |
-| `└─ prompt` | ✓ | The prompt used for the image(s). | `"Cool image"` |
-| `└─ qualityMode` | ✗ | Controls the quality of the generated image. Defaults to 'standard' if not specified.  **Options:** - `standard` - Standard quality generation. Cost: 5 credits per image. - `pro` - Pro quality generation with enhanced details and quality. Cost: 30 credits per image.  Note: Pro mode is available for users on Creator, Pro, or Business tier. | `"standard"` |
-| `└─ tool` | ✗ | The art style to use for image generation. Defaults to 'general' if not provided. | `"ai-anime-generator"` |
-| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Ai Image image"` |
+| Parameter        | Required | Description                                                                                                                                                                                                                                                                                                                                        | Example                                                                             |
+| ---------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `imageCount`     |    ✓     | Number of images to generate.                                                                                                                                                                                                                                                                                                                      | `1`                                                                                 |
+| `orientation`    |    ✓     | The orientation of the output image(s).                                                                                                                                                                                                                                                                                                            | `"landscape"`                                                                       |
+| `style`          |    ✓     | The art style to use for image generation.                                                                                                                                                                                                                                                                                                         | `{"prompt": "Cool image", "qualityMode": "standard", "tool": "ai-anime-generator"}` |
+| `└─ prompt`      |    ✓     | The prompt used for the image(s).                                                                                                                                                                                                                                                                                                                  | `"Cool image"`                                                                      |
+| `└─ qualityMode` |    ✗     | Controls the quality of the generated image. Defaults to 'standard' if not specified. **Options:** - `standard` - Standard quality generation. Cost: 5 credits per image. - `pro` - Pro quality generation with enhanced details and quality. Cost: 30 credits per image. Note: Pro mode is available for users on Creator, Pro, or Business tier. | `"standard"`                                                                        |
+| `└─ tool`        |    ✗     | The art style to use for image generation. Defaults to 'general' if not provided.                                                                                                                                                                                                                                                                  | `"ai-anime-generator"`                                                              |
+| `name`           |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                                                                                                                             | `"Ai Image image"`                                                                  |
 
 #### Example Snippet
 
@@ -84,14 +81,16 @@ const res = await client.v1.aiImageGenerator.create({
     tool: "ai-anime-generator",
   },
 });
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1AiImageGeneratorCreateResponse](/src/types/v1-ai-image-generator-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
 
+```typescript
+{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}
+```

@@ -1,9 +1,5 @@
 # v1.files
 
-
-
-
-
 <!-- CUSTOM DOCS START -->
 
 ### Upload File <a name="upload-file"></a>
@@ -17,7 +13,6 @@ Upload a local file to Magic Hour Storage. The returned value is used for subseq
 | `file`    |    ✓     | A local file path, path like object, file URL, or file like object. | `"/tmp/image.png"` |
 
 #### Synchronous Client
-
 
 ```typescript
 import { Client } from "magic-hour";
@@ -36,6 +31,7 @@ const result = await client.v1.aiImageUpscaler.create({
 ```
 
 <!-- CUSTOM DOCS END -->
-## Submodules
-- [upload-urls](upload-urls/README.md) - upload-urls
 
+## Submodules
+
+- [upload-urls](upload-urls/README.md) - upload-urls

@@ -2,11 +2,8 @@
 
 ## Module Functions
 
-
-
-
-
 <!-- CUSTOM DOCS START -->
+
 ### Photo Colorizer Generate Workflow <a name="generate"></a>
 
 The workflow performs the following action
@@ -44,10 +41,10 @@ const res = await client.v1.photoColorizer.generate(
     downloadDirectory: "outputs",
   },
 );
-
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### Photo Colorizer <a name="create"></a>
 
 Colorize image. Each image costs 5 credits.
@@ -56,11 +53,11 @@ Colorize image. Each image costs 5 credits.
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for photo colorization | `{"imageFilePath": "api-assets/id/1234.png"}` |
-| `└─ imageFilePath` | ✓ | The image used to generate the colorized image. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/1234.png"` |
-| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Photo Colorizer image"` |
+| Parameter          | Required | Description                                                                                                                                                                                                                                                                                                                                                                                        | Example                                       |
+| ------------------ | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| `assets`           |    ✓     | Provide the assets for photo colorization                                                                                                                                                                                                                                                                                                                                                          | `{"imageFilePath": "api-assets/id/1234.png"}` |
+| `└─ imageFilePath` |    ✓     | The image used to generate the colorized image. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more. | `"api-assets/id/1234.png"`                    |
+| `name`             |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                                                                                                                                                                             | `"Photo Colorizer image"`                     |
 
 #### Example Snippet
 
@@ -72,14 +69,16 @@ const res = await client.v1.photoColorizer.create({
   assets: { imageFilePath: "api-assets/id/1234.png" },
   name: "Photo Colorizer image",
 });
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1PhotoColorizerCreateResponse](/src/types/v1-photo-colorizer-create-response.ts)
 
 ##### Example
-`{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}`
 
+```typescript
+{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}
+```

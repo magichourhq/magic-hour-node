@@ -1,6 +1,7 @@
 # Base Client
 
 ## Submodules
+
 - [ai-clothes-changer](resources/v1/ai-clothes-changer/README.md) - ai-clothes-changer
 - [ai-face-editor](resources/v1/ai-face-editor/README.md) - ai-face-editor
 - [ai-gif-generator](resources/v1/ai-gif-generator/README.md) - ai-gif-generator
@@ -12,6 +13,7 @@
 - [ai-photo-editor](resources/v1/ai-photo-editor/README.md) - ai-photo-editor
 - [ai-qr-code-generator](resources/v1/ai-qr-code-generator/README.md) - ai-qr-code-generator
 - [ai-talking-photo](resources/v1/ai-talking-photo/README.md) - ai-talking-photo
+- [ai-voice-cloner](resources/v1/ai-voice-cloner/README.md) - ai-voice-cloner
 - [ai-voice-generator](resources/v1/ai-voice-generator/README.md) - ai-voice-generator
 - [animation](resources/v1/animation/README.md) - animation
 - [audio-projects](resources/v1/audio-projects/README.md) - audio-projects
@@ -30,4 +32,3 @@
 - [video-projects](resources/v1/video-projects/README.md) - video-projects
 - [video-to-video](resources/v1/video-to-video/README.md) - video-to-video
 - [v1](resources/v1/README.md) - v1
-
