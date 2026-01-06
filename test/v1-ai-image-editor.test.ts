@@ -19,7 +19,7 @@ describe("tests client.v1.aiImageEditor.create", () => {
                 "api-assets/id/1235.png",
               ],
             },
-            name: "Ai Image Editor image",
+            name: "My Ai Image Editor image",
             style: { model: "Nano Banana", prompt: "Give me sunglasses" },
           })
           .asResponse(),
@@ -31,7 +31,7 @@ describe("tests client.v1.aiImageEditor.create", () => {
               "api-assets/id/1235.png",
             ],
           },
-          name: "Ai Image Editor image",
+          name: "My Ai Image Editor image",
           style: { model: "Nano Banana", prompt: "Give me sunglasses" },
         }),
       ]);

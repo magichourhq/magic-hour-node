@@ -25,7 +25,7 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   endSeconds: number;
   /**
-   * The name of image. This value is mainly used for your own identification of the image.
+   * Give your image a custom name for easy identification.
    */
   name?: string | undefined;
   /**

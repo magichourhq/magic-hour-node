@@ -35,7 +35,7 @@ export type CreateRequest = {
    */
   height?: number | null | undefined;
   /**
-   * The name of video. This value is mainly used for your own identification of the video.
+   * Give your video a custom name for easy identification.
    */
   name?: string | undefined;
   /**

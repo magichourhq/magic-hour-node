@@ -13,12 +13,12 @@ describe("tests client.v1.photoColorizer.create", () => {
         client.v1.photoColorizer
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
-            name: "Photo Colorizer image",
+            name: "My Photo Colorizer image",
           })
           .asResponse(),
         client.v1.photoColorizer.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
-          name: "Photo Colorizer image",
+          name: "My Photo Colorizer image",
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

@@ -16,7 +16,7 @@ describe("tests client.v1.imageBackgroundRemover.create", () => {
               backgroundImageFilePath: "api-assets/id/1234.png",
               imageFilePath: "api-assets/id/1234.png",
             },
-            name: "Background Remover image",
+            name: "My Background Remover image",
           })
           .asResponse(),
         client.v1.imageBackgroundRemover.create({
@@ -24,7 +24,7 @@ describe("tests client.v1.imageBackgroundRemover.create", () => {
             backgroundImageFilePath: "api-assets/id/1234.png",
             imageFilePath: "api-assets/id/1234.png",
           },
-          name: "Background Remover image",
+          name: "My Background Remover image",
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

@@ -63,7 +63,7 @@ Create an AI image. Each standard image costs 5 credits. Pro quality images cost
 | `└─ prompt`      |    ✓     | The prompt used for the image(s).                                                                                                                                                                                                                                                                                                                  | `"Cool image"`                                                                      |
 | `└─ qualityMode` |    ✗     | Controls the quality of the generated image. Defaults to 'standard' if not specified. **Options:** - `standard` - Standard quality generation. Cost: 5 credits per image. - `pro` - Pro quality generation with enhanced details and quality. Cost: 30 credits per image. Note: Pro mode is available for users on Creator, Pro, or Business tier. | `"standard"`                                                                        |
 | `└─ tool`        |    ✗     | The art style to use for image generation. Defaults to 'general' if not provided.                                                                                                                                                                                                                                                                  | `"ai-anime-generator"`                                                              |
-| `name`           |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                                                                                                                             | `"Ai Image image"`                                                                  |
+| `name`           |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                             | `"My Ai Image image"`                                                               |
 
 #### Example Snippet
 
@@ -73,7 +73,7 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageGenerator.create({
   imageCount: 1,
-  name: "Ai Image image",
+  name: "My Ai Image image",
   orientation: "landscape",
   style: {
     prompt: "Cool image",

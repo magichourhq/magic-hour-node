@@ -12,12 +12,12 @@ describe("tests client.v1.aiVoiceGenerator.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.aiVoiceGenerator
           .create({
-            name: "Voice Generator audio",
+            name: "My Voice Generator audio",
             style: { prompt: "Hello, how are you?", voiceName: "Elon Musk" },
           })
           .asResponse(),
         client.v1.aiVoiceGenerator.create({
-          name: "Voice Generator audio",
+          name: "My Voice Generator audio",
           style: { prompt: "Hello, how are you?", voiceName: "Elon Musk" },
         }),
       ]);

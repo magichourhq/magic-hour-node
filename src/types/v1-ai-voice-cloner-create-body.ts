@@ -21,7 +21,7 @@ export type V1AiVoiceClonerCreateBody = {
    */
   assets: V1AiVoiceClonerCreateBodyAssets;
   /**
-   * The name of audio. This value is mainly used for your own identification of the audio.
+   * Give your audio a custom name for easy identification.
    */
   name?: string | undefined;
   style: V1AiVoiceClonerCreateBodyStyle;

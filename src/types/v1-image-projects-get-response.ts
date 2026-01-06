@@ -25,7 +25,7 @@ export type V1ImageProjectsGetResponse = {
   creditsCharged: number;
   downloads: V1ImageProjectsGetResponseDownloadsItem[];
   /**
-   * Indicates whether the resource is deleted
+   * Whether this resource is active. If false, it is deleted.
    */
   enabled: boolean;
   /**
@@ -33,7 +33,7 @@ export type V1ImageProjectsGetResponse = {
    */
   error: V1ImageProjectsGetResponseError | null;
   /**
-   * Unique ID of the image. This value can be used in the [get image project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch additional details such as status
+   * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
   id: string;
   /**

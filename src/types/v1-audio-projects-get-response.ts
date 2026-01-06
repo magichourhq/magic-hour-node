@@ -25,7 +25,7 @@ export type V1AudioProjectsGetResponse = {
   creditsCharged: number;
   downloads: V1AudioProjectsGetResponseDownloadsItem[];
   /**
-   * Indicates whether the resource is deleted
+   * Whether this resource is active. If false, it is deleted.
    */
   enabled: boolean;
   /**
@@ -33,7 +33,7 @@ export type V1AudioProjectsGetResponse = {
    */
   error: V1AudioProjectsGetResponseError | null;
   /**
-   * Unique ID of the audio. This value can be used in the [get audio project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch additional details such as status
+   * Unique ID of the audio. Use it with the [Get audio Project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch status and downloads.
    */
   id: string;
   /**

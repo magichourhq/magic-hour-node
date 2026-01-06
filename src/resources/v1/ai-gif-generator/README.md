@@ -53,12 +53,12 @@ Create an AI GIF. Each GIF costs 50 credits.
 
 #### Parameters
 
-| Parameter      | Required | Description                                                                        | Example                                     |
-| -------------- | :------: | ---------------------------------------------------------------------------------- | ------------------------------------------- |
-| `style`        |    ✓     |                                                                                    | `{"prompt": "Cute dancing cat, pixel art"}` |
-| `└─ prompt`    |    ✓     | The prompt used for the GIF.                                                       | `"Cute dancing cat, pixel art"`             |
-| `name`         |    ✗     | The name of gif. This value is mainly used for your own identification of the gif. | `"Ai Gif gif"`                              |
-| `outputFormat` |    ✗     | The output file format for the generated animation.                                | `"gif"`                                     |
+| Parameter      | Required | Description                                          | Example                                     |
+| -------------- | :------: | ---------------------------------------------------- | ------------------------------------------- |
+| `style`        |    ✓     |                                                      | `{"prompt": "Cute dancing cat, pixel art"}` |
+| `└─ prompt`    |    ✓     | The prompt used for the GIF.                         | `"Cute dancing cat, pixel art"`             |
+| `name`         |    ✗     | Give your gif a custom name for easy identification. | `"My Ai Gif gif"`                           |
+| `outputFormat` |    ✗     | The output file format for the generated animation.  | `"gif"`                                     |
 
 #### Example Snippet
 
@@ -67,7 +67,7 @@ import Client from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiGifGenerator.create({
-  name: "Ai Gif gif",
+  name: "My Ai Gif gif",
   outputFormat: "gif",
   style: { prompt: "Cute dancing cat, pixel art" },
 });

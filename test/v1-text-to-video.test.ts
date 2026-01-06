@@ -13,7 +13,7 @@ describe("tests client.v1.textToVideo.create", () => {
         client.v1.textToVideo
           .create({
             endSeconds: 5.0,
-            name: "Text To Video video",
+            name: "My Text To Video video",
             orientation: "landscape",
             resolution: "720p",
             style: { prompt: "a dog running", qualityMode: "quick" },
@@ -21,7 +21,7 @@ describe("tests client.v1.textToVideo.create", () => {
           .asResponse(),
         client.v1.textToVideo.create({
           endSeconds: 5.0,
-          name: "Text To Video video",
+          name: "My Text To Video video",
           orientation: "landscape",
           resolution: "720p",
           style: { prompt: "a dog running", qualityMode: "quick" },

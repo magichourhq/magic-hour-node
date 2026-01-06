@@ -1,5 +1,5 @@
 /**
- * The type of the outfit.
+ * Deprecated: garment_type is no longer needed.
  */
 export type V1AiClothesChangerCreateBodyAssetsGarmentTypeEnum =
   | "dresses"

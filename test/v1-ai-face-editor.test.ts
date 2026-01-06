@@ -13,7 +13,7 @@ describe("tests client.v1.aiFaceEditor.create", () => {
         client.v1.aiFaceEditor
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
-            name: "Face Editor image",
+            name: "My Face Editor image",
             style: {
               enhanceFace: false,
               eyeGazeHorizontal: 0.0,
@@ -35,7 +35,7 @@ describe("tests client.v1.aiFaceEditor.create", () => {
           .asResponse(),
         client.v1.aiFaceEditor.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
-          name: "Face Editor image",
+          name: "My Face Editor image",
           style: {
             enhanceFace: false,
             eyeGazeHorizontal: 0.0,
