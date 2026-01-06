@@ -23,7 +23,7 @@ describe("tests client.v1.faceSwapPhoto.create", () => {
               sourceFilePath: "api-assets/id/1234.png",
               targetFilePath: "api-assets/id/1234.png",
             },
-            name: "Face Swap image",
+            name: "My Face Swap image",
           })
           .asResponse(),
         client.v1.faceSwapPhoto.create({
@@ -38,7 +38,7 @@ describe("tests client.v1.faceSwapPhoto.create", () => {
             sourceFilePath: "api-assets/id/1234.png",
             targetFilePath: "api-assets/id/1234.png",
           },
-          name: "Face Swap image",
+          name: "My Face Swap image",
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

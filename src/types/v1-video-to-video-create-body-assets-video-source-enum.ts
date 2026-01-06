@@ -1,4 +1,4 @@
 /**
- * V1VideoToVideoCreateBodyAssetsVideoSourceEnum
+ * Choose your video source.
  */
 export type V1VideoToVideoCreateBodyAssetsVideoSourceEnum = "file" | "youtube";

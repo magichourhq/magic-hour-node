@@ -14,7 +14,7 @@ describe("tests client.v1.autoSubtitleGenerator.create", () => {
           .create({
             assets: { videoFilePath: "api-assets/id/1234.mp4" },
             endSeconds: 15.0,
-            name: "Auto Subtitle video",
+            name: "My Auto Subtitle video",
             startSeconds: 0.0,
             style: {
               customConfig: {
@@ -35,7 +35,7 @@ describe("tests client.v1.autoSubtitleGenerator.create", () => {
         client.v1.autoSubtitleGenerator.create({
           assets: { videoFilePath: "api-assets/id/1234.mp4" },
           endSeconds: 15.0,
-          name: "Auto Subtitle video",
+          name: "My Auto Subtitle video",
           startSeconds: 0.0,
           style: {
             customConfig: {

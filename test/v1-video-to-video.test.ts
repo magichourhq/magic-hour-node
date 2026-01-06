@@ -20,7 +20,7 @@ describe("tests client.v1.videoToVideo.create", () => {
             endSeconds: 15.0,
             fpsResolution: "HALF",
             height: 123,
-            name: "Video To Video video",
+            name: "My Video To Video video",
             startSeconds: 0.0,
             style: {
               artStyle: "3D Render",
@@ -41,7 +41,7 @@ describe("tests client.v1.videoToVideo.create", () => {
           endSeconds: 15.0,
           fpsResolution: "HALF",
           height: 123,
-          name: "Video To Video video",
+          name: "My Video To Video video",
           startSeconds: 0.0,
           style: {
             artStyle: "3D Render",

@@ -16,9 +16,9 @@ export type V1FaceSwapCreateBodyAssets = {
    */
   faceMappings?: V1FaceSwapCreateBodyAssetsFaceMappingsItem[] | undefined;
   /**
-   * The mode of face swap.
-   * * `all-faces` - Swap all faces in the target image or video. `source_file_path` is required.
-   * * `individual-faces` - Swap individual faces in the target image or video. `source_faces` is required.
+   * Choose how to swap faces:
+   * **all-faces** (recommended) — swap all detected faces using one source image (`source_file_path` required)
+   * +- **individual-faces** — specify exact mappings using `face_mappings`
    */
   faceSwapMode?: ("all-faces" | "individual-faces") | undefined;
   /**
@@ -28,22 +28,25 @@ export type V1FaceSwapCreateBodyAssets = {
    * - a direct URL to the video file
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
    *
-   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   * See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
    *
    */
   imageFilePath?: string | undefined;
   /**
-   * Required if `video_source` is `file`. This value is either
+   * Your video file. Required if `video_source` is `file`. This value is either
    * - a direct URL to the video file
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
    *
-   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   * See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
    *
    */
   videoFilePath?: string | undefined;
+  /**
+   * Choose your video source.
+   */
   videoSource: "file" | "youtube";
   /**
-   * Using a youtube video as the input source. This field is required if `video_source` is `youtube`
+   * YouTube URL (required if `video_source` is `youtube`).
    */
   youtubeUrl?: string | undefined;
 };

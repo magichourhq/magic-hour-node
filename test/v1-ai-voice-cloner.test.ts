@@ -13,13 +13,13 @@ describe("tests client.v1.aiVoiceCloner.create", () => {
         client.v1.aiVoiceCloner
           .create({
             assets: { audioFilePath: "api-assets/id/1234.mp3" },
-            name: "Voice Cloner audio",
+            name: "My Voice Cloner audio",
             style: { prompt: "Hello, this is my cloned voice." },
           })
           .asResponse(),
         client.v1.aiVoiceCloner.create({
           assets: { audioFilePath: "api-assets/id/1234.mp3" },
-          name: "Voice Cloner audio",
+          name: "My Voice Cloner audio",
           style: { prompt: "Hello, this is my cloned voice." },
         }),
       ]);

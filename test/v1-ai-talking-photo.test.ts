@@ -17,7 +17,7 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
               imageFilePath: "api-assets/id/1234.png",
             },
             endSeconds: 15.0,
-            name: "Talking Photo image",
+            name: "My Talking Photo image",
             startSeconds: 0.0,
             style: { generationMode: "pro", intensity: 1.5 },
           })
@@ -28,7 +28,7 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
             imageFilePath: "api-assets/id/1234.png",
           },
           endSeconds: 15.0,
-          name: "Talking Photo image",
+          name: "My Talking Photo image",
           startSeconds: 0.0,
           style: { generationMode: "pro", intensity: 1.5 },
         }),

@@ -17,7 +17,7 @@ describe("tests client.v1.aiClothesChanger.create", () => {
               garmentType: "upper_body",
               personFilePath: "api-assets/id/model.png",
             },
-            name: "Clothes Changer image",
+            name: "My Clothes Changer image",
           })
           .asResponse(),
         client.v1.aiClothesChanger.create({
@@ -26,7 +26,7 @@ describe("tests client.v1.aiClothesChanger.create", () => {
             garmentType: "upper_body",
             personFilePath: "api-assets/id/model.png",
           },
-          name: "Clothes Changer image",
+          name: "My Clothes Changer image",
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

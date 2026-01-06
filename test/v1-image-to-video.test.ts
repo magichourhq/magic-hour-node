@@ -15,7 +15,7 @@ describe("tests client.v1.imageToVideo.create", () => {
             assets: { imageFilePath: "api-assets/id/1234.png" },
             endSeconds: 5.0,
             height: 123,
-            name: "Image To Video video",
+            name: "My Image To Video video",
             resolution: "720p",
             style: {
               highQuality: true,
@@ -29,7 +29,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           assets: { imageFilePath: "api-assets/id/1234.png" },
           endSeconds: 5.0,
           height: 123,
-          name: "Image To Video video",
+          name: "My Image To Video video",
           resolution: "720p",
           style: {
             highQuality: true,

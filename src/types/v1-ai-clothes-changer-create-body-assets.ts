@@ -10,20 +10,20 @@ export type V1AiClothesChangerCreateBodyAssets = {
    * - a direct URL to the video file
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
    *
-   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   * See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
    *
    */
   garmentFilePath: string;
   /**
-   * The type of the outfit.
+   * Deprecated: garment_type is no longer needed.
    */
-  garmentType: "dresses" | "lower_body" | "upper_body";
+  garmentType?: ("dresses" | "lower_body" | "upper_body") | undefined;
   /**
    * The image with the person. This value is either
    * - a direct URL to the video file
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
    *
-   * Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+   * See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
    *
    */
   personFilePath: string;
@@ -36,7 +36,7 @@ export type V1AiClothesChangerCreateBodyAssets = {
  */
 export type External$V1AiClothesChangerCreateBodyAssets = {
   garment_file_path: string;
-  garment_type: "dresses" | "lower_body" | "upper_body";
+  garment_type?: ("dresses" | "lower_body" | "upper_body") | undefined;
   person_file_path: string;
 };
 
@@ -50,7 +50,7 @@ const SchemaIn$V1AiClothesChangerCreateBodyAssets: z.ZodType<
 > = z
   .object({
     garment_file_path: z.string(),
-    garment_type: z.enum(["dresses", "lower_body", "upper_body"]),
+    garment_type: z.enum(["dresses", "lower_body", "upper_body"]).optional(),
     person_file_path: z.string(),
   })
   .transform((obj) => {
@@ -72,7 +72,7 @@ const SchemaOut$V1AiClothesChangerCreateBodyAssets: z.ZodType<
 > = z
   .object({
     garmentFilePath: z.string(),
-    garmentType: z.enum(["dresses", "lower_body", "upper_body"]),
+    garmentType: z.enum(["dresses", "lower_body", "upper_body"]).optional(),
     personFilePath: z.string(),
   })
   .transform((obj) => {

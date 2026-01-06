@@ -13,13 +13,13 @@ describe("tests client.v1.aiHeadshotGenerator.create", () => {
         client.v1.aiHeadshotGenerator
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
-            name: "Ai Headshot image",
+            name: "My Ai Headshot image",
             style: { prompt: "string" },
           })
           .asResponse(),
         client.v1.aiHeadshotGenerator.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
-          name: "Ai Headshot image",
+          name: "My Ai Headshot image",
           style: { prompt: "string" },
         }),
       ]);

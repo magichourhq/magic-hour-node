@@ -34,11 +34,11 @@ export type V1VideoProjectsGetResponse = {
   download: V1VideoProjectsGetResponseDownload | null;
   downloads: V1VideoProjectsGetResponseDownloadsItem[];
   /**
-   * Indicates whether the resource is deleted
+   * Whether this resource is active. If false, it is deleted.
    */
   enabled: boolean;
   /**
-   * The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
+   * End time of your clip (seconds). Must be greater than start_seconds.
    */
   endSeconds: number;
   /**
@@ -54,7 +54,7 @@ export type V1VideoProjectsGetResponse = {
    */
   height: number;
   /**
-   * Unique ID of the video. This value can be used in the [get video project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch additional details such as status
+   * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
   id: string;
   /**
@@ -62,7 +62,7 @@ export type V1VideoProjectsGetResponse = {
    */
   name: string | null;
   /**
-   * The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
+   * Start time of your clip (seconds). Must be ≥ 0.
    */
   startSeconds: number;
   /**

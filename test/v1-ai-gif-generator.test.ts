@@ -12,13 +12,13 @@ describe("tests client.v1.aiGifGenerator.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.aiGifGenerator
           .create({
-            name: "Ai Gif gif",
+            name: "My Ai Gif gif",
             outputFormat: "gif",
             style: { prompt: "Cute dancing cat, pixel art" },
           })
           .asResponse(),
         client.v1.aiGifGenerator.create({
-          name: "Ai Gif gif",
+          name: "My Ai Gif gif",
           outputFormat: "gif",
           style: { prompt: "Cute dancing cat, pixel art" },
         }),

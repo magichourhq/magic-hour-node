@@ -13,7 +13,7 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
         client.v1.aiPhotoEditor
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
-            name: "Photo Editor image",
+            name: "My Photo Editor image",
             resolution: 768,
             steps: 123,
             style: {
@@ -30,7 +30,7 @@ describe("tests client.v1.aiPhotoEditor.create", () => {
           .asResponse(),
         client.v1.aiPhotoEditor.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
-          name: "Photo Editor image",
+          name: "My Photo Editor image",
           resolution: 768,
           steps: 123,
           style: {

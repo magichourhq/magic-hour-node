@@ -12,7 +12,7 @@ import {
  */
 export type CreateRequest = {
   /**
-   * The name of gif. This value is mainly used for your own identification of the gif.
+   * Give your gif a custom name for easy identification.
    */
   name?: string | undefined;
   /**
