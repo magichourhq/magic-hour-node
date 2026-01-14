@@ -69,6 +69,71 @@ describe("FilesClient.uploadFile", () => {
     mockFs.readFileSync.mockReturnValue(Buffer.from("mock file content"));
   });
 
+  describe("URL and already-uploaded path handling", () => {
+    test("should return HTTP URL as-is without uploading", async () => {
+      const url = "http://example.com/image.jpg";
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+      const result = await client.v1.files.uploadFile(url);
+
+      expect(result).toBe(url);
+      expect(createSpy).not.toHaveBeenCalled();
+      expect(mockFs.existsSync).not.toHaveBeenCalled();
+
+      createSpy.mockRestore();
+    });
+
+    test("should return HTTPS URL as-is without uploading", async () => {
+      const url = "https://example.com/path/to/video.mp4";
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+      const result = await client.v1.files.uploadFile(url);
+
+      expect(result).toBe(url);
+      expect(createSpy).not.toHaveBeenCalled();
+      expect(mockFs.existsSync).not.toHaveBeenCalled();
+
+      createSpy.mockRestore();
+    });
+
+    test("should return already-uploaded api-assets path as-is without uploading", async () => {
+      const apiAssetsPath = "api-assets/12345/image.jpg";
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+      const result = await client.v1.files.uploadFile(apiAssetsPath);
+
+      expect(result).toBe(apiAssetsPath);
+      expect(createSpy).not.toHaveBeenCalled();
+      expect(mockFs.existsSync).not.toHaveBeenCalled();
+
+      createSpy.mockRestore();
+    });
+
+    test("should handle URLs with query parameters", async () => {
+      const url = "https://example.com/image.jpg?token=abc123&expires=12345";
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+      const result = await client.v1.files.uploadFile(url);
+
+      expect(result).toBe(url);
+      expect(createSpy).not.toHaveBeenCalled();
+
+      createSpy.mockRestore();
+    });
+
+    test("should upload local file paths that look similar to URLs but are not", async () => {
+      const filePath = "/http/example.com/image.jpg";
+      const createSpy = jest.spyOn(client.v1.files.uploadUrls, "create");
+
+      const result = await client.v1.files.uploadFile(filePath);
+
+      expect(result).toBe("api-assets/12345/image.jpg");
+      expect(createSpy).toHaveBeenCalled();
+
+      createSpy.mockRestore();
+    });
+  });
+
   describe("File type detection", () => {
     // MSW handles the uploadUrls.create call automatically
 
