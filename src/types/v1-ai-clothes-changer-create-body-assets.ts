@@ -15,9 +15,15 @@ export type V1AiClothesChangerCreateBodyAssets = {
    */
   garmentFilePath: string;
   /**
-   * Deprecated: garment_type is no longer needed.
+   * Type of garment to swap. If not provided, swaps the entire outfit.
+   * * `upper_body` - for shirts/jackets
+   * * `lower_body` - for pants/skirts
+   * * `dresses` - for entire outfit (deprecated, use `entire_outfit` instead)
+   * * `entire_outfit` - for entire outfit
    */
-  garmentType?: ("dresses" | "lower_body" | "upper_body") | undefined;
+  garmentType?:
+    | ("dresses" | "entire_outfit" | "lower_body" | "upper_body")
+    | undefined;
   /**
    * The image with the person. This value is either
    * - a direct URL to the video file
@@ -36,7 +42,9 @@ export type V1AiClothesChangerCreateBodyAssets = {
  */
 export type External$V1AiClothesChangerCreateBodyAssets = {
   garment_file_path: string;
-  garment_type?: ("dresses" | "lower_body" | "upper_body") | undefined;
+  garment_type?:
+    | ("dresses" | "entire_outfit" | "lower_body" | "upper_body")
+    | undefined;
   person_file_path: string;
 };
 
@@ -50,7 +58,9 @@ const SchemaIn$V1AiClothesChangerCreateBodyAssets: z.ZodType<
 > = z
   .object({
     garment_file_path: z.string(),
-    garment_type: z.enum(["dresses", "lower_body", "upper_body"]).optional(),
+    garment_type: z
+      .enum(["dresses", "entire_outfit", "lower_body", "upper_body"])
+      .optional(),
     person_file_path: z.string(),
   })
   .transform((obj) => {
@@ -72,7 +82,9 @@ const SchemaOut$V1AiClothesChangerCreateBodyAssets: z.ZodType<
 > = z
   .object({
     garmentFilePath: z.string(),
-    garmentType: z.enum(["dresses", "lower_body", "upper_body"]).optional(),
+    garmentType: z
+      .enum(["dresses", "entire_outfit", "lower_body", "upper_body"])
+      .optional(),
     personFilePath: z.string(),
   })
   .transform((obj) => {

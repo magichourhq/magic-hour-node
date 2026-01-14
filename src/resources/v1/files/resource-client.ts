@@ -210,7 +210,9 @@ export class FilesClient extends CoreResourceClient {
 
     const { filePath, fileData, fileType, extension } = processFileInput(file);
     logger.debug(
-      `File processed: type=${fileType}, extension=${extension}, source=${filePath ? "path" : "data"}`,
+      `File processed: type=${fileType}, extension=${extension}, source=${
+        filePath ? "path" : "data"
+      }`,
     );
 
     // Create upload URL
