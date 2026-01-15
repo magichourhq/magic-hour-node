@@ -25,6 +25,10 @@ export type CreateRequest = {
    */
   endSeconds: number;
   /**
+   * Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
+   */
+  maxResolution?: number | undefined;
+  /**
    * Give your image a custom name for easy identification.
    */
   name?: string | undefined;
@@ -46,6 +50,7 @@ export type CreateRequest = {
 export type External$CreateRequest = {
   assets: External$V1AiTalkingPhotoCreateBodyAssets;
   end_seconds: number;
+  max_resolution?: number | undefined;
   name?: string | undefined;
   start_seconds: number;
   style?: External$V1AiTalkingPhotoCreateBodyStyle | undefined;
@@ -62,6 +67,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1AiTalkingPhotoCreateBodyAssets.in,
     end_seconds: z.number(),
+    max_resolution: z.number().int().optional(),
     name: z.string().optional(),
     start_seconds: z.number(),
     style: Schemas$V1AiTalkingPhotoCreateBodyStyle.in.optional(),
@@ -70,6 +76,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       end_seconds: "endSeconds",
+      max_resolution: "maxResolution",
       name: "name",
       start_seconds: "startSeconds",
       style: "style",
@@ -88,6 +95,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1AiTalkingPhotoCreateBodyAssets.out,
     endSeconds: z.number(),
+    maxResolution: z.number().int().optional(),
     name: z.string().optional(),
     startSeconds: z.number(),
     style: Schemas$V1AiTalkingPhotoCreateBodyStyle.out.optional(),
@@ -96,6 +104,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       endSeconds: "end_seconds",
+      maxResolution: "max_resolution",
       name: "name",
       startSeconds: "start_seconds",
       style: "style",
