@@ -12,7 +12,9 @@ describe("tests client.v1.textToVideo.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.textToVideo
           .create({
+            aspectRatio: "16:9",
             endSeconds: 5.0,
+            model: "sora-2",
             name: "My Text To Video video",
             orientation: "landscape",
             resolution: "720p",
@@ -20,7 +22,9 @@ describe("tests client.v1.textToVideo.create", () => {
           })
           .asResponse(),
         client.v1.textToVideo.create({
+          aspectRatio: "16:9",
           endSeconds: 5.0,
+          model: "sora-2",
           name: "My Text To Video video",
           orientation: "landscape",
           resolution: "720p",

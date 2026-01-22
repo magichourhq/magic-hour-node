@@ -105,6 +105,7 @@ export { V1ImageProjectsGetResponseError } from "./v1-image-projects-get-respons
 export { V1ImageProjectsGetResponseStatusEnum } from "./v1-image-projects-get-response-status-enum";
 export { V1ImageToVideoCreateBody } from "./v1-image-to-video-create-body";
 export { V1ImageToVideoCreateBodyAssets } from "./v1-image-to-video-create-body-assets";
+export { V1ImageToVideoCreateBodyModelEnum } from "./v1-image-to-video-create-body-model-enum";
 export { V1ImageToVideoCreateBodyResolutionEnum } from "./v1-image-to-video-create-body-resolution-enum";
 export { V1ImageToVideoCreateBodyStyle } from "./v1-image-to-video-create-body-style";
 export { V1ImageToVideoCreateBodyStyleQualityModeEnum } from "./v1-image-to-video-create-body-style-quality-mode-enum";
@@ -119,6 +120,8 @@ export { V1PhotoColorizerCreateBody } from "./v1-photo-colorizer-create-body";
 export { V1PhotoColorizerCreateBodyAssets } from "./v1-photo-colorizer-create-body-assets";
 export { V1PhotoColorizerCreateResponse } from "./v1-photo-colorizer-create-response";
 export { V1TextToVideoCreateBody } from "./v1-text-to-video-create-body";
+export { V1TextToVideoCreateBodyAspectRatioEnum } from "./v1-text-to-video-create-body-aspect-ratio-enum";
+export { V1TextToVideoCreateBodyModelEnum } from "./v1-text-to-video-create-body-model-enum";
 export { V1TextToVideoCreateBodyOrientationEnum } from "./v1-text-to-video-create-body-orientation-enum";
 export { V1TextToVideoCreateBodyResolutionEnum } from "./v1-text-to-video-create-body-resolution-enum";
 export { V1TextToVideoCreateBodyStyle } from "./v1-text-to-video-create-body-style";

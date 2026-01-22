@@ -1,5 +1,5 @@
 /**
- * Determines the orientation of the output video
+ * Deprecated. Use `aspect_ratio` instead.
  */
 export type V1TextToVideoCreateBodyOrientationEnum =
   | "landscape"
