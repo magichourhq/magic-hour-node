@@ -48,7 +48,7 @@ const res = await client.v1.aiImageEditor.generate(
 
 ### AI Image Editor <a name="create"></a>
 
-Edit images with AI. Each edit costs 10 credits.
+Edit images with AI. Each edit costs 50 credits.
 
 **API Endpoint**: `POST /v1/ai-image-editor`
 
@@ -89,5 +89,5 @@ const res = await client.v1.aiImageEditor.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}
+{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}
 ```

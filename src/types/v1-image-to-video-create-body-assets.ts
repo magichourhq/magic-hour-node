@@ -2,7 +2,7 @@ import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
 
 /**
- * Provide the assets for image-to-video.
+ * Provide the assets for image-to-video. Sora 2 only supports images with an aspect ratio of `9:16` or `16:9`.
  */
 export type V1ImageToVideoCreateBodyAssets = {
   /**
