@@ -20,7 +20,7 @@ describe("tests client.v1.aiImageGenerator.create", () => {
             resolution: "auto",
             style: {
               prompt: "Cool image",
-              qualityMode: "standard",
+              qualityMode: "pro",
               tool: "ai-anime-generator",
             },
           })
@@ -34,7 +34,7 @@ describe("tests client.v1.aiImageGenerator.create", () => {
           resolution: "auto",
           style: {
             prompt: "Cool image",
-            qualityMode: "standard",
+            qualityMode: "pro",
             tool: "ai-anime-generator",
           },
         }),
