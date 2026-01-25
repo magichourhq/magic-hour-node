@@ -32,9 +32,11 @@ import Client from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageGenerator.generate(
   {
+    aspectRatio: "1:1",
     imageCount: 1,
-    name: "Ai Image image",
-    orientation: "landscape",
+    model: "default",
+    name: "My Ai Image image",
+    resolution: "auto",
     style: { prompt: "Cool image", tool: "ai-anime-generator" },
   },
   {
@@ -79,7 +81,6 @@ const res = await client.v1.aiImageGenerator.create({
   imageCount: 1,
   model: "default",
   name: "My Ai Image image",
-  orientation: "landscape",
   resolution: "auto",
   style: {
     prompt: "Cool image",
