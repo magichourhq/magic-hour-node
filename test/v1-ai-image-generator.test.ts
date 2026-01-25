@@ -12,9 +12,12 @@ describe("tests client.v1.aiImageGenerator.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.aiImageGenerator
           .create({
+            aspectRatio: "1:1",
             imageCount: 1,
+            model: "default",
             name: "My Ai Image image",
             orientation: "landscape",
+            resolution: "auto",
             style: {
               prompt: "Cool image",
               qualityMode: "standard",
@@ -23,9 +26,12 @@ describe("tests client.v1.aiImageGenerator.create", () => {
           })
           .asResponse(),
         client.v1.aiImageGenerator.create({
+          aspectRatio: "1:1",
           imageCount: 1,
+          model: "default",
           name: "My Ai Image image",
           orientation: "landscape",
+          resolution: "auto",
           style: {
             prompt: "Cool image",
             qualityMode: "standard",

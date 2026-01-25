@@ -15,7 +15,7 @@ describe("tests client.v1.imageToVideo.create", () => {
             assets: { imageFilePath: "api-assets/id/1234.png" },
             endSeconds: 5.0,
             height: 123,
-            model: "sora-2",
+            model: "kling-2.5-audio",
             name: "My Image To Video video",
             resolution: "720p",
             style: {
@@ -30,7 +30,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           assets: { imageFilePath: "api-assets/id/1234.png" },
           endSeconds: 5.0,
           height: 123,
-          model: "sora-2",
+          model: "kling-2.5-audio",
           name: "My Image To Video video",
           resolution: "720p",
           style: {
