@@ -14,7 +14,7 @@ describe("tests client.v1.textToVideo.create", () => {
           .create({
             aspectRatio: "16:9",
             endSeconds: 5.0,
-            model: "sora-2",
+            model: "kling-2.5-audio",
             name: "My Text To Video video",
             orientation: "landscape",
             resolution: "720p",
@@ -24,7 +24,7 @@ describe("tests client.v1.textToVideo.create", () => {
         client.v1.textToVideo.create({
           aspectRatio: "16:9",
           endSeconds: 5.0,
-          model: "sora-2",
+          model: "kling-2.5-audio",
           name: "My Text To Video video",
           orientation: "landscape",
           resolution: "720p",
