@@ -20,7 +20,10 @@ export { V1AiImageEditorCreateBodyStyle } from "./v1-ai-image-editor-create-body
 export { V1AiImageEditorCreateBodyStyleModelEnum } from "./v1-ai-image-editor-create-body-style-model-enum";
 export { V1AiImageEditorCreateResponse } from "./v1-ai-image-editor-create-response";
 export { V1AiImageGeneratorCreateBody } from "./v1-ai-image-generator-create-body";
+export { V1AiImageGeneratorCreateBodyAspectRatioEnum } from "./v1-ai-image-generator-create-body-aspect-ratio-enum";
+export { V1AiImageGeneratorCreateBodyModelEnum } from "./v1-ai-image-generator-create-body-model-enum";
 export { V1AiImageGeneratorCreateBodyOrientationEnum } from "./v1-ai-image-generator-create-body-orientation-enum";
+export { V1AiImageGeneratorCreateBodyResolutionEnum } from "./v1-ai-image-generator-create-body-resolution-enum";
 export { V1AiImageGeneratorCreateBodyStyle } from "./v1-ai-image-generator-create-body-style";
 export { V1AiImageGeneratorCreateBodyStyleQualityModeEnum } from "./v1-ai-image-generator-create-body-style-quality-mode-enum";
 export { V1AiImageGeneratorCreateBodyStyleToolEnum } from "./v1-ai-image-generator-create-body-style-tool-enum";

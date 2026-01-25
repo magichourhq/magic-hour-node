@@ -87,7 +87,7 @@ export class AiImageGeneratorClient extends CoreResourceClient {
   /**
    * AI Image Generator
    *
-   * Create an AI image. Each standard image costs 5 credits. Pro quality images cost 30 credits.
+   * Create an AI image with advanced model selection and quality controls.
    *
    * POST /v1/ai-image-generator
    */
