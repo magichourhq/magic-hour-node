@@ -1,13 +1,18 @@
 /**
  * Controls overall motion style.
- * * `pro` -  Higher fidelity, realistic detail, accurate lip sync, and faster generation.
- * * `standard` -  More expressive motion, but lower visual fidelity.
+ * * `realistic` - Maintains likeness well, high quality, and reliable.
+ * * `prompted` - Slightly lower likeness; allows option to prompt scene.
  *
- * * `expressive` - More motion and facial expressiveness; may introduce visual artifacts. (Deprecated: passing this value will be treated as `standard`)
- * * `stable` -  Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`)
+ * **Deprecated values (maintained for backward compatibility):**
+ * * `pro` - Deprecated: use `realistic`
+ * * `standard` - Deprecated: use `prompted`
+ * * `stable` - Deprecated: use `realistic`
+ * * `expressive` - Deprecated: use `prompted`
  */
 export type V1AiTalkingPhotoCreateBodyStyleGenerationModeEnum =
   | "expressive"
   | "pro"
+  | "prompted"
+  | "realistic"
   | "stable"
   | "standard";

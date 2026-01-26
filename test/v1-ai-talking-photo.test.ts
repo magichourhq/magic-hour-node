@@ -20,7 +20,11 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
             maxResolution: 1024,
             name: "My Talking Photo image",
             startSeconds: 0.0,
-            style: { generationMode: "pro", intensity: 1.5 },
+            style: {
+              generationMode: "realistic",
+              intensity: 123.45,
+              prompt: "string",
+            },
           })
           .asResponse(),
         client.v1.aiTalkingPhoto.create({
@@ -32,7 +36,11 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
           maxResolution: 1024,
           name: "My Talking Photo image",
           startSeconds: 0.0,
-          style: { generationMode: "pro", intensity: 1.5 },
+          style: {
+            generationMode: "realistic",
+            intensity: 123.45,
+            prompt: "string",
+          },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
