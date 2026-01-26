@@ -7,19 +7,29 @@ import * as z from "zod";
 export type V1AiTalkingPhotoCreateBodyStyle = {
   /**
    * Controls overall motion style.
-   * * `pro` -  Higher fidelity, realistic detail, accurate lip sync, and faster generation.
-   * * `standard` -  More expressive motion, but lower visual fidelity.
+   * * `realistic` - Maintains likeness well, high quality, and reliable.
+   * * `prompted` - Slightly lower likeness; allows option to prompt scene.
    *
-   * * `expressive` - More motion and facial expressiveness; may introduce visual artifacts. (Deprecated: passing this value will be treated as `standard`)
-   * * `stable` -  Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`)
+   * **Deprecated values (maintained for backward compatibility):**
+   * * `pro` - Deprecated: use `realistic`
+   * * `standard` - Deprecated: use `prompted`
+   * * `stable` - Deprecated: use `realistic`
+   * * `expressive` - Deprecated: use `prompted`
    */
-  generationMode?: ("expressive" | "pro" | "stable" | "standard") | undefined;
+  generationMode?:
+    | ("expressive" | "pro" | "prompted" | "realistic" | "stable" | "standard")
+    | undefined;
   /**
    * Note: this value is only applicable when generation_mode is `expressive`. The value can include up to 2 decimal places.
    * * Lower values yield more stability but can suppress mouth movement.
    * * Higher values increase motion and expressiveness, with a higher risk of distortion.
    */
   intensity?: number | undefined;
+  /**
+   * A text prompt to guide the generation. Only applicable when generation_mode is `prompted`.
+   * This field is ignored for other modes.
+   */
+  prompt?: string | undefined;
 };
 
 /**
@@ -28,8 +38,11 @@ export type V1AiTalkingPhotoCreateBodyStyle = {
  * we expect to come in as network data
  */
 export type External$V1AiTalkingPhotoCreateBodyStyle = {
-  generation_mode?: ("expressive" | "pro" | "stable" | "standard") | undefined;
+  generation_mode?:
+    | ("expressive" | "pro" | "prompted" | "realistic" | "stable" | "standard")
+    | undefined;
   intensity?: number | undefined;
+  prompt?: string | undefined;
 };
 
 /**
@@ -42,14 +55,23 @@ const SchemaIn$V1AiTalkingPhotoCreateBodyStyle: z.ZodType<
 > = z
   .object({
     generation_mode: z
-      .enum(["expressive", "pro", "stable", "standard"])
+      .enum([
+        "expressive",
+        "pro",
+        "prompted",
+        "realistic",
+        "stable",
+        "standard",
+      ])
       .optional(),
     intensity: z.number().optional(),
+    prompt: z.string().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       generation_mode: "generationMode",
       intensity: "intensity",
+      prompt: "prompt",
     });
   });
 
@@ -64,14 +86,23 @@ const SchemaOut$V1AiTalkingPhotoCreateBodyStyle: z.ZodType<
 > = z
   .object({
     generationMode: z
-      .enum(["expressive", "pro", "stable", "standard"])
+      .enum([
+        "expressive",
+        "pro",
+        "prompted",
+        "realistic",
+        "stable",
+        "standard",
+      ])
       .optional(),
     intensity: z.number().optional(),
+    prompt: z.string().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       generationMode: "generation_mode",
       intensity: "intensity",
+      prompt: "prompt",
     });
   });
 
