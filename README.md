@@ -241,11 +241,6 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/ai-meme-generator/README.md#create) - AI Meme Generator
 - [generate](src/resources/v1/ai-meme-generator/README.md#generate) - AI Meme Generator Generate Workflow
 
-### [v1.aiPhotoEditor](src/resources/v1/ai-photo-editor/README.md)
-
-- [create](src/resources/v1/ai-photo-editor/README.md#create) - AI Photo Editor
-- [generate](src/resources/v1/ai-photo-editor/README.md#generate) - AI Photo Editor Generate Workflow
-
 ### [v1.aiQrCodeGenerator](src/resources/v1/ai-qr-code-generator/README.md)
 
 - [create](src/resources/v1/ai-qr-code-generator/README.md#create) - AI QR Code Generator

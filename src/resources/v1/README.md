@@ -10,7 +10,6 @@
 - [ai-image-generator](ai-image-generator/README.md) - ai-image-generator
 - [ai-image-upscaler](ai-image-upscaler/README.md) - ai-image-upscaler
 - [ai-meme-generator](ai-meme-generator/README.md) - ai-meme-generator
-- [ai-photo-editor](ai-photo-editor/README.md) - ai-photo-editor
 - [ai-qr-code-generator](ai-qr-code-generator/README.md) - ai-qr-code-generator
 - [ai-talking-photo](ai-talking-photo/README.md) - ai-talking-photo
 - [ai-voice-cloner](ai-voice-cloner/README.md) - ai-voice-cloner
