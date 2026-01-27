@@ -37,10 +37,6 @@ export { V1AiMemeGeneratorCreateBody } from "./v1-ai-meme-generator-create-body"
 export { V1AiMemeGeneratorCreateBodyStyle } from "./v1-ai-meme-generator-create-body-style";
 export { V1AiMemeGeneratorCreateBodyStyleTemplateEnum } from "./v1-ai-meme-generator-create-body-style-template-enum";
 export { V1AiMemeGeneratorCreateResponse } from "./v1-ai-meme-generator-create-response";
-export { V1AiPhotoEditorCreateBody } from "./v1-ai-photo-editor-create-body";
-export { V1AiPhotoEditorCreateBodyAssets } from "./v1-ai-photo-editor-create-body-assets";
-export { V1AiPhotoEditorCreateBodyStyle } from "./v1-ai-photo-editor-create-body-style";
-export { V1AiPhotoEditorCreateResponse } from "./v1-ai-photo-editor-create-response";
 export { V1AiQrCodeGeneratorCreateBody } from "./v1-ai-qr-code-generator-create-body";
 export { V1AiQrCodeGeneratorCreateBodyStyle } from "./v1-ai-qr-code-generator-create-body-style";
 export { V1AiQrCodeGeneratorCreateResponse } from "./v1-ai-qr-code-generator-create-response";

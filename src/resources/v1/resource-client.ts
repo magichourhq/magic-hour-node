@@ -12,7 +12,6 @@ import { AiImageEditorClient } from "magic-hour/resources/v1/ai-image-editor";
 import { AiImageGeneratorClient } from "magic-hour/resources/v1/ai-image-generator";
 import { AiImageUpscalerClient } from "magic-hour/resources/v1/ai-image-upscaler";
 import { AiMemeGeneratorClient } from "magic-hour/resources/v1/ai-meme-generator";
-import { AiPhotoEditorClient } from "magic-hour/resources/v1/ai-photo-editor";
 import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-generator";
 import { AiTalkingPhotoClient } from "magic-hour/resources/v1/ai-talking-photo";
 import { AiVoiceClonerClient } from "magic-hour/resources/v1/ai-voice-cloner";
@@ -48,7 +47,7 @@ export class V1Client extends CoreResourceClient {
   private _aiImageGeneratorLazy?: AiImageGeneratorClient; // lazy-loading cache
   private _aiImageUpscalerLazy?: AiImageUpscalerClient; // lazy-loading cache
   private _aiMemeGeneratorLazy?: AiMemeGeneratorClient; // lazy-loading cache
-  private _aiPhotoEditorLazy?: AiPhotoEditorClient; // lazy-loading cache
+
   private _aiQrCodeGeneratorLazy?: AiQrCodeGeneratorClient; // lazy-loading cache
   private _aiTalkingPhotoLazy?: AiTalkingPhotoClient; // lazy-loading cache
   private _animationLazy?: AnimationClient; // lazy-loading cache
@@ -74,7 +73,6 @@ export class V1Client extends CoreResourceClient {
       this.aiImageGenerator;
       this.aiImageUpscaler;
       this.aiMemeGenerator;
-      this.aiPhotoEditor;
       this.aiQrCodeGenerator;
       this.aiTalkingPhoto;
       this.aiVoiceCloner;
@@ -212,17 +210,6 @@ export class V1Client extends CoreResourceClient {
       this._aiMemeGeneratorLazy ??
       (this._aiMemeGeneratorLazy =
         new (require("./ai-meme-generator").AiMemeGeneratorClient)(
-          this._client,
-          this._opts,
-        ))
-    );
-  }
-
-  get aiPhotoEditor(): AiPhotoEditorClient {
-    return (
-      this._aiPhotoEditorLazy ??
-      (this._aiPhotoEditorLazy =
-        new (require("./ai-photo-editor").AiPhotoEditorClient)(
           this._client,
           this._opts,
         ))
