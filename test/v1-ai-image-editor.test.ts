@@ -12,25 +12,31 @@ describe("tests client.v1.aiImageEditor.create", () => {
       const [rawResponse, response] = await Promise.all([
         client.v1.aiImageEditor
           .create({
+            aspectRatio: "1:1",
             assets: {
-              imageFilePath: "api-assets/id/1234.png",
+              imageFilePath: "string",
               imageFilePaths: [
                 "api-assets/id/1234.png",
                 "api-assets/id/1235.png",
               ],
             },
+            imageCount: 1.0,
+            model: "default",
             name: "My Ai Image Editor image",
             style: { model: "Nano Banana", prompt: "Give me sunglasses" },
           })
           .asResponse(),
         client.v1.aiImageEditor.create({
+          aspectRatio: "1:1",
           assets: {
-            imageFilePath: "api-assets/id/1234.png",
+            imageFilePath: "string",
             imageFilePaths: [
               "api-assets/id/1234.png",
               "api-assets/id/1235.png",
             ],
           },
+          imageCount: 1.0,
+          model: "default",
           name: "My Ai Image Editor image",
           style: { model: "Nano Banana", prompt: "Give me sunglasses" },
         }),

@@ -145,7 +145,7 @@ export class AiImageEditorClient extends CoreResourceClient {
   /**
    * AI Image Editor
    *
-   * Edit images with AI. Each edit costs 50 credits.
+   * Edit images with AI.
    *
    * POST /v1/ai-image-editor
    */

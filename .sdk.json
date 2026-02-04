@@ -1,5 +1,5 @@
 {
-  "id": "8082f8c1-942d-48a8-8629-266994d742d0",
+  "id": "5505ba72-fe9c-4efa-9d53-e972dc54b206",
   "tracked_paths": [
     {
       "editable": true,
@@ -579,7 +579,15 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-image-editor-create-body-aspect-ratio-enum.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-ai-image-editor-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-editor-create-body-model-enum.ts"
     },
     {
       "editable": false,
