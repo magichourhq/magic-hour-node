@@ -19,7 +19,7 @@ npm install magic-hour
 ## Usage
 
 ```ts
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 // generate your API Key at https://magichour.ai/developer
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.faceSwapPhoto.generate(
