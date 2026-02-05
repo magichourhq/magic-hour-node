@@ -1,4 +1,4 @@
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 import * as fs from "fs";
 import * as path from "path";
 import { Readable } from "stream";

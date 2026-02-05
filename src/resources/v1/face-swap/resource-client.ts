@@ -73,7 +73,7 @@ export class FaceSwapClient extends CoreResourceClient {
    *
    * @example
    * ```typescript
-   * import Client from "magic-hour";
+   * import { Client } from "magic-hour";
    *
    * const client = new Client({ token: process.env["API_TOKEN"]!! });
    * const res = await client.v1.faceSwap.generate(

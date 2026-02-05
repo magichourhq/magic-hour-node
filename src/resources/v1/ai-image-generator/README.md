@@ -27,7 +27,7 @@ In addition to the parameters listed in the `create` section below, `generate` i
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageGenerator.generate(
@@ -73,7 +73,7 @@ Create an AI image with advanced model selection and quality controls.
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageGenerator.create({
