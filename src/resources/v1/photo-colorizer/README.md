@@ -27,7 +27,7 @@ In addition to the parameters listed in the `create` section below, `generate` i
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.photoColorizer.generate(
@@ -62,7 +62,7 @@ Colorize image. Each image costs 10 credits.
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.photoColorizer.create({

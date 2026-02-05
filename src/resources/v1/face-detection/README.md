@@ -27,7 +27,7 @@ In addition to the parameters listed in the `create` section below, `generate` i
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const client = new Client({ token: process.env["API_TOKEN"]!! });
@@ -63,7 +63,7 @@ Use this API to get the list of faces detected in the image or video to use in t
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.faceDetection.get({ id: "uuid-example" });
@@ -97,12 +97,12 @@ Note: Face detection is free to use for the near future. Pricing may change in t
 | ------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | `assets`            |    ✓     | Provide the assets for face detection                                                                                                                                                                                                                                                                                                                                                     | `{"targetFilePath": "api-assets/id/1234.png"}` |
 | `└─ targetFilePath` |    ✓     | This is the image or video where the face will be detected. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                     |
-| `confidenceScore`   |    ✗     | Confidence threshold for filtering detected faces. * Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives. * Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections.                                                                                                                             | `0.5`                                          |
+| `confidenceScore`   |    ✗     | Confidence threshold for filtering detected faces. _ Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives. _ Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections.                                                                                                                             | `0.5`                                          |
 
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.faceDetection.create({

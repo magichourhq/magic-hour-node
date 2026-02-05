@@ -20,17 +20,17 @@ Poll the details API to check on the status of the rendering. Optionally can als
 #### Synchronous Client
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 
 const result = await client.v1.imageProjects.checkResult(
-    { id: "cuid-example" },
-    {
-        waitForCompletion: true,
-        downloadOutputs: true,
-        downloadDirectory: "outputs",
-    },
+  { id: "cuid-example" },
+  {
+    waitForCompletion: true,
+    downloadOutputs: true,
+    downloadDirectory: "outputs",
+  },
 );
 ```
 
@@ -51,7 +51,7 @@ Permanently delete the rendered image(s). This action is not reversible, please 
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.imageProjects.delete({ id: "cuid-example" });
@@ -81,7 +81,7 @@ Check the progress of a image project. The `downloads` field is populated after 
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.imageProjects.get({ id: "cuid-example" });
