@@ -29,7 +29,7 @@ const result = await client.v1.audioProjects.checkResult(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

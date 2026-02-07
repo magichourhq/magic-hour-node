@@ -45,7 +45,7 @@ export class AiQrCodeGeneratorClient extends CoreResourceClient {
    *   {
    *     waitForCompletion: true,
    *     downloadOutputs: true,
-   *     downloadDirectory: "outputs",
+   *     downloadDirectory: ".",
    *   },
    * );
    * ```

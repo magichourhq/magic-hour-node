@@ -98,7 +98,7 @@ export class FaceSwapClient extends CoreResourceClient {
    *   {
    *     waitForCompletion: true,
    *     downloadOutputs: true,
-   *     downloadDirectory: "outputs",
+   *     downloadDirectory: ".",
    *   },
    * );
    * ```

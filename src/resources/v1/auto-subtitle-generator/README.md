@@ -41,7 +41,7 @@ const res = await client.v1.autoSubtitleGenerator.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

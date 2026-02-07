@@ -48,7 +48,7 @@ const res = await client.v1.videoToVideo.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

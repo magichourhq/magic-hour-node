@@ -42,7 +42,7 @@ const res = await client.v1.aiMemeGenerator.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

@@ -40,7 +40,7 @@ const res = await client.v1.imageToVideo.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

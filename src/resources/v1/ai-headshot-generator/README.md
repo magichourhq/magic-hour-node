@@ -38,7 +38,7 @@ const res = await client.v1.aiHeadshotGenerator.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```
