@@ -39,7 +39,7 @@ const res = await client.v1.aiVoiceCloner.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

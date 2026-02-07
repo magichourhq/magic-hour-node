@@ -45,7 +45,7 @@ const res = await client.v1.lipSync.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

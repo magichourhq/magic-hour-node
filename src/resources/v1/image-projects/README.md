@@ -29,7 +29,7 @@ const result = await client.v1.imageProjects.checkResult(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

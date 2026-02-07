@@ -52,7 +52,7 @@ const res = await client.v1.faceSwap.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

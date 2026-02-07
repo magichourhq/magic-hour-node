@@ -55,7 +55,7 @@ const res = await client.v1.aiFaceEditor.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

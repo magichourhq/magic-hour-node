@@ -67,7 +67,7 @@ export class VideoToVideoClient extends CoreResourceClient {
    *   {
    *     waitForCompletion: true,
    *     downloadOutputs: true,
-   *     downloadDirectory: "outputs",
+   *     downloadDirectory: ".",
    *   },
    * );
    * ```

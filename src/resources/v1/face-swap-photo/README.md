@@ -48,7 +48,7 @@ const res = await client.v1.faceSwapPhoto.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

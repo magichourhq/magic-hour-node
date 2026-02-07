@@ -42,7 +42,7 @@ const res = await client.v1.aiImageGenerator.generate(
   {
     waitForCompletion: true,
     downloadOutputs: true,
-    downloadDirectory: "outputs",
+    downloadDirectory: ".",
   },
 );
 ```

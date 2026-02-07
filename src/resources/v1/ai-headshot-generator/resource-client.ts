@@ -57,7 +57,7 @@ export class AiHeadshotGeneratorClient extends CoreResourceClient {
    *   {
    *     waitForCompletion: true,
    *     downloadOutputs: true,
-   *     downloadDirectory: "outputs",
+   *     downloadDirectory: ".",
    *   },
    * );
    * ```
