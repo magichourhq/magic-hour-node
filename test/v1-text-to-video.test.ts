@@ -13,6 +13,7 @@ describe("tests client.v1.textToVideo.create", () => {
         client.v1.textToVideo
           .create({
             aspectRatio: "16:9",
+            audio: true,
             endSeconds: 5.0,
             model: "kling-2.5-audio",
             name: "My Text To Video video",
@@ -23,6 +24,7 @@ describe("tests client.v1.textToVideo.create", () => {
           .asResponse(),
         client.v1.textToVideo.create({
           aspectRatio: "16:9",
+          audio: true,
           endSeconds: 5.0,
           model: "kling-2.5-audio",
           name: "My Text To Video video",

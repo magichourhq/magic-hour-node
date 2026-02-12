@@ -21,16 +21,28 @@ export type CreateRequest = {
    */
   assets: V1ImageToVideoCreateBodyAssets;
   /**
+   * Whether to include audio in the video. Defaults to `false` if not specified.
+   *
+   * Audio support varies by model:
+   * * **seedance**: Not supported
+   * * **kling-2.5**: Always included (cannot be disabled)
+   * * **kling-3.0**: Toggle-able (can enable/disable)
+   * * **sora-2**: Always included (cannot be disabled)
+   * * **veo3.1**: Toggle-able (can enable/disable)
+   * * **kling-1.6**: Not supported
+   */
+  audio?: boolean | undefined;
+  /**
    * The total duration of the output video in seconds.
    *
    * Supported durations depend on the chosen model:
    * * **Default**: 5-60 seconds (2-12 seconds for 480p).
-   * * **Seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-   * * **Kling 2.5 Audio**: 5, 10
-   * * **Sora 2**: 4, 8, 12, 24, 36, 48, 60
-   * * **Veo 3.1 Audio**: 4, 6, 8, 16, 24, 32, 40, 48, 56
-   * * **Veo 3.1**: 4, 6, 8, 16, 24, 32, 40, 48, 56
-   * * **Kling 1.6**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
+   * * **seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+   * * **kling-2.5**: 5, 10
+   * * **kling-3.0**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+   * * **sora-2**: 4, 8, 12, 24, 36, 48, 60
+   * * **veo3.1**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+   * * **kling-1.6**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
    */
   endSeconds: number;
   /**
@@ -47,9 +59,9 @@ export type CreateRequest = {
    * The AI model to use for video generation.
    * * `default`: Our recommended model for general use (Kling 2.5 Audio). Note: For backward compatibility, if you use default and end_seconds > 10, we'll fall back to Kling 1.6.
    * * `seedance`: Great for fast iteration and start/end frame
-   * * `kling-2.5-audio`: Great for motion, action, and camera control
+   * * `kling-2.5`: Great for motion, action, and camera control
+   * * `kling-3.0`: Great for cinematic, multi-scene storytelling with control
    * * `sora-2`: Great for story-telling, dialogue & creativity
-   * * `veo3.1-audio`: Great for dialogue + SFX generated natively
    * * `veo3.1`: Great for realism, polish, & prompt adherence
    * * `kling-1.6`: Great for dependable clips with smooth motion
    */
@@ -57,7 +69,9 @@ export type CreateRequest = {
     | (
         | "default"
         | "kling-1.6"
+        | "kling-2.5"
         | "kling-2.5-audio"
+        | "kling-3.0"
         | "seedance"
         | "sora-2"
         | "veo3.1"
@@ -72,12 +86,12 @@ export type CreateRequest = {
    * Controls the output video resolution. Defaults to `720p` if not specified.
    *
    * * **Default**: Supports `480p`, `720p`, and `1080p`.
-   * * **Seedance**: Supports `480p`, `720p`, `1080p`.
-   * * **Kling 2.5 Audio**: Supports `720p`, `1080p`.
-   * * **Sora 2**: Supports `720p`.
-   * * **Veo 3.1 Audio**: Supports `720p`, `1080p`.
-   * * **Veo 3.1**: Supports `720p`, `1080p`.
-   * * **Kling 1.6**: Supports `720p`, `1080p`.
+   * * **seedance**: Supports `480p`, `720p`, `1080p`.
+   * * **kling-2.5**: Supports `720p`, `1080p`.
+   * * **kling-3.0**: Supports `720p`, `1080p`.
+   * * **sora-2**: Supports `720p`.
+   * * **veo3.1**: Supports `720p`, `1080p`.
+   * * **kling-1.6**: Supports `720p`, `1080p`.
    */
   resolution?: ("1080p" | "480p" | "720p") | undefined;
   /**
@@ -103,13 +117,16 @@ export type CreateRequest = {
  */
 export type External$CreateRequest = {
   assets: External$V1ImageToVideoCreateBodyAssets;
+  audio?: boolean | undefined;
   end_seconds: number;
   height?: number | null | undefined;
   model?:
     | (
         | "default"
         | "kling-1.6"
+        | "kling-2.5"
         | "kling-2.5-audio"
+        | "kling-3.0"
         | "seedance"
         | "sora-2"
         | "veo3.1"
@@ -132,13 +149,16 @@ const SchemaIn$CreateRequest: z.ZodType<
 > = z
   .object({
     assets: Schemas$V1ImageToVideoCreateBodyAssets.in,
+    audio: z.boolean().optional(),
     end_seconds: z.number(),
     height: z.number().int().nullable().optional(),
     model: z
       .enum([
         "default",
         "kling-1.6",
+        "kling-2.5",
         "kling-2.5-audio",
+        "kling-3.0",
         "seedance",
         "sora-2",
         "veo3.1",
@@ -153,6 +173,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       assets: "assets",
+      audio: "audio",
       end_seconds: "endSeconds",
       height: "height",
       model: "model",
@@ -174,13 +195,16 @@ const SchemaOut$CreateRequest: z.ZodType<
 > = z
   .object({
     assets: Schemas$V1ImageToVideoCreateBodyAssets.out,
+    audio: z.boolean().optional(),
     endSeconds: z.number(),
     height: z.number().int().nullable().optional(),
     model: z
       .enum([
         "default",
         "kling-1.6",
+        "kling-2.5",
         "kling-2.5-audio",
+        "kling-3.0",
         "seedance",
         "sora-2",
         "veo3.1",
@@ -195,6 +219,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       assets: "assets",
+      audio: "audio",
       endSeconds: "end_seconds",
       height: "height",
       model: "model",
