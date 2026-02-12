@@ -13,6 +13,7 @@ describe("tests client.v1.imageToVideo.create", () => {
         client.v1.imageToVideo
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
+            audio: true,
             endSeconds: 5.0,
             height: 123,
             model: "kling-2.5-audio",
@@ -28,6 +29,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           .asResponse(),
         client.v1.imageToVideo.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
+          audio: true,
           endSeconds: 5.0,
           height: 123,
           model: "kling-2.5-audio",
