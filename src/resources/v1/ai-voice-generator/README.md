@@ -63,7 +63,7 @@ Generate speech from text. Each character costs 0.05 credits. The cost is rounde
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiVoiceGenerator.create({

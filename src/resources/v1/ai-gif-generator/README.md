@@ -63,7 +63,7 @@ Create an AI GIF. Each GIF costs 50 credits.
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiGifGenerator.create({

@@ -66,7 +66,7 @@ Remove background from image. Each image costs 5 credits.
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.imageBackgroundRemover.create({
