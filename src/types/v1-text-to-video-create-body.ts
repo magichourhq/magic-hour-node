@@ -13,6 +13,7 @@ import {
 export type V1TextToVideoCreateBody = {
   /**
    * Determines the aspect ratio of the output video.
+   * * **ltx-2**: Supports `9:16`, `16:9`, `1:1`.
    * * **seedance**: Supports `9:16`, `16:9`, `1:1`.
    * * **kling-2.5**: Supports `9:16`, `16:9`, `1:1`.
    * * **kling-3.0**: Supports `9:16`, `16:9`, `1:1`.
@@ -25,6 +26,7 @@ export type V1TextToVideoCreateBody = {
    * Whether to include audio in the video. Defaults to `false` if not specified.
    *
    * Audio support varies by model:
+   * * **ltx-2**: Always included (cannot be disabled)
    * * **seedance**: Not supported
    * * **kling-2.5**: Always included (cannot be disabled)
    * * **kling-3.0**: Toggle-able (can enable/disable)
@@ -38,6 +40,7 @@ export type V1TextToVideoCreateBody = {
    *
    * Supported durations depend on the chosen model:
    * * **Default**: 5-60 seconds (2-12 seconds for 480p).
+   * * **ltx-2**: 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
    * * **seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
    * * **kling-2.5**: 5, 10
    * * **kling-3.0**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
@@ -48,7 +51,8 @@ export type V1TextToVideoCreateBody = {
   endSeconds: number;
   /**
    * The AI model to use for video generation.
-   * * `default`: Our recommended model for general use (Kling 2.5 Audio). Note: For backward compatibility, if you use default and end_seconds > 10, we'll fall back to Kling 1.6.
+   * * `default`: Our recommended model for general use (Kling 2.5 Audio). Note: For backward compatibility, if you use `default` and `end_seconds` > 10, we'll fall back to kling-1.6.
+   * * `ltx-2`: Great for fast iteration with audio, lip-sync, and expressive faces
    * * `seedance`: Great for fast iteration and start/end frame
    * * `kling-2.5`: Great for motion, action, and camera control
    * * `kling-3.0`: Great for cinematic, multi-scene storytelling with control
@@ -63,6 +67,7 @@ export type V1TextToVideoCreateBody = {
         | "kling-2.5"
         | "kling-2.5-audio"
         | "kling-3.0"
+        | "ltx-2"
         | "seedance"
         | "sora-2"
         | "veo3.1"
@@ -81,6 +86,7 @@ export type V1TextToVideoCreateBody = {
    * Controls the output video resolution. Defaults to `720p` if not specified.
    *
    * * **Default**: Supports `480p`, `720p`, and `1080p`.
+   * * **ltx-2**: Supports `480p`, `720p`, `1080p`.
    * * **seedance**: Supports `480p`, `720p`, `1080p`.
    * * **kling-2.5**: Supports `720p`, `1080p`.
    * * **kling-3.0**: Supports `720p`, `1080p`.
@@ -108,6 +114,7 @@ export type External$V1TextToVideoCreateBody = {
         | "kling-2.5"
         | "kling-2.5-audio"
         | "kling-3.0"
+        | "ltx-2"
         | "seedance"
         | "sora-2"
         | "veo3.1"
@@ -139,6 +146,7 @@ const SchemaIn$V1TextToVideoCreateBody: z.ZodType<
         "kling-2.5",
         "kling-2.5-audio",
         "kling-3.0",
+        "ltx-2",
         "seedance",
         "sora-2",
         "veo3.1",
@@ -183,6 +191,7 @@ const SchemaOut$V1TextToVideoCreateBody: z.ZodType<
         "kling-2.5",
         "kling-2.5-audio",
         "kling-3.0",
+        "ltx-2",
         "seedance",
         "sora-2",
         "veo3.1",
