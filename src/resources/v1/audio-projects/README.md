@@ -51,7 +51,7 @@ Permanently delete the rendered audio file(s). This action is not reversible, pl
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.audioProjects.delete({ id: "cuid-example" });
@@ -81,7 +81,7 @@ Check the progress of a audio project. The `downloads` field is populated after 
 #### Example Snippet
 
 ```typescript
-import Client from "magic-hour";
+import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.audioProjects.get({ id: "cuid-example" });
