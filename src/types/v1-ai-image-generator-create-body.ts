@@ -36,6 +36,14 @@ export type V1AiImageGeneratorCreateBody = {
    *   - Supported resolutions: auto, 2k, 4k
    *   - Available for tiers: free, creator, pro, business
    *   - Image count allowed: 1, 2, 3, 4
+   * - `nano-banana` - 50 credits/image
+   *   - Supported resolutions: auto
+   *   - Available for tiers: free, creator, pro, business
+   *   - Image count allowed: 1, 2, 3, 4
+   * - `nano-banana-2` - 100 credits/image
+   *   - Supported resolutions: auto
+   *   - Available for tiers: free, creator, pro, business
+   *   - Image count allowed: 1, 2, 3, 4
    * - `nano-banana-pro` - 150 credits/image
    *   - Supported resolutions: auto
    *   - Available for tiers: creator, pro, business
@@ -46,6 +54,8 @@ export type V1AiImageGeneratorCreateBody = {
     | (
         | "default"
         | "flux-schnell"
+        | "nano-banana"
+        | "nano-banana-2"
         | "nano-banana-pro"
         | "seedream"
         | "z-image-turbo"
@@ -90,6 +100,8 @@ export type External$V1AiImageGeneratorCreateBody = {
     | (
         | "default"
         | "flux-schnell"
+        | "nano-banana"
+        | "nano-banana-2"
         | "nano-banana-pro"
         | "seedream"
         | "z-image-turbo"
@@ -116,6 +128,8 @@ const SchemaIn$V1AiImageGeneratorCreateBody: z.ZodType<
       .enum([
         "default",
         "flux-schnell",
+        "nano-banana",
+        "nano-banana-2",
         "nano-banana-pro",
         "seedream",
         "z-image-turbo",
@@ -154,6 +168,8 @@ const SchemaOut$V1AiImageGeneratorCreateBody: z.ZodType<
       .enum([
         "default",
         "flux-schnell",
+        "nano-banana",
+        "nano-banana-2",
         "nano-banana-pro",
         "seedream",
         "z-image-turbo",

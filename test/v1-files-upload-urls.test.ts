@@ -1,4 +1,4 @@
-import Client, { Environment } from "magic-hour";
+import { Client, Environment } from "magic-hour";
 
 describe("tests client.v1.files.uploadUrls.create", () => {
   test.concurrent(

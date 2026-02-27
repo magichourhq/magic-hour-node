@@ -1,4 +1,4 @@
-import Client, { Environment } from "magic-hour";
+import { Client, Environment } from "magic-hour";
 
 describe("tests client.v1.faceDetection.get", () => {
   test.concurrent(
