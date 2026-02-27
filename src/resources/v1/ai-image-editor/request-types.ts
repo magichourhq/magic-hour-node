@@ -43,6 +43,10 @@ export type CreateRequest = {
    *   - Available for tiers: free, creator, pro, business
    *   - Image count allowed: 1
    *   - Max additional input images: 9
+   * - `nano-banana-2` - 100 credits/image
+   *   - Available for tiers: free, creator, pro, business
+   *   - Image count allowed: 1
+   *   - Max additional input images: 9
    * - `seedream-v4` - 50 credits/image
    *   - Available for tiers: free, creator, pro, business
    *   - Image count allowed: 1
@@ -61,6 +65,7 @@ export type CreateRequest = {
     | (
         | "default"
         | "nano-banana"
+        | "nano-banana-2"
         | "nano-banana-pro"
         | "qwen-edit"
         | "seedream-v4"
@@ -89,6 +94,7 @@ export type External$CreateRequest = {
     | (
         | "default"
         | "nano-banana"
+        | "nano-banana-2"
         | "nano-banana-pro"
         | "qwen-edit"
         | "seedream-v4"
@@ -117,6 +123,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       .enum([
         "default",
         "nano-banana",
+        "nano-banana-2",
         "nano-banana-pro",
         "qwen-edit",
         "seedream-v4",
@@ -156,6 +163,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       .enum([
         "default",
         "nano-banana",
+        "nano-banana-2",
         "nano-banana-pro",
         "qwen-edit",
         "seedream-v4",

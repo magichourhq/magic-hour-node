@@ -31,6 +31,7 @@ export type V1ImageToVideoCreateBody = {
    * * **`sora-2`**: Automatically included with no extra credits
    * * **`veo3.1`**: Toggle-able (can enable/disable)
    *
+   * Legacy models:
    * * **`kling-1.6`**: Not supported
    */
   audio?: boolean | undefined;
@@ -98,6 +99,7 @@ export type V1ImageToVideoCreateBody = {
    * * **`sora-2`**: Supports 720p.
    * * **`veo3.1`**: Supports 720p, 1080p.
    *
+   * Legacy models:
    * * **`kling-1.6`**: Supports 720p, 1080p.
    */
   resolution?: ("1080p" | "480p" | "720p") | undefined;
