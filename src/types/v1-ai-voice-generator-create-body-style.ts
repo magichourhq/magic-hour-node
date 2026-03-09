@@ -6,7 +6,7 @@ import * as z from "zod";
  */
 export type V1AiVoiceGeneratorCreateBodyStyle = {
   /**
-   * Text used to generate speech. Starter tier users can use up to 1000 characters, while Creator, Pro, or Business users can use up to 1000.
+   * Text used to generate speech. The character limit is 1000 characters.
    */
   prompt: string;
   /**
