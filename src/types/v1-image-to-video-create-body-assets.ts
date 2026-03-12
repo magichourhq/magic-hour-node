@@ -6,6 +6,20 @@ import * as z from "zod";
  */
 export type V1ImageToVideoCreateBodyAssets = {
   /**
+   * The image to use as the last frame of the video.
+   *
+   * * **`ltx-2`**: Not supported
+   * * **`seedance`**: Supports 480p, 720p, 1080p.
+   * * **`kling-2.5`**: Supports 1080p.
+   * * **`kling-3.0`**: Supports 1080p.
+   * * **`sora-2`**: Not supported
+   * * **`veo3.1`**: Not supported
+   *
+   * Legacy models:
+   * * **`kling-1.6`**: Not supported
+   */
+  endImageFilePath?: string | undefined;
+  /**
    * The path of the image file. This value is either
    * - a direct URL to the video file
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
@@ -22,6 +36,7 @@ export type V1ImageToVideoCreateBodyAssets = {
  * we expect to come in as network data
  */
 export type External$V1ImageToVideoCreateBodyAssets = {
+  end_image_file_path?: string | undefined;
   image_file_path: string;
 };
 
@@ -34,10 +49,12 @@ const SchemaIn$V1ImageToVideoCreateBodyAssets: z.ZodType<
   unknown
 > = z
   .object({
+    end_image_file_path: z.string().optional(),
     image_file_path: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      end_image_file_path: "endImageFilePath",
       image_file_path: "imageFilePath",
     });
   });
@@ -52,10 +69,12 @@ const SchemaOut$V1ImageToVideoCreateBodyAssets: z.ZodType<
   V1ImageToVideoCreateBodyAssets // the object to be transformed
 > = z
   .object({
+    endImageFilePath: z.string().optional(),
     imageFilePath: z.string(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      endImageFilePath: "end_image_file_path",
       imageFilePath: "image_file_path",
     });
   });
