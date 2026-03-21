@@ -57,7 +57,7 @@ const res = await client.v1.faceSwapPhoto.generate(
 
 ### Face Swap Photo <a name="create"></a>
 
-Create a face swap photo. Each photo costs 5 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](https://magichour.ai/pricing) page for more details
+Create a face swap photo. Each photo costs 10 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](https://magichour.ai/pricing) page for more details
 
 **API Endpoint**: `POST /v1/face-swap-photo`
 
@@ -103,5 +103,5 @@ const res = await client.v1.faceSwapPhoto.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}
+{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}
 ```
