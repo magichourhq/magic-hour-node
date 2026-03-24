@@ -18,6 +18,7 @@ export { V1AiImageEditorCreateBody } from "./v1-ai-image-editor-create-body";
 export { V1AiImageEditorCreateBodyAspectRatioEnum } from "./v1-ai-image-editor-create-body-aspect-ratio-enum";
 export { V1AiImageEditorCreateBodyAssets } from "./v1-ai-image-editor-create-body-assets";
 export { V1AiImageEditorCreateBodyModelEnum } from "./v1-ai-image-editor-create-body-model-enum";
+export { V1AiImageEditorCreateBodyResolutionEnum } from "./v1-ai-image-editor-create-body-resolution-enum";
 export { V1AiImageEditorCreateBodyStyle } from "./v1-ai-image-editor-create-body-style";
 export { V1AiImageEditorCreateBodyStyleModelEnum } from "./v1-ai-image-editor-create-body-style-model-enum";
 export { V1AiImageEditorCreateResponse } from "./v1-ai-image-editor-create-response";

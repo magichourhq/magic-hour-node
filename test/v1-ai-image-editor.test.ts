@@ -23,6 +23,7 @@ describe("tests client.v1.aiImageEditor.create", () => {
             imageCount: 1.0,
             model: "default",
             name: "My Ai Image Editor image",
+            resolution: "auto",
             style: { model: "Nano Banana", prompt: "Give me sunglasses" },
           })
           .asResponse(),
@@ -38,6 +39,7 @@ describe("tests client.v1.aiImageEditor.create", () => {
           imageCount: 1.0,
           model: "default",
           name: "My Ai Image Editor image",
+          resolution: "auto",
           style: { model: "Nano Banana", prompt: "Give me sunglasses" },
         }),
       ]);

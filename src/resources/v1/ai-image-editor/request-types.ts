@@ -76,6 +76,17 @@ export type CreateRequest = {
    * Give your image a custom name for easy identification.
    */
   name?: string | undefined;
+  /**
+   * Maximum resolution for the generated image.
+   *
+   * **Options:**
+   * - `auto` - Automatic resolution (all tiers, default)
+   * - `2k` - Up to 2048px (requires Pro or Business tier)
+   * - `4k` - Up to 4096px (requires Business tier)
+   *
+   * Note: Resolution availability depends on your subscription tier. Defaults to `auto` if not specified.
+   */
+  resolution?: ("2k" | "4k" | "auto") | undefined;
   style: V1AiImageEditorCreateBodyStyle;
 };
 
@@ -102,6 +113,7 @@ export type External$CreateRequest = {
       )
     | undefined;
   name?: string | undefined;
+  resolution?: ("2k" | "4k" | "auto") | undefined;
   style: External$V1AiImageEditorCreateBodyStyle;
 };
 
@@ -131,6 +143,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       ])
       .optional(),
     name: z.string().optional(),
+    resolution: z.enum(["2k", "4k", "auto"]).optional(),
     style: Schemas$V1AiImageEditorCreateBodyStyle.in,
   })
   .transform((obj) => {
@@ -140,6 +153,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       image_count: "imageCount",
       model: "model",
       name: "name",
+      resolution: "resolution",
       style: "style",
     });
   });
@@ -171,6 +185,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       ])
       .optional(),
     name: z.string().optional(),
+    resolution: z.enum(["2k", "4k", "auto"]).optional(),
     style: Schemas$V1AiImageEditorCreateBodyStyle.out,
   })
   .transform((obj) => {
@@ -180,6 +195,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       imageCount: "image_count",
       model: "model",
       name: "name",
+      resolution: "resolution",
       style: "style",
     });
   });

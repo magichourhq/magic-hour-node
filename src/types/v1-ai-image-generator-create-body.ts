@@ -41,11 +41,11 @@ export type V1AiImageGeneratorCreateBody = {
    *   - Available for tiers: free, creator, pro, business
    *   - Image count allowed: 1, 2, 3, 4
    * - `nano-banana-2` - 100 credits/image
-   *   - Supported resolutions: auto
+   *   - Supported resolutions: auto, 2k, 4k
    *   - Available for tiers: free, creator, pro, business
    *   - Image count allowed: 1, 2, 3, 4
    * - `nano-banana-pro` - 150 credits/image
-   *   - Supported resolutions: auto
+   *   - Supported resolutions: auto, 2k, 4k
    *   - Available for tiers: creator, pro, business
    *   - Image count allowed: 1, 4, 9, 16
    *
