@@ -1,5 +1,5 @@
 {
-  "id": "562f42c6-6b2a-4121-ab98-2e301abe7b77",
+  "id": "12665d41-a48b-4869-bc4f-c9246bc505c8",
   "tracked_paths": [
     {
       "editable": true,
@@ -368,6 +368,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/files/upload-urls/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/head-swap/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/head-swap/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/head-swap/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/head-swap/resource-client.ts"
     },
     {
       "editable": true,
@@ -915,6 +931,18 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-head-swap-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-head-swap-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-head-swap-create-response.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-image-background-remover-create-body-assets.ts"
     },
     {
@@ -1172,6 +1200,10 @@
     {
       "editable": false,
       "path": "test/v1-files-upload-urls.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-head-swap.test.ts"
     },
     {
       "editable": false,

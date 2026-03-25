@@ -301,6 +301,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 
 - [create](src/resources/v1/files/upload-urls/README.md#create) - Generate asset upload urls
 
+### [v1.headSwap](src/resources/v1/head-swap/README.md)
+
+- [create](src/resources/v1/head-swap/README.md#create) - Head Swap
+
 ### [v1.imageBackgroundRemover](src/resources/v1/image-background-remover/README.md)
 
 - [create](src/resources/v1/image-background-remover/README.md#create) - Image Background Remover
