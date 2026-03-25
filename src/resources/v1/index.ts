@@ -17,6 +17,7 @@ export * as faceDetection from "./face-detection";
 export * as faceSwap from "./face-swap";
 export * as faceSwapPhoto from "./face-swap-photo";
 export * as files from "./files";
+export * as headSwap from "./head-swap";
 export * as imageBackgroundRemover from "./image-background-remover";
 export * as imageProjects from "./image-projects";
 export * as imageToVideo from "./image-to-video";

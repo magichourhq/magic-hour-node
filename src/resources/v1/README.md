@@ -21,6 +21,7 @@
 - [face-swap](face-swap/README.md) - face-swap
 - [face-swap-photo](face-swap-photo/README.md) - face-swap-photo
 - [files](files/README.md) - files
+- [head-swap](head-swap/README.md) - head-swap
 - [image-background-remover](image-background-remover/README.md) - image-background-remover
 - [image-projects](image-projects/README.md) - image-projects
 - [image-to-video](image-to-video/README.md) - image-to-video

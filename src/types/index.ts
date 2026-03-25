@@ -98,6 +98,9 @@ export { V1FilesUploadUrlsCreateBodyItemsItem } from "./v1-files-upload-urls-cre
 export { V1FilesUploadUrlsCreateBodyItemsItemTypeEnum } from "./v1-files-upload-urls-create-body-items-item-type-enum";
 export { V1FilesUploadUrlsCreateResponse } from "./v1-files-upload-urls-create-response";
 export { V1FilesUploadUrlsCreateResponseItemsItem } from "./v1-files-upload-urls-create-response-items-item";
+export { V1HeadSwapCreateBody } from "./v1-head-swap-create-body";
+export { V1HeadSwapCreateBodyAssets } from "./v1-head-swap-create-body-assets";
+export { V1HeadSwapCreateResponse } from "./v1-head-swap-create-response";
 export { V1ImageBackgroundRemoverCreateBody } from "./v1-image-background-remover-create-body";
 export { V1ImageBackgroundRemoverCreateBodyAssets } from "./v1-image-background-remover-create-body-assets";
 export { V1ImageBackgroundRemoverCreateResponse } from "./v1-image-background-remover-create-response";

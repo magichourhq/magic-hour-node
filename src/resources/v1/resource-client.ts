@@ -23,6 +23,7 @@ import { FaceDetectionClient } from "magic-hour/resources/v1/face-detection";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
 import { FilesClient } from "magic-hour/resources/v1/files";
+import { HeadSwapClient } from "magic-hour/resources/v1/head-swap";
 import { ImageBackgroundRemoverClient } from "magic-hour/resources/v1/image-background-remover";
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { ImageToVideoClient } from "magic-hour/resources/v1/image-to-video";
@@ -33,6 +34,7 @@ import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 
 export class V1Client extends CoreResourceClient {
+  private _headSwapLazy?: HeadSwapClient; // lazy-loading cache
   private _aiVoiceClonerLazy?: AiVoiceClonerClient; // lazy-loading cache
   private _audioProjectsLazy?: AudioProjectsClient; // lazy-loading cache
   private _aiVoiceGeneratorLazy?: AiVoiceGeneratorClient; // lazy-loading cache
@@ -84,6 +86,7 @@ export class V1Client extends CoreResourceClient {
       this.faceSwap;
       this.faceSwapPhoto;
       this.files;
+      this.headSwap;
       this.imageBackgroundRemover;
       this.imageProjects;
       this.imageToVideo;
@@ -385,6 +388,16 @@ export class V1Client extends CoreResourceClient {
           this._client,
           this._opts,
         ))
+    );
+  }
+
+  get headSwap(): HeadSwapClient {
+    return (
+      this._headSwapLazy ??
+      (this._headSwapLazy = new (require("./head-swap").HeadSwapClient)(
+        this._client,
+        this._opts,
+      ))
     );
   }
 }
