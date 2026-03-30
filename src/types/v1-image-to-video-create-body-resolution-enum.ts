@@ -2,6 +2,7 @@
  * Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
  *
  * * **`ltx-2`**: Supports 480p, 720p, 1080p.
+ * * **`wan-2.2`**: Supports 480p, 720p, 1080p.
  * * **`seedance`**: Supports 480p, 720p, 1080p.
  * * **`kling-2.5`**: Supports 720p, 1080p.
  * * **`kling-3.0`**: Supports 720p, 1080p.
