@@ -11,8 +11,8 @@ import {
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { getLogger } from "magic-hour/logger";
-import * as requests from "magic-hour/resources/v1/head-swap/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
+import * as requests from "magic-hour/resources/v1/head-swap/request-types";
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import * as types from "magic-hour/types";
 import { Schemas$V1HeadSwapCreateBody } from "magic-hour/types/v1-head-swap-create-body";
@@ -85,12 +85,8 @@ export class HeadSwapClient extends CoreResourceClient {
     const fileClient = new FilesClient(this._client, this._opts);
     const { bodyFilePath, headFilePath, ...restAssets } = request.assets;
 
-    getLogger().debug(
-      `Uploading file ${bodyFilePath} to Magic Hour's storage`,
-    );
-    getLogger().debug(
-      `Uploading file ${headFilePath} to Magic Hour's storage`,
-    );
+    getLogger().debug(`Uploading file ${bodyFilePath} to Magic Hour's storage`);
+    getLogger().debug(`Uploading file ${headFilePath} to Magic Hour's storage`);
 
     const [uploadedBodyFilePath, uploadedHeadFilePath] = await Promise.all([
       fileClient.uploadFile(bodyFilePath),

@@ -19,7 +19,7 @@ describe("tests client.v1.imageToVideo.create", () => {
             audio: true,
             endSeconds: 5.0,
             height: 123,
-            model: "kling-2.5-audio",
+            model: "kling-3.0",
             name: "My Image To Video video",
             resolution: "720p",
             style: {
@@ -38,7 +38,7 @@ describe("tests client.v1.imageToVideo.create", () => {
           audio: true,
           endSeconds: 5.0,
           height: 123,
-          model: "kling-2.5-audio",
+          model: "kling-3.0",
           name: "My Image To Video video",
           resolution: "720p",
           style: {
