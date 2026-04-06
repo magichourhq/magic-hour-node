@@ -17,10 +17,12 @@ export type V1TextToVideoCreateBody = {
    * * **`ltx-2`**: Supports 9:16, 16:9, 1:1.
    * * **`wan-2.2`**: Supports 9:16, 16:9, 1:1.
    * * **`seedance`**: Supports 9:16, 16:9, 1:1.
+   * * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
    * * **`kling-2.5`**: Supports 9:16, 16:9, 1:1.
    * * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
    * * **`sora-2`**: Supports 9:16, 16:9.
    * * **`veo3.1`**: Supports 9:16, 16:9.
+   * * **`veo3.1-lite`**: Supports 9:16, 16:9.
    *
    * Legacy models:
    * * **`kling-1.6`**: Supports 9:16, 16:9, 1:1.
@@ -33,10 +35,12 @@ export type V1TextToVideoCreateBody = {
    * * **`ltx-2`**: Automatically included with no extra credits
    * * **`wan-2.2`**: Not supported
    * * **`seedance`**: Not supported
+   * * **`seedance-2.0`**: Not supported
    * * **`kling-2.5`**: Automatically included with no extra credits
    * * **`kling-3.0`**: Toggle-able (can enable/disable)
    * * **`sora-2`**: Automatically included with no extra credits
    * * **`veo3.1`**: Toggle-able (can enable/disable)
+   * * **`veo3.1-lite`**: Automatically included with no extra credits
    *
    * Legacy models:
    * * **`kling-1.6`**: Not supported
@@ -48,10 +52,12 @@ export type V1TextToVideoCreateBody = {
    * * **`ltx-2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
    * * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15
    * * **`seedance`**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+   * * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
    * * **`kling-2.5`**: 5, 10
    * * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
    * * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
    * * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+   * * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
    *
    * Legacy models:
    * * **`kling-1.6`**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
@@ -61,16 +67,18 @@ export type V1TextToVideoCreateBody = {
    * The AI model to use for video generation.
    *
    * * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2`.
-   * * `ltx-2`: Great for fast iteration with audio, lip-sync, and expressive faces
-   * * `wan-2.2`: Fast, medium-quality model with strong visuals and effect support.
-   * * `seedance`: Great for fast iteration and start/end frame
-   * * `kling-2.5`: Great for motion, action, and camera control
-   * * `kling-3.0`: Great for cinematic, multi-scene storytelling with control
-   * * `sora-2`: Great for story-telling, dialogue & creativity
-   * * `veo3.1`: Great for realism, polish, & prompt adherence
+   * * `ltx-2`: Fast iteration with audio and lip-sync
+   * * `wan-2.2`: Fast, strong visuals with effects
+   * * `seedance`: Fast iteration and start/end frames
+   * * `seedance-2.0`: State-of-the-art quality and consistency
+   * * `kling-2.5`: Motion, action, and camera control
+   * * `kling-3.0`: Cinematic, multi-scene storytelling
+   * * `sora-2`: Story-first concepts and creativity
+   * * `veo3.1`: Realistic visuals and prompt adherence
+   * * `veo3.1-lite`: Good for fast, affordable, high-quality daily generation.
    *
    * Legacy models:
-   * * `kling-1.6`: Great for dependable clips with smooth motion
+   * * `kling-1.6`: Reliable baseline with smooth motion
    *
    * If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
    */
@@ -83,9 +91,11 @@ export type V1TextToVideoCreateBody = {
         | "kling-3.0"
         | "ltx-2"
         | "seedance"
+        | "seedance-2.0"
         | "sora-2"
         | "veo3.1"
         | "veo3.1-audio"
+        | "veo3.1-lite"
         | "wan-2.2"
       )
     | undefined;
@@ -103,10 +113,12 @@ export type V1TextToVideoCreateBody = {
    * * **`ltx-2`**: Supports 480p, 720p, 1080p.
    * * **`wan-2.2`**: Supports 480p, 720p, 1080p.
    * * **`seedance`**: Supports 480p, 720p, 1080p.
+   * * **`seedance-2.0`**: Supports 480p, 720p.
    * * **`kling-2.5`**: Supports 720p, 1080p.
    * * **`kling-3.0`**: Supports 720p, 1080p.
    * * **`sora-2`**: Supports 720p.
    * * **`veo3.1`**: Supports 720p, 1080p.
+   * * **`veo3.1-lite`**: Supports 720p, 1080p.
    *
    * Legacy models:
    * * **`kling-1.6`**: Supports 720p, 1080p.
@@ -133,9 +145,11 @@ export type External$V1TextToVideoCreateBody = {
         | "kling-3.0"
         | "ltx-2"
         | "seedance"
+        | "seedance-2.0"
         | "sora-2"
         | "veo3.1"
         | "veo3.1-audio"
+        | "veo3.1-lite"
         | "wan-2.2"
       )
     | undefined;
@@ -166,9 +180,11 @@ const SchemaIn$V1TextToVideoCreateBody: z.ZodType<
         "kling-3.0",
         "ltx-2",
         "seedance",
+        "seedance-2.0",
         "sora-2",
         "veo3.1",
         "veo3.1-audio",
+        "veo3.1-lite",
         "wan-2.2",
       ])
       .optional(),
@@ -212,9 +228,11 @@ const SchemaOut$V1TextToVideoCreateBody: z.ZodType<
         "kling-3.0",
         "ltx-2",
         "seedance",
+        "seedance-2.0",
         "sora-2",
         "veo3.1",
         "veo3.1-audio",
+        "veo3.1-lite",
         "wan-2.2",
       ])
       .optional(),
