@@ -4,10 +4,12 @@
  * * **`ltx-2`**: Supports 480p, 720p, 1080p.
  * * **`wan-2.2`**: Supports 480p, 720p, 1080p.
  * * **`seedance`**: Supports 480p, 720p, 1080p.
+ * * **`seedance-2.0`**: Supports 480p, 720p.
  * * **`kling-2.5`**: Supports 720p, 1080p.
  * * **`kling-3.0`**: Supports 720p, 1080p.
  * * **`sora-2`**: Supports 720p.
  * * **`veo3.1`**: Supports 720p, 1080p.
+ * * **`veo3.1-lite`**: Supports 720p, 1080p.
  *
  * Legacy models:
  * * **`kling-1.6`**: Supports 720p, 1080p.
