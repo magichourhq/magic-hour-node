@@ -3,29 +3,29 @@
  *
  * **Models:**
  * - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
- * - `qwen-edit` - 10 credits/image
+ * - `qwen-edit` - from 10 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k
  *   - Available for tiers: free, creator, pro, business
- *   - Image count allowed: 1
  *   - Max additional input images: 2
- * - `nano-banana` - 50 credits/image
+ * - `nano-banana` - from 50 credits/image
+ *   - Supported resolutions: 640px, 1k
  *   - Available for tiers: free, creator, pro, business
- *   - Image count allowed: 1
  *   - Max additional input images: 9
- * - `nano-banana-2` - 100 credits/image
+ * - `nano-banana-2` - from 100 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: free, creator, pro, business
- *   - Image count allowed: 1
  *   - Max additional input images: 9
- * - `seedream-v4` - 50 credits/image
+ * - `seedream-v4` - from 40 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: free, creator, pro, business
- *   - Image count allowed: 1
  *   - Max additional input images: 9
- * - `nano-banana-pro` - 150 credits/image
+ * - `nano-banana-pro` - from 150 credits/image
+ *   - Supported resolutions: 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
- *   - Image count allowed: 1, 4, 9, 16
  *   - Max additional input images: 9
- * - `seedream-v4.5` - 100 credits/image
+ * - `seedream-v4.5` - from 50 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
- *   - Image count allowed: 1
  *   - Max additional input images: 9
  *
  */
