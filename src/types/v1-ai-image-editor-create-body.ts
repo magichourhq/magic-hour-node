@@ -35,29 +35,35 @@ export type V1AiImageEditorCreateBody = {
    *
    * **Models:**
    * - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
-   * - `qwen-edit` - 10 credits/image
+   * - `qwen-edit` - from 10 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k
    *   - Available for tiers: free, creator, pro, business
-   *   - Image count allowed: 1
+   *   - Image count allowed: 1, 2, 3, 4
    *   - Max additional input images: 2
-   * - `nano-banana` - 50 credits/image
+   * - `nano-banana` - from 50 credits/image
+   *   - Supported resolutions: 640px, 1k
    *   - Available for tiers: free, creator, pro, business
-   *   - Image count allowed: 1
+   *   - Image count allowed: 1, 2, 3, 4
    *   - Max additional input images: 9
-   * - `nano-banana-2` - 100 credits/image
+   * - `nano-banana-2` - from 100 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k, 4k
    *   - Available for tiers: free, creator, pro, business
-   *   - Image count allowed: 1
+   *   - Image count allowed: 1, 2, 3, 4
    *   - Max additional input images: 9
-   * - `seedream-v4` - 50 credits/image
+   * - `seedream-v4` - from 40 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k, 4k
    *   - Available for tiers: free, creator, pro, business
-   *   - Image count allowed: 1
+   *   - Image count allowed: 1, 2, 3, 4
    *   - Max additional input images: 9
-   * - `nano-banana-pro` - 150 credits/image
+   * - `nano-banana-pro` - from 150 credits/image
+   *   - Supported resolutions: 1k, 2k, 4k
    *   - Available for tiers: creator, pro, business
    *   - Image count allowed: 1, 4, 9, 16
    *   - Max additional input images: 9
-   * - `seedream-v4.5` - 100 credits/image
+   * - `seedream-v4.5` - from 50 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k, 4k
    *   - Available for tiers: creator, pro, business
-   *   - Image count allowed: 1
+   *   - Image count allowed: 1, 2, 3, 4
    *   - Max additional input images: 9
    *
    */
@@ -77,16 +83,26 @@ export type V1AiImageEditorCreateBody = {
    */
   name?: string | undefined;
   /**
-   * Maximum resolution for the generated image.
+   * Maximum resolution (longest edge) for the output image.
    *
    * **Options:**
-   * - `auto` - Automatic resolution (all tiers, default)
-   * - `2k` - Up to 2048px (requires Pro or Business tier)
-   * - `4k` - Up to 4096px (requires Business tier)
+   * - `640px` — up to 640px
+   * - `1k` — up to 1024px
+   * - `2k` — up to 2048px
+   * - `4k` — up to 4096px
+   * - `auto` — **Deprecated.** Mapped server-side from your subscription tier to the best matching resolution the model supports
    *
-   * Note: Resolution availability depends on your subscription tier. Defaults to `auto` if not specified.
+   * **Per-model support:**
+   * - `qwen-edit` - 640px, 1k, 2k
+   * - `nano-banana` - 640px, 1k
+   * - `nano-banana-2` - 640px, 1k, 2k, 4k
+   * - `seedream-v4` - 640px, 1k, 2k, 4k
+   * - `nano-banana-pro` - 1k, 2k, 4k
+   * - `seedream-v4.5` - 640px, 1k, 2k, 4k
+   *
+   * Note: Resolution availability depends on the model and your subscription tier.
    */
-  resolution?: ("2k" | "4k" | "auto") | undefined;
+  resolution?: ("1k" | "2k" | "4k" | "640px" | "auto") | undefined;
   style: V1AiImageEditorCreateBodyStyle;
 };
 
@@ -113,7 +129,7 @@ export type External$V1AiImageEditorCreateBody = {
       )
     | undefined;
   name?: string | undefined;
-  resolution?: ("2k" | "4k" | "auto") | undefined;
+  resolution?: ("1k" | "2k" | "4k" | "640px" | "auto") | undefined;
   style: External$V1AiImageEditorCreateBodyStyle;
 };
 
@@ -143,7 +159,7 @@ const SchemaIn$V1AiImageEditorCreateBody: z.ZodType<
       ])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["2k", "4k", "auto"]).optional(),
+    resolution: z.enum(["1k", "2k", "4k", "640px", "auto"]).optional(),
     style: Schemas$V1AiImageEditorCreateBodyStyle.in,
   })
   .transform((obj) => {
@@ -185,7 +201,7 @@ const SchemaOut$V1AiImageEditorCreateBody: z.ZodType<
       ])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["2k", "4k", "auto"]).optional(),
+    resolution: z.enum(["1k", "2k", "4k", "640px", "auto"]).optional(),
     style: Schemas$V1AiImageEditorCreateBodyStyle.out,
   })
   .transform((obj) => {
