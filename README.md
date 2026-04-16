@@ -280,6 +280,7 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 ### [v1.bodySwap](src/resources/v1/body-swap/README.md)
 
 - [create](src/resources/v1/body-swap/README.md#create) - Body Swap
+- [generate](src/resources/v1/body-swap/README.md#generate) - Body Swap Generate Workflow
 
 ### [v1.faceDetection](src/resources/v1/face-detection/README.md)
 
