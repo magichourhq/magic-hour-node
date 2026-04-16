@@ -43,7 +43,7 @@ export type CreateRequest = {
    * - `nano-banana-2` - from 100 credits/image
    *   - Supported resolutions: 640px, 1k, 2k, 4k
    *   - Available for tiers: free, creator, pro, business
-   *   - Image count allowed: 1, 2, 3, 4
+   *   - Image count allowed: 1, 4, 9, 16
    * - `nano-banana-pro` - from 150 credits/image
    *   - Supported resolutions: 1k, 2k, 4k
    *   - Available for tiers: creator, pro, business

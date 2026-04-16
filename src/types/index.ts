@@ -74,6 +74,10 @@ export { V1AutoSubtitleGeneratorCreateBodyStyle } from "./v1-auto-subtitle-gener
 export { V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig } from "./v1-auto-subtitle-generator-create-body-style-custom-config";
 export { V1AutoSubtitleGeneratorCreateBodyStyleTemplateEnum } from "./v1-auto-subtitle-generator-create-body-style-template-enum";
 export { V1AutoSubtitleGeneratorCreateResponse } from "./v1-auto-subtitle-generator-create-response";
+export { V1BodySwapCreateBody } from "./v1-body-swap-create-body";
+export { V1BodySwapCreateBodyAssets } from "./v1-body-swap-create-body-assets";
+export { V1BodySwapCreateBodyResolutionEnum } from "./v1-body-swap-create-body-resolution-enum";
+export { V1BodySwapCreateResponse } from "./v1-body-swap-create-response";
 export { V1FaceDetectionCreateBody } from "./v1-face-detection-create-body";
 export { V1FaceDetectionCreateBodyAssets } from "./v1-face-detection-create-body-assets";
 export { V1FaceDetectionCreateResponse } from "./v1-face-detection-create-response";
