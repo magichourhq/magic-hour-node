@@ -277,6 +277,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/auto-subtitle-generator/README.md#create) - Auto Subtitle Generator
 - [generate](src/resources/v1/auto-subtitle-generator/README.md#generate) - Auto Subtitle Generator Generate Workflow
 
+### [v1.bodySwap](src/resources/v1/body-swap/README.md)
+
+- [create](src/resources/v1/body-swap/README.md#create) - Body Swap
+
 ### [v1.faceDetection](src/resources/v1/face-detection/README.md)
 
 - [create](src/resources/v1/face-detection/README.md#create) - Face Detection

@@ -1,5 +1,5 @@
 {
-  "id": "8edb506f-a1f6-47a0-bbd1-318c71e84e5a",
+  "id": "88e585d6-f705-42ee-a9cf-1e80c832f4c3",
   "tracked_paths": [
     {
       "editable": true,
@@ -288,6 +288,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/auto-subtitle-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/body-swap/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/body-swap/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/body-swap/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/body-swap/resource-client.ts"
     },
     {
       "editable": true,
@@ -835,6 +851,22 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-body-swap-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-body-swap-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-body-swap-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-body-swap-create-response.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-face-detection-create-body-assets.ts"
     },
     {
@@ -1184,6 +1216,10 @@
     {
       "editable": false,
       "path": "test/v1-auto-subtitle-generator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-body-swap.test.ts"
     },
     {
       "editable": false,

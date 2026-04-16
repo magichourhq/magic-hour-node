@@ -13,6 +13,7 @@ export * as aiVoiceGenerator from "./ai-voice-generator";
 export * as animation from "./animation";
 export * as audioProjects from "./audio-projects";
 export * as autoSubtitleGenerator from "./auto-subtitle-generator";
+export * as bodySwap from "./body-swap";
 export * as faceDetection from "./face-detection";
 export * as faceSwap from "./face-swap";
 export * as faceSwapPhoto from "./face-swap-photo";
