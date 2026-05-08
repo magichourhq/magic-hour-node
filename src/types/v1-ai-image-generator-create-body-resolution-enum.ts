@@ -15,6 +15,7 @@
  * - `nano-banana` - 640px, 1k
  * - `nano-banana-2` - 640px, 1k, 2k, 4k
  * - `nano-banana-pro` - 1k, 2k, 4k
+ * - `gpt-image-2` - 640px, 1k, 2k, 4k
  *
  * Note: Resolution availability depends on the model and your subscription tier.
  */
