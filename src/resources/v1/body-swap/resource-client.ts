@@ -11,9 +11,9 @@ import {
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { getLogger } from "magic-hour/logger";
+import * as requests from "magic-hour/resources/v1/body-swap/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
 import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
-import * as requests from "magic-hour/resources/v1/body-swap/request-types";
 import * as types from "magic-hour/types";
 import { Schemas$V1BodySwapCreateBody } from "magic-hour/types/v1-body-swap-create-body";
 import { Schemas$V1BodySwapCreateResponse } from "magic-hour/types/v1-body-swap-create-response";
