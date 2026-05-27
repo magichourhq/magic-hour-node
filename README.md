@@ -272,6 +272,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [delete](src/resources/v1/audio-projects/README.md#delete) - Delete audio
 - [get](src/resources/v1/audio-projects/README.md#get) - Get audio details
 
+### [v1.audioToVideo](src/resources/v1/audio-to-video/README.md)
+
+- [create](src/resources/v1/audio-to-video/README.md#create) - Audio-to-Video
+
 ### [v1.autoSubtitleGenerator](src/resources/v1/auto-subtitle-generator/README.md)
 
 - [create](src/resources/v1/auto-subtitle-generator/README.md#create) - Auto Subtitle Generator
