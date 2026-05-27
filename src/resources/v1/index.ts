@@ -12,6 +12,7 @@ export * as aiVoiceCloner from "./ai-voice-cloner";
 export * as aiVoiceGenerator from "./ai-voice-generator";
 export * as animation from "./animation";
 export * as audioProjects from "./audio-projects";
+export * as audioToVideo from "./audio-to-video";
 export * as autoSubtitleGenerator from "./auto-subtitle-generator";
 export * as bodySwap from "./body-swap";
 export * as faceDetection from "./face-detection";

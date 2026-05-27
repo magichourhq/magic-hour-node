@@ -16,6 +16,7 @@
 - [ai-voice-generator](resources/v1/ai-voice-generator/README.md) - ai-voice-generator
 - [animation](resources/v1/animation/README.md) - animation
 - [audio-projects](resources/v1/audio-projects/README.md) - audio-projects
+- [audio-to-video](resources/v1/audio-to-video/README.md) - audio-to-video
 - [auto-subtitle-generator](resources/v1/auto-subtitle-generator/README.md) - auto-subtitle-generator
 - [body-swap](resources/v1/body-swap/README.md) - body-swap
 - [face-detection](resources/v1/face-detection/README.md) - face-detection

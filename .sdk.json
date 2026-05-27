@@ -1,5 +1,5 @@
 {
-  "id": "e1aa8e76-9440-4f9f-b62a-82a8a01e5fc4",
+  "id": "280cd948-5610-418c-8e67-805c2f1ecd3f",
   "tracked_paths": [
     {
       "editable": true,
@@ -272,6 +272,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/audio-projects/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/audio-to-video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/audio-to-video/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/audio-to-video/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/audio-to-video/resource-client.ts"
     },
     {
       "editable": true,
@@ -827,6 +843,26 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-audio-to-video-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-to-video-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-to-video-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-to-video-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-audio-to-video-create-response.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-auto-subtitle-generator-create-body-assets.ts"
     },
     {
@@ -1212,6 +1248,10 @@
     {
       "editable": false,
       "path": "test/v1-audio-projects.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-audio-to-video.test.ts"
     },
     {
       "editable": false,

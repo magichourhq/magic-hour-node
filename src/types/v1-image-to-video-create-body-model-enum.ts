@@ -2,7 +2,7 @@
  * The AI model to use for video generation.
  *
  * * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
- * * `ltx-2.3`: Fast iteration with audio, lip-sync, and end frame
+ * * `ltx-2.3`: Fast iteration with lip-sync & end frame
  * * `wan-2.2`: Fast, strong visuals with effects
  * * `kling-2.5`: Motion, action, and camera control
  * * `kling-3.0`: Cinematic, multi-scene storytelling
