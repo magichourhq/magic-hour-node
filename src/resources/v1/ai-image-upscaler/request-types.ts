@@ -30,6 +30,9 @@ export type CreateRequest = {
    * Note: 4x upscale is only available on Creator, Pro, or Business tier.
    */
   scaleFactor: number;
+  /**
+   * Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
+   */
   style: V1AiImageUpscalerCreateBodyStyle;
 };
 

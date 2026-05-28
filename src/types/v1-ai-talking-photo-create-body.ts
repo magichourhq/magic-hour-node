@@ -21,7 +21,7 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   assets: V1AiTalkingPhotoCreateBodyAssets;
   /**
-   * The end time of the input audio in seconds. The maximum duration allowed is 60 seconds.
+   * The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 180s, prompted 45s.
    */
   endSeconds: number;
   /**
@@ -33,7 +33,7 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   name?: string | undefined;
   /**
-   * The start time of the input audio in seconds. The maximum duration allowed is 60 seconds.
+   * The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 180s, prompted 45s.
    */
   startSeconds: number;
   /**

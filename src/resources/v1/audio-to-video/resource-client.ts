@@ -12,8 +12,8 @@ import {
   GenerateRequestType,
 } from "magic-hour/helpers/generate-type";
 import { getLogger } from "magic-hour/logger";
-import { FilesClient } from "magic-hour/resources/v1/files";
 import * as requests from "magic-hour/resources/v1/audio-to-video/request-types";
+import { FilesClient } from "magic-hour/resources/v1/files";
 import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { Schemas$V1AudioToVideoCreateBody } from "magic-hour/types/v1-audio-to-video-create-body";
 import { Schemas$V1AudioToVideoCreateResponse } from "magic-hour/types/v1-audio-to-video-create-response";
@@ -118,17 +118,13 @@ export class AudioToVideoClient extends CoreResourceClient {
         assets: {
           ...restAssets,
           audioFilePath: uploadedAudioFilePath,
-          imageFilePath: imageFilePath
-            ? uploadedImageFilePath
-            : imageFilePath,
+          imageFilePath: imageFilePath ? uploadedImageFilePath : imageFilePath,
         },
       },
       createOpts,
     );
 
-    getLogger().info(
-      `Created AudioToVideoClient project ${createResponse.id}`,
-    );
+    getLogger().info(`Created AudioToVideoClient project ${createResponse.id}`);
 
     const projectsClient = new VideoProjectsClient(this._client, this._opts);
 

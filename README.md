@@ -274,8 +274,8 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 
 ### [v1.audioToVideo](src/resources/v1/audio-to-video/README.md)
 
-- [generate](src/resources/v1/audio-to-video/README.md#generate) - Audio To Video Generate Workflow
 - [create](src/resources/v1/audio-to-video/README.md#create) - Audio-to-Video
+- [generate](src/resources/v1/audio-to-video/README.md#generate) - Audio To Video Generate Workflow
 
 ### [v1.autoSubtitleGenerator](src/resources/v1/auto-subtitle-generator/README.md)
 
