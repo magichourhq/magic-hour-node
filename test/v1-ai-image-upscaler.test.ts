@@ -15,14 +15,22 @@ describe("tests client.v1.aiImageUpscaler.create", () => {
             assets: { imageFilePath: "api-assets/id/1234.png" },
             name: "My Image Upscaler image",
             scaleFactor: 2.0,
-            style: { enhancement: "Balanced", prompt: "string" },
+            style: {
+              enhancement: "Balanced",
+              mode: "creative",
+              prompt: "string",
+            },
           })
           .asResponse(),
         client.v1.aiImageUpscaler.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
           name: "My Image Upscaler image",
           scaleFactor: 2.0,
-          style: { enhancement: "Balanced", prompt: "string" },
+          style: {
+            enhancement: "Balanced",
+            mode: "creative",
+            prompt: "string",
+          },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

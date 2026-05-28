@@ -35,6 +35,7 @@ export { V1AiImageUpscalerCreateBody } from "./v1-ai-image-upscaler-create-body"
 export { V1AiImageUpscalerCreateBodyAssets } from "./v1-ai-image-upscaler-create-body-assets";
 export { V1AiImageUpscalerCreateBodyStyle } from "./v1-ai-image-upscaler-create-body-style";
 export { V1AiImageUpscalerCreateBodyStyleEnhancementEnum } from "./v1-ai-image-upscaler-create-body-style-enhancement-enum";
+export { V1AiImageUpscalerCreateBodyStyleModeEnum } from "./v1-ai-image-upscaler-create-body-style-mode-enum";
 export { V1AiImageUpscalerCreateResponse } from "./v1-ai-image-upscaler-create-response";
 export { V1AiMemeGeneratorCreateBody } from "./v1-ai-meme-generator-create-body";
 export { V1AiMemeGeneratorCreateBodyStyle } from "./v1-ai-meme-generator-create-body-style";

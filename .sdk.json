@@ -1,5 +1,5 @@
 {
-  "id": "280cd948-5610-418c-8e67-805c2f1ecd3f",
+  "id": "e6710e55-f4f4-47ba-9400-165477f7ea11",
   "tracked_paths": [
     {
       "editable": true,
@@ -700,6 +700,10 @@
     {
       "editable": false,
       "path": "src/types/v1-ai-image-upscaler-create-body-style-enhancement-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-image-upscaler-create-body-style-mode-enum.ts"
     },
     {
       "editable": false,
