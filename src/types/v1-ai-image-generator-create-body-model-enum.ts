@@ -7,6 +7,10 @@
  *   - Supported resolutions: 640px, 1k, 2k
  *   - Available for tiers: free, creator, pro, business
  *   - Image count allowed: 1, 2, 3, 4
+ * - `flux-2-klein` - from 5 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k
+ *   - Available for tiers: free, creator, pro, business
+ *   - Image count allowed: 1
  * - `z-image-turbo` - from 5 credits/image
  *   - Supported resolutions: 640px, 1k, 2k
  *   - Available for tiers: free, creator, pro, business
@@ -38,6 +42,7 @@
  */
 export type V1AiImageGeneratorCreateBodyModelEnum =
   | "default"
+  | "flux-2-klein"
   | "flux-schnell"
   | "gpt-image-2"
   | "nano-banana"

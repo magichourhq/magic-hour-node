@@ -10,6 +10,7 @@
  *
  * **Per-model support:**
  * - `flux-schnell` - 640px, 1k, 2k
+ * - `flux-2-klein` - 640px, 1k, 2k
  * - `z-image-turbo` - 640px, 1k, 2k
  * - `seedream-v4` - 640px, 1k, 2k, 4k
  * - `nano-banana` - 640px, 1k
