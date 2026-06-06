@@ -7,6 +7,10 @@
  *   - Supported resolutions: 640px, 1k, 2k
  *   - Available for tiers: free, creator, pro, business
  *   - Max additional input images: 2
+ * - `flux-2-klein` - from 5 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k
+ *   - Available for tiers: free, creator, pro, business
+ *   - Max additional input images: 5
  * - `nano-banana` - from 50 credits/image
  *   - Supported resolutions: 640px, 1k
  *   - Available for tiers: creator, pro, business
@@ -35,6 +39,7 @@
  */
 export type V1AiImageEditorCreateBodyModelEnum =
   | "default"
+  | "flux-2-klein"
   | "gpt-image-2"
   | "nano-banana"
   | "nano-banana-2"
