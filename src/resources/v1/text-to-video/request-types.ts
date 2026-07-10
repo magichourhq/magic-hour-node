@@ -20,7 +20,8 @@ export type CreateRequest = {
    * * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
    * * **`veo3.1-lite`**: Supports 9:16, 16:9.
    * * **`veo3.1`**: Supports 9:16, 16:9.
-   * * **`seedance`**: Supports 9:16, 16:9, 1:1.
+   * * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
+   * * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
    * * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
    * * **`sora-2`**: Supports 9:16, 16:9.
    *
@@ -36,7 +37,8 @@ export type CreateRequest = {
    * * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
    * * **`veo3.1-lite`**: Toggle-able: audio adds extra credits when enabled
    * * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
-   * * **`seedance`**: Not supported
+   * * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
+   * * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
    * * **`seedance-2.0`**: Toggle-able: no additional credits for audio
    * * **`sora-2`**: Toggle-able: no additional credits for audio
    *
@@ -51,7 +53,8 @@ export type CreateRequest = {
    * * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
    * * **`veo3.1-lite`**: 8, 16, 24, 32, 40, 48, 56
    * * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
-   * * **`seedance`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
+   * * **`seedance-1.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
+   * * **`seedance-2.0-mini`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
    * * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
    * * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
    *
@@ -61,15 +64,16 @@ export type CreateRequest = {
    * The AI model to use for video generation.
    *
    * * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
-   * * `ltx-2.3`: Fast iteration with lip-sync & end frame
-   * * `wan-2.2`: Fast, strong visuals with effects
-   * * `kling-2.5`: Motion, action, and camera control
-   * * `kling-3.0`: Cinematic, multi-scene storytelling
-   * * `veo3.1-lite`: Fast, affordable, high-quality
-   * * `veo3.1`: Realistic visuals and prompt adherence
-   * * `seedance`: Fast iteration
-   * * `seedance-2.0`: State-of-the-art quality and consistency
-   * * `sora-2`: Story-first concepts and creativity
+   * * `ltx-2.3`: Fastest output. Best for rapid iteration.
+   * * `wan-2.2`: Strong physics, camera moves, and motion.
+   * * `kling-2.5`: Great for action, motion blur, and camera moves.
+   * * `kling-3.0`: Best overall quality for cinematic storytelling.
+   * * `veo3.1-lite`: Veo quality at a more accessible cost.
+   * * `veo3.1`: Google's model. Highest realism and detail.
+   * * `seedance-1.5`: Smooth, consistent motion with precision.
+   * * `seedance-2.0-mini`: Fast, consistent video with strong motion quality
+   * * `seedance-2.0`: Top quality with reference-to-video control.
+   * * `sora-2`: Open AI's model. Great for creativity and viral clips.
    *
    * If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
    */
@@ -83,7 +87,9 @@ export type CreateRequest = {
         | "ltx-2"
         | "ltx-2.3"
         | "seedance"
+        | "seedance-1.5"
         | "seedance-2.0"
+        | "seedance-2.0-mini"
         | "sora-2"
         | "veo3.1"
         | "veo3.1-audio"
@@ -108,7 +114,8 @@ export type CreateRequest = {
    * * **`kling-3.0`**: Supports 720p, 1080p, 4k.
    * * **`veo3.1-lite`**: Supports 720p, 1080p.
    * * **`veo3.1`**: Supports 720p, 1080p.
-   * * **`seedance`**: Supports 480p, 720p, 1080p.
+   * * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
+   * * **`seedance-2.0-mini`**: Supports 480p, 720p.
    * * **`seedance-2.0`**: Supports 480p, 720p.
    * * **`sora-2`**: Supports 720p.
    *
@@ -136,7 +143,9 @@ export type External$CreateRequest = {
         | "ltx-2"
         | "ltx-2.3"
         | "seedance"
+        | "seedance-1.5"
         | "seedance-2.0"
+        | "seedance-2.0-mini"
         | "sora-2"
         | "veo3.1"
         | "veo3.1-audio"
@@ -172,7 +181,9 @@ const SchemaIn$CreateRequest: z.ZodType<
         "ltx-2",
         "ltx-2.3",
         "seedance",
+        "seedance-1.5",
         "seedance-2.0",
+        "seedance-2.0-mini",
         "sora-2",
         "veo3.1",
         "veo3.1-audio",
@@ -221,7 +232,9 @@ const SchemaOut$CreateRequest: z.ZodType<
         "ltx-2",
         "ltx-2.3",
         "seedance",
+        "seedance-1.5",
         "seedance-2.0",
+        "seedance-2.0-mini",
         "sora-2",
         "veo3.1",
         "veo3.1-audio",
