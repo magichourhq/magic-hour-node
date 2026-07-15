@@ -1,5 +1,5 @@
 {
-  "id": "08756a67-c9aa-401d-9e38-feee98a19df4",
+  "id": "6058b2ba-30f8-46d6-9c9d-83938cbf7071",
   "tracked_paths": [
     {
       "editable": true,
@@ -211,6 +211,22 @@
     },
     {
       "editable": true,
+      "path": "src/resources/v1/ai-video-editor/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-video-editor/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-video-editor/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-video-editor/resource-client.ts"
+    },
+    {
+      "editable": true,
       "path": "src/resources/v1/ai-voice-cloner/README.md"
     },
     {
@@ -320,6 +336,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/body-swap/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/character-replace/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/character-replace/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/character-replace/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/character-replace/resource-client.ts"
     },
     {
       "editable": true,
@@ -767,6 +799,22 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-video-editor-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-editor-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-editor-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-editor-create-response.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-ai-voice-cloner-create-body-assets.ts"
     },
     {
@@ -904,6 +952,38 @@
     {
       "editable": false,
       "path": "src/types/v1-body-swap-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body-style-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body-style-points-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body-style-selection-mode-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-response.ts"
     },
     {
       "editable": false,
@@ -1239,6 +1319,10 @@
     },
     {
       "editable": false,
+      "path": "test/v1-ai-video-editor.test.ts"
+    },
+    {
+      "editable": false,
       "path": "test/v1-ai-voice-cloner.test.ts"
     },
     {
@@ -1264,6 +1348,10 @@
     {
       "editable": false,
       "path": "test/v1-body-swap.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-character-replace.test.ts"
     },
     {
       "editable": false,
