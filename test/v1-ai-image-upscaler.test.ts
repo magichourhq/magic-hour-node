@@ -17,7 +17,7 @@ describe("tests client.v1.aiImageUpscaler.create", () => {
             scaleFactor: 2.0,
             style: {
               enhancement: "Balanced",
-              mode: "creative",
+              mode: "balanced",
               prompt: "string",
             },
           })
@@ -28,7 +28,7 @@ describe("tests client.v1.aiImageUpscaler.create", () => {
           scaleFactor: 2.0,
           style: {
             enhancement: "Balanced",
-            mode: "creative",
+            mode: "balanced",
             prompt: "string",
           },
         }),

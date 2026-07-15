@@ -31,9 +31,9 @@ export type CreateRequest = {
    */
   scaleFactor: number;
   /**
-   * Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
+   * Style settings for the upscale. Use `mode` (`"preserve"`, `"balanced"`, or `"creative"`). Defaults to `"balanced"`.
    */
-  style: V1AiImageUpscalerCreateBodyStyle;
+  style?: V1AiImageUpscalerCreateBodyStyle | undefined;
 };
 
 /**
@@ -45,7 +45,7 @@ export type External$CreateRequest = {
   assets: External$V1AiImageUpscalerCreateBodyAssets;
   name?: string | undefined;
   scale_factor: number;
-  style: External$V1AiImageUpscalerCreateBodyStyle;
+  style?: External$V1AiImageUpscalerCreateBodyStyle | undefined;
 };
 
 /**
@@ -60,7 +60,7 @@ const SchemaIn$CreateRequest: z.ZodType<
     assets: Schemas$V1AiImageUpscalerCreateBodyAssets.in,
     name: z.string().optional(),
     scale_factor: z.number(),
-    style: Schemas$V1AiImageUpscalerCreateBodyStyle.in,
+    style: Schemas$V1AiImageUpscalerCreateBodyStyle.in.optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
@@ -84,7 +84,7 @@ const SchemaOut$CreateRequest: z.ZodType<
     assets: Schemas$V1AiImageUpscalerCreateBodyAssets.out,
     name: z.string().optional(),
     scaleFactor: z.number(),
-    style: Schemas$V1AiImageUpscalerCreateBodyStyle.out,
+    style: Schemas$V1AiImageUpscalerCreateBodyStyle.out.optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {

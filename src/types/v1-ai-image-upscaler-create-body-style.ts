@@ -2,16 +2,19 @@ import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
 
 /**
- * Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
+ * Style settings for the upscale. Use `mode` (`"preserve"`, `"balanced"`, or `"creative"`). Defaults to `"balanced"`.
  */
 export type V1AiImageUpscalerCreateBodyStyle = {
+  /**
+   * Deprecated: use `mode` instead. `"Resemblance"` maps to `"preserve"`. `"Balanced"` and `"Creative"` map to the same-named modes.
+   */
   enhancement?: ("Balanced" | "Creative" | "Resemblance") | undefined;
   /**
-   * The upscaling mode. `"pro"` is faster and does not require `enhancement`. `"creative"` requires `enhancement`. Defaults to `"creative"`.
+   * The upscaling mode. `"preserve"` uses the fast pro pipeline (1× credit multiplier). `"balanced"` and `"creative"` use the creative pipeline (2× credit multiplier). `"pro"` is deprecated and maps to `"preserve"`. Defaults to `"balanced"`.
    */
-  mode?: ("creative" | "pro") | undefined;
+  mode?: ("balanced" | "creative" | "preserve" | "pro") | undefined;
   /**
-   * A prompt to guide the final image. This value is ignored if `enhancement` is not Creative
+   * A prompt to guide the final image. Only used when mode is `creative`.
    */
   prompt?: string | undefined;
 };
@@ -23,7 +26,7 @@ export type V1AiImageUpscalerCreateBodyStyle = {
  */
 export type External$V1AiImageUpscalerCreateBodyStyle = {
   enhancement?: ("Balanced" | "Creative" | "Resemblance") | undefined;
-  mode?: ("creative" | "pro") | undefined;
+  mode?: ("balanced" | "creative" | "preserve" | "pro") | undefined;
   prompt?: string | undefined;
 };
 
@@ -37,7 +40,7 @@ const SchemaIn$V1AiImageUpscalerCreateBodyStyle: z.ZodType<
 > = z
   .object({
     enhancement: z.enum(["Balanced", "Creative", "Resemblance"]).optional(),
-    mode: z.enum(["creative", "pro"]).optional(),
+    mode: z.enum(["balanced", "creative", "preserve", "pro"]).optional(),
     prompt: z.string().optional(),
   })
   .transform((obj) => {
@@ -59,7 +62,7 @@ const SchemaOut$V1AiImageUpscalerCreateBodyStyle: z.ZodType<
 > = z
   .object({
     enhancement: z.enum(["Balanced", "Creative", "Resemblance"]).optional(),
-    mode: z.enum(["creative", "pro"]).optional(),
+    mode: z.enum(["balanced", "creative", "preserve", "pro"]).optional(),
     prompt: z.string().optional(),
   })
   .transform((obj) => {
