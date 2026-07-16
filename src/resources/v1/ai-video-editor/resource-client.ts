@@ -6,14 +6,118 @@ import {
   ResourceClientOptions,
 } from "make-api-request-js";
 
+import {
+  GenerateOptions,
+  GenerateRequestType,
+} from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-video-editor/request-types";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import * as types from "magic-hour/types";
 import { Schemas$V1AiVideoEditorCreateBody } from "magic-hour/types/v1-ai-video-editor-create-body";
 import { Schemas$V1AiVideoEditorCreateResponse } from "magic-hour/types/v1-ai-video-editor-create-response";
 
+type GenerateRequest = GenerateRequestType<
+  requests.CreateRequest,
+  {
+    /**
+     * The video to edit. This value is either
+     * - a direct URL to the video file
+     * - a path to a local file
+     *
+     * Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+     */
+    videoFilePath: string;
+  }
+>;
+
 export class AiVideoEditorClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
+  }
+
+  /**
+   * AI Video Editor
+   *
+   * Create a Video Editor video
+   *
+   * This method provides a convenient way to create a request and automatically wait for completion and download outputs.
+   *
+   * @example
+   * ```typescript
+   * import { Client } from "magic-hour";
+   *
+   * const client = new Client({ token: process.env["API_TOKEN"]!! });
+   * const res = await client.v1.aiVideoEditor.generate(
+   *   {
+   *     assets: { videoFilePath: "/path/to/1234.mp4" },
+   *     endSeconds: 5.0,
+   *     name: "My Video Editor video",
+   *     startSeconds: 0.0,
+   *     style: { prompt: "Change the car color to blue" },
+   *   },
+   *   {
+   *     waitForCompletion: true,
+   *     downloadOutputs: true,
+   *     downloadDirectory: ".",
+   *   },
+   * );
+   * ```
+   */
+  async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
+    const {
+      waitForCompletion = true,
+      downloadOutputs = true,
+      downloadDirectory = undefined,
+      ...createOpts
+    } = opts;
+
+    const fileClient = new FilesClient(this._client, this._opts);
+    const { videoFilePath, ...restAssets } = request.assets;
+
+    getLogger().debug(
+      `Uploading file ${videoFilePath} to Magic Hour's storage`,
+    );
+
+    const uploadedVideoFilePath = await fileClient.uploadFile(videoFilePath);
+
+    getLogger().info(
+      `Uploaded file ${videoFilePath} to Magic Hour's storage as ${uploadedVideoFilePath}`,
+    );
+
+    const createResponse = await this.create(
+      {
+        ...request,
+        assets: {
+          ...restAssets,
+          videoFilePath: uploadedVideoFilePath,
+        },
+      },
+      createOpts,
+    );
+
+    getLogger().info(
+      `Created AiVideoEditorClient project ${createResponse.id}`,
+    );
+
+    const projectsClient = new VideoProjectsClient(this._client, this._opts);
+
+    getLogger().debug(
+      `Checking result for AiVideoEditorClient project ${createResponse.id}`,
+    );
+
+    const result = await projectsClient.checkResult(
+      { id: createResponse.id },
+      {
+        waitForCompletion,
+        downloadOutputs,
+        downloadDirectory,
+        ...createOpts,
+      },
+    );
+
+    return result;
   }
 
   /**
