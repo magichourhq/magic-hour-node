@@ -251,6 +251,11 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/ai-talking-photo/README.md#create) - AI Talking Photo
 - [generate](src/resources/v1/ai-talking-photo/README.md#generate) - AI Talking Photo Generate Workflow
 
+### [v1.aiVideoEditor](src/resources/v1/ai-video-editor/README.md)
+
+- [create](src/resources/v1/ai-video-editor/README.md#create) - AI Video Editor
+- [generate](src/resources/v1/ai-video-editor/README.md#generate) - AI Video Editor Generate Workflow
+
 ### [v1.aiVoiceCloner](src/resources/v1/ai-voice-cloner/README.md)
 
 - [create](src/resources/v1/ai-voice-cloner/README.md#create) - AI Voice Cloner
@@ -286,6 +291,11 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 
 - [create](src/resources/v1/body-swap/README.md#create) - Body Swap
 - [generate](src/resources/v1/body-swap/README.md#generate) - Body Swap Generate Workflow
+
+### [v1.characterReplace](src/resources/v1/character-replace/README.md)
+
+- [create](src/resources/v1/character-replace/README.md#create) - Character Replace
+- [generate](src/resources/v1/character-replace/README.md#generate) - Character Replace Generate Workflow
 
 ### [v1.faceDetection](src/resources/v1/face-detection/README.md)
 

@@ -51,7 +51,7 @@ const res = await client.v1.bodySwap.generate(
 
 ### Body Swap <a name="create"></a>
 
-Swap a person into a scene image using Nano Banana 2. Credits depend on `resolution` (from 100 credits at 640px upward).
+Swap a person into a scene image using Nano Banana 2. Credits depend on `resolution` (from 50 credits at 640px upward).
 
 **API Endpoint**: `POST /v1/body-swap`
 
@@ -90,5 +90,5 @@ const res = await client.v1.bodySwap.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 100, "frameCost": 100, "id": "cuid-example"}
+{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}
 ```

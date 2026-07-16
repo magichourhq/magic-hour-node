@@ -14,6 +14,7 @@ import { AiImageUpscalerClient } from "magic-hour/resources/v1/ai-image-upscaler
 import { AiMemeGeneratorClient } from "magic-hour/resources/v1/ai-meme-generator";
 import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-generator";
 import { AiTalkingPhotoClient } from "magic-hour/resources/v1/ai-talking-photo";
+import { AiVideoEditorClient } from "magic-hour/resources/v1/ai-video-editor";
 import { AiVoiceClonerClient } from "magic-hour/resources/v1/ai-voice-cloner";
 import { AiVoiceGeneratorClient } from "magic-hour/resources/v1/ai-voice-generator";
 import { AnimationClient } from "magic-hour/resources/v1/animation";
@@ -21,6 +22,7 @@ import { AudioProjectsClient } from "magic-hour/resources/v1/audio-projects";
 import { AudioToVideoClient } from "magic-hour/resources/v1/audio-to-video";
 import { AutoSubtitleGeneratorClient } from "magic-hour/resources/v1/auto-subtitle-generator";
 import { BodySwapClient } from "magic-hour/resources/v1/body-swap";
+import { CharacterReplaceClient } from "magic-hour/resources/v1/character-replace";
 import { FaceDetectionClient } from "magic-hour/resources/v1/face-detection";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
@@ -36,6 +38,8 @@ import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 
 export class V1Client extends CoreResourceClient {
+  private _characterReplaceLazy?: CharacterReplaceClient; // lazy-loading cache
+  private _aiVideoEditorLazy?: AiVideoEditorClient; // lazy-loading cache
   private _audioToVideoLazy?: AudioToVideoClient; // lazy-loading cache
   private _bodySwapLazy?: BodySwapClient; // lazy-loading cache
   private _headSwapLazy?: HeadSwapClient; // lazy-loading cache
@@ -81,6 +85,7 @@ export class V1Client extends CoreResourceClient {
       this.aiMemeGenerator;
       this.aiQrCodeGenerator;
       this.aiTalkingPhoto;
+      this.aiVideoEditor;
       this.aiVoiceCloner;
       this.aiVoiceGenerator;
       this.animation;
@@ -88,6 +93,7 @@ export class V1Client extends CoreResourceClient {
       this.audioToVideo;
       this.autoSubtitleGenerator;
       this.bodySwap;
+      this.characterReplace;
       this.faceDetection;
       this.faceSwap;
       this.faceSwapPhoto;
@@ -422,6 +428,28 @@ export class V1Client extends CoreResourceClient {
       this._audioToVideoLazy ??
       (this._audioToVideoLazy =
         new (require("./audio-to-video").AudioToVideoClient)(
+          this._client,
+          this._opts,
+        ))
+    );
+  }
+
+  get aiVideoEditor(): AiVideoEditorClient {
+    return (
+      this._aiVideoEditorLazy ??
+      (this._aiVideoEditorLazy =
+        new (require("./ai-video-editor").AiVideoEditorClient)(
+          this._client,
+          this._opts,
+        ))
+    );
+  }
+
+  get characterReplace(): CharacterReplaceClient {
+    return (
+      this._characterReplaceLazy ??
+      (this._characterReplaceLazy =
+        new (require("./character-replace").CharacterReplaceClient)(
           this._client,
           this._opts,
         ))
