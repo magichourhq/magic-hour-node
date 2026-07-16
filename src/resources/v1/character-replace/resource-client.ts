@@ -19,7 +19,7 @@ import { Schemas$V1CharacterReplaceCreateBody } from "magic-hour/types/v1-charac
 import { Schemas$V1CharacterReplaceCreateResponse } from "magic-hour/types/v1-character-replace-create-response";
 
 type GenerateRequest = GenerateRequestType<
-  types.V1CharacterReplaceCreateBody,
+  requests.CreateRequest,
   {
     /**
      * Reference character image used as the replacement or animation target. This value is either
@@ -109,13 +109,11 @@ export class CharacterReplaceClient extends CoreResourceClient {
 
     const createResponse = await this.create(
       {
-        data: {
-          ...request,
-          assets: {
-            ...restAssets,
-            imageFilePath: uploadedImageFilePath,
-            videoFilePath: uploadedVideoFilePath,
-          },
+        ...request,
+        assets: {
+          ...restAssets,
+          imageFilePath: uploadedImageFilePath,
+          videoFilePath: uploadedVideoFilePath,
         },
       },
       createOpts,
@@ -173,7 +171,7 @@ export class CharacterReplaceClient extends CoreResourceClient {
    * POST /v1/character-replace
    */
   create(
-    request: requests.CreateRequest = {},
+    request: requests.CreateRequest,
     opts?: RequestOptions,
   ): ApiPromise<types.V1CharacterReplaceCreateResponse> {
     return this._client.makeRequest({
@@ -181,9 +179,7 @@ export class CharacterReplaceClient extends CoreResourceClient {
       path: "/v1/character-replace",
       auth: ["bearerAuth"],
       contentType: "application/json",
-      body: request.data
-        ? Schemas$V1CharacterReplaceCreateBody.out.parse(request.data)
-        : undefined,
+      body: Schemas$V1CharacterReplaceCreateBody.out.parse(request),
       responseSchema: Schemas$V1CharacterReplaceCreateResponse.in,
       opts,
     });

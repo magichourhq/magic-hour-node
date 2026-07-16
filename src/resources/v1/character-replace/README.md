@@ -84,15 +84,16 @@ For detailed examples, see the [product page](https://magichour.ai/products/char
 
 #### Parameters
 
-| Parameter         | Required | Description                                                                              | Example                                                                                                                                                                                                   |
-| ----------------- | :------: | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`            |    ✗     |                                                                                          | `{"assets": {"imageFilePath": "api-assets/id/5678.png", "videoFilePath": "api-assets/id/1234.mp4"}, "endSeconds": 15.0, "name": "My Character Replace video", "resolution": "720p", "startSeconds": 0.0}` |
-| `└─ assets`       |    ✓     | Source video and reference character image for the job.                                  | `{"imageFilePath": "api-assets/id/5678.png", "videoFilePath": "api-assets/id/1234.mp4"}`                                                                                                                  |
-| `└─ endSeconds`   |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                     | `15.0`                                                                                                                                                                                                    |
-| `└─ name`         |    ✗     | Give your video a custom name for easy identification.                                   | `"My Character Replace video"`                                                                                                                                                                            |
-| `└─ resolution`   |    ✗     | Output video resolution. Defaults to 480p, the lowest resolution available on your plan. | `"720p"`                                                                                                                                                                                                  |
-| `└─ startSeconds` |    ✗     | Start time of your clip (seconds). Must be ≥ 0.                                          | `0.0`                                                                                                                                                                                                     |
-| `└─ style`        |    ✗     | Optional style controls for replace vs animate mode and subject selection.               | `{"mode": "replace", "selectionMode": "auto"}`                                                                                                                                                            |
+| Parameter          | Required | Description                                                                                                                                                                                                                                                                                                                                                                 | Example                                                                                          |
+| ------------------ | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `assets`           |    ✓     | Source video and reference character image for the job.                                                                                                                                                                                                                                                                                                                     | `{"imageFilePath": "api-assets/id/5678.png", "videoFilePath": "api-assets/id/1234.mp4"}`         |
+| `└─ imageFilePath` |    ✓     | Reference character image used as the replacement or animation target. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/5678.png"`                                                                       |
+| `└─ videoFilePath` |    ✓     | Source video containing the subject to replace or animate. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.mp4"`                                                                       |
+| `endSeconds`       |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                                                        | `15.0`                                                                                           |
+| `name`             |    ✗     | Give your video a custom name for easy identification.                                                                                                                                                                                                                                                                                                                      | `"My Character Replace video"`                                                                   |
+| `resolution`       |    ✗     | Output video resolution. Defaults to 480p, the lowest resolution available on your plan.                                                                                                                                                                                                                                                                                    | `"720p"`                                                                                         |
+| `startSeconds`     |    ✗     | Start time of your clip (seconds). Must be ≥ 0.                                                                                                                                                                                                                                                                                                                             | `0.0`                                                                                            |
+| `style`            |    ✗     | Optional style controls for replace vs animate mode and subject selection.                                                                                                                                                                                                                                                                                                  | `{"mode": "replace", "selectionMode": "auto"}`                                                   |
 
 #### Example Snippet
 
@@ -100,7 +101,17 @@ For detailed examples, see the [product page](https://magichour.ai/products/char
 import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.characterReplace.create();
+const res = await client.v1.characterReplace.create({
+  assets: {
+    imageFilePath: "api-assets/id/5678.png",
+    videoFilePath: "api-assets/id/1234.mp4",
+  },
+  endSeconds: 15.0,
+  name: "My Character Replace video",
+  resolution: "720p",
+  startSeconds: 0.0,
+  style: { mode: "replace", selectionMode: "auto" },
+});
 ```
 
 #### Response
