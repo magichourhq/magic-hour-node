@@ -20,7 +20,11 @@ describe("tests client.v1.characterReplace.create", () => {
             name: "My Character Replace video",
             resolution: "720p",
             startSeconds: 0.0,
-            style: { mode: "replace", selectionMode: "auto" },
+            style: {
+              mode: "replace",
+              points: [{ positionX: 320, positionY: 180, timeSeconds: 2.5 }],
+              selectionMode: "auto",
+            },
           })
           .asResponse(),
         client.v1.characterReplace.create({
@@ -32,7 +36,11 @@ describe("tests client.v1.characterReplace.create", () => {
           name: "My Character Replace video",
           resolution: "720p",
           startSeconds: 0.0,
-          style: { mode: "replace", selectionMode: "auto" },
+          style: {
+            mode: "replace",
+            points: [{ positionX: 320, positionY: 180, timeSeconds: 2.5 }],
+            selectionMode: "auto",
+          },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match
