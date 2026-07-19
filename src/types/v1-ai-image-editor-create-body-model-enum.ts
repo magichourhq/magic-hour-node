@@ -35,6 +35,10 @@
  *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
  *   - Max additional input images: 9
+ * - `seedream-v5-pro` - from 75 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k
+ *   - Available for tiers: creator, pro, business
+ *   - Max additional input images: 9
  * - `gpt-image-2` - from 50 credits/image
  *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
@@ -51,4 +55,5 @@ export type V1AiImageEditorCreateBodyModelEnum =
   | "nano-banana-pro"
   | "qwen-edit"
   | "seedream-v4"
-  | "seedream-v4.5";
+  | "seedream-v4.5"
+  | "seedream-v5-pro";
