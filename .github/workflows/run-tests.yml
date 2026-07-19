@@ -16,12 +16,9 @@ jobs:
       fail-fast: false
       matrix:
         node-version:
-          - 20
-          - 21
           - 22
-          - 23
           - 24
-          - 25
+          - 26
     steps:
       #----------------------------------------------
       #  -----  checkout & setup node  -----
