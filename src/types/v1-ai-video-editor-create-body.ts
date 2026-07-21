@@ -25,9 +25,17 @@ export type V1AiVideoEditorCreateBody = {
    */
   endSeconds: number;
   /**
+   * Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni` for paid. Use `ltx-2.3` for LTX video edit.
+   */
+  model?: ("gemini-omni" | "ltx-2.3") | undefined;
+  /**
    * Give your video a custom name for easy identification.
    */
   name?: string | undefined;
+  /**
+   * Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
+   */
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
   /**
    * Start time of your clip (seconds). Must be ≥ 0.
    */
@@ -43,7 +51,9 @@ export type V1AiVideoEditorCreateBody = {
 export type External$V1AiVideoEditorCreateBody = {
   assets: External$V1AiVideoEditorCreateBodyAssets;
   end_seconds: number;
+  model?: ("gemini-omni" | "ltx-2.3") | undefined;
   name?: string | undefined;
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
   start_seconds?: number | undefined;
   style: External$V1AiVideoEditorCreateBodyStyle;
 };
@@ -59,7 +69,9 @@ const SchemaIn$V1AiVideoEditorCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1AiVideoEditorCreateBodyAssets.in,
     end_seconds: z.number(),
+    model: z.enum(["gemini-omni", "ltx-2.3"]).optional(),
     name: z.string().optional(),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     start_seconds: z.number().optional(),
     style: Schemas$V1AiVideoEditorCreateBodyStyle.in,
   })
@@ -67,7 +79,9 @@ const SchemaIn$V1AiVideoEditorCreateBody: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       end_seconds: "endSeconds",
+      model: "model",
       name: "name",
+      resolution: "resolution",
       start_seconds: "startSeconds",
       style: "style",
     });
@@ -85,7 +99,9 @@ const SchemaOut$V1AiVideoEditorCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1AiVideoEditorCreateBodyAssets.out,
     endSeconds: z.number(),
+    model: z.enum(["gemini-omni", "ltx-2.3"]).optional(),
     name: z.string().optional(),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     startSeconds: z.number().optional(),
     style: Schemas$V1AiVideoEditorCreateBodyStyle.out,
   })
@@ -93,7 +109,9 @@ const SchemaOut$V1AiVideoEditorCreateBody: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       endSeconds: "end_seconds",
+      model: "model",
       name: "name",
+      resolution: "resolution",
       startSeconds: "start_seconds",
       style: "style",
     });

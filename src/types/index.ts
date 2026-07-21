@@ -51,6 +51,8 @@ export { V1AiTalkingPhotoCreateBodyStyleGenerationModeEnum } from "./v1-ai-talki
 export { V1AiTalkingPhotoCreateResponse } from "./v1-ai-talking-photo-create-response";
 export { V1AiVideoEditorCreateBody } from "./v1-ai-video-editor-create-body";
 export { V1AiVideoEditorCreateBodyAssets } from "./v1-ai-video-editor-create-body-assets";
+export { V1AiVideoEditorCreateBodyModelEnum } from "./v1-ai-video-editor-create-body-model-enum";
+export { V1AiVideoEditorCreateBodyResolutionEnum } from "./v1-ai-video-editor-create-body-resolution-enum";
 export { V1AiVideoEditorCreateBodyStyle } from "./v1-ai-video-editor-create-body-style";
 export { V1AiVideoEditorCreateResponse } from "./v1-ai-video-editor-create-response";
 export { V1AiVoiceClonerCreateBody } from "./v1-ai-voice-cloner-create-body";
