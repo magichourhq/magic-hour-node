@@ -1,5 +1,5 @@
 {
-  "id": "88b59ac0-5cb1-4f23-836d-c115911d1213",
+  "id": "65155b01-1bb3-4bd8-a8bc-d7a815ca4873",
   "tracked_paths": [
     {
       "editable": true,
@@ -800,6 +800,14 @@
     {
       "editable": false,
       "path": "src/types/v1-ai-video-editor-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-editor-create-body-model-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-editor-create-body-resolution-enum.ts"
     },
     {
       "editable": false,
