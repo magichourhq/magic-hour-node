@@ -113,6 +113,7 @@ const res = await client.v1.characterReplace.create({
   name: "My Character Replace video",
   resolution: "720p",
   startSeconds: 0.0,
+  style: { mode: "replace", selectionMode: "auto" },
 });
 ```
 

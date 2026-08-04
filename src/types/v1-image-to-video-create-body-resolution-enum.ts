@@ -3,7 +3,6 @@
  *
  * * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
  * * **`wan-2.2`**: Supports 480p, 720p, 1080p.
- * * **`kling-2.5`**: Supports 720p, 1080p.
  * * **`kling-3.0`**: Supports 720p, 1080p, 4k.
  * * **`veo3.1-lite`**: Supports 720p, 1080p.
  * * **`veo3.1`**: Supports 720p, 1080p.

@@ -3,7 +3,6 @@
  *
  * * **`ltx-2.3`**: Supports 9:16, 16:9, 1:1.
  * * **`wan-2.2`**: Supports 9:16, 16:9, 1:1.
- * * **`kling-2.5`**: Supports 9:16, 16:9, 1:1.
  * * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
  * * **`veo3.1-lite`**: Supports 9:16, 16:9.
  * * **`veo3.1`**: Supports 9:16, 16:9.
