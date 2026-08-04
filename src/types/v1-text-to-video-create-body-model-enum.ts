@@ -4,7 +4,6 @@
  * * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
  * * `ltx-2.3`: Fastest output. Best for rapid iteration.
  * * `wan-2.2`: Strong physics, camera moves, and motion.
- * * `kling-2.5`: Great for action, motion blur, and camera moves.
  * * `kling-3.0`: Best overall quality for cinematic storytelling.
  * * `veo3.1-lite`: Veo quality at a more accessible cost.
  * * `veo3.1`: Google's model. Highest realism and detail.
