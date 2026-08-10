@@ -22,6 +22,7 @@ export type V1TextToVideoCreateBody = {
    * * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
    * * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
    * * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
+   * * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
    * * **`sora-2`**: Supports 9:16, 16:9.
    *
    */
@@ -38,6 +39,7 @@ export type V1TextToVideoCreateBody = {
    * * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
    * * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
    * * **`seedance-2.0`**: Toggle-able: no additional credits for audio
+   * * **`seedance-2.5`**: Toggle-able: no additional credits for audio
    * * **`sora-2`**: Toggle-able: no additional credits for audio
    *
    */
@@ -53,6 +55,7 @@ export type V1TextToVideoCreateBody = {
    * * **`seedance-1.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
    * * **`seedance-2.0-mini`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
    * * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+   * * **`seedance-2.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
    * * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
    *
    */
@@ -69,6 +72,7 @@ export type V1TextToVideoCreateBody = {
    * * `seedance-1.5`: Smooth, consistent motion with precision.
    * * `seedance-2.0-mini`: Fast, consistent video with strong motion quality
    * * `seedance-2.0`: Top quality with reference-to-video control.
+   * * `seedance-2.5`: Highest quality with superior realism, detail, and motion
    * * `sora-2`: Open AI's model. Great for creativity and viral clips.
    *
    * If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
@@ -86,6 +90,7 @@ export type V1TextToVideoCreateBody = {
         | "seedance-1.5"
         | "seedance-2.0"
         | "seedance-2.0-mini"
+        | "seedance-2.5"
         | "sora-2"
         | "veo3.1"
         | "veo3.1-audio"
@@ -112,6 +117,7 @@ export type V1TextToVideoCreateBody = {
    * * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
    * * **`seedance-2.0-mini`**: Supports 480p, 720p.
    * * **`seedance-2.0`**: Supports 480p, 720p.
+   * * **`seedance-2.5`**: Supports 480p, 720p.
    * * **`sora-2`**: Supports 720p.
    *
    */
@@ -141,6 +147,7 @@ export type External$V1TextToVideoCreateBody = {
         | "seedance-1.5"
         | "seedance-2.0"
         | "seedance-2.0-mini"
+        | "seedance-2.5"
         | "sora-2"
         | "veo3.1"
         | "veo3.1-audio"
@@ -179,6 +186,7 @@ const SchemaIn$V1TextToVideoCreateBody: z.ZodType<
         "seedance-1.5",
         "seedance-2.0",
         "seedance-2.0-mini",
+        "seedance-2.5",
         "sora-2",
         "veo3.1",
         "veo3.1-audio",
@@ -230,6 +238,7 @@ const SchemaOut$V1TextToVideoCreateBody: z.ZodType<
         "seedance-1.5",
         "seedance-2.0",
         "seedance-2.0-mini",
+        "seedance-2.5",
         "sora-2",
         "veo3.1",
         "veo3.1-audio",
