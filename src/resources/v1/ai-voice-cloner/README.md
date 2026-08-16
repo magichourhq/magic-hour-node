@@ -50,7 +50,7 @@ const res = await client.v1.aiVoiceCloner.generate(
 
 Clone a voice from an audio sample and generate speech.
 
-- Each character costs 0.05 credits.
+- Each character costs 0.1 credits.
 - The cost is rounded up to the nearest whole number
 
 **API Endpoint**: `POST /v1/ai-voice-cloner`
