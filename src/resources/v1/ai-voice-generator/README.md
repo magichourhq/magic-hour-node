@@ -47,7 +47,7 @@ const res = await client.v1.aiVoiceGenerator.generate(
 
 ### AI Voice Generator <a name="create"></a>
 
-Generate speech from text. Each character costs 0.05 credits. The cost is rounded up to the nearest whole number.
+Generate speech from text. Each character costs 0.1 credits. The cost is rounded up to the nearest whole number.
 
 **API Endpoint**: `POST /v1/ai-voice-generator`
 
