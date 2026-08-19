@@ -1,18 +1,18 @@
 /**
  * Determines the aspect ratio of the output video.
  *
+ * * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
  * * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
- * * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
  * * **`ltx-2.3`**: Supports 9:16, 16:9, 1:1.
  * * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
- * * **`wan-2.2`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
+ * * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
- * * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
- * * **`veo3.1-lite`**: Supports 9:16, 16:9.
- * * **`veo3.1`**: Supports 9:16, 16:9.
  * * **`sora-2`**: Supports 9:16, 16:9.
+ * * **`veo3.1`**: Supports 9:16, 16:9.
+ * * **`veo3.1-lite`**: Supports 9:16, 16:9.
+ * * **`wan-2.2`**: Supports 9:16, 16:9, 1:1.
  *
  */
 export type V1TextToVideoCreateBodyAspectRatioEnum = "16:9" | "1:1" | "9:16";

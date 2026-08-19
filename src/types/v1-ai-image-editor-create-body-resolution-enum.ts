@@ -9,16 +9,16 @@
  * - `auto` — **Deprecated.** Mapped server-side from your subscription tier to the best matching resolution the model supports
  *
  * **Per-model support:**
- * - `nano-banana-2` - 640px, 1k, 2k, 4k
- * - `gpt-image-2` - 640px, 1k, 2k, 4k
  * - `flux-2-klein` - 640px, 1k, 2k
+ * - `gpt-image-2` - 640px, 1k, 2k, 4k
+ * - `nano-banana` - 640px, 1k
+ * - `nano-banana-2` - 640px, 1k, 2k, 4k
  * - `nano-banana-2-lite` - 640px, 1k
+ * - `nano-banana-pro` - 1k, 2k, 4k
  * - `qwen-edit` - 640px, 1k, 2k
  * - `seedream-v4` - 640px, 1k, 2k, 4k
  * - `seedream-v4.5` - 640px, 1k, 2k, 4k
  * - `seedream-v5-pro` - 640px, 1k, 2k
- * - `nano-banana` - 640px, 1k
- * - `nano-banana-pro` - 1k, 2k, 4k
  *
  * Note: Resolution availability depends on the model and your subscription tier.
  */
