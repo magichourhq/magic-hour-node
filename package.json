@@ -1,6 +1,6 @@
 {
   "name": "magic-hour",
-  "version": "0.71.0",
+  "version": "0.71.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -47,16 +47,26 @@
   },
   "bugs": "https://github.com/magichourhq/magic-hour-node/issues",
   "description": "Node SDK for Magic Hour API",
-  "homepage": "https://github.com/magichourhq/magic-hour-node",
+  "homepage": "https://docs.magichour.ai/get-started/quick-start",
   "keywords": [
     "magic hour",
+    "generative AI",
     "AI video",
     "AI image",
+    "AI audio",
+    "video generation",
+    "image generation",
+    "audio generation",
+    "text to video",
+    "image to video",
+    "face swap",
+    "lip sync",
+    "SDK",
     "api"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/magichourhq/magic-hour-node.git"
+    "url": "https://github.com/magichourhq/magic-hour-node.git"
   }
 }
