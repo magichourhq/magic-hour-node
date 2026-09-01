@@ -15,7 +15,7 @@ export type V1AiClothesChangerCreateBodyAssets = {
    */
   garmentFilePath: string;
   /**
-   * Type of garment to swap. If not provided, swaps the entire outfit.
+   * Type of clothing item to swap. If not provided, swaps the entire outfit.
    * * `upper_body` - for shirts/jackets
    * * `lower_body` - for pants/skirts
    * * `dresses` - for entire outfit (deprecated, use `entire_outfit` instead)
