@@ -21,19 +21,19 @@ export type CreateRequest = {
    */
   assets: V1AiVideoEditorCreateBodyAssets;
   /**
-   * End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni`: 3s, `ltx-2.3`: 0.5s. Maximum duration depends on model: `gemini-omni`: 10s, `ltx-2.3`: 45s.
+   * End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, `ltx-2.3`: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, `ltx-2.3`: 45s.
    */
   endSeconds: number;
   /**
-   * Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni` for paid. Use `ltx-2.3` for LTX video edit.
+   * Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
    */
-  model?: ("gemini-omni" | "ltx-2.3") | undefined;
+  model?: ("gemini-omni" | "gemini-omni-1.1" | "ltx-2.3") | undefined;
   /**
    * Give your video a custom name for easy identification.
    */
   name?: string | undefined;
   /**
-   * Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
+   * Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX-2.3 supports 480p, 720p, and 1080p.
    */
   resolution?: ("1080p" | "480p" | "720p") | undefined;
   /**
@@ -51,7 +51,7 @@ export type CreateRequest = {
 export type External$CreateRequest = {
   assets: External$V1AiVideoEditorCreateBodyAssets;
   end_seconds: number;
-  model?: ("gemini-omni" | "ltx-2.3") | undefined;
+  model?: ("gemini-omni" | "gemini-omni-1.1" | "ltx-2.3") | undefined;
   name?: string | undefined;
   resolution?: ("1080p" | "480p" | "720p") | undefined;
   start_seconds?: number | undefined;
@@ -69,7 +69,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1AiVideoEditorCreateBodyAssets.in,
     end_seconds: z.number(),
-    model: z.enum(["gemini-omni", "ltx-2.3"]).optional(),
+    model: z.enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]).optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     start_seconds: z.number().optional(),
@@ -99,7 +99,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1AiVideoEditorCreateBodyAssets.out,
     endSeconds: z.number(),
-    model: z.enum(["gemini-omni", "ltx-2.3"]).optional(),
+    model: z.enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]).optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     startSeconds: z.number().optional(),
