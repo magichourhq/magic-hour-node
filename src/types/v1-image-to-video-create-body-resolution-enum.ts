@@ -19,6 +19,7 @@
  */
 export type V1ImageToVideoCreateBodyResolutionEnum =
   | "1080p"
+  | "360p"
   | "480p"
   | "4k"
   | "720p";
