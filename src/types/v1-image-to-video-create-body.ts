@@ -136,7 +136,7 @@ export type V1ImageToVideoCreateBody = {
    * * **`wan-2.2`**: Supports 480p, 720p, 1080p.
    *
    */
-  resolution?: ("1080p" | "480p" | "4k" | "720p") | undefined;
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   /**
    * Attributed used to dictate the style of the output
    */
@@ -185,7 +185,7 @@ export type External$V1ImageToVideoCreateBody = {
       )
     | undefined;
   name?: string | undefined;
-  resolution?: ("1080p" | "480p" | "4k" | "720p") | undefined;
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   style?: External$V1ImageToVideoCreateBodyStyle | undefined;
   width?: number | null | undefined;
 };
@@ -229,7 +229,7 @@ const SchemaIn$V1ImageToVideoCreateBody: z.ZodType<
       ])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["1080p", "480p", "4k", "720p"]).optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.in.optional(),
     width: z.number().int().nullable().optional(),
   })
@@ -287,7 +287,7 @@ const SchemaOut$V1ImageToVideoCreateBody: z.ZodType<
       ])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["1080p", "480p", "4k", "720p"]).optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     style: Schemas$V1ImageToVideoCreateBodyStyle.out.optional(),
     width: z.number().int().nullable().optional(),
   })

@@ -145,7 +145,7 @@ export type V1TextToVideoCreateBody = {
    * * **`wan-2.2`**: Supports 480p, 720p, 1080p.
    *
    */
-  resolution?: ("1080p" | "480p" | "4k" | "720p") | undefined;
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   style: V1TextToVideoCreateBodyStyle;
 };
 
@@ -185,7 +185,7 @@ export type External$V1TextToVideoCreateBody = {
     | undefined;
   name?: string | undefined;
   orientation?: ("landscape" | "portrait" | "square") | undefined;
-  resolution?: ("1080p" | "480p" | "4k" | "720p") | undefined;
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   style: External$V1TextToVideoCreateBodyStyle;
 };
 
@@ -228,7 +228,7 @@ const SchemaIn$V1TextToVideoCreateBody: z.ZodType<
       .optional(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]).optional(),
-    resolution: z.enum(["1080p", "480p", "4k", "720p"]).optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     style: Schemas$V1TextToVideoCreateBodyStyle.in,
   })
   .transform((obj) => {
@@ -284,7 +284,7 @@ const SchemaOut$V1TextToVideoCreateBody: z.ZodType<
       .optional(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]).optional(),
-    resolution: z.enum(["1080p", "480p", "4k", "720p"]).optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     style: Schemas$V1TextToVideoCreateBodyStyle.out,
   })
   .transform((obj) => {
