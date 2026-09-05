@@ -30,7 +30,6 @@ In addition to the parameters listed in the `create` section below, `generate` i
 import { Client } from "magic-hour";
 
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.faceDetection.generate(
   {
     assets: { targetFilePath: "/path/to/1234.png" },
