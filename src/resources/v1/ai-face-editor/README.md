@@ -130,5 +130,5 @@ const res = await client.v1.aiFaceEditor.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 1, "frameCost": 1, "id": "cuid-example"}
+{"creditsCharged": 1, "frameCost": 123, "id": "cuid-example"}
 ```

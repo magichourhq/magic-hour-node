@@ -83,5 +83,5 @@ const res = await client.v1.aiQrCodeGenerator.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 0, "frameCost": 0, "id": "cuid-example"}
+{"creditsCharged": 0, "frameCost": 123, "id": "cuid-example"}
 ```

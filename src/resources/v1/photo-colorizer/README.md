@@ -80,5 +80,5 @@ const res = await client.v1.photoColorizer.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 10, "frameCost": 10, "id": "cuid-example"}
+{"creditsCharged": 10, "frameCost": 123, "id": "cuid-example"}
 ```
