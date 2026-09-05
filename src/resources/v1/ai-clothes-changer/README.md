@@ -90,5 +90,5 @@ const res = await client.v1.aiClothesChanger.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 25, "frameCost": 25, "id": "cuid-example"}
+{"creditsCharged": 25, "frameCost": 123, "id": "cuid-example"}
 ```

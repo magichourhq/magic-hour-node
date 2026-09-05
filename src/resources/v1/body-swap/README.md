@@ -90,5 +90,5 @@ const res = await client.v1.bodySwap.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 50, "frameCost": 50, "id": "cuid-example"}
+{"creditsCharged": 50, "frameCost": 123, "id": "cuid-example"}
 ```

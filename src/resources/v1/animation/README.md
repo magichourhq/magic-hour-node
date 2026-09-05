@@ -124,5 +124,5 @@ const res = await client.v1.animation.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 450, "estimatedFrameCost": 450, "id": "cuid-example"}
+{"creditsCharged": 450, "estimatedFrameCost": 123, "id": "cuid-example"}
 ```

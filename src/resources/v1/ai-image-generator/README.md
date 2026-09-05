@@ -95,5 +95,5 @@ const res = await client.v1.aiImageGenerator.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}
+{"creditsCharged": 5, "frameCost": 123, "id": "cuid-example"}
 ```
