@@ -2,6 +2,7 @@
 
 ## Submodules
 
+- [account](resources/v1/account/README.md) - account
 - [ai-clothes-changer](resources/v1/ai-clothes-changer/README.md) - ai-clothes-changer
 - [ai-face-editor](resources/v1/ai-face-editor/README.md) - ai-face-editor
 - [ai-gif-generator](resources/v1/ai-gif-generator/README.md) - ai-gif-generator

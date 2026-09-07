@@ -1,5 +1,5 @@
 {
-  "id": "88c7735c-a5b9-4bd6-aac7-a4e1dbdd3200",
+  "id": "a3774c17-32bb-4640-bcac-f894d270aca5",
   "tracked_paths": [
     {
       "editable": true,
@@ -48,6 +48,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/account/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/account/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/account/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/account/resource-client.ts"
     },
     {
       "editable": true,
@@ -592,6 +608,34 @@
     {
       "editable": true,
       "path": "src/types/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-list-response-subscription-billing-interval-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-list-response-subscription-discount.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-list-response-subscription-price.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-list-response-subscription-status-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-list-response-subscription.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-list-response-tier-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-list-response.ts"
     },
     {
       "editable": false,
@@ -1284,6 +1328,10 @@
     {
       "editable": false,
       "path": "src/types/v1-video-to-video-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-account.test.ts"
     },
     {
       "editable": false,

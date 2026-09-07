@@ -1,3 +1,4 @@
+export * as account from "./account";
 export * as aiClothesChanger from "./ai-clothes-changer";
 export * as aiFaceEditor from "./ai-face-editor";
 export * as aiGifGenerator from "./ai-gif-generator";

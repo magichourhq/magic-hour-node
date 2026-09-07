@@ -4,6 +4,7 @@ import {
   ResourceClientOptions,
 } from "make-api-request-js";
 
+import { AccountClient } from "magic-hour/resources/v1/account";
 import { AiClothesChangerClient } from "magic-hour/resources/v1/ai-clothes-changer";
 import { AiFaceEditorClient } from "magic-hour/resources/v1/ai-face-editor";
 import { AiGifGeneratorClient } from "magic-hour/resources/v1/ai-gif-generator";
@@ -38,6 +39,7 @@ import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 
 export class V1Client extends CoreResourceClient {
+  private _accountLazy?: AccountClient; // lazy-loading cache
   private _characterReplaceLazy?: CharacterReplaceClient; // lazy-loading cache
   private _aiVideoEditorLazy?: AiVideoEditorClient; // lazy-loading cache
   private _audioToVideoLazy?: AudioToVideoClient; // lazy-loading cache
@@ -75,6 +77,7 @@ export class V1Client extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
     if (this._opts.lazyLoad === false) {
+      this.account;
       this.aiClothesChanger;
       this.aiFaceEditor;
       this.aiGifGenerator;
@@ -453,6 +456,16 @@ export class V1Client extends CoreResourceClient {
           this._client,
           this._opts,
         ))
+    );
+  }
+
+  get account(): AccountClient {
+    return (
+      this._accountLazy ??
+      (this._accountLazy = new (require("./account").AccountClient)(
+        this._client,
+        this._opts,
+      ))
     );
   }
 }
