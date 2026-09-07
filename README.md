@@ -201,6 +201,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 
 ## Module Documentation and Snippets
 
+### [v1.account](src/resources/v1/account/README.md)
+
+- [list](src/resources/v1/account/README.md#list) - Get account details
+
 ### [v1.aiClothesChanger](src/resources/v1/ai-clothes-changer/README.md)
 
 - [create](src/resources/v1/ai-clothes-changer/README.md#create) - AI Clothes Changer
