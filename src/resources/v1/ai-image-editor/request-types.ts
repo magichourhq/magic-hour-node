@@ -43,6 +43,10 @@ export type CreateRequest = {
    *   - Supported resolutions: 640px, 1k, 2k, 4k
    *   - Available for tiers: creator, pro, business
    *   - Max additional input images: 9
+   * - `gpt-image-2.5-flare` - from 100 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k, 4k
+   *   - Available for tiers: creator, pro, business
+   *   - Max additional input images: 9
    * - `nano-banana` - from 50 credits/image
    *   - Supported resolutions: 640px, 1k
    *   - Available for tiers: creator, pro, business
@@ -82,6 +86,7 @@ export type CreateRequest = {
         | "default"
         | "flux-2-klein"
         | "gpt-image-2"
+        | "gpt-image-2.5-flare"
         | "nano-banana"
         | "nano-banana-2"
         | "nano-banana-2-lite"
@@ -109,6 +114,7 @@ export type CreateRequest = {
    * **Per-model support:**
    * - `flux-2-klein` - 640px, 1k, 2k
    * - `gpt-image-2` - 640px, 1k, 2k, 4k
+   * - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
    * - `nano-banana` - 640px, 1k
    * - `nano-banana-2` - 640px, 1k, 2k, 4k
    * - `nano-banana-2-lite` - 640px, 1k
@@ -140,6 +146,7 @@ export type External$CreateRequest = {
         | "default"
         | "flux-2-klein"
         | "gpt-image-2"
+        | "gpt-image-2.5-flare"
         | "nano-banana"
         | "nano-banana-2"
         | "nano-banana-2-lite"
@@ -174,6 +181,7 @@ const SchemaIn$CreateRequest: z.ZodType<
         "default",
         "flux-2-klein",
         "gpt-image-2",
+        "gpt-image-2.5-flare",
         "nano-banana",
         "nano-banana-2",
         "nano-banana-2-lite",
@@ -220,6 +228,7 @@ const SchemaOut$CreateRequest: z.ZodType<
         "default",
         "flux-2-klein",
         "gpt-image-2",
+        "gpt-image-2.5-flare",
         "nano-banana",
         "nano-banana-2",
         "nano-banana-2-lite",
