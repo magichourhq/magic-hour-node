@@ -19,6 +19,10 @@
  *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
  *   - Image count allowed: 1, 2, 3, 4
+ * - `krea-2` - from 10 credits/image
+ *   - Supported resolutions: 640px, 1k
+ *   - Available for tiers: free, creator, pro, business
+ *   - Image count allowed: 1
  * - `nano-banana` - from 50 credits/image
  *   - Supported resolutions: 640px, 1k
  *   - Available for tiers: creator, pro, business
@@ -58,6 +62,7 @@ export type V1AiImageGeneratorCreateBodyModelEnum =
   | "flux-schnell"
   | "gpt-image-2"
   | "gpt-image-2.5-flare"
+  | "krea-2"
   | "nano-banana"
   | "nano-banana-2"
   | "nano-banana-2-lite"
