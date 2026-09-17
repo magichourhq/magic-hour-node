@@ -38,6 +38,7 @@ export type CreateRequest = {
    * * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
    * * **`veo3.1-lite`**: Toggle-able: audio adds extra credits when enabled
    * * **`wan-2.2`**: Not supported
+   * * **`wan-3.0`**: Toggle-able: no additional credits for audio
    *
    */
   audio?: boolean | undefined;
@@ -58,6 +59,7 @@ export type CreateRequest = {
    * * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
    * * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
    * * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15
+   * * **`wan-3.0`**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
    *
    */
   endSeconds: number;
@@ -85,6 +87,7 @@ export type CreateRequest = {
    * * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
    * * `veo3.1-lite`: Balanced realism and audio at a lower cost than Veo 3.1.
    * * `wan-2.2`: Best for physical motion, action, and camera movement.
+   * * `wan-3.0`: High-quality video with native audio, long clips, and end-frame control.
    *
    * If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
    */
@@ -111,6 +114,7 @@ export type CreateRequest = {
         | "veo3.1-audio"
         | "veo3.1-lite"
         | "wan-2.2"
+        | "wan-3.0"
       )
     | undefined;
   /**
@@ -134,6 +138,7 @@ export type CreateRequest = {
    * * **`veo3.1`**: Supports 720p, 1080p.
    * * **`veo3.1-lite`**: Supports 720p, 1080p.
    * * **`wan-2.2`**: Supports 480p, 720p, 1080p.
+   * * **`wan-3.0`**: Supports 480p, 720p, 1080p.
    *
    */
   resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
@@ -182,6 +187,7 @@ export type External$CreateRequest = {
         | "veo3.1-audio"
         | "veo3.1-lite"
         | "wan-2.2"
+        | "wan-3.0"
       )
     | undefined;
   name?: string | undefined;
@@ -226,6 +232,7 @@ const SchemaIn$CreateRequest: z.ZodType<
         "veo3.1-audio",
         "veo3.1-lite",
         "wan-2.2",
+        "wan-3.0",
       ])
       .optional(),
     name: z.string().optional(),
@@ -284,6 +291,7 @@ const SchemaOut$CreateRequest: z.ZodType<
         "veo3.1-audio",
         "veo3.1-lite",
         "wan-2.2",
+        "wan-3.0",
       ])
       .optional(),
     name: z.string().optional(),

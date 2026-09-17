@@ -1,5 +1,5 @@
 {
-  "id": "c9d7c8d5-324c-4a13-a26e-08112dda9770",
+  "id": "27ed8c48-c54e-4739-80ae-5c72673db14b",
   "tracked_paths": [
     {
       "editable": true,
@@ -556,6 +556,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/saved-items/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/saved-items/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/saved-items/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/saved-items/resource-client.ts"
     },
     {
       "editable": true,
@@ -1239,6 +1255,30 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-saved-items-list-response-items-item-assets-item-media-kind-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-saved-items-list-response-items-item-assets-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-saved-items-list-response-items-item-type-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-saved-items-list-response-items-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-saved-items-list-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-saved-items-list-type-enum.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-text-to-video-create-body-aspect-ratio-enum.ts"
     },
     {
@@ -1448,6 +1488,10 @@
     {
       "editable": false,
       "path": "test/v1-photo-colorizer.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-saved-items.test.ts"
     },
     {
       "editable": false,

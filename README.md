@@ -355,6 +355,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/photo-colorizer/README.md#create) - Photo Colorizer
 - [generate](src/resources/v1/photo-colorizer/README.md#generate) - Photo Colorizer Generate Workflow
 
+### [v1.savedItems](src/resources/v1/saved-items/README.md)
+
+- [list](src/resources/v1/saved-items/README.md#list) - List saved items
+
 ### [v1.textToVideo](src/resources/v1/text-to-video/README.md)
 
 - [create](src/resources/v1/text-to-video/README.md#create) - Text-to-Video
