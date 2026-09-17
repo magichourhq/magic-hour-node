@@ -34,11 +34,13 @@ import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
 import { ImageToVideoClient } from "magic-hour/resources/v1/image-to-video";
 import { LipSyncClient } from "magic-hour/resources/v1/lip-sync";
 import { PhotoColorizerClient } from "magic-hour/resources/v1/photo-colorizer";
+import { SavedItemsClient } from "magic-hour/resources/v1/saved-items";
 import { TextToVideoClient } from "magic-hour/resources/v1/text-to-video";
 import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 
 export class V1Client extends CoreResourceClient {
+  private _savedItemsLazy?: SavedItemsClient; // lazy-loading cache
   private _accountLazy?: AccountClient; // lazy-loading cache
   private _characterReplaceLazy?: CharacterReplaceClient; // lazy-loading cache
   private _aiVideoEditorLazy?: AiVideoEditorClient; // lazy-loading cache
@@ -107,6 +109,7 @@ export class V1Client extends CoreResourceClient {
       this.imageToVideo;
       this.lipSync;
       this.photoColorizer;
+      this.savedItems;
       this.textToVideo;
       this.videoProjects;
       this.videoToVideo;
@@ -463,6 +466,16 @@ export class V1Client extends CoreResourceClient {
     return (
       this._accountLazy ??
       (this._accountLazy = new (require("./account").AccountClient)(
+        this._client,
+        this._opts,
+      ))
+    );
+  }
+
+  get savedItems(): SavedItemsClient {
+    return (
+      this._savedItemsLazy ??
+      (this._savedItemsLazy = new (require("./saved-items").SavedItemsClient)(
         this._client,
         this._opts,
       ))
