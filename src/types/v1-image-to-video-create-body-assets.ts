@@ -15,7 +15,7 @@ export type V1ImageToVideoCreateBodyAssets = {
    * * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
    * * **`minimax-h3`**: Not supported
    * * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
-   * * **`seedance-2.0`**: Supports 480p, 720p.
+   * * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
    * * **`seedance-2.0-mini`**: Supports 480p, 720p.
    * * **`seedance-2.5`**: Supports 480p, 720p.
    * * **`sora-2`**: Not supported
