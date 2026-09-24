@@ -40,7 +40,7 @@ const res = await client.v1.faceDetection.generate(
     downloadOutputs: true,
     downloadDirectory: ".",
   },
-});
+);
 ```
 
 <!-- CUSTOM DOCS END -->
