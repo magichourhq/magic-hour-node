@@ -18,6 +18,7 @@ describe("tests client.v1.textToVideo.create", () => {
             model: "kling-3.0",
             name: "My Text To Video video",
             orientation: "landscape",
+            references: [{ filePath: "string", name: "string" }],
             resolution: "720p",
             style: { prompt: "a dog running", qualityMode: "quick" },
           })
@@ -29,6 +30,7 @@ describe("tests client.v1.textToVideo.create", () => {
           model: "kling-3.0",
           name: "My Text To Video video",
           orientation: "landscape",
+          references: [{ filePath: "string", name: "string" }],
           resolution: "720p",
           style: { prompt: "a dog running", qualityMode: "quick" },
         }),
