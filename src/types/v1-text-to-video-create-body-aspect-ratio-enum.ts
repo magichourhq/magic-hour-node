@@ -4,7 +4,6 @@
  * * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
  * * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
  * * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
- * * **`ltx-2.3`**: Supports 9:16, 16:9, 1:1.
  * * **`ltx-2.5`**: Supports 9:16, 16:9, 1:1.
  * * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
  * * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.

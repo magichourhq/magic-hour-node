@@ -165,6 +165,7 @@ export { V1TextToVideoCreateBody } from "./v1-text-to-video-create-body";
 export { V1TextToVideoCreateBodyAspectRatioEnum } from "./v1-text-to-video-create-body-aspect-ratio-enum";
 export { V1TextToVideoCreateBodyModelEnum } from "./v1-text-to-video-create-body-model-enum";
 export { V1TextToVideoCreateBodyOrientationEnum } from "./v1-text-to-video-create-body-orientation-enum";
+export { V1TextToVideoCreateBodyReferencesItem } from "./v1-text-to-video-create-body-references-item";
 export { V1TextToVideoCreateBodyResolutionEnum } from "./v1-text-to-video-create-body-resolution-enum";
 export { V1TextToVideoCreateBodyStyle } from "./v1-text-to-video-create-body-style";
 export { V1TextToVideoCreateBodyStyleQualityModeEnum } from "./v1-text-to-video-create-body-style-quality-mode-enum";

@@ -2,6 +2,11 @@ import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
 
 import {
+  External$V1TextToVideoCreateBodyReferencesItem,
+  Schemas$V1TextToVideoCreateBodyReferencesItem,
+  V1TextToVideoCreateBodyReferencesItem,
+} from "magic-hour/types/v1-text-to-video-create-body-references-item";
+import {
   External$V1TextToVideoCreateBodyStyle,
   Schemas$V1TextToVideoCreateBodyStyle,
   V1TextToVideoCreateBodyStyle,
@@ -17,7 +22,6 @@ export type CreateRequest = {
    * * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
    * * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
    * * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
-   * * **`ltx-2.3`**: Supports 9:16, 16:9, 1:1.
    * * **`ltx-2.5`**: Supports 9:16, 16:9, 1:1.
    * * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
    * * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
@@ -39,7 +43,6 @@ export type CreateRequest = {
    * * **`gemini-omni-1.1`**: Not supported
    * * **`kling-2.6`**: Not supported
    * * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
-   * * **`ltx-2.3`**: Toggle-able: no additional credits for audio
    * * **`ltx-2.5`**: Toggle-able: no additional credits for audio
    * * **`minimax-h3`**: Toggle-able: no additional credits for audio
    * * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
@@ -57,16 +60,15 @@ export type CreateRequest = {
   /**
    * The total duration of the output video in seconds. Supported durations depend on the chosen model:
    *
-   * * **`gemini-omni-1.1`**: 3, 4, 5, 6, 7, 8, 9, 10
+   * * **`gemini-omni-1.1`**: any integer from 3 to 10
    * * **`kling-2.6`**: 5, 10
-   * * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-   * * **`ltx-2.3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
-   * * **`ltx-2.5`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
-   * * **`minimax-h3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
-   * * **`seedance-1.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
-   * * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-   * * **`seedance-2.0-mini`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-   * * **`seedance-2.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+   * * **`kling-3.0`**: any integer from 3 to 15
+   * * **`ltx-2.5`**: any integer from 1 to 60
+   * * **`minimax-h3`**: any integer from 1 to 30
+   * * **`seedance-1.5`**: any integer from 4 to 12
+   * * **`seedance-2.0`**: any integer from 4 to 15
+   * * **`seedance-2.0-mini`**: any integer from 4 to 15
+   * * **`seedance-2.5`**: any integer from 4 to 30
    * * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
    * * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
    * * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
@@ -82,7 +84,6 @@ export type CreateRequest = {
    * * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
    * * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
    * * `kling-3.0`: Best for cinematic stories, references, and optional audio.
-   * * `ltx-2.3`: Fastest for general scenes, long clips, audio, and rapid iteration.
    * * `ltx-2.5`: Fastest for general scenes, long clips, audio, and rapid iteration.
    * * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
    * * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
@@ -131,19 +132,19 @@ export type CreateRequest = {
    * Deprecated. Use `aspect_ratio` instead.
    */
   orientation?: ("landscape" | "portrait" | "square") | undefined;
+  references?: V1TextToVideoCreateBodyReferencesItem[] | undefined;
   /**
    * Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
    *
    * * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
    * * **`kling-2.6`**: Supports 720p, 1080p.
    * * **`kling-3.0`**: Supports 720p, 1080p, 4k.
-   * * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
    * * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
    * * **`minimax-h3`**: Supports 480p, 720p, 1080p.
    * * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
    * * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
    * * **`seedance-2.0-mini`**: Supports 480p, 720p.
-   * * **`seedance-2.5`**: Supports 480p, 720p.
+   * * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
    * * **`sora-2`**: Supports 720p.
    * * **`veo3.1`**: Supports 720p, 1080p.
    * * **`veo3.1-lite`**: Supports 720p, 1080p.
@@ -192,6 +193,7 @@ export type External$CreateRequest = {
     | undefined;
   name?: string | undefined;
   orientation?: ("landscape" | "portrait" | "square") | undefined;
+  references?: External$V1TextToVideoCreateBodyReferencesItem[] | undefined;
   resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   style: External$V1TextToVideoCreateBodyStyle;
 };
@@ -236,6 +238,9 @@ const SchemaIn$CreateRequest: z.ZodType<
       .optional(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]).optional(),
+    references: z
+      .array(Schemas$V1TextToVideoCreateBodyReferencesItem.in)
+      .optional(),
     resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     style: Schemas$V1TextToVideoCreateBodyStyle.in,
   })
@@ -247,6 +252,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       model: "model",
       name: "name",
       orientation: "orientation",
+      references: "references",
       resolution: "resolution",
       style: "style",
     });
@@ -293,6 +299,9 @@ const SchemaOut$CreateRequest: z.ZodType<
       .optional(),
     name: z.string().optional(),
     orientation: z.enum(["landscape", "portrait", "square"]).optional(),
+    references: z
+      .array(Schemas$V1TextToVideoCreateBodyReferencesItem.out)
+      .optional(),
     resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     style: Schemas$V1TextToVideoCreateBodyStyle.out,
   })
@@ -304,6 +313,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       model: "model",
       name: "name",
       orientation: "orientation",
+      references: "references",
       resolution: "resolution",
       style: "style",
     });
