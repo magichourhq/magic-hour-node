@@ -35,7 +35,7 @@ const res = await client.v1.aiImageUpscaler.generate(
     assets: { imageFilePath: "/path/to/1234.png" },
     name: "Image Upscaler image",
     scaleFactor: 2.0,
-    style: { enhancement: "Balanced" },
+    style: { mode: "balanced" },
   },
   {
     waitForCompletion: true,

@@ -32,9 +32,9 @@ import { Client } from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.textToVideo.generate(
   {
+    aspectRatio: "16:9",
     endSeconds: 5.0,
     name: "Text To Video video",
-    orientation: "landscape",
     resolution: "720p",
     style: { prompt: "a dog running" },
   },
