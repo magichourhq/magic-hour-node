@@ -33,12 +33,6 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.faceSwapPhoto.generate(
   {
     assets: {
-      faceMappings: [
-        {
-          newFace: "api-assets/id/1234.png",
-          originalFace: "api-assets/id/0-0.png",
-        },
-      ],
       faceSwapMode: "all-faces",
       sourceFilePath: "/path/to/1234.png",
       targetFilePath: "/path/to/1234.png",
