@@ -2,6 +2,26 @@
 
 ## Module Functions
 
+<!-- CUSTOM DOCS START -->
+
+### Generate video translation <a name="generate"></a>
+
+`generate` uploads a local video, creates a translation job, waits for completion, and downloads the output. `assets.videoFilePath` also accepts a URL or previously uploaded `api-assets` path. Set `waitForCompletion` or `downloadOutputs` to `false` to skip either step.
+
+```typescript
+import { Client } from "magic-hour";
+
+const client = new Client({ token: process.env["API_TOKEN"]!! });
+const res = await client.v1.aiVideoTranslator.generate({
+  assets: { videoFilePath: "/path/to/video.mp4" },
+  endSeconds: 15.0,
+  targetLanguage: "Spanish",
+  startSeconds: 0.0,
+});
+```
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Video Translator <a name="create"></a>
 
 **What this API does**

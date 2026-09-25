@@ -6,14 +6,56 @@ import {
   ResourceClientOptions,
 } from "make-api-request-js";
 
+import {
+  GenerateOptions,
+  GenerateRequestType,
+} from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-video-translator/request-types";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import * as types from "magic-hour/types";
 import { Schemas$V1AiVideoTranslatorCreateBody } from "magic-hour/types/v1-ai-video-translator-create-body";
 import { Schemas$V1AiVideoTranslatorCreateResponse } from "magic-hour/types/v1-ai-video-translator-create-response";
 
+type GenerateRequest = GenerateRequestType<
+  requests.CreateRequest,
+  {
+    /** Local file path, direct URL, or previously uploaded `api-assets` path. */
+    videoFilePath: string;
+  }
+>;
+
 export class AiVideoTranslatorClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
+  }
+
+  /** Upload a video, create a translation job, and optionally wait and download. */
+  async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
+    const {
+      waitForCompletion = true,
+      downloadOutputs = true,
+      downloadDirectory = undefined,
+      ...createOpts
+    } = opts;
+
+    const videoFilePath = await new FilesClient(
+      this._client,
+      this._opts,
+    ).uploadFile(request.assets.videoFilePath);
+    const createResponse = await this.create(
+      { ...request, assets: { ...request.assets, videoFilePath } },
+      createOpts,
+    );
+    getLogger().info(
+      `Created AiVideoTranslatorClient project ${createResponse.id}`,
+    );
+
+    return new VideoProjectsClient(this._client, this._opts).checkResult(
+      { id: createResponse.id },
+      { waitForCompletion, downloadOutputs, downloadDirectory, ...createOpts },
+    );
   }
 
   /**
