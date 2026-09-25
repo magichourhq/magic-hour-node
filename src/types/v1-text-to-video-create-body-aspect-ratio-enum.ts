@@ -10,7 +10,6 @@
  * * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
- * * **`sora-2`**: Supports 9:16, 16:9.
  * * **`veo3.1`**: Supports 9:16, 16:9.
  * * **`veo3.1-lite`**: Supports 9:16, 16:9.
  * * **`wan-2.2`**: Supports 9:16, 16:9, 1:1.

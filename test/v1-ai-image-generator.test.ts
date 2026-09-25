@@ -17,7 +17,7 @@ describe("tests client.v1.aiImageGenerator.create", () => {
             model: "default",
             name: "My Ai Image image",
             orientation: "landscape",
-            resolution: "auto",
+            resolution: "1k",
             style: {
               prompt: "Cool image",
               qualityMode: "pro",
@@ -31,7 +31,7 @@ describe("tests client.v1.aiImageGenerator.create", () => {
           model: "default",
           name: "My Ai Image image",
           orientation: "landscape",
-          resolution: "auto",
+          resolution: "1k",
           style: {
             prompt: "Cool image",
             qualityMode: "pro",

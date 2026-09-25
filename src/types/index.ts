@@ -62,6 +62,11 @@ export { V1AiVideoEditorCreateBodyModelEnum } from "./v1-ai-video-editor-create-
 export { V1AiVideoEditorCreateBodyResolutionEnum } from "./v1-ai-video-editor-create-body-resolution-enum";
 export { V1AiVideoEditorCreateBodyStyle } from "./v1-ai-video-editor-create-body-style";
 export { V1AiVideoEditorCreateResponse } from "./v1-ai-video-editor-create-response";
+export { V1AiVideoTranslatorCreateBody } from "./v1-ai-video-translator-create-body";
+export { V1AiVideoTranslatorCreateBodyAssets } from "./v1-ai-video-translator-create-body-assets";
+export { V1AiVideoTranslatorCreateBodyResolutionEnum } from "./v1-ai-video-translator-create-body-resolution-enum";
+export { V1AiVideoTranslatorCreateBodyTargetLanguageEnum } from "./v1-ai-video-translator-create-body-target-language-enum";
+export { V1AiVideoTranslatorCreateResponse } from "./v1-ai-video-translator-create-response";
 export { V1AiVoiceClonerCreateBody } from "./v1-ai-voice-cloner-create-body";
 export { V1AiVoiceClonerCreateBodyAssets } from "./v1-ai-voice-cloner-create-body-assets";
 export { V1AiVoiceClonerCreateBodyStyle } from "./v1-ai-voice-cloner-create-body-style";
