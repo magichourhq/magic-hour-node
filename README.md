@@ -260,6 +260,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/ai-video-editor/README.md#create) - AI Video Editor
 - [generate](src/resources/v1/ai-video-editor/README.md#generate) - AI Video Editor Generate Workflow
 
+### [v1.aiVideoTranslator](src/resources/v1/ai-video-translator/README.md)
+
+- [create](src/resources/v1/ai-video-translator/README.md#create) - AI Video Translator
+
 ### [v1.aiVoiceCloner](src/resources/v1/ai-voice-cloner/README.md)
 
 - [create](src/resources/v1/ai-voice-cloner/README.md#create) - AI Voice Cloner

@@ -10,6 +10,7 @@ export * as aiMemeGenerator from "./ai-meme-generator";
 export * as aiQrCodeGenerator from "./ai-qr-code-generator";
 export * as aiTalkingPhoto from "./ai-talking-photo";
 export * as aiVideoEditor from "./ai-video-editor";
+export * as aiVideoTranslator from "./ai-video-translator";
 export * as aiVoiceCloner from "./ai-voice-cloner";
 export * as aiVoiceGenerator from "./ai-voice-generator";
 export * as animation from "./animation";

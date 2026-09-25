@@ -11,7 +11,6 @@
  * * `seedance-2.0`: Best for reference-led clips with precise subject control.
  * * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
  * * `seedance-2.5`: Best for premium realism, detail, and natural motion.
- * * `sora-2`: Best for creative concepts and longer clips with audio.
  * * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
  * * `veo3.1-lite`: Balanced realism and audio at a lower cost than Veo 3.1.
  * * `wan-2.2`: Best for physical motion, action, and camera movement.
