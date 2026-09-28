@@ -263,6 +263,7 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 ### [v1.aiVideoTranslator](src/resources/v1/ai-video-translator/README.md)
 
 - [create](src/resources/v1/ai-video-translator/README.md#create) - AI Video Translator
+- [generate](src/resources/v1/ai-video-translator/README.md#generate) - Generate video translation
 
 ### [v1.aiVoiceCloner](src/resources/v1/ai-voice-cloner/README.md)
 

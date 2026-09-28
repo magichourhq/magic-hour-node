@@ -16,11 +16,11 @@ export type V1CharacterReplaceCreateBodyStyle = {
    */
   mode?: ("animate" | "replace") | undefined;
   /**
-   * On-frame markers for manual subject selection. Required when `selection_mode` is `point`. Ignored when `selection_mode` is `auto` or omitted.
+   * On-frame markers for manual subject selection. Required when `selection_mode` is `point`. Ignored when `selection_mode` is `auto` or omitted. Rejected for models without subject selection (supported by `wan-animate`).
    */
   points?: V1CharacterReplaceCreateBodyStylePointsItem[] | undefined;
   /**
-   * How to locate the subject in the source video. `auto` detects a person automatically. `point` uses your `points` to mark the subject. Defaults to `auto`.
+   * How to locate the subject in the source video. `auto` detects a person automatically. `point` uses your `points` to mark the subject and is supported by `wan-animate`. Defaults to `auto`.
    */
   selectionMode?: ("auto" | "point") | undefined;
 };

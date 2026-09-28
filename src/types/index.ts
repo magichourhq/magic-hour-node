@@ -104,6 +104,7 @@ export { V1BodySwapCreateBodyResolutionEnum } from "./v1-body-swap-create-body-r
 export { V1BodySwapCreateResponse } from "./v1-body-swap-create-response";
 export { V1CharacterReplaceCreateBody } from "./v1-character-replace-create-body";
 export { V1CharacterReplaceCreateBodyAssets } from "./v1-character-replace-create-body-assets";
+export { V1CharacterReplaceCreateBodyModelEnum } from "./v1-character-replace-create-body-model-enum";
 export { V1CharacterReplaceCreateBodyResolutionEnum } from "./v1-character-replace-create-body-resolution-enum";
 export { V1CharacterReplaceCreateBodyStyle } from "./v1-character-replace-create-body-style";
 export { V1CharacterReplaceCreateBodyStyleModeEnum } from "./v1-character-replace-create-body-style-mode-enum";

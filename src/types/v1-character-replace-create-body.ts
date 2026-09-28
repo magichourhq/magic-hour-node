@@ -25,13 +25,20 @@ export type V1CharacterReplaceCreateBody = {
    */
   endSeconds: number;
   /**
+   * Model to use. Defaults to `wan-animate`.
+   *
+   * * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
+   * * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
+   */
+  model?: ("kling-3.0" | "wan-animate") | undefined;
+  /**
    * Give your video a custom name for easy identification.
    */
   name?: string | undefined;
   /**
-   * Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+   * Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
    */
-  resolution?: ("480p" | "720p") | undefined;
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
   /**
    * Start time of your clip (seconds). Must be ≥ 0.
    */
@@ -50,8 +57,9 @@ export type V1CharacterReplaceCreateBody = {
 export type External$V1CharacterReplaceCreateBody = {
   assets: External$V1CharacterReplaceCreateBodyAssets;
   end_seconds: number;
+  model?: ("kling-3.0" | "wan-animate") | undefined;
   name?: string | undefined;
-  resolution?: ("480p" | "720p") | undefined;
+  resolution?: ("1080p" | "480p" | "720p") | undefined;
   start_seconds?: number | undefined;
   style?: External$V1CharacterReplaceCreateBodyStyle | undefined;
 };
@@ -67,8 +75,9 @@ const SchemaIn$V1CharacterReplaceCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1CharacterReplaceCreateBodyAssets.in,
     end_seconds: z.number(),
+    model: z.enum(["kling-3.0", "wan-animate"]).optional(),
     name: z.string().optional(),
-    resolution: z.enum(["480p", "720p"]).optional(),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     start_seconds: z.number().optional(),
     style: Schemas$V1CharacterReplaceCreateBodyStyle.in.optional(),
   })
@@ -76,6 +85,7 @@ const SchemaIn$V1CharacterReplaceCreateBody: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       end_seconds: "endSeconds",
+      model: "model",
       name: "name",
       resolution: "resolution",
       start_seconds: "startSeconds",
@@ -95,8 +105,9 @@ const SchemaOut$V1CharacterReplaceCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1CharacterReplaceCreateBodyAssets.out,
     endSeconds: z.number(),
+    model: z.enum(["kling-3.0", "wan-animate"]).optional(),
     name: z.string().optional(),
-    resolution: z.enum(["480p", "720p"]).optional(),
+    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     startSeconds: z.number().optional(),
     style: Schemas$V1CharacterReplaceCreateBodyStyle.out.optional(),
   })
@@ -104,6 +115,7 @@ const SchemaOut$V1CharacterReplaceCreateBody: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       endSeconds: "end_seconds",
+      model: "model",
       name: "name",
       resolution: "resolution",
       startSeconds: "start_seconds",
