@@ -1,5 +1,5 @@
 {
-  "id": "b8cb2fe5-8a29-4b68-ace5-1c284ca465c1",
+  "id": "4a67823b-635a-4217-8514-42001169a4cd",
   "tracked_paths": [
     {
       "editable": true,
@@ -1060,6 +1060,10 @@
     {
       "editable": false,
       "path": "src/types/v1-character-replace-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-character-replace-create-body-model-enum.ts"
     },
     {
       "editable": false,
