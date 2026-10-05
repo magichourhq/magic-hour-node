@@ -18,6 +18,7 @@
  * - `nano-banana-2` - 640px, 1k, 2k, 4k
  * - `nano-banana-2-lite` - 640px, 1k
  * - `nano-banana-pro` - 1k, 2k, 4k
+ * - `qwen-image-2.1` - 640px, 1k, 2k
  * - `seedream-v4` - 640px, 1k, 2k, 4k
  * - `seedream-v5-pro` - 640px, 1k, 2k
  * - `z-image-turbo` - 640px, 1k, 2k
