@@ -31,6 +31,10 @@
  *   - Supported resolutions: 640px, 1k
  *   - Available for tiers: creator, pro, business
  *   - Max additional input images: 9
+ * - `nano-banana-2.1` - from 50 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k, 4k
+ *   - Available for tiers: creator, pro, business
+ *   - Max additional input images: 9
  * - `nano-banana-pro` - from 150 credits/image
  *   - Supported resolutions: 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
@@ -66,6 +70,7 @@ export type V1AiImageEditorCreateBodyModelEnum =
   | "nano-banana"
   | "nano-banana-2"
   | "nano-banana-2-lite"
+  | "nano-banana-2.1"
   | "nano-banana-pro"
   | "qwen-edit"
   | "qwen-image-2.1"

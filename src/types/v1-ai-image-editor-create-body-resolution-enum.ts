@@ -16,6 +16,7 @@
  * - `nano-banana` - 640px, 1k
  * - `nano-banana-2` - 640px, 1k, 2k, 4k
  * - `nano-banana-2-lite` - 640px, 1k
+ * - `nano-banana-2.1` - 640px, 1k, 2k, 4k
  * - `nano-banana-pro` - 1k, 2k, 4k
  * - `qwen-edit` - 640px, 1k, 2k
  * - `qwen-image-2.1` - 640px, 1k, 2k
