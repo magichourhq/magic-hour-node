@@ -18,7 +18,7 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
             },
             endSeconds: 15.0,
             maxResolution: 1024,
-            name: "My Talking Photo image",
+            name: "My Talking Photo video",
             startSeconds: 0.0,
             style: {
               generationMode: "realistic",
@@ -34,7 +34,7 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
           },
           endSeconds: 15.0,
           maxResolution: 1024,
-          name: "My Talking Photo image",
+          name: "My Talking Photo video",
           startSeconds: 0.0,
           style: {
             generationMode: "realistic",

@@ -29,7 +29,7 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   maxResolution?: number | undefined;
   /**
-   * Give your image a custom name for easy identification.
+   * Give your video a custom name for easy identification.
    */
   name?: string | undefined;
   /**

@@ -56,6 +56,10 @@ export type CreateRequest = {
    *   - Supported resolutions: 640px, 1k
    *   - Available for tiers: creator, pro, business
    *   - Image count allowed: 1, 2, 3, 4
+   * - `nano-banana-2.1` - from 50 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k, 4k
+   *   - Available for tiers: creator, pro, business
+   *   - Image count allowed: 1, 4, 9, 16
    * - `nano-banana-pro` - from 150 credits/image
    *   - Supported resolutions: 1k, 2k, 4k
    *   - Available for tiers: creator, pro, business
@@ -92,6 +96,7 @@ export type CreateRequest = {
         | "nano-banana"
         | "nano-banana-2"
         | "nano-banana-2-lite"
+        | "nano-banana-2.1"
         | "nano-banana-pro"
         | "qwen-image-2.1"
         | "seedream"
@@ -129,6 +134,7 @@ export type CreateRequest = {
    * - `nano-banana` - 640px, 1k
    * - `nano-banana-2` - 640px, 1k, 2k, 4k
    * - `nano-banana-2-lite` - 640px, 1k
+   * - `nano-banana-2.1` - 640px, 1k, 2k, 4k
    * - `nano-banana-pro` - 1k, 2k, 4k
    * - `qwen-image-2.1` - 640px, 1k, 2k
    * - `seedream-v4` - 640px, 1k, 2k, 4k
@@ -163,6 +169,7 @@ export type External$CreateRequest = {
         | "nano-banana"
         | "nano-banana-2"
         | "nano-banana-2-lite"
+        | "nano-banana-2.1"
         | "nano-banana-pro"
         | "qwen-image-2.1"
         | "seedream"
@@ -199,6 +206,7 @@ const SchemaIn$CreateRequest: z.ZodType<
         "nano-banana",
         "nano-banana-2",
         "nano-banana-2-lite",
+        "nano-banana-2.1",
         "nano-banana-pro",
         "qwen-image-2.1",
         "seedream",
@@ -247,6 +255,7 @@ const SchemaOut$CreateRequest: z.ZodType<
         "nano-banana",
         "nano-banana-2",
         "nano-banana-2-lite",
+        "nano-banana-2.1",
         "nano-banana-pro",
         "qwen-image-2.1",
         "seedream",
