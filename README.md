@@ -154,6 +154,12 @@ const downloadUrls = result.downloads;
 
 The Magic Hour SDK includes the `ApiError` class, which includes the request and response data.
 
+### Safe Retries
+
+Retries are disabled by default. A `retries` policy passed to `generate()` also applies to its creation POST, which can create another paid project. Do not enable automatic retries on `generate()` or `create()`, or assume an `Idempotency-Key` header prevents duplicate creation.
+
+Save the returned project ID. Configure retries only on project GET requests, such as `client.v1.imageProjects.checkResult({ id: projectId }, { retries: {} })`, to recover that same job without submitting another generation.
+
 ### Basic Error Handling
 
 ```ts
