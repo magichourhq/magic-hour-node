@@ -184,7 +184,7 @@ export class FilesClient extends CoreResourceClient {
    * // Use the uploaded file in other API calls
    * const result = await client.v1.aiImageUpscaler.create({
    *   assets: { imageFilePath: filePath },
-   *   style: { upscaleFactor: 2 }
+   *   scaleFactor: 2
    * });
    * ```
    */
