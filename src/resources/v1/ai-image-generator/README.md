@@ -34,9 +34,9 @@ const res = await client.v1.aiImageGenerator.generate(
   {
     aspectRatio: "1:1",
     imageCount: 1,
-    model: "default",
+    model: "z-image-turbo",
     name: "My Ai Image image",
-    resolution: "1k",
+    resolution: "640px",
     style: { prompt: "Cool image", tool: "ai-anime-generator" },
   },
   {
@@ -79,9 +79,9 @@ const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiImageGenerator.create({
   aspectRatio: "1:1",
   imageCount: 1,
-  model: "default",
+  model: "z-image-turbo",
   name: "My Ai Image image",
-  resolution: "1k",
+  resolution: "640px",
   style: { prompt: "Cool image", tool: "ai-anime-generator" },
 });
 ```
@@ -95,5 +95,5 @@ const res = await client.v1.aiImageGenerator.create({
 ##### Example
 
 ```typescript
-{"creditsCharged": 5, "frameCost": 123, "id": "cuid-example"}
+{"creditsCharged": 5, "frameCost": 5, "id": "cuid-example"}
 ```
