@@ -22,7 +22,7 @@ npm install magic-hour
 import { Client } from "magic-hour";
 // generate your API Key at https://magichour.ai/developer
 const client = new Client({ token: process.env["API_TOKEN"]!! });
-const res = await client.v1.faceSwapPhoto.generate(
+const response = await client.v1.faceSwapPhoto.generate(
   {
     assets: {
       faceSwapMode: "all-faces",
@@ -40,7 +40,7 @@ const res = await client.v1.faceSwapPhoto.generate(
 
 console.log(`Project ID: ${response.id}`);
 console.log(`Status: ${response.status}`);
-console.log(`Downloaded files: ${response.downloaded_paths}`);
+console.log(`Downloaded files: ${response.downloadedPaths}`);
 ```
 
 ## Client Functions
@@ -122,10 +122,13 @@ console.log(`Started project: ${projectId}`);
 
 // You must handle the rest:
 // 1. Poll for completion using the image/video projects API
-const result = await client.v1.imageProjects.checkResults(projectId, {
-  waitForCompletion: true,
-  downloadOutputs: false,
-});
+const result = await client.v1.imageProjects.checkResult(
+  { id: projectId },
+  {
+    waitForCompletion: true,
+    downloadOutputs: false,
+  },
+);
 
 // 2. Download files using the download URLs
 const downloadUrls = result.downloads;
@@ -154,6 +157,8 @@ The Magic Hour SDK includes the `ApiError` class, which includes the request and
 ### Basic Error Handling
 
 ```ts
+import { ApiError } from "magic-hour";
+
 try {
   await client.v1.imageToVideo.generate({
     assets: {
