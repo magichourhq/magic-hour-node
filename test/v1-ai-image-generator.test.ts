@@ -14,10 +14,10 @@ describe("tests client.v1.aiImageGenerator.create", () => {
           .create({
             aspectRatio: "1:1",
             imageCount: 1,
-            model: "default",
+            model: "z-image-turbo",
             name: "My Ai Image image",
             orientation: "landscape",
-            resolution: "1k",
+            resolution: "640px",
             style: {
               prompt: "Cool image",
               qualityMode: "pro",
@@ -28,10 +28,10 @@ describe("tests client.v1.aiImageGenerator.create", () => {
         client.v1.aiImageGenerator.create({
           aspectRatio: "1:1",
           imageCount: 1,
-          model: "default",
+          model: "z-image-turbo",
           name: "My Ai Image image",
           orientation: "landscape",
-          resolution: "1k",
+          resolution: "640px",
           style: {
             prompt: "Cool image",
             qualityMode: "pro",

@@ -14,13 +14,19 @@ describe("tests client.v1.aiHeadshotGenerator.create", () => {
           .create({
             assets: { imageFilePath: "api-assets/id/1234.png" },
             name: "My Ai Headshot image",
-            style: { prompt: "string" },
+            style: {
+              prompt:
+                "Professional studio headshot with soft lighting and a neutral background",
+            },
           })
           .asResponse(),
         client.v1.aiHeadshotGenerator.create({
           assets: { imageFilePath: "api-assets/id/1234.png" },
           name: "My Ai Headshot image",
-          style: { prompt: "string" },
+          style: {
+            prompt:
+              "Professional studio headshot with soft lighting and a neutral background",
+          },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

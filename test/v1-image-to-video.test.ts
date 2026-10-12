@@ -19,9 +19,9 @@ describe("tests client.v1.imageToVideo.create", () => {
             audio: true,
             endSeconds: 5.0,
             height: 123,
-            model: "kling-3.0",
+            model: "ltx-2.5",
             name: "My Image To Video video",
-            resolution: "720p",
+            resolution: "480p",
             style: {
               highQuality: true,
               prompt: "a dog running",
@@ -38,9 +38,9 @@ describe("tests client.v1.imageToVideo.create", () => {
           audio: true,
           endSeconds: 5.0,
           height: 123,
-          model: "kling-3.0",
+          model: "ltx-2.5",
           name: "My Image To Video video",
-          resolution: "720p",
+          resolution: "480p",
           style: {
             highQuality: true,
             prompt: "a dog running",

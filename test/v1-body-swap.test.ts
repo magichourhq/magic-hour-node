@@ -17,7 +17,7 @@ describe("tests client.v1.bodySwap.create", () => {
               sceneFilePath: "api-assets/id/5678.png",
             },
             name: "My Body Swap image",
-            resolution: "1k",
+            resolution: "640px",
           })
           .asResponse(),
         client.v1.bodySwap.create({
@@ -26,7 +26,7 @@ describe("tests client.v1.bodySwap.create", () => {
             sceneFilePath: "api-assets/id/5678.png",
           },
           name: "My Body Swap image",
-          resolution: "1k",
+          resolution: "640px",
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

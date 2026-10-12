@@ -13,18 +13,18 @@ describe("tests client.v1.aiVideoTranslator.create", () => {
         client.v1.aiVideoTranslator
           .create({
             assets: { videoFilePath: "api-assets/id/1234.mp4" },
-            endSeconds: 15.0,
+            endSeconds: 5.0,
             name: "My Video Translator video",
-            resolution: "720p",
+            resolution: "480p",
             startSeconds: 0.0,
             targetLanguage: "Spanish",
           })
           .asResponse(),
         client.v1.aiVideoTranslator.create({
           assets: { videoFilePath: "api-assets/id/1234.mp4" },
-          endSeconds: 15.0,
+          endSeconds: 5.0,
           name: "My Video Translator video",
-          resolution: "720p",
+          resolution: "480p",
           startSeconds: 0.0,
           targetLanguage: "Spanish",
         }),
