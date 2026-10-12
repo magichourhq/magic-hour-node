@@ -13,7 +13,7 @@ describe("tests client.v1.autoSubtitleGenerator.create", () => {
         client.v1.autoSubtitleGenerator
           .create({
             assets: { videoFilePath: "api-assets/id/1234.mp4" },
-            endSeconds: 15.0,
+            endSeconds: 5.0,
             name: "My Auto Subtitle video",
             startSeconds: 0.0,
             style: {
@@ -28,13 +28,13 @@ describe("tests client.v1.autoSubtitleGenerator.create", () => {
                 textColor: "#FFFFFF",
                 verticalPosition: "bottom",
               },
-              template: "cinematic",
+              template: "karaoke",
             },
           })
           .asResponse(),
         client.v1.autoSubtitleGenerator.create({
           assets: { videoFilePath: "api-assets/id/1234.mp4" },
-          endSeconds: 15.0,
+          endSeconds: 5.0,
           name: "My Auto Subtitle video",
           startSeconds: 0.0,
           style: {
@@ -49,7 +49,7 @@ describe("tests client.v1.autoSubtitleGenerator.create", () => {
               textColor: "#FFFFFF",
               verticalPosition: "bottom",
             },
-            template: "cinematic",
+            template: "karaoke",
           },
         }),
       ]);

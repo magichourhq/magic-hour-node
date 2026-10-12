@@ -14,9 +14,9 @@ describe("tests client.v1.aiVideoEditor.create", () => {
           .create({
             assets: { videoFilePath: "api-assets/id/1234.mp4" },
             endSeconds: 5.0,
-            model: "gemini-omni-1.1",
+            model: "ltx-2.5",
             name: "My Video Editor video",
-            resolution: "720p",
+            resolution: "480p",
             startSeconds: 0.0,
             style: { prompt: "Change the car color to blue" },
           })
@@ -24,9 +24,9 @@ describe("tests client.v1.aiVideoEditor.create", () => {
         client.v1.aiVideoEditor.create({
           assets: { videoFilePath: "api-assets/id/1234.mp4" },
           endSeconds: 5.0,
-          model: "gemini-omni-1.1",
+          model: "ltx-2.5",
           name: "My Video Editor video",
-          resolution: "720p",
+          resolution: "480p",
           startSeconds: 0.0,
           style: { prompt: "Change the car color to blue" },
         }),

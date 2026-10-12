@@ -128,6 +128,17 @@ export type V1TextToVideoCreateBody = {
    * Deprecated. Use `aspect_ratio` instead.
    */
   orientation?: ("landscape" | "portrait" | "square") | undefined;
+  /**
+   * Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
+   *
+   * Supported models and reference media:
+   * * **`kling-3.0`**: Supports images, videos.
+   * * **`minimax-h3`**: Supports images, videos, audio.
+   * * **`seedance-2.0`**: Supports images, videos, audio.
+   * * **`seedance-2.0-mini`**: Supports images, videos, audio.
+   * * **`seedance-2.5`**: Supports images, videos, audio.
+   * * **`wan-3.0`**: Supports images, videos, audio.
+   */
   references?: V1TextToVideoCreateBodyReferencesItem[] | undefined;
   /**
    * Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.

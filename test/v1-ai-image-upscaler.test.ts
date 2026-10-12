@@ -17,8 +17,8 @@ describe("tests client.v1.aiImageUpscaler.create", () => {
             scaleFactor: 2.0,
             style: {
               enhancement: "Balanced",
-              mode: "balanced",
-              prompt: "string",
+              mode: "preserve",
+              prompt: "Enhance fine details and keep the image natural",
             },
           })
           .asResponse(),
@@ -28,8 +28,8 @@ describe("tests client.v1.aiImageUpscaler.create", () => {
           scaleFactor: 2.0,
           style: {
             enhancement: "Balanced",
-            mode: "balanced",
-            prompt: "string",
+            mode: "preserve",
+            prompt: "Enhance fine details and keep the image natural",
           },
         }),
       ]);

@@ -21,9 +21,9 @@ describe("tests client.v1.aiImageEditor.create", () => {
               ],
             },
             imageCount: 1.0,
-            model: "default",
+            model: "flux-2-klein",
             name: "My Ai Image Editor image",
-            resolution: "1k",
+            resolution: "640px",
             style: { model: "Nano Banana", prompt: "Give me sunglasses" },
           })
           .asResponse(),
@@ -37,9 +37,9 @@ describe("tests client.v1.aiImageEditor.create", () => {
             ],
           },
           imageCount: 1.0,
-          model: "default",
+          model: "flux-2-klein",
           name: "My Ai Image Editor image",
-          resolution: "1k",
+          resolution: "640px",
           style: { model: "Nano Banana", prompt: "Give me sunglasses" },
         }),
       ]);
