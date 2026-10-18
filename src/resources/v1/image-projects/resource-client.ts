@@ -8,6 +8,7 @@ import {
 
 import { types } from "magic-hour";
 import { downloadFiles } from "magic-hour/helpers/download";
+import { DownloadError } from "magic-hour/helpers/download-error";
 import { GenerateOptions } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
 import { getLogger } from "magic-hour/logger";
@@ -24,6 +25,10 @@ export interface V1ImageProjectsGetResponseWithDownloads
    * This field is only populated if `download_outputs` is True and the image project is complete.
    */
   downloadedPaths?: string[];
+  /**
+   * Local download failures. The completed project and remote download URLs remain available.
+   */
+  downloadErrors?: DownloadError["downloadErrors"];
 }
 
 export class ImageProjectsClient extends CoreResourceClient {
@@ -103,10 +108,20 @@ export class ImageProjectsClient extends CoreResourceClient {
       }`,
     );
 
-    const downloadedPaths = await downloadFiles(
-      apiResponse.downloads,
-      downloadDirectory,
-    );
+    let downloadedPaths: string[];
+    let downloadErrors: DownloadError["downloadErrors"] = [];
+    try {
+      downloadedPaths = await downloadFiles(
+        apiResponse.downloads,
+        downloadDirectory,
+      );
+    } catch (error) {
+      if (!(error instanceof DownloadError)) {
+        throw error;
+      }
+      downloadedPaths = error.downloadedPaths;
+      downloadErrors = error.downloadErrors;
+    }
 
     getLogger().info(
       `Downloaded outputs for image project ${request.id} to ${downloadedPaths}`,
@@ -115,6 +130,7 @@ export class ImageProjectsClient extends CoreResourceClient {
     return {
       ...apiResponse,
       downloadedPaths,
+      ...(downloadErrors.length > 0 ? { downloadErrors } : {}),
     };
   }
 
