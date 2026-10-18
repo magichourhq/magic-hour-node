@@ -89,6 +89,29 @@ console.log(`Status: ${response.status}`);
 console.log(`Downloaded files: ${response.downloadedPaths}`);
 ```
 
+### Recovering a local download failure
+
+A completed generation remains complete if its files cannot be saved locally. The
+result retains its project ID, status and remote download URLs; `downloadedPaths`
+contains any files that were saved, and `downloadErrors` describes each directory
+or file failure. A partial download therefore does not mean the generation failed.
+
+Fix the local directory or network issue, then retry the existing project without
+creating or paying for another generation:
+
+```ts
+const recovered = await client.v1.imageProjects.checkResult(
+  { id: response.id },
+  { downloadDirectory: "./outputs" },
+);
+console.log(recovered.downloadedPaths, recovered.downloadErrors);
+```
+
+Use `videoProjects` or `audioProjects` for those project types. The remote URLs
+include expiration times: retrieve the same project again if you need current URLs.
+Face detection returns the same local download errors alongside its face URLs;
+retry those URLs directly rather than submitting another face detection task.
+
 ### Create Function
 
 The `create()` function provides granular control:

@@ -8,6 +8,7 @@ import {
 
 import { types } from "magic-hour";
 import { downloadFiles } from "magic-hour/helpers/download";
+import { DownloadError } from "magic-hour/helpers/download-error";
 import { GenerateOptions } from "magic-hour/helpers/generate-type";
 import { sleep } from "magic-hour/helpers/sleep";
 import { getLogger } from "magic-hour/logger";
@@ -24,6 +25,10 @@ export interface V1VideoProjectsGetResponseWithDownloads
    * This field is only populated if `download_outputs` is True and the video project is complete.
    */
   downloadedPaths?: string[];
+  /**
+   * Local download failures. The completed project and remote download URLs remain available.
+   */
+  downloadErrors?: DownloadError["downloadErrors"];
 }
 
 export class VideoProjectsClient extends CoreResourceClient {
@@ -105,10 +110,20 @@ export class VideoProjectsClient extends CoreResourceClient {
       }`,
     );
 
-    const downloadedPaths = await downloadFiles(
-      apiResponse.downloads,
-      downloadDirectory,
-    );
+    let downloadedPaths: string[];
+    let downloadErrors: DownloadError["downloadErrors"] = [];
+    try {
+      downloadedPaths = await downloadFiles(
+        apiResponse.downloads,
+        downloadDirectory,
+      );
+    } catch (error) {
+      if (!(error instanceof DownloadError)) {
+        throw error;
+      }
+      downloadedPaths = error.downloadedPaths;
+      downloadErrors = error.downloadErrors;
+    }
 
     getLogger().info(
       `Downloaded outputs for video project ${request.id} to ${downloadedPaths}`,
@@ -117,6 +132,7 @@ export class VideoProjectsClient extends CoreResourceClient {
     return {
       ...apiResponse,
       downloadedPaths,
+      ...(downloadErrors.length > 0 ? { downloadErrors } : {}),
     };
   }
 

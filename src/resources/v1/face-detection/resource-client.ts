@@ -8,6 +8,7 @@ import {
 
 import { types } from "magic-hour";
 import { downloadFiles } from "magic-hour/helpers/download";
+import { DownloadError } from "magic-hour/helpers/download-error";
 import {
   GenerateOptions,
   GenerateRequestType,
@@ -123,13 +124,23 @@ export class FaceDetectionClient extends CoreResourceClient {
       }`,
     );
 
-    const downloadedPaths = await downloadFiles(
-      apiResponse.faces.map((f) => ({
-        url: f.url,
-        expiresAt: "ignore",
-      })),
-      downloadDirectory,
-    );
+    let downloadedPaths: string[];
+    let downloadErrors: DownloadError["downloadErrors"] = [];
+    try {
+      downloadedPaths = await downloadFiles(
+        apiResponse.faces.map((f) => ({
+          url: f.url,
+          expiresAt: "ignore",
+        })),
+        downloadDirectory,
+      );
+    } catch (error) {
+      if (!(error instanceof DownloadError)) {
+        throw error;
+      }
+      downloadedPaths = error.downloadedPaths;
+      downloadErrors = error.downloadErrors;
+    }
 
     getLogger().info(
       `Downloaded outputs for face detection ${apiResponse.id} to ${downloadedPaths}`,
@@ -138,6 +149,7 @@ export class FaceDetectionClient extends CoreResourceClient {
     return {
       ...apiResponse,
       downloadedPaths,
+      ...(downloadErrors.length > 0 ? { downloadErrors } : {}),
     };
   }
 
