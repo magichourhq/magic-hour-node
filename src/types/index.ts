@@ -53,9 +53,15 @@ export { V1AiQrCodeGeneratorCreateBodyStyle } from "./v1-ai-qr-code-generator-cr
 export { V1AiQrCodeGeneratorCreateResponse } from "./v1-ai-qr-code-generator-create-response";
 export { V1AiTalkingPhotoCreateBody } from "./v1-ai-talking-photo-create-body";
 export { V1AiTalkingPhotoCreateBodyAssets } from "./v1-ai-talking-photo-create-body-assets";
+export { V1AiTalkingPhotoCreateBodyResolutionEnum } from "./v1-ai-talking-photo-create-body-resolution-enum";
 export { V1AiTalkingPhotoCreateBodyStyle } from "./v1-ai-talking-photo-create-body-style";
 export { V1AiTalkingPhotoCreateBodyStyleGenerationModeEnum } from "./v1-ai-talking-photo-create-body-style-generation-mode-enum";
 export { V1AiTalkingPhotoCreateResponse } from "./v1-ai-talking-photo-create-response";
+export { V1AiUgcAdCreateBody } from "./v1-ai-ugc-ad-create-body";
+export { V1AiUgcAdCreateBodyAssets } from "./v1-ai-ugc-ad-create-body-assets";
+export { V1AiUgcAdCreateBodyModelEnum } from "./v1-ai-ugc-ad-create-body-model-enum";
+export { V1AiUgcAdCreateBodyResolutionEnum } from "./v1-ai-ugc-ad-create-body-resolution-enum";
+export { V1AiUgcAdCreateResponse } from "./v1-ai-ugc-ad-create-response";
 export { V1AiVideoEditorCreateBody } from "./v1-ai-video-editor-create-body";
 export { V1AiVideoEditorCreateBodyAssets } from "./v1-ai-video-editor-create-body-assets";
 export { V1AiVideoEditorCreateBodyModelEnum } from "./v1-ai-video-editor-create-body-model-enum";

@@ -1,5 +1,5 @@
 /**
- * Determines the aspect ratio of the output video.
+ * Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
  *
  * * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
  * * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
@@ -8,6 +8,7 @@
  * * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
  * * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
+ * * **`seedance-2.0-fast`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
  * * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
  * * **`veo3.1`**: Supports 9:16, 16:9.

@@ -278,6 +278,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/ai-talking-photo/README.md#create) - AI Talking Photo
 - [generate](src/resources/v1/ai-talking-photo/README.md#generate) - AI Talking Photo Generate Workflow
 
+### [v1.aiUgcAd](src/resources/v1/ai-ugc-ad/README.md)
+
+- [create](src/resources/v1/ai-ugc-ad/README.md#create) - AI UGC Ad Generator
+
 ### [v1.aiVideoEditor](src/resources/v1/ai-video-editor/README.md)
 
 - [create](src/resources/v1/ai-video-editor/README.md#create) - AI Video Editor

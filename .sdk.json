@@ -1,5 +1,5 @@
 {
-  "id": "868e7008-9baa-4917-890a-a902a256b475",
+  "id": "c72a1816-aff0-4033-9500-e56a45e4f3dd",
   "tracked_paths": [
     {
       "editable": true,
@@ -224,6 +224,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/ai-talking-photo/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-ugc-ad/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-ugc-ad/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-ugc-ad/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-ugc-ad/resource-client.ts"
     },
     {
       "editable": true,
@@ -859,6 +875,10 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-talking-photo-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-ai-talking-photo-create-body-style-generation-mode-enum.ts"
     },
     {
@@ -872,6 +892,26 @@
     {
       "editable": false,
       "path": "src/types/v1-ai-talking-photo-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-ugc-ad-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-ugc-ad-create-body-model-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-ugc-ad-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-ugc-ad-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-ugc-ad-create-response.ts"
     },
     {
       "editable": false,
@@ -1456,6 +1496,10 @@
     {
       "editable": false,
       "path": "test/v1-ai-talking-photo.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-ugc-ad.test.ts"
     },
     {
       "editable": false,
