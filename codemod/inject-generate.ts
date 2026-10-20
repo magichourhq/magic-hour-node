@@ -185,6 +185,7 @@ function isVideoClient(filePath: string): boolean {
   const videoClients = [
     "animation",
     "ai-talking-photo",
+    "ai-ugc-ad",
     "auto-subtitle-generator",
     "face-swap",
     "image-to-video",
