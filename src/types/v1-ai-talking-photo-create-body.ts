@@ -25,13 +25,21 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   endSeconds: number;
   /**
-   * Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
+   * Deprecated: use `resolution`. Still accepted as a larger-dimension cap, limited by your plan. Ignored when `resolution` is provided.
+   *
+   * After plan capping:
+   * * Below 1280 maps to `480p` (intermediate values round down).
+   * * 1280 or above maps to `720p`.
    */
   maxResolution?: number | undefined;
   /**
    * Give your video a custom name for easy identification.
    */
   name?: string | undefined;
+  /**
+   * Output preset. Overrides `max_resolution`. Defaults to 480p in prompted mode; realistic mode uses the mapped plan maximum.
+   */
+  resolution?: ("480p" | "720p") | undefined;
   /**
    * The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
    */
@@ -52,6 +60,7 @@ export type External$V1AiTalkingPhotoCreateBody = {
   end_seconds: number;
   max_resolution?: number | undefined;
   name?: string | undefined;
+  resolution?: ("480p" | "720p") | undefined;
   start_seconds: number;
   style?: External$V1AiTalkingPhotoCreateBodyStyle | undefined;
 };
@@ -69,6 +78,7 @@ const SchemaIn$V1AiTalkingPhotoCreateBody: z.ZodType<
     end_seconds: z.number(),
     max_resolution: z.number().int().optional(),
     name: z.string().optional(),
+    resolution: z.enum(["480p", "720p"]).optional(),
     start_seconds: z.number(),
     style: Schemas$V1AiTalkingPhotoCreateBodyStyle.in.optional(),
   })
@@ -78,6 +88,7 @@ const SchemaIn$V1AiTalkingPhotoCreateBody: z.ZodType<
       end_seconds: "endSeconds",
       max_resolution: "maxResolution",
       name: "name",
+      resolution: "resolution",
       start_seconds: "startSeconds",
       style: "style",
     });
@@ -97,6 +108,7 @@ const SchemaOut$V1AiTalkingPhotoCreateBody: z.ZodType<
     endSeconds: z.number(),
     maxResolution: z.number().int().optional(),
     name: z.string().optional(),
+    resolution: z.enum(["480p", "720p"]).optional(),
     startSeconds: z.number(),
     style: Schemas$V1AiTalkingPhotoCreateBodyStyle.out.optional(),
   })
@@ -106,6 +118,7 @@ const SchemaOut$V1AiTalkingPhotoCreateBody: z.ZodType<
       endSeconds: "end_seconds",
       maxResolution: "max_resolution",
       name: "name",
+      resolution: "resolution",
       startSeconds: "start_seconds",
       style: "style",
     });

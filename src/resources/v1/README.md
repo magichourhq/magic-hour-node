@@ -13,6 +13,7 @@
 - [ai-meme-generator](ai-meme-generator/README.md) - ai-meme-generator
 - [ai-qr-code-generator](ai-qr-code-generator/README.md) - ai-qr-code-generator
 - [ai-talking-photo](ai-talking-photo/README.md) - ai-talking-photo
+- [ai-ugc-ad](ai-ugc-ad/README.md) - ai-ugc-ad
 - [ai-video-editor](ai-video-editor/README.md) - ai-video-editor
 - [ai-video-translator](ai-video-translator/README.md) - ai-video-translator
 - [ai-voice-cloner](ai-voice-cloner/README.md) - ai-voice-cloner

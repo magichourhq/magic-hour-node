@@ -17,8 +17,9 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
               imageFilePath: "api-assets/id/1234.png",
             },
             endSeconds: 5.0,
-            maxResolution: 512,
+            maxResolution: 123,
             name: "My Talking Photo video",
+            resolution: "480p",
             startSeconds: 0.0,
             style: {
               generationMode: "realistic",
@@ -33,8 +34,9 @@ describe("tests client.v1.aiTalkingPhoto.create", () => {
             imageFilePath: "api-assets/id/1234.png",
           },
           endSeconds: 5.0,
-          maxResolution: 512,
+          maxResolution: 123,
           name: "My Talking Photo video",
+          resolution: "480p",
           startSeconds: 0.0,
           style: {
             generationMode: "realistic",

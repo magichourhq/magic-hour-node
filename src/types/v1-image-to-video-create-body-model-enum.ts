@@ -9,6 +9,7 @@
  * * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
  * * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
  * * `seedance-2.0`: Best for reference-led clips with precise subject control.
+ * * `seedance-2.0-fast`: Fast reference-led clips with consistent motion and audio.
  * * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
  * * `seedance-2.5`: Best for premium realism, detail, and natural motion.
  * * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
@@ -33,6 +34,7 @@ export type V1ImageToVideoCreateBodyModelEnum =
   | "seedance"
   | "seedance-1.5"
   | "seedance-2.0"
+  | "seedance-2.0-fast"
   | "seedance-2.0-mini"
   | "seedance-2.5"
   | "sora-2"

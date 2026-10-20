@@ -15,6 +15,7 @@ import { AiImageUpscalerClient } from "magic-hour/resources/v1/ai-image-upscaler
 import { AiMemeGeneratorClient } from "magic-hour/resources/v1/ai-meme-generator";
 import { AiQrCodeGeneratorClient } from "magic-hour/resources/v1/ai-qr-code-generator";
 import { AiTalkingPhotoClient } from "magic-hour/resources/v1/ai-talking-photo";
+import { AiUgcAdClient } from "magic-hour/resources/v1/ai-ugc-ad";
 import { AiVideoEditorClient } from "magic-hour/resources/v1/ai-video-editor";
 import { AiVideoTranslatorClient } from "magic-hour/resources/v1/ai-video-translator";
 import { AiVoiceClonerClient } from "magic-hour/resources/v1/ai-voice-cloner";
@@ -41,6 +42,7 @@ import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 
 export class V1Client extends CoreResourceClient {
+  private _aiUgcAdLazy?: AiUgcAdClient; // lazy-loading cache
   private _aiVideoTranslatorLazy?: AiVideoTranslatorClient; // lazy-loading cache
   private _savedItemsLazy?: SavedItemsClient; // lazy-loading cache
   private _accountLazy?: AccountClient; // lazy-loading cache
@@ -92,6 +94,7 @@ export class V1Client extends CoreResourceClient {
       this.aiMemeGenerator;
       this.aiQrCodeGenerator;
       this.aiTalkingPhoto;
+      this.aiUgcAd;
       this.aiVideoEditor;
       this.aiVideoTranslator;
       this.aiVoiceCloner;
@@ -493,6 +496,16 @@ export class V1Client extends CoreResourceClient {
           this._client,
           this._opts,
         ))
+    );
+  }
+
+  get aiUgcAd(): AiUgcAdClient {
+    return (
+      this._aiUgcAdLazy ??
+      (this._aiUgcAdLazy = new (require("./ai-ugc-ad").AiUgcAdClient)(
+        this._client,
+        this._opts,
+      ))
     );
   }
 }

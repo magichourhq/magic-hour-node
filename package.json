@@ -1,6 +1,6 @@
 {
   "name": "magic-hour",
-  "version": "0.83.1",
+  "version": "0.84.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -43,7 +43,8 @@
     "ts-morph": "^26.0.0",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
-    "typescript": "^5.2.0"
+    "typescript": "^5.2.0",
+    "@types/node-fetch": "2.6.9"
   },
   "bugs": "https://github.com/magichourhq/magic-hour-node/issues",
   "description": "Node SDK for Magic Hour API",
