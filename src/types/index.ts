@@ -48,6 +48,9 @@ export { V1AiMemeGeneratorCreateBody } from "./v1-ai-meme-generator-create-body"
 export { V1AiMemeGeneratorCreateBodyStyle } from "./v1-ai-meme-generator-create-body-style";
 export { V1AiMemeGeneratorCreateBodyStyleTemplateEnum } from "./v1-ai-meme-generator-create-body-style-template-enum";
 export { V1AiMemeGeneratorCreateResponse } from "./v1-ai-meme-generator-create-response";
+export { V1AiMusicGeneratorCreateBody } from "./v1-ai-music-generator-create-body";
+export { V1AiMusicGeneratorCreateBodyStyle } from "./v1-ai-music-generator-create-body-style";
+export { V1AiMusicGeneratorCreateResponse } from "./v1-ai-music-generator-create-response";
 export { V1AiQrCodeGeneratorCreateBody } from "./v1-ai-qr-code-generator-create-body";
 export { V1AiQrCodeGeneratorCreateBodyStyle } from "./v1-ai-qr-code-generator-create-body-style";
 export { V1AiQrCodeGeneratorCreateResponse } from "./v1-ai-qr-code-generator-create-response";
@@ -73,6 +76,10 @@ export { V1AiVideoTranslatorCreateBodyAssets } from "./v1-ai-video-translator-cr
 export { V1AiVideoTranslatorCreateBodyResolutionEnum } from "./v1-ai-video-translator-create-body-resolution-enum";
 export { V1AiVideoTranslatorCreateBodyTargetLanguageEnum } from "./v1-ai-video-translator-create-body-target-language-enum";
 export { V1AiVideoTranslatorCreateResponse } from "./v1-ai-video-translator-create-response";
+export { V1AiVideoUpscalerCreateBody } from "./v1-ai-video-upscaler-create-body";
+export { V1AiVideoUpscalerCreateBodyAssets } from "./v1-ai-video-upscaler-create-body-assets";
+export { V1AiVideoUpscalerCreateBodyResolutionEnum } from "./v1-ai-video-upscaler-create-body-resolution-enum";
+export { V1AiVideoUpscalerCreateResponse } from "./v1-ai-video-upscaler-create-response";
 export { V1AiVoiceClonerCreateBody } from "./v1-ai-voice-cloner-create-body";
 export { V1AiVoiceClonerCreateBodyAssets } from "./v1-ai-voice-cloner-create-body-assets";
 export { V1AiVoiceClonerCreateBodyStyle } from "./v1-ai-voice-cloner-create-body-style";

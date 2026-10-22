@@ -1,5 +1,5 @@
 {
-  "id": "c72a1816-aff0-4033-9500-e56a45e4f3dd",
+  "id": "f7238487-9071-47c1-95e2-3a204ea4a613",
   "tracked_paths": [
     {
       "editable": true,
@@ -195,6 +195,22 @@
     },
     {
       "editable": true,
+      "path": "src/resources/v1/ai-music-generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-music-generator/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-music-generator/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-music-generator/resource-client.ts"
+    },
+    {
+      "editable": true,
       "path": "src/resources/v1/ai-qr-code-generator/README.md"
     },
     {
@@ -272,6 +288,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/ai-video-translator/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-video-upscaler/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-video-upscaler/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/ai-video-upscaler/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/ai-video-upscaler/resource-client.ts"
     },
     {
       "editable": true,
@@ -859,6 +891,18 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-music-generator-create-body-style.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-music-generator-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-music-generator-create-response.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-ai-qr-code-generator-create-body-style.ts"
     },
     {
@@ -956,6 +1000,22 @@
     {
       "editable": false,
       "path": "src/types/v1-ai-video-translator-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-upscaler-create-body-assets.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-upscaler-create-body-resolution-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-upscaler-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-video-upscaler-create-response.ts"
     },
     {
       "editable": false,
@@ -1491,6 +1551,10 @@
     },
     {
       "editable": false,
+      "path": "test/v1-ai-music-generator.test.ts"
+    },
+    {
+      "editable": false,
       "path": "test/v1-ai-qr-code-generator.test.ts"
     },
     {
@@ -1508,6 +1572,10 @@
     {
       "editable": false,
       "path": "test/v1-ai-video-translator.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-ai-video-upscaler.test.ts"
     },
     {
       "editable": false,
