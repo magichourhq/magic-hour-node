@@ -6,14 +6,80 @@ import {
   ResourceClientOptions,
 } from "make-api-request-js";
 
+import {
+  GenerateOptions,
+  GenerateRequestType,
+} from "magic-hour/helpers/generate-type";
+import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-video-upscaler/request-types";
+import { FilesClient } from "magic-hour/resources/v1/files";
+import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import * as types from "magic-hour/types";
 import { Schemas$V1AiVideoUpscalerCreateBody } from "magic-hour/types/v1-ai-video-upscaler-create-body";
 import { Schemas$V1AiVideoUpscalerCreateResponse } from "magic-hour/types/v1-ai-video-upscaler-create-response";
 
+type GenerateRequest = GenerateRequestType<
+  requests.CreateRequest,
+  {
+    /**
+     * Video to upscale. Accepts a local path, URL, or existing api-assets path.
+     */
+    videoFilePath: string;
+  }
+>;
+
 export class AiVideoUpscalerClient extends CoreResourceClient {
   constructor(coreClient: CoreClient, opts: ResourceClientOptions) {
     super(coreClient, opts);
+  }
+
+  /**
+   * Generate upscaled video with automatic upload, polling and downloads.
+   *
+   * Accepts the same request fields as create(). By default, waits for completion
+   * and downloads outputs. Use opts to disable waiting or downloading, or set
+   * the download directory.
+   *
+   * @example
+   * ```typescript
+   * const result = await client.v1.aiVideoUpscaler.generate({
+   *   assets: { videoFilePath: "path/to/video.mp4" },
+   *   endSeconds: 5,
+   *   resolution: "1080p",
+   * });
+   * ```
+   */
+  async generate(request: GenerateRequest, opts: GenerateOptions = {}) {
+    const {
+      waitForCompletion = true,
+      downloadOutputs = true,
+      downloadDirectory = undefined,
+      ...createOpts
+    } = opts;
+
+    const fileClient = new FilesClient(this._client, this._opts);
+    const uploadedVideoFilePath = await fileClient.uploadFile(
+      request.assets.videoFilePath,
+    );
+    const createResponse = await this.create(
+      {
+        ...request,
+        assets: { ...request.assets, videoFilePath: uploadedVideoFilePath },
+      },
+      createOpts,
+    );
+    getLogger().info(`Created ai-video-upscaler project ${createResponse.id}`);
+
+    const projectsClient = new VideoProjectsClient(this._client, this._opts);
+    return projectsClient.checkResult(
+      { id: createResponse.id },
+      {
+        waitForCompletion,
+        downloadOutputs,
+        downloadDirectory,
+        ...createOpts,
+      },
+    );
   }
 
   /**

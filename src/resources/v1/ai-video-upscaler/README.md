@@ -1,5 +1,19 @@
 # v1.ai-video-upscaler
 
+## generate
+
+Creates the project, waits for completion, and downloads outputs by default. Accepts a local video path, direct URL, or existing `api-assets` path and uploads the video when needed.
+
+```typescript
+const result = await client.v1.aiVideoUpscaler.generate({
+  assets: { videoFilePath: "path/to/video.mp4" },
+  endSeconds: 5,
+  resolution: "1080p",
+});
+```
+
+Pass `{ waitForCompletion: false }` as the second argument to return the current project status, or `{ downloadOutputs: false }` to skip downloads. Use `downloadDirectory` to choose the output folder.
+
 ## Module Functions
 
 ### AI Video Upscaler <a name="create"></a>
