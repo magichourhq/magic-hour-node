@@ -268,6 +268,11 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/ai-meme-generator/README.md#create) - AI Meme Generator
 - [generate](src/resources/v1/ai-meme-generator/README.md#generate) - AI Meme Generator Generate Workflow
 
+### [v1.aiMusicGenerator](src/resources/v1/ai-music-generator/README.md)
+
+- [create](src/resources/v1/ai-music-generator/README.md#create) - AI Music Generator
+- [generate](src/resources/v1/ai-music-generator/README.md#generate) - AI Music Generator workflow
+
 ### [v1.aiQrCodeGenerator](src/resources/v1/ai-qr-code-generator/README.md)
 
 - [create](src/resources/v1/ai-qr-code-generator/README.md#create) - AI QR Code Generator
@@ -291,6 +296,11 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 
 - [create](src/resources/v1/ai-video-translator/README.md#create) - AI Video Translator
 - [generate](src/resources/v1/ai-video-translator/README.md#generate) - Generate video translation
+
+### [v1.aiVideoUpscaler](src/resources/v1/ai-video-upscaler/README.md)
+
+- [create](src/resources/v1/ai-video-upscaler/README.md#create) - AI Video Upscaler
+- [generate](src/resources/v1/ai-video-upscaler/README.md#generate) - AI Video Upscaler workflow
 
 ### [v1.aiVoiceCloner](src/resources/v1/ai-voice-cloner/README.md)
 
