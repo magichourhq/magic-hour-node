@@ -14,7 +14,7 @@ import {
 import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-voice-cloner/request-types";
 import { FilesClient } from "magic-hour/resources/v1/files";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
+import { AudioProjectsClient } from "magic-hour/resources/v1/audio-projects";
 import { Schemas$V1AiVoiceClonerCreateBody } from "magic-hour/types/v1-ai-voice-cloner-create-body";
 import { Schemas$V1AiVoiceClonerCreateResponse } from "magic-hour/types/v1-ai-voice-cloner-create-response";
 
@@ -99,7 +99,7 @@ export class AiVoiceClonerClient extends CoreResourceClient {
       `Created AiVoiceClonerClient project ${createResponse.id}`,
     );
 
-    const projectsClient = new ImageProjectsClient(this._client, this._opts);
+    const projectsClient = new AudioProjectsClient(this._client, this._opts);
 
     getLogger().debug(
       `Checking result for AiVoiceClonerClient project ${createResponse.id}`,
