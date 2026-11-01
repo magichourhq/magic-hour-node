@@ -25,7 +25,7 @@ export type V1FaceSwapCreateBodyAssets = {
    * The path of the input image with the face to be swapped.  The value is required if `face_swap_mode` is `all-faces`.
    *
    * This value is either
-   * - a direct URL to the video file
+   * - a direct URL to the file. The URL path must end in a supported file extension.
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
    *
    * See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
@@ -34,7 +34,7 @@ export type V1FaceSwapCreateBodyAssets = {
   imageFilePath?: string | undefined;
   /**
    * Your video file. Required if `video_source` is `file`. This value is either
-   * - a direct URL to the video file
+   * - a direct URL to the file. The URL path must end in a supported file extension.
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
    *
    * See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
