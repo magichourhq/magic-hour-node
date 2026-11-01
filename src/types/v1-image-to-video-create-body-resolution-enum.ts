@@ -4,6 +4,7 @@
  * * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
  * * **`kling-2.6`**: Supports 720p, 1080p.
  * * **`kling-3.0`**: Supports 720p, 1080p, 4k.
+ * * **`kling-4.0`**: Supports 720p, 1080p.
  * * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
  * * **`minimax-h3`**: Supports 480p, 720p, 1080p.
  * * **`seedance-1.5`**: Supports 480p, 720p, 1080p.

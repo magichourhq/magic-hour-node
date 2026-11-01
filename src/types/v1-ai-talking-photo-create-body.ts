@@ -21,7 +21,7 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   assets: V1AiTalkingPhotoCreateBodyAssets;
   /**
-   * The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
+   * The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 60s.
    */
   endSeconds: number;
   /**
@@ -41,7 +41,7 @@ export type V1AiTalkingPhotoCreateBody = {
    */
   resolution?: ("480p" | "720p") | undefined;
   /**
-   * The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
+   * The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 60s.
    */
   startSeconds: number;
   /**

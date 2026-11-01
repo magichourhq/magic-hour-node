@@ -16,11 +16,15 @@ export type V1CharacterReplaceCreateBodyStyle = {
    */
   mode?: ("animate" | "replace") | undefined;
   /**
-   * On-frame markers for manual subject selection. Required when `selection_mode` is `point`. Ignored when `selection_mode` is `auto` or omitted. Rejected for models without subject selection (supported by `wan-animate`).
+   * On-frame markers for manual subject selection. Required when `selection_mode` is `point`. Ignored when `selection_mode` is `auto` or omitted. Rejected for models without subject selection (supported by `wan-animate`, `minimax-h3`). `minimax-h3` subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored.
    */
   points?: V1CharacterReplaceCreateBodyStylePointsItem[] | undefined;
   /**
-   * How to locate the subject in the source video. `auto` detects a person automatically. `point` uses your `points` to mark the subject and is supported by `wan-animate`. Defaults to `auto`.
+   * Optional direction. Supported by kling-3.0, minimax-h3.
+   */
+  prompt?: string | undefined;
+  /**
+   * How to locate the subject in the source video. `auto` detects a person automatically. `point` uses your `points` to mark the subject and is supported by `wan-animate`, `minimax-h3`. `minimax-h3` subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored. Defaults to `auto`.
    */
   selectionMode?: ("auto" | "point") | undefined;
 };
@@ -33,6 +37,7 @@ export type V1CharacterReplaceCreateBodyStyle = {
 export type External$V1CharacterReplaceCreateBodyStyle = {
   mode?: ("animate" | "replace") | undefined;
   points?: External$V1CharacterReplaceCreateBodyStylePointsItem[] | undefined;
+  prompt?: string | undefined;
   selection_mode?: ("auto" | "point") | undefined;
 };
 
@@ -49,12 +54,14 @@ const SchemaIn$V1CharacterReplaceCreateBodyStyle: z.ZodType<
     points: z
       .array(Schemas$V1CharacterReplaceCreateBodyStylePointsItem.in)
       .optional(),
+    prompt: z.string().optional(),
     selection_mode: z.enum(["auto", "point"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       mode: "mode",
       points: "points",
+      prompt: "prompt",
       selection_mode: "selectionMode",
     });
   });
@@ -73,12 +80,14 @@ const SchemaOut$V1CharacterReplaceCreateBodyStyle: z.ZodType<
     points: z
       .array(Schemas$V1CharacterReplaceCreateBodyStylePointsItem.out)
       .optional(),
+    prompt: z.string().optional(),
     selectionMode: z.enum(["auto", "point"]).optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
       mode: "mode",
       points: "points",
+      prompt: "prompt",
       selectionMode: "selection_mode",
     });
   });
