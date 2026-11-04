@@ -6,7 +6,7 @@ import * as z from "zod";
  */
 export type V1AiVoiceClonerCreateBodyStyle = {
   /**
-   * Text used to generate speech from the cloned voice. The character limit is 1000 characters.
+   * Text used to generate speech from the cloned voice. The character limit is 5000 characters.
    */
   prompt: string;
 };
