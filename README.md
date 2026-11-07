@@ -415,4 +415,8 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/video-to-video/README.md#create) - Video-to-Video
 - [generate](src/resources/v1/video-to-video/README.md#generate) - Video To Video Generate Workflow
 
+### [v1.voices](src/resources/v1/voices/README.md)
+
+- [list](src/resources/v1/voices/README.md#list) - List voices
+
 <!-- MODULE DOCS END -->

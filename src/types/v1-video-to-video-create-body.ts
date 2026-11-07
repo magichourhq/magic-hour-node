@@ -25,15 +25,17 @@ export type V1VideoToVideoCreateBody = {
    */
   endSeconds: number;
   /**
+   * Source video FPS for v3 frame limits and estimated credits. Defaults to 30; final charges settle to rendered frames.
+   */
+  fps?: number | undefined;
+  /**
    * Determines whether the resulting video will have the same frame per second as the original video, or half.
    * * `FULL` - the result video will have the same FPS as the input video
    * * `HALF` - the result video will have half the FPS as the input video
    */
   fpsResolution?: ("FULL" | "HALF") | undefined;
   /**
-   * `height` is deprecated and no longer influences the output video's resolution.
-   *
-   * This field is retained only for backward compatibility and will be removed in a future release.
+   * Source video height in integer pixels. Required and positive for v3; ignored for v1/v2.
    */
   height?: number | null | undefined;
   /**
@@ -46,9 +48,7 @@ export type V1VideoToVideoCreateBody = {
   startSeconds: number;
   style: V1VideoToVideoCreateBodyStyle;
   /**
-   * `width` is deprecated and no longer influences the output video's resolution.
-   *
-   * This field is retained only for backward compatibility and will be removed in a future release.
+   * Source video width in integer pixels. Required and positive for v3; ignored for v1/v2.
    */
   width?: number | null | undefined;
 };
@@ -61,6 +61,7 @@ export type V1VideoToVideoCreateBody = {
 export type External$V1VideoToVideoCreateBody = {
   assets: External$V1VideoToVideoCreateBodyAssets;
   end_seconds: number;
+  fps?: number | undefined;
   fps_resolution?: ("FULL" | "HALF") | undefined;
   height?: number | null | undefined;
   name?: string | undefined;
@@ -80,6 +81,7 @@ const SchemaIn$V1VideoToVideoCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1VideoToVideoCreateBodyAssets.in,
     end_seconds: z.number(),
+    fps: z.number().optional(),
     fps_resolution: z.enum(["FULL", "HALF"]).optional(),
     height: z.number().int().nullable().optional(),
     name: z.string().optional(),
@@ -91,6 +93,7 @@ const SchemaIn$V1VideoToVideoCreateBody: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       end_seconds: "endSeconds",
+      fps: "fps",
       fps_resolution: "fpsResolution",
       height: "height",
       name: "name",
@@ -112,6 +115,7 @@ const SchemaOut$V1VideoToVideoCreateBody: z.ZodType<
   .object({
     assets: Schemas$V1VideoToVideoCreateBodyAssets.out,
     endSeconds: z.number(),
+    fps: z.number().optional(),
     fpsResolution: z.enum(["FULL", "HALF"]).optional(),
     height: z.number().int().nullable().optional(),
     name: z.string().optional(),
@@ -123,6 +127,7 @@ const SchemaOut$V1VideoToVideoCreateBody: z.ZodType<
     return zodTransform(obj, {
       assets: "assets",
       endSeconds: "end_seconds",
+      fps: "fps",
       fpsResolution: "fps_resolution",
       height: "height",
       name: "name",

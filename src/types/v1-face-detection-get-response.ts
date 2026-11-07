@@ -2,6 +2,11 @@ import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
 
 import {
+  External$V1FaceDetectionGetResponseError,
+  Schemas$V1FaceDetectionGetResponseError,
+  V1FaceDetectionGetResponseError,
+} from "./v1-face-detection-get-response-error";
+import {
   External$V1FaceDetectionGetResponseFacesItem,
   Schemas$V1FaceDetectionGetResponseFacesItem,
   V1FaceDetectionGetResponseFacesItem,
@@ -15,6 +20,10 @@ export type V1FaceDetectionGetResponse = {
    * The credits charged for the task.
    */
   creditsCharged: number;
+  /**
+   * Why the face detection failed. Present only when `status` is `error`; `null` otherwise.
+   */
+  error: V1FaceDetectionGetResponseError | null;
   /**
    * The faces detected in the image or video. The list is populated as faces are detected.
    */
@@ -36,6 +45,7 @@ export type V1FaceDetectionGetResponse = {
  */
 export type External$V1FaceDetectionGetResponse = {
   credits_charged: number;
+  error: External$V1FaceDetectionGetResponseError | null;
   faces: External$V1FaceDetectionGetResponseFacesItem[];
   id: string;
   status: "complete" | "error" | "queued" | "rendering";
@@ -51,6 +61,7 @@ const SchemaIn$V1FaceDetectionGetResponse: z.ZodType<
 > = z
   .object({
     credits_charged: z.number().int(),
+    error: Schemas$V1FaceDetectionGetResponseError.in.nullable(),
     faces: z.array(Schemas$V1FaceDetectionGetResponseFacesItem.in),
     id: z.string(),
     status: z.enum(["complete", "error", "queued", "rendering"]),
@@ -58,6 +69,7 @@ const SchemaIn$V1FaceDetectionGetResponse: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       credits_charged: "creditsCharged",
+      error: "error",
       faces: "faces",
       id: "id",
       status: "status",
@@ -75,6 +87,7 @@ const SchemaOut$V1FaceDetectionGetResponse: z.ZodType<
 > = z
   .object({
     creditsCharged: z.number().int(),
+    error: Schemas$V1FaceDetectionGetResponseError.out.nullable(),
     faces: z.array(Schemas$V1FaceDetectionGetResponseFacesItem.out),
     id: z.string(),
     status: z.enum(["complete", "error", "queued", "rendering"]),
@@ -82,6 +95,7 @@ const SchemaOut$V1FaceDetectionGetResponse: z.ZodType<
   .transform((obj) => {
     return zodTransform(obj, {
       creditsCharged: "credits_charged",
+      error: "error",
       faces: "faces",
       id: "id",
       status: "status",
