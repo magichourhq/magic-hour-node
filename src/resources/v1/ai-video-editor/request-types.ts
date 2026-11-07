@@ -7,6 +7,11 @@ import {
   V1AiVideoEditorCreateBodyAssets,
 } from "magic-hour/types/v1-ai-video-editor-create-body-assets";
 import {
+  External$V1AiVideoEditorCreateBodyReferencesItem,
+  Schemas$V1AiVideoEditorCreateBodyReferencesItem,
+  V1AiVideoEditorCreateBodyReferencesItem,
+} from "magic-hour/types/v1-ai-video-editor-create-body-references-item";
+import {
   External$V1AiVideoEditorCreateBodyStyle,
   Schemas$V1AiVideoEditorCreateBodyStyle,
   V1AiVideoEditorCreateBodyStyle,
@@ -35,9 +40,15 @@ export type CreateRequest = {
    */
   name?: string | undefined;
   /**
-   * Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 720p, 1080p; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+   * Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+   *
+   * Reference images for gemini-omni-1.1, wan-3.0, gemini-omni.
    */
-  resolution?: ("1080p" | "480p" | "720p") | undefined;
+  references?: V1AiVideoEditorCreateBodyReferencesItem[] | undefined;
+  /**
+   * Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+   */
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   /**
    * Start time of your clip (seconds). Must be ≥ 0.
    */
@@ -57,7 +68,8 @@ export type External$CreateRequest = {
     | ("gemini-omni" | "gemini-omni-1.1" | "ltx-2.3" | "ltx-2.5" | "wan-3.0")
     | undefined;
   name?: string | undefined;
-  resolution?: ("1080p" | "480p" | "720p") | undefined;
+  references?: External$V1AiVideoEditorCreateBodyReferencesItem[] | undefined;
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   start_seconds?: number | undefined;
   style: External$V1AiVideoEditorCreateBodyStyle;
 };
@@ -77,7 +89,10 @@ const SchemaIn$CreateRequest: z.ZodType<
       .enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
+    references: z
+      .array(Schemas$V1AiVideoEditorCreateBodyReferencesItem.in)
+      .optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     start_seconds: z.number().optional(),
     style: Schemas$V1AiVideoEditorCreateBodyStyle.in,
   })
@@ -87,6 +102,7 @@ const SchemaIn$CreateRequest: z.ZodType<
       end_seconds: "endSeconds",
       model: "model",
       name: "name",
+      references: "references",
       resolution: "resolution",
       start_seconds: "startSeconds",
       style: "style",
@@ -109,7 +125,10 @@ const SchemaOut$CreateRequest: z.ZodType<
       .enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
+    references: z
+      .array(Schemas$V1AiVideoEditorCreateBodyReferencesItem.out)
+      .optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     startSeconds: z.number().optional(),
     style: Schemas$V1AiVideoEditorCreateBodyStyle.out,
   })
@@ -119,6 +138,7 @@ const SchemaOut$CreateRequest: z.ZodType<
       endSeconds: "end_seconds",
       model: "model",
       name: "name",
+      references: "references",
       resolution: "resolution",
       startSeconds: "start_seconds",
       style: "style",

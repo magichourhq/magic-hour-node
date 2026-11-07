@@ -37,3 +37,4 @@ export * as savedItems from "./saved-items";
 export * as textToVideo from "./text-to-video";
 export * as videoProjects from "./video-projects";
 export * as videoToVideo from "./video-to-video";
+export * as voices from "./voices";

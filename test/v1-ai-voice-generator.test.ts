@@ -13,12 +13,22 @@ describe("tests client.v1.aiVoiceGenerator.create", () => {
         client.v1.aiVoiceGenerator
           .create({
             name: "My Voice Generator audio",
-            style: { prompt: "Hello, how are you?", voiceName: "Elon Musk" },
+            style: {
+              language: "spanish",
+              prompt: "Hello, how are you?",
+              speed: 1.15,
+              voiceName: "Elon Musk",
+            },
           })
           .asResponse(),
         client.v1.aiVoiceGenerator.create({
           name: "My Voice Generator audio",
-          style: { prompt: "Hello, how are you?", voiceName: "Elon Musk" },
+          style: {
+            language: "spanish",
+            prompt: "Hello, how are you?",
+            speed: 1.15,
+            voiceName: "Elon Musk",
+          },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

@@ -14,13 +14,21 @@ describe("tests client.v1.aiVoiceCloner.create", () => {
           .create({
             assets: { audioFilePath: "api-assets/id/1234.mp3" },
             name: "My Voice Cloner audio",
-            style: { prompt: "Hello, this is my cloned voice." },
+            style: {
+              language: "spanish",
+              prompt: "Hello, this is my cloned voice.",
+              speed: 1.15,
+            },
           })
           .asResponse(),
         client.v1.aiVoiceCloner.create({
           assets: { audioFilePath: "api-assets/id/1234.mp3" },
           name: "My Voice Cloner audio",
-          style: { prompt: "Hello, this is my cloned voice." },
+          style: {
+            language: "spanish",
+            prompt: "Hello, this is my cloned voice.",
+            speed: 1.15,
+          },
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

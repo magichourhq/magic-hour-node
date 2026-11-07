@@ -6,6 +6,10 @@ import * as z from "zod";
  */
 export type V1VideoToVideoCreateBodyAssets = {
   /**
+   * Required for v3: an uploaded reference image path, or a completed image output owned by you. The caller supplies this image; the API does not generate it.
+   */
+  initialImagePath?: string | undefined;
+  /**
    * Your video file. Required if `video_source` is `file`. This value is either
    * - a direct URL to the file. The URL path must end in a supported file extension.
    * - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
@@ -30,6 +34,7 @@ export type V1VideoToVideoCreateBodyAssets = {
  * we expect to come in as network data
  */
 export type External$V1VideoToVideoCreateBodyAssets = {
+  initial_image_path?: string | undefined;
   video_file_path?: string | undefined;
   video_source: "file" | "youtube";
   youtube_url?: string | undefined;
@@ -44,12 +49,14 @@ const SchemaIn$V1VideoToVideoCreateBodyAssets: z.ZodType<
   unknown
 > = z
   .object({
+    initial_image_path: z.string().optional(),
     video_file_path: z.string().optional(),
     video_source: z.enum(["file", "youtube"]),
     youtube_url: z.string().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      initial_image_path: "initialImagePath",
       video_file_path: "videoFilePath",
       video_source: "videoSource",
       youtube_url: "youtubeUrl",
@@ -66,12 +73,14 @@ const SchemaOut$V1VideoToVideoCreateBodyAssets: z.ZodType<
   V1VideoToVideoCreateBodyAssets // the object to be transformed
 > = z
   .object({
+    initialImagePath: z.string().optional(),
     videoFilePath: z.string().optional(),
     videoSource: z.enum(["file", "youtube"]),
     youtubeUrl: z.string().optional(),
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      initialImagePath: "initial_image_path",
       videoFilePath: "video_file_path",
       videoSource: "video_source",
       youtubeUrl: "youtube_url",
