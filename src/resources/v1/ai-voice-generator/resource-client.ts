@@ -12,7 +12,7 @@ import {
 } from "magic-hour/helpers/generate-type";
 import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-voice-generator/request-types";
-import { ImageProjectsClient } from "magic-hour/resources/v1/image-projects";
+import { AudioProjectsClient } from "magic-hour/resources/v1/audio-projects";
 import * as types from "magic-hour/types";
 import { Schemas$V1AiVoiceGeneratorCreateBody } from "magic-hour/types/v1-ai-voice-generator-create-body";
 import { Schemas$V1AiVoiceGeneratorCreateResponse } from "magic-hour/types/v1-ai-voice-generator-create-response";
@@ -63,7 +63,7 @@ export class AiVoiceGeneratorClient extends CoreResourceClient {
       `Created AiVoiceGeneratorClient project ${createResponse.id}`,
     );
 
-    const projectsClient = new ImageProjectsClient(this._client, this._opts);
+    const projectsClient = new AudioProjectsClient(this._client, this._opts);
 
     getLogger().debug(
       `Checking result for AiVoiceGeneratorClient project ${createResponse.id}`,
