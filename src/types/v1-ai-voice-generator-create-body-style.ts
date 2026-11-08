@@ -724,7 +724,6 @@ export type V1AiVoiceGeneratorCreateBodyStyle = {
     | "Jill Valentine"
     | "Jim Carrey"
     | "Jim Halpert"
-    | "Jimi Hendrix"
     | "Jimin"
     | "Jimmy Carter"
     | "Jimmy Fallon"
@@ -2568,7 +2567,6 @@ export type External$V1AiVoiceGeneratorCreateBodyStyle = {
     | "Jill Valentine"
     | "Jim Carrey"
     | "Jim Halpert"
-    | "Jimi Hendrix"
     | "Jimin"
     | "Jimmy Carter"
     | "Jimmy Fallon"
@@ -4415,7 +4413,6 @@ const SchemaIn$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "Jill Valentine",
       "Jim Carrey",
       "Jim Halpert",
-      "Jimi Hendrix",
       "Jimin",
       "Jimmy Carter",
       "Jimmy Fallon",
@@ -6272,7 +6269,6 @@ const SchemaOut$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "Jill Valentine",
       "Jim Carrey",
       "Jim Halpert",
-      "Jimi Hendrix",
       "Jimin",
       "Jimmy Carter",
       "Jimmy Fallon",
