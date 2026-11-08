@@ -620,7 +620,6 @@ export type V1AiVoiceGeneratorCreateBodyStyleVoiceNameEnum =
   | "Jill Valentine"
   | "Jim Carrey"
   | "Jim Halpert"
-  | "Jimi Hendrix"
   | "Jimin"
   | "Jimmy Carter"
   | "Jimmy Fallon"
