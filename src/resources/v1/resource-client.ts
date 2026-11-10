@@ -42,8 +42,10 @@ import { SavedItemsClient } from "magic-hour/resources/v1/saved-items";
 import { TextToVideoClient } from "magic-hour/resources/v1/text-to-video";
 import { VideoProjectsClient } from "magic-hour/resources/v1/video-projects";
 import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
+import { VoicesClient } from "magic-hour/resources/v1/voices";
 
 export class V1Client extends CoreResourceClient {
+  private _voicesLazy?: VoicesClient; // lazy-loading cache
   private _aiVideoUpscalerLazy?: AiVideoUpscalerClient; // lazy-loading cache
   private _aiMusicGeneratorLazy?: AiMusicGeneratorClient; // lazy-loading cache
   private _aiUgcAdLazy?: AiUgcAdClient; // lazy-loading cache
@@ -125,6 +127,7 @@ export class V1Client extends CoreResourceClient {
       this.textToVideo;
       this.videoProjects;
       this.videoToVideo;
+      this.voices;
     }
   }
 
@@ -534,6 +537,16 @@ export class V1Client extends CoreResourceClient {
           this._client,
           this._opts,
         ))
+    );
+  }
+
+  get voices(): VoicesClient {
+    return (
+      this._voicesLazy ??
+      (this._voicesLazy = new (require("./voices").VoicesClient)(
+        this._client,
+        this._opts,
+      ))
     );
   }
 }

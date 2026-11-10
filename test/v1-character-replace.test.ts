@@ -24,6 +24,7 @@ describe("tests client.v1.characterReplace.create", () => {
             style: {
               mode: "replace",
               points: [{ positionX: 320, positionY: 180, timeSeconds: 2.5 }],
+              prompt: "string",
               selectionMode: "auto",
             },
           })
@@ -41,6 +42,7 @@ describe("tests client.v1.characterReplace.create", () => {
           style: {
             mode: "replace",
             points: [{ positionX: 320, positionY: 180, timeSeconds: 2.5 }],
+            prompt: "string",
             selectionMode: "auto",
           },
         }),

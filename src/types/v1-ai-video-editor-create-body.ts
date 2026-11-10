@@ -7,6 +7,11 @@ import {
   V1AiVideoEditorCreateBodyAssets,
 } from "./v1-ai-video-editor-create-body-assets";
 import {
+  External$V1AiVideoEditorCreateBodyReferencesItem,
+  Schemas$V1AiVideoEditorCreateBodyReferencesItem,
+  V1AiVideoEditorCreateBodyReferencesItem,
+} from "./v1-ai-video-editor-create-body-references-item";
+import {
   External$V1AiVideoEditorCreateBodyStyle,
   Schemas$V1AiVideoEditorCreateBodyStyle,
   V1AiVideoEditorCreateBodyStyle,
@@ -21,23 +26,29 @@ export type V1AiVideoEditorCreateBody = {
    */
   assets: V1AiVideoEditorCreateBodyAssets;
   /**
-   * End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, LTX 2.5: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, LTX 2.5: 20s.
+   * End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.1`: 3-10s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
    */
   endSeconds: number;
   /**
-   * Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
+   * Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `wan-3.0` requires a paid tier. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
    */
   model?:
-    | ("gemini-omni" | "gemini-omni-1.1" | "ltx-2.3" | "ltx-2.5")
+    | ("gemini-omni" | "gemini-omni-1.1" | "ltx-2.3" | "ltx-2.5" | "wan-3.0")
     | undefined;
   /**
    * Give your video a custom name for easy identification.
    */
   name?: string | undefined;
   /**
-   * Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX 2.5 supports 480p, 720p, and 1080p.
+   * Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+   *
+   * Reference images for gemini-omni-1.1, wan-3.0, gemini-omni.
    */
-  resolution?: ("1080p" | "480p" | "720p") | undefined;
+  references?: V1AiVideoEditorCreateBodyReferencesItem[] | undefined;
+  /**
+   * Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+   */
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   /**
    * Start time of your clip (seconds). Must be ≥ 0.
    */
@@ -54,10 +65,11 @@ export type External$V1AiVideoEditorCreateBody = {
   assets: External$V1AiVideoEditorCreateBodyAssets;
   end_seconds: number;
   model?:
-    | ("gemini-omni" | "gemini-omni-1.1" | "ltx-2.3" | "ltx-2.5")
+    | ("gemini-omni" | "gemini-omni-1.1" | "ltx-2.3" | "ltx-2.5" | "wan-3.0")
     | undefined;
   name?: string | undefined;
-  resolution?: ("1080p" | "480p" | "720p") | undefined;
+  references?: External$V1AiVideoEditorCreateBodyReferencesItem[] | undefined;
+  resolution?: ("1080p" | "360p" | "480p" | "4k" | "720p") | undefined;
   start_seconds?: number | undefined;
   style: External$V1AiVideoEditorCreateBodyStyle;
 };
@@ -74,10 +86,13 @@ const SchemaIn$V1AiVideoEditorCreateBody: z.ZodType<
     assets: Schemas$V1AiVideoEditorCreateBodyAssets.in,
     end_seconds: z.number(),
     model: z
-      .enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"])
+      .enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
+    references: z
+      .array(Schemas$V1AiVideoEditorCreateBodyReferencesItem.in)
+      .optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     start_seconds: z.number().optional(),
     style: Schemas$V1AiVideoEditorCreateBodyStyle.in,
   })
@@ -87,6 +102,7 @@ const SchemaIn$V1AiVideoEditorCreateBody: z.ZodType<
       end_seconds: "endSeconds",
       model: "model",
       name: "name",
+      references: "references",
       resolution: "resolution",
       start_seconds: "startSeconds",
       style: "style",
@@ -106,10 +122,13 @@ const SchemaOut$V1AiVideoEditorCreateBody: z.ZodType<
     assets: Schemas$V1AiVideoEditorCreateBodyAssets.out,
     endSeconds: z.number(),
     model: z
-      .enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"])
+      .enum(["gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"])
       .optional(),
     name: z.string().optional(),
-    resolution: z.enum(["1080p", "480p", "720p"]).optional(),
+    references: z
+      .array(Schemas$V1AiVideoEditorCreateBodyReferencesItem.out)
+      .optional(),
+    resolution: z.enum(["1080p", "360p", "480p", "4k", "720p"]).optional(),
     startSeconds: z.number().optional(),
     style: Schemas$V1AiVideoEditorCreateBodyStyle.out,
   })
@@ -119,6 +138,7 @@ const SchemaOut$V1AiVideoEditorCreateBody: z.ZodType<
       endSeconds: "end_seconds",
       model: "model",
       name: "name",
+      references: "references",
       resolution: "resolution",
       startSeconds: "start_seconds",
       style: "style",

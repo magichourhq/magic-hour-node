@@ -1,18 +1,5 @@
 # v1.ai-music-generator
 
-## generate
-
-Creates the project, waits for completion, and downloads outputs by default.
-
-```typescript
-const result = await client.v1.aiMusicGenerator.generate({
-  duration: 120,
-  style: { prompt: "Dreamy synthwave with warm bass" },
-});
-```
-
-Pass `{ waitForCompletion: false }` as the second argument to return the current project status, or `{ downloadOutputs: false }` to skip downloads. Use `downloadDirectory` to choose the output folder.
-
 ## Module Functions
 
 ### AI Music Generator <a name="create"></a>

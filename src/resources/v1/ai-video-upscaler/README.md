@@ -1,19 +1,5 @@
 # v1.ai-video-upscaler
 
-## generate
-
-Creates the project, waits for completion, and downloads outputs by default. Accepts a local video path, direct URL, or existing `api-assets` path and uploads the video when needed.
-
-```typescript
-const result = await client.v1.aiVideoUpscaler.generate({
-  assets: { videoFilePath: "path/to/video.mp4" },
-  endSeconds: 5,
-  resolution: "1080p",
-});
-```
-
-Pass `{ waitForCompletion: false }` as the second argument to return the current project status, or `{ downloadOutputs: false }` to skip downloads. Use `downloadDirectory` to choose the output folder.
-
 ## Module Functions
 
 ### AI Video Upscaler <a name="create"></a>
@@ -48,14 +34,14 @@ For detailed examples, see the [product page](https://magichour.ai/products/vide
 
 #### Parameters
 
-| Parameter          | Required | Description                                                                                                                                                                                                                                                                                                                                     | Example                                       |
-| ------------------ | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `assets`           |    ✓     | Source video for the upscale job.                                                                                                                                                                                                                                                                                                               | `{"videoFilePath": "api-assets/id/1234.mp4"}` |
-| `└─ videoFilePath` |    ✓     | Video to upscale. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.mp4"`                    |
-| `endSeconds`       |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                            | `5.0`                                         |
-| `resolution`       |    ✓     | Output resolution. `720p` and `1080p` set the output's short side, `2k` and `4k` its long side; the aspect ratio is kept. Requires a paid plan.                                                                                                                                                                                                 | `"1080p"`                                     |
-| `name`             |    ✗     | Give your video a custom name for easy identification.                                                                                                                                                                                                                                                                                          | `"My Video Upscaler video"`                   |
-| `startSeconds`     |    ✗     | Start time of your clip (seconds). Must be ≥ 0.                                                                                                                                                                                                                                                                                                 | `0.0`                                         |
+| Parameter          | Required | Description                                                                                                                                                                                                                                                                                                                                                                                     | Example                                       |
+| ------------------ | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| `assets`           |    ✓     | Source video for the upscale job.                                                                                                                                                                                                                                                                                                                                                               | `{"videoFilePath": "api-assets/id/1234.mp4"}` |
+| `└─ videoFilePath` |    ✓     | Video to upscale. This value is either - a direct URL to the file. The URL path must end in a supported file extension. - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.mp4"`                    |
+| `endSeconds`       |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                                                                            | `5.0`                                         |
+| `resolution`       |    ✓     | Output resolution. `720p` and `1080p` set the output's short side, `2k` and `4k` its long side; the aspect ratio is kept. Requires a paid plan.                                                                                                                                                                                                                                                 | `"1080p"`                                     |
+| `name`             |    ✗     | Give your video a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                          | `"My Video Upscaler video"`                   |
+| `startSeconds`     |    ✗     | Start time of your clip (seconds). Must be ≥ 0.                                                                                                                                                                                                                                                                                                                                                 | `0.0`                                         |
 
 #### Example Snippet
 

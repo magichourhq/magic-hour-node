@@ -13,13 +13,15 @@ describe("tests client.v1.videoToVideo.create", () => {
         client.v1.videoToVideo
           .create({
             assets: {
+              initialImagePath: "api-assets/id/reference.png",
               videoFilePath: "api-assets/id/1234.mp4",
               videoSource: "file",
               youtubeUrl: "http://www.example.com",
             },
             endSeconds: 5.0,
+            fps: 30.0,
             fpsResolution: "HALF",
-            height: 123,
+            height: 704,
             name: "My Video To Video video",
             startSeconds: 0.0,
             style: {
@@ -29,18 +31,20 @@ describe("tests client.v1.videoToVideo.create", () => {
               promptType: "default",
               version: "default",
             },
-            width: 123,
+            width: 1024,
           })
           .asResponse(),
         client.v1.videoToVideo.create({
           assets: {
+            initialImagePath: "api-assets/id/reference.png",
             videoFilePath: "api-assets/id/1234.mp4",
             videoSource: "file",
             youtubeUrl: "http://www.example.com",
           },
           endSeconds: 5.0,
+          fps: 30.0,
           fpsResolution: "HALF",
-          height: 123,
+          height: 704,
           name: "My Video To Video video",
           startSeconds: 0.0,
           style: {
@@ -50,7 +54,7 @@ describe("tests client.v1.videoToVideo.create", () => {
             promptType: "default",
             version: "default",
           },
-          width: 123,
+          width: 1024,
         }),
       ]);
       expect(rawResponse.status).toBe(200); // Exact status code match

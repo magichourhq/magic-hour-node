@@ -51,6 +51,8 @@ Get the details of a face detection task.
 
 Use this API to get the list of faces detected in the image or video to use in the [face swap photo](https://docs.magichour.ai/api-reference/image-projects/face-swap-photo) or [face swap video](https://docs.magichour.ai/api-reference/video-projects/face-swap-video) API calls for multi-face swaps.
 
+When `status` is `error`, the `error` field explains why (for example `nsfw` when the content-safety filter blocked the file). It is `null` otherwise.
+
 **API Endpoint**: `GET /v1/face-detection/{id}`
 
 #### Parameters
@@ -77,7 +79,7 @@ const res = await client.v1.faceDetection.get({ id: "uuid-example" });
 ##### Example
 
 ```typescript
-{"creditsCharged": 0, "faces": [{"path": "api-assets/id/0-0.png", "url": "https://videos.magichour.ai/api-assets/id/0-0.png"}], "id": "uuid-example", "status": "complete"}
+{"creditsCharged": 0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "faces": [{"path": "api-assets/id/0-0.png", "url": "https://videos.magichour.ai/api-assets/id/0-0.png"}], "id": "uuid-example", "status": "complete"}
 ```
 
 ### Face Detection <a name="create"></a>
@@ -92,11 +94,11 @@ Note: Face detection is free to use for the near future. Pricing may change in t
 
 #### Parameters
 
-| Parameter           | Required | Description                                                                                                                                                                                                                                                                                                                                                                               | Example                                        |
-| ------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `assets`            |    ✓     | Provide the assets for face detection                                                                                                                                                                                                                                                                                                                                                     | `{"targetFilePath": "api-assets/id/1234.png"}` |
-| `└─ targetFilePath` |    ✓     | This is the image or video where the face will be detected. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                     |
-| `confidenceScore`   |    ✗     | Confidence threshold for filtering detected faces. * Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives. * Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections.                                                                                                                             | `0.5`                                          |
+| Parameter           | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                               | Example                                        |
+| ------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `assets`            |    ✓     | Provide the assets for face detection                                                                                                                                                                                                                                                                                                                                                                                                     | `{"targetFilePath": "api-assets/id/1234.png"}` |
+| `└─ targetFilePath` |    ✓     | This is the image or video where the face will be detected. This value is either - a direct URL to the file. The URL path must end in a supported file extension. - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                     |
+| `confidenceScore`   |    ✗     | Confidence threshold for filtering detected faces. * Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives. * Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections.                                                                                                                                                                             | `0.5`                                          |
 
 #### Example Snippet
 

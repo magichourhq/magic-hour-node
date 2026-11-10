@@ -27,6 +27,7 @@ export type V1ImageToVideoCreateBody = {
    * * **`gemini-omni-1.1`**: Not supported
    * * **`kling-2.6`**: Not supported
    * * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
+   * * **`kling-4.0`**: Toggle-able: no additional credits for audio
    * * **`ltx-2.5`**: Toggle-able: no additional credits for audio
    * * **`minimax-h3`**: Toggle-able: no additional credits for audio
    * * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
@@ -47,6 +48,7 @@ export type V1ImageToVideoCreateBody = {
    * * **`gemini-omni-1.1`**: any integer from 3 to 10
    * * **`kling-2.6`**: 5, 10
    * * **`kling-3.0`**: any integer from 3 to 15
+   * * **`kling-4.0`**: any integer from 3 to 30
    * * **`ltx-2.5`**: any integer from 1 to 60
    * * **`minimax-h3`**: any integer from 1 to 30
    * * **`seedance-1.5`**: any integer from 4 to 12
@@ -57,7 +59,7 @@ export type V1ImageToVideoCreateBody = {
    * * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
    * * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
    * * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15
-   * * **`wan-3.0`**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
+   * * **`wan-3.0`**: any integer from 2 to 30
    *
    */
   endSeconds: number;
@@ -74,6 +76,7 @@ export type V1ImageToVideoCreateBody = {
    * * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
    * * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
    * * `kling-3.0`: Best for cinematic stories, references, and optional audio.
+   * * `kling-4.0`: Create cinematic videos with image and video references and optional audio.
    * * `ltx-2.5`: Fastest for general scenes, long clips, audio, and rapid iteration.
    * * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
    * * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
@@ -97,6 +100,7 @@ export type V1ImageToVideoCreateBody = {
         | "kling-2.5-audio"
         | "kling-2.6"
         | "kling-3.0"
+        | "kling-4.0"
         | "ltx-2"
         | "ltx-2.3"
         | "ltx-2.5"
@@ -125,6 +129,7 @@ export type V1ImageToVideoCreateBody = {
    * * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
    * * **`kling-2.6`**: Supports 720p, 1080p.
    * * **`kling-3.0`**: Supports 720p, 1080p, 4k.
+   * * **`kling-4.0`**: Supports 720p, 1080p.
    * * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
    * * **`minimax-h3`**: Supports 480p, 720p, 1080p.
    * * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
@@ -170,6 +175,7 @@ export type External$V1ImageToVideoCreateBody = {
         | "kling-2.5-audio"
         | "kling-2.6"
         | "kling-3.0"
+        | "kling-4.0"
         | "ltx-2"
         | "ltx-2.3"
         | "ltx-2.5"
@@ -216,6 +222,7 @@ const SchemaIn$V1ImageToVideoCreateBody: z.ZodType<
         "kling-2.5-audio",
         "kling-2.6",
         "kling-3.0",
+        "kling-4.0",
         "ltx-2",
         "ltx-2.3",
         "ltx-2.5",
@@ -276,6 +283,7 @@ const SchemaOut$V1ImageToVideoCreateBody: z.ZodType<
         "kling-2.5-audio",
         "kling-2.6",
         "kling-3.0",
+        "kling-4.0",
         "ltx-2",
         "ltx-2.3",
         "ltx-2.5",

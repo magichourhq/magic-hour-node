@@ -1,5 +1,5 @@
 {
-  "id": "f7238487-9071-47c1-95e2-3a204ea4a613",
+  "id": "b62f29b5-416a-403c-a5bb-0ca4899b71d9",
   "tracked_paths": [
     {
       "editable": true,
@@ -687,6 +687,22 @@
     },
     {
       "editable": true,
+      "path": "src/resources/v1/voices/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/voices/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/voices/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/voices/resource-client.ts"
+    },
+    {
+      "editable": true,
       "path": "src/types/index.ts"
     },
     {
@@ -967,6 +983,10 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-video-editor-create-body-references-item.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-ai-video-editor-create-body-resolution-enum.ts"
     },
     {
@@ -1023,6 +1043,10 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-ai-voice-cloner-create-body-style-language-enum.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-ai-voice-cloner-create-body-style.ts"
     },
     {
@@ -1032,6 +1056,10 @@
     {
       "editable": false,
       "path": "src/types/v1-ai-voice-cloner-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-ai-voice-generator-create-body-style-language-enum.ts"
     },
     {
       "editable": false,
@@ -1204,6 +1232,10 @@
     {
       "editable": false,
       "path": "src/types/v1-face-detection-create-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-face-detection-get-response-error.ts"
     },
     {
       "editable": false,
@@ -1515,6 +1547,14 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-voices-list-response-voices-item.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-voices-list-response.ts"
+    },
+    {
+      "editable": false,
       "path": "test/v1-account.test.ts"
     },
     {
@@ -1664,6 +1704,10 @@
     {
       "editable": false,
       "path": "test/v1-video-to-video.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-voices.test.ts"
     },
     {
       "editable": false,

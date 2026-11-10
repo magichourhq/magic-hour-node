@@ -29,8 +29,9 @@ export type CreateRequest = {
    *
    * * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
    * * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
+   * * **`minimax-h3`**: 480p, 720p, 1080p. Clips of 1–60 seconds in `replace` mode or 1–60 seconds in `animate` mode. Subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored.
    */
-  model?: ("kling-3.0" | "wan-animate") | undefined;
+  model?: ("kling-3.0" | "minimax-h3" | "wan-animate") | undefined;
   /**
    * Give your video a custom name for easy identification.
    */
@@ -57,7 +58,7 @@ export type CreateRequest = {
 export type External$CreateRequest = {
   assets: External$V1CharacterReplaceCreateBodyAssets;
   end_seconds: number;
-  model?: ("kling-3.0" | "wan-animate") | undefined;
+  model?: ("kling-3.0" | "minimax-h3" | "wan-animate") | undefined;
   name?: string | undefined;
   resolution?: ("1080p" | "480p" | "720p") | undefined;
   start_seconds?: number | undefined;
@@ -75,7 +76,7 @@ const SchemaIn$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1CharacterReplaceCreateBodyAssets.in,
     end_seconds: z.number(),
-    model: z.enum(["kling-3.0", "wan-animate"]).optional(),
+    model: z.enum(["kling-3.0", "minimax-h3", "wan-animate"]).optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     start_seconds: z.number().optional(),
@@ -105,7 +106,7 @@ const SchemaOut$CreateRequest: z.ZodType<
   .object({
     assets: Schemas$V1CharacterReplaceCreateBodyAssets.out,
     endSeconds: z.number(),
-    model: z.enum(["kling-3.0", "wan-animate"]).optional(),
+    model: z.enum(["kling-3.0", "minimax-h3", "wan-animate"]).optional(),
     name: z.string().optional(),
     resolution: z.enum(["1080p", "480p", "720p"]).optional(),
     startSeconds: z.number().optional(),
