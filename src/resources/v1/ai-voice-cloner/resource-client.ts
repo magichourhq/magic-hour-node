@@ -13,8 +13,8 @@ import {
 } from "magic-hour/helpers/generate-type";
 import { getLogger } from "magic-hour/logger";
 import * as requests from "magic-hour/resources/v1/ai-voice-cloner/request-types";
-import { FilesClient } from "magic-hour/resources/v1/files";
 import { AudioProjectsClient } from "magic-hour/resources/v1/audio-projects";
+import { FilesClient } from "magic-hour/resources/v1/files";
 import { Schemas$V1AiVoiceClonerCreateBody } from "magic-hour/types/v1-ai-voice-cloner-create-body";
 import { Schemas$V1AiVoiceClonerCreateResponse } from "magic-hour/types/v1-ai-voice-cloner-create-response";
 

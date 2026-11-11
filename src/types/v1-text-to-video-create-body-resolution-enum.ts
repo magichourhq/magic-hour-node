@@ -1,7 +1,7 @@
 /**
  * Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
  *
- * * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
+ * * **`gemini-omni-1.2`**: Supports 360p, 720p, 1080p, 4k.
  * * **`kling-2.6`**: Supports 720p, 1080p.
  * * **`kling-3.0`**: Supports 720p, 1080p, 4k.
  * * **`kling-4.0`**: Supports 720p, 1080p.

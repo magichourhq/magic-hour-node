@@ -2,7 +2,7 @@
  * The AI model to use for video generation.
  *
  * * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.5`.
- * * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
+ * * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output.
  * * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
  * * `kling-3.0`: Best for cinematic stories, references, and optional audio.
  * * `kling-4.0`: Create cinematic videos with image and video references and optional audio.
@@ -23,6 +23,7 @@
 export type V1ImageToVideoCreateBodyModelEnum =
   | "default"
   | "gemini-omni-1.1"
+  | "gemini-omni-1.2"
   | "kling-1.6"
   | "kling-2.5"
   | "kling-2.5-audio"

@@ -1,7 +1,7 @@
 /**
  * Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
  *
- * * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
+ * * **`gemini-omni-1.2`**: Supports 16:9, 9:16.
  * * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
  * * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
  * * **`kling-4.0`**: Supports 9:16, 16:9, 1:1.
