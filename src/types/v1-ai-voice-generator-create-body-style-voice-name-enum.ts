@@ -100,7 +100,6 @@ export type V1AiVoiceGeneratorCreateBodyStyleVoiceNameEnum =
   | "BTS Jungkook"
   | "Babar Azam"
   | "Baby Yoda (Grogu)"
-  | "Bad Bunny"
   | "Bakugo Katsuki"
   | "Bam Margera"
   | "Barack Obama"

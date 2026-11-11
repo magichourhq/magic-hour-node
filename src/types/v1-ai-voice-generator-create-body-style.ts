@@ -204,7 +204,6 @@ export type V1AiVoiceGeneratorCreateBodyStyle = {
     | "BTS Jungkook"
     | "Babar Azam"
     | "Baby Yoda (Grogu)"
-    | "Bad Bunny"
     | "Bakugo Katsuki"
     | "Bam Margera"
     | "Barack Obama"
@@ -2047,7 +2046,6 @@ export type External$V1AiVoiceGeneratorCreateBodyStyle = {
     | "BTS Jungkook"
     | "Babar Azam"
     | "Baby Yoda (Grogu)"
-    | "Bad Bunny"
     | "Bakugo Katsuki"
     | "Bam Margera"
     | "Barack Obama"
@@ -3893,7 +3891,6 @@ const SchemaIn$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "BTS Jungkook",
       "Babar Azam",
       "Baby Yoda (Grogu)",
-      "Bad Bunny",
       "Bakugo Katsuki",
       "Bam Margera",
       "Barack Obama",
@@ -5749,7 +5746,6 @@ const SchemaOut$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "BTS Jungkook",
       "Babar Azam",
       "Baby Yoda (Grogu)",
-      "Bad Bunny",
       "Bakugo Katsuki",
       "Bam Margera",
       "Barack Obama",
