@@ -35,7 +35,7 @@ const res = await client.v1.imageToVideo.generate(
     assets: { imageFilePath: "/path/to/1234.png" },
     endSeconds: 5.0,
     name: "Image To Video video",
-    resolution: "720p",
+    resolution: "480p",
   },
   {
     waitForCompletion: true,

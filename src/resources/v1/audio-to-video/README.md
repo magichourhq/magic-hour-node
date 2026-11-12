@@ -36,9 +36,9 @@ const res = await client.v1.audioToVideo.generate(
       audioFilePath: "/path/to/1234.mp3",
       imageFilePath: "/path/to/1234.png",
     },
-    endSeconds: 15.0,
+    endSeconds: 5.0,
     name: "Audio To Video video",
-    resolution: "720p",
+    resolution: "480p",
     startSeconds: 0.0,
   },
   {

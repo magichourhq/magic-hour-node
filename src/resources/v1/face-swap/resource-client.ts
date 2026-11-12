@@ -90,7 +90,7 @@ export class FaceSwapClient extends CoreResourceClient {
    *       videoFilePath: "/path/to/1234.mp4",
    *       videoSource: "file",
    *     },
-   *     endSeconds: 15.0,
+   *     endSeconds: 5.0,
    *     name: "Face Swap video",
    *     startSeconds: 0.0,
    *     style: { version: "default" },

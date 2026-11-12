@@ -52,10 +52,10 @@ export class AutoSubtitleGeneratorClient extends CoreResourceClient {
    * const res = await client.v1.autoSubtitleGenerator.generate(
    *   {
    *     assets: { videoFilePath: "/path/to/1234.mp4" },
-   *     endSeconds: 15.0,
+   *     endSeconds: 5.0,
    *     name: "Auto Subtitle video",
    *     startSeconds: 0.0,
-   *     style: {},
+   *     style: { template: "karaoke" },
    *   },
    *   {
    *     waitForCompletion: true,

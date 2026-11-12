@@ -41,7 +41,7 @@ export class TextToVideoClient extends CoreResourceClient {
    *     endSeconds: 5.0,
    *     name: "Text To Video video",
    *     orientation: "landscape",
-   *     resolution: "720p",
+   *     resolution: "480p",
    *     style: { prompt: "a dog running" },
    *   },
    *   {

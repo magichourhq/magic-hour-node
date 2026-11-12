@@ -37,9 +37,9 @@ const res = await client.v1.animation.generate(
       audioSource: "file",
       imageFilePath: "/path/to/1234.png",
     },
-    endSeconds: 15.0,
+    endSeconds: 5.0,
     fps: 12.0,
-    height: 960,
+    height: 512,
     name: "Animation video",
     style: {
       artStyle: "Painterly Illustration",

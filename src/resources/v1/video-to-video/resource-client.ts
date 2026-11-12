@@ -52,7 +52,7 @@ export class VideoToVideoClient extends CoreResourceClient {
    * const res = await client.v1.videoToVideo.generate(
    *   {
    *     assets: { videoFilePath: "/path/to/1234.mp4", videoSource: "file" },
-   *     endSeconds: 15.0,
+   *     endSeconds: 5.0,
    *     fpsResolution: "HALF",
    *     name: "Video To Video video",
    *     startSeconds: 0.0,

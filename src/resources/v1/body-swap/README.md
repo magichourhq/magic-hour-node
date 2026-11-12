@@ -37,7 +37,7 @@ const res = await client.v1.bodySwap.generate(
       sceneFilePath: "/path/to/scene.png",
     },
     name: "My Body Swap image",
-    resolution: "1k",
+    resolution: "640px",
   },
   {
     waitForCompletion: true,
