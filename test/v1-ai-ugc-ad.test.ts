@@ -14,16 +14,16 @@ describe("tests client.v1.aiUgcAd.create", () => {
           .create({
             assets: { imageFilePath: "api-assets/id/image.jpg" },
             endSeconds: 4.0,
-            model: "kling-3.0",
-            resolution: "1080p",
+            model: "ltx-2.5",
+            resolution: "480p",
             script: "Meet your new everyday essential.",
           })
           .asResponse(),
         client.v1.aiUgcAd.create({
           assets: { imageFilePath: "api-assets/id/image.jpg" },
           endSeconds: 4.0,
-          model: "kling-3.0",
-          resolution: "1080p",
+          model: "ltx-2.5",
+          resolution: "480p",
           script: "Meet your new everyday essential.",
         }),
       ]);

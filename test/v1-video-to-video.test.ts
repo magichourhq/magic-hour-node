@@ -25,7 +25,7 @@ describe("tests client.v1.videoToVideo.create", () => {
             name: "My Video To Video video",
             startSeconds: 0.0,
             style: {
-              artStyle: "Minecraft",
+              artStyle: "3D Render",
               model: "default",
               prompt: "A cinematic scene with warm lighting",
               promptType: "default",
@@ -48,7 +48,7 @@ describe("tests client.v1.videoToVideo.create", () => {
           name: "My Video To Video video",
           startSeconds: 0.0,
           style: {
-            artStyle: "Minecraft",
+            artStyle: "3D Render",
             model: "default",
             prompt: "A cinematic scene with warm lighting",
             promptType: "default",
