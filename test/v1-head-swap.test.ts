@@ -16,7 +16,7 @@ describe("tests client.v1.headSwap.create", () => {
               bodyFilePath: "api-assets/id/1234.png",
               headFilePath: "api-assets/id/5678.png",
             },
-            maxResolution: 1024,
+            maxResolution: 512,
             name: "My Head Swap image",
           })
           .asResponse(),
@@ -25,7 +25,7 @@ describe("tests client.v1.headSwap.create", () => {
             bodyFilePath: "api-assets/id/1234.png",
             headFilePath: "api-assets/id/5678.png",
           },
-          maxResolution: 1024,
+          maxResolution: 512,
           name: "My Head Swap image",
         }),
       ]);

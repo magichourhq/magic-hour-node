@@ -15,7 +15,7 @@ Swap a head onto a body image. Each image costs 10 credits. Output resolution de
 | `assets`          |    ✓     | Provide the body and head images for head swap                                                                                                                                                                                                                                                                                                                                                                        | `{"bodyFilePath": "api-assets/id/1234.png", "headFilePath": "api-assets/id/5678.png"}` |
 | `└─ bodyFilePath` |    ✓     | Image that receives the swapped head. This value is either - a direct URL to the file. The URL path must end in a supported file extension. - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.   | `"api-assets/id/1234.png"`                                                             |
 | `└─ headFilePath` |    ✓     | Image of the head to place on the body. This value is either - a direct URL to the file. The URL path must end in a supported file extension. - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/5678.png"`                                                             |
-| `maxResolution`   |    ✗     | Constrains the larger dimension (height or width) of the output. Omit to use the maximum allowed for your plan (capped at 2048px). Values above your plan maximum are clamped down to your plan's maximum.                                                                                                                                                                                                            | `1024`                                                                                 |
+| `maxResolution`   |    ✗     | Constrains the larger dimension (height or width) of the output. Omit to use the maximum allowed for your plan (capped at 2048px). Values above your plan maximum are clamped down to your plan's maximum.                                                                                                                                                                                                            | `512`                                                                                  |
 | `name`            |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                                                | `"My Head Swap image"`                                                                 |
 
 #### Example Snippet
@@ -29,7 +29,7 @@ const res = await client.v1.headSwap.create({
     bodyFilePath: "api-assets/id/1234.png",
     headFilePath: "api-assets/id/5678.png",
   },
-  maxResolution: 1024,
+  maxResolution: 512,
   name: "My Head Swap image",
 });
 ```
