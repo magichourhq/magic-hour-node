@@ -63,7 +63,7 @@ export class HeadSwapClient extends CoreResourceClient {
    *       bodyFilePath: "/path/to/body.png",
    *       headFilePath: "/path/to/head.png",
    *     },
-   *     maxResolution: 1024,
+   *     maxResolution: 512,
    *     name: "My Head Swap image",
    *   },
    *   {

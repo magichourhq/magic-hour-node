@@ -36,7 +36,7 @@ const res = await client.v1.aiImageGenerator.generate(
     imageCount: 1,
     model: "default",
     name: "My Ai Image image",
-    resolution: "1k",
+    resolution: "640px",
     style: { prompt: "Cool image", tool: "ai-anime-generator" },
   },
   {

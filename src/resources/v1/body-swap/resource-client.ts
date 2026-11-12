@@ -64,7 +64,7 @@ export class BodySwapClient extends CoreResourceClient {
    *       sceneFilePath: "/path/to/scene.png",
    *     },
    *     name: "My Body Swap image",
-   *     resolution: "1k",
+   *     resolution: "640px",
    *   },
    *   {
    *     waitForCompletion: true,

@@ -37,7 +37,7 @@ const res = await client.v1.lipSync.generate(
       videoFilePath: "/path/to/1234.mp4",
       videoSource: "file",
     },
-    endSeconds: 15.0,
+    endSeconds: 5.0,
     maxFpsLimit: 12.0,
     name: "Lip Sync video",
     startSeconds: 0.0,

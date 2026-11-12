@@ -35,7 +35,7 @@ const res = await client.v1.textToVideo.generate(
     aspectRatio: "16:9",
     endSeconds: 5.0,
     name: "Text To Video video",
-    resolution: "720p",
+    resolution: "480p",
     style: { prompt: "a dog running" },
   },
   {

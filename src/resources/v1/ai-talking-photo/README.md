@@ -36,7 +36,7 @@ const res = await client.v1.aiTalkingPhoto.generate(
       audioFilePath: "/path/to/1234.mp3",
       imageFilePath: "/path/to/1234.png",
     },
-    endSeconds: 15.0,
+    endSeconds: 5.0,
     name: "Talking Photo image",
     startSeconds: 0.0,
   },

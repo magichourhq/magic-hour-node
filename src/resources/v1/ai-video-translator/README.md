@@ -14,7 +14,7 @@ import { Client } from "magic-hour";
 const client = new Client({ token: process.env["API_TOKEN"]!! });
 const res = await client.v1.aiVideoTranslator.generate({
   assets: { videoFilePath: "/path/to/video.mp4" },
-  endSeconds: 15.0,
+  endSeconds: 5.0,
   targetLanguage: "Spanish",
   startSeconds: 0.0,
 });
