@@ -51,6 +51,10 @@
  *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
  *   - Max additional input images: 9
+ * - `seedream-v5-flash` - from 30 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k
+ *   - Available for tiers: creator, pro, business
+ *   - Max additional input images: 9
  * - `seedream-v5-pro` - from 75 credits/image
  *   - Supported resolutions: 640px, 1k, 2k
  *   - Available for tiers: creator, pro, business
@@ -72,4 +76,5 @@ export type V1AiImageEditorCreateBodyModelEnum =
   | "qwen-image-2.1"
   | "seedream-v4"
   | "seedream-v4.5"
+  | "seedream-v5-flash"
   | "seedream-v5-pro";
