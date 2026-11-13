@@ -21,6 +21,7 @@
  * - `qwen-image-2.1` - 640px, 1k, 2k
  * - `seedream-v4` - 640px, 1k, 2k, 4k
  * - `seedream-v4.5` - 640px, 1k, 2k, 4k
+ * - `seedream-v5-flash` - 640px, 1k, 2k
  * - `seedream-v5-pro` - 640px, 1k, 2k
  *
  * Note: Resolution availability depends on the model and your subscription tier.
