@@ -699,7 +699,6 @@ export type V1AiVoiceGeneratorCreateBodyStyle = {
     | "Jason Segel"
     | "Jason Statham"
     | "Jason Voorhees"
-    | "Jay-Z"
     | "Jayson Tatum"
     | "Jeff Bezos"
     | "Jeff Goldblum"
@@ -2541,7 +2540,6 @@ export type External$V1AiVoiceGeneratorCreateBodyStyle = {
     | "Jason Segel"
     | "Jason Statham"
     | "Jason Voorhees"
-    | "Jay-Z"
     | "Jayson Tatum"
     | "Jeff Bezos"
     | "Jeff Goldblum"
@@ -4386,7 +4384,6 @@ const SchemaIn$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "Jason Segel",
       "Jason Statham",
       "Jason Voorhees",
-      "Jay-Z",
       "Jayson Tatum",
       "Jeff Bezos",
       "Jeff Goldblum",
@@ -6241,7 +6238,6 @@ const SchemaOut$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "Jason Segel",
       "Jason Statham",
       "Jason Voorhees",
-      "Jay-Z",
       "Jayson Tatum",
       "Jeff Bezos",
       "Jeff Goldblum",
