@@ -595,7 +595,6 @@ export type V1AiVoiceGeneratorCreateBodyStyleVoiceNameEnum =
   | "Jason Segel"
   | "Jason Statham"
   | "Jason Voorhees"
-  | "Jay-Z"
   | "Jayson Tatum"
   | "Jeff Bezos"
   | "Jeff Goldblum"
