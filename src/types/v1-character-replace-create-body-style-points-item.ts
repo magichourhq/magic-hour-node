@@ -14,7 +14,7 @@ export type V1CharacterReplaceCreateBodyStylePointsItem = {
    */
   positionY: number;
   /**
-   * Timestamp on the source video timeline in seconds. Uses the same clock as `start_seconds` and `end_seconds`.
+   * Timestamp on the source video timeline in seconds. Uses the same clock as `start_seconds` and `end_seconds`. For MiniMax H3 manual replacement, `start_seconds <= time_seconds < end_seconds`.
    */
   timeSeconds: number;
 };
