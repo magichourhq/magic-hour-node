@@ -16,11 +16,11 @@ export type V1CharacterReplaceCreateBodyStyle = {
    */
   mode?: ("animate" | "replace") | undefined;
   /**
-   * On-frame markers for manual subject selection. Required when `selection_mode` is `point`. Ignored when `selection_mode` is `auto` or omitted. Rejected for models without subject selection (supported by `wan-animate`, `minimax-h3`). `minimax-h3` subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored.
+   * On-frame markers for manual subject selection. Required when `selection_mode` is `point`. Ignored when `selection_mode` is `auto` or omitted. Rejected for models without subject selection (supported by `wan-animate`, `minimax-h3`). `minimax-h3` subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored. MiniMax H3 manual replacement accepts 1 to 10 points; each must satisfy `start_seconds <= time_seconds < end_seconds`.
    */
   points?: V1CharacterReplaceCreateBodyStylePointsItem[] | undefined;
   /**
-   * Optional direction. Supported by kling-3.0, minimax-h3.
+   * Optional direction. Supported by kling-3.0, minimax-h3. For MiniMax H3 in replace mode, ignored and not saved when `selection_mode` is `point`; applies only to automatic person selection.
    */
   prompt?: string | undefined;
   /**
