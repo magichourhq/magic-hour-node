@@ -42,8 +42,6 @@ export async function downloadFiles(
   for (const download of downloads) {
     getLogger().debug(`Downloading output from ${download.url}`);
     try {
-      // Native fetch rejects truncated Content-Length bodies. node-fetch 2 can
-      // leave arrayBuffer() pending after the underlying socket is aborted.
       const response = await fetch(download.url);
       if (!response.ok) {
         await response.body?.cancel();
