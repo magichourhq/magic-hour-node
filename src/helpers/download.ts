@@ -1,7 +1,6 @@
 import { types } from "magic-hour";
 import * as fs from "fs";
 import * as path from "path";
-import fetch from "node-fetch";
 import { getLogger } from "magic-hour/logger";
 import { DownloadError } from "magic-hour/helpers/download-error";
 
@@ -45,6 +44,7 @@ export async function downloadFiles(
     try {
       const response = await fetch(download.url);
       if (!response.ok) {
+        await response.body?.cancel();
         throw new Error(
           `Failed to download from ${download.url}: ${response.statusText}`,
         );
