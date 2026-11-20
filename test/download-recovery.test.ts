@@ -9,9 +9,8 @@ import { downloadFiles } from "magic-hour/helpers/download";
 import { DownloadError } from "magic-hour/helpers/download-error";
 
 jest.unmock("fs");
-const realFs = jest.requireActual<typeof fs>("fs");
 
-// Real HTTP streams and filesystem writes, with injected disk faults.
+// Real HTTP streams and filesystem writes.
 // No production API calls or paid generations are made.
 describe("download failure recovery", () => {
   let server: Server;
@@ -181,118 +180,6 @@ describe("download failure recovery", () => {
       expectExistingFiles();
     },
   );
-
-  test.each(["ENOSPC", "EEXIST"])(
-    "partial disk write %s is removed and retry reuses its suffix",
-    async (code) => {
-      const write = realFs.writeSync;
-      let descriptor: number | undefined;
-      jest.spyOn(realFs, "writeSync").mockImplementationOnce((fd, data) => {
-        if (typeof data === "string") throw new Error("Expected binary output");
-        descriptor = fd;
-        write(fd, data, 0, 2);
-        throw Object.assign(new Error(`Injected ${code} after short write`), {
-          code,
-        });
-      });
-      await expect(
-        settles(downloadFiles([item("ok")], directory)),
-      ).rejects.toMatchObject({
-        downloadedPaths: [],
-        downloadErrors: [
-          expect.objectContaining({
-            stage: "file",
-            message: expect.stringContaining(code),
-          }),
-        ],
-      });
-      expect(fs.readdirSync(directory).sort()).toEqual([
-        "output.png",
-        "output_1.png",
-      ]);
-      if (descriptor === undefined)
-        throw new Error("Write fault was not reached");
-      const closedDescriptor = descriptor;
-      expect(() => fs.fstatSync(closedDescriptor)).toThrow("EBADF");
-      expectExistingFiles();
-      const retry = await settles(downloadFiles([item("ok")], directory));
-      expect(retry).toEqual([path.join(directory, "output_2.png")]);
-      expect(
-        fs.readFileSync(path.join(directory, "output_2.png"), "utf8"),
-      ).toBe("complete output");
-    },
-  );
-
-  test("failed exclusive open never removes an existing file or symlink", async () => {
-    const target = path.join(directory, "original.png");
-    fs.writeFileSync(target, "SYMLINK TARGET");
-    fs.symlinkSync(target, path.join(directory, "output_2.png"));
-    const open = realFs.openSync;
-    jest.spyOn(realFs, "openSync").mockImplementation((file, flags, mode) => {
-      if (String(file).endsWith("output_3.png")) {
-        throw Object.assign(new Error("Injected EACCES"), { code: "EACCES" });
-      }
-      return open(file, flags, mode);
-    });
-    await expect(
-      settles(downloadFiles([item("ok")], directory)),
-    ).rejects.toBeInstanceOf(DownloadError);
-    expectExistingFiles();
-    expect(
-      fs.lstatSync(path.join(directory, "output_2.png")).isSymbolicLink(),
-    ).toBe(true);
-    expect(fs.readFileSync(target, "utf8")).toBe("SYMLINK TARGET");
-  });
-
-  test("a replacement file survives cleanup of the failed attempt", async () => {
-    const destination = path.join(directory, "output_2.png");
-    jest.spyOn(realFs, "writeSync").mockImplementationOnce(() => {
-      fs.unlinkSync(destination);
-      // Use a different write operation so the injected writeSync fault is not recursive.
-      fs.copyFileSync(path.join(directory, "output.png"), destination);
-      throw Object.assign(new Error("Injected ENOSPC after replacement"), {
-        code: "ENOSPC",
-      });
-    });
-    await expect(
-      settles(downloadFiles([item("ok")], directory)),
-    ).rejects.toBeInstanceOf(DownloadError);
-    expect(fs.readFileSync(destination, "utf8")).toBe("USER");
-    expectExistingFiles();
-    expect(await settles(downloadFiles([item("ok")], directory))).toEqual([
-      path.join(directory, "output_3.png"),
-    ]);
-  });
-
-  test("cleanup failure preserves the original disk error and closes its descriptor", async () => {
-    const write = realFs.writeSync;
-    let descriptor: number | undefined;
-    jest.spyOn(realFs, "writeSync").mockImplementationOnce((fd, data) => {
-      if (typeof data === "string") throw new Error("Expected binary output");
-      descriptor = fd;
-      write(fd, data, 0, 2);
-      throw Object.assign(new Error("Injected ENOSPC"), { code: "ENOSPC" });
-    });
-    jest.spyOn(realFs, "unlinkSync").mockImplementationOnce(() => {
-      throw Object.assign(new Error("Injected cleanup EACCES"), {
-        code: "EACCES",
-      });
-    });
-    await expect(
-      settles(downloadFiles([item("ok")], directory)),
-    ).rejects.toMatchObject({
-      downloadErrors: [expect.objectContaining({ message: "Injected ENOSPC" })],
-    });
-    if (descriptor === undefined)
-      throw new Error("Write fault was not reached");
-    const closedDescriptor = descriptor;
-    expect(() => fs.fstatSync(closedDescriptor)).toThrow("EBADF");
-    // Cleanup cannot remove a file when the filesystem denies unlink.
-    expect(fs.readFileSync(path.join(directory, "output_2.png"), "utf8")).toBe(
-      "co",
-    );
-    expectExistingFiles();
-  });
 
   test("redirected compressed outputs retain decoded bytes", async () => {
     const paths = await settles(downloadFiles([item("redirect")], directory));

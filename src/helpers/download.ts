@@ -60,12 +60,11 @@ export async function downloadFiles(
       const { name, ext } = path.parse(filename);
       let filePath = path.join(baseDir, filename);
       let suffix = 1;
-      let descriptor: number;
       while (true) {
         try {
           // Exclusive creation preserves earlier outputs and user files, even
           // when concurrent downloads choose the same destination name.
-          descriptor = fs.openSync(filePath, "wx");
+          fs.writeFileSync(filePath, Buffer.from(buffer), { flag: "wx" });
           break;
         } catch (error) {
           if (
@@ -78,27 +77,6 @@ export async function downloadFiles(
           }
           filePath = path.join(baseDir, `${name}_${suffix++}${ext}`);
         }
-      }
-      try {
-        fs.writeFileSync(descriptor, Buffer.from(buffer));
-      } catch (error) {
-        try {
-          // Only remove the file this attempt created. A different file may
-          // have replaced its path while the write failed.
-          const openedFile = fs.fstatSync(descriptor);
-          const currentFile = fs.lstatSync(filePath);
-          if (
-            openedFile.dev === currentFile.dev &&
-            openedFile.ino === currentFile.ino
-          ) {
-            fs.unlinkSync(filePath);
-          }
-        } catch {
-          // Keep the original write error if cleanup also fails.
-        }
-        throw error;
-      } finally {
-        fs.closeSync(descriptor);
       }
       getLogger().debug(`Downloaded output to ${filePath}`);
       downloadedPaths.push(filePath);
