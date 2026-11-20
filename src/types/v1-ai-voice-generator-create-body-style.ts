@@ -497,7 +497,6 @@ export type V1AiVoiceGeneratorCreateBodyStyle = {
     | "Enrique Iglesias"
     | "Eren Jaeger"
     | "Eric Cartman"
-    | "Eric Clapton"
     | "Erling Haaland"
     | "Ernie Hudson"
     | "Erza Scarlet"
@@ -2338,7 +2337,6 @@ export type External$V1AiVoiceGeneratorCreateBodyStyle = {
     | "Enrique Iglesias"
     | "Eren Jaeger"
     | "Eric Cartman"
-    | "Eric Clapton"
     | "Erling Haaland"
     | "Ernie Hudson"
     | "Erza Scarlet"
@@ -4182,7 +4180,6 @@ const SchemaIn$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "Enrique Iglesias",
       "Eren Jaeger",
       "Eric Cartman",
-      "Eric Clapton",
       "Erling Haaland",
       "Ernie Hudson",
       "Erza Scarlet",
@@ -6036,7 +6033,6 @@ const SchemaOut$V1AiVoiceGeneratorCreateBodyStyle: z.ZodType<
       "Enrique Iglesias",
       "Eren Jaeger",
       "Eric Cartman",
-      "Eric Clapton",
       "Erling Haaland",
       "Ernie Hudson",
       "Erza Scarlet",
