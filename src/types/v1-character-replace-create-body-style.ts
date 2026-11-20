@@ -20,7 +20,7 @@ export type V1CharacterReplaceCreateBodyStyle = {
    */
   points?: V1CharacterReplaceCreateBodyStylePointsItem[] | undefined;
   /**
-   * Optional direction. Supported by kling-3.0, minimax-h3. For MiniMax H3 in replace mode, ignored and not saved when `selection_mode` is `point`; applies only to automatic person selection.
+   * Optional direction. Supported by kling-3.0, kling-4.0, minimax-h3. For MiniMax H3 in replace mode, ignored and not saved when `selection_mode` is `point`; applies only to automatic person selection.
    */
   prompt?: string | undefined;
   /**
