@@ -1,7 +1,6 @@
 import { types } from "magic-hour";
 import * as fs from "fs";
 import * as path from "path";
-import fetch from "node-fetch";
 import { getLogger } from "magic-hour/logger";
 import { DownloadError } from "magic-hour/helpers/download-error";
 
@@ -45,6 +44,7 @@ export async function downloadFiles(
     try {
       const response = await fetch(download.url);
       if (!response.ok) {
+        await response.body?.cancel();
         throw new Error(
           `Failed to download from ${download.url}: ${response.statusText}`,
         );
@@ -55,9 +55,27 @@ export async function downloadFiles(
       // Extract filename from URL or generate one
       const urlPath = new URL(download.url).pathname;
       const filename = path.basename(urlPath) || `download_${Date.now()}`;
-      const filePath = path.join(baseDir, filename);
-
-      fs.writeFileSync(filePath, Buffer.from(buffer));
+      const { name, ext } = path.parse(filename);
+      let filePath = path.join(baseDir, filename);
+      let suffix = 1;
+      while (true) {
+        try {
+          // Exclusive creation preserves earlier outputs and user files, even
+          // when concurrent downloads choose the same destination name.
+          fs.writeFileSync(filePath, Buffer.from(buffer), { flag: "wx" });
+          break;
+        } catch (error) {
+          if (
+            typeof error !== "object" ||
+            error === null ||
+            !("code" in error) ||
+            error.code !== "EEXIST"
+          ) {
+            throw error;
+          }
+          filePath = path.join(baseDir, `${name}_${suffix++}${ext}`);
+        }
+      }
       getLogger().debug(`Downloaded output to ${filePath}`);
       downloadedPaths.push(filePath);
     } catch (error) {
