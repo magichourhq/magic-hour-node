@@ -393,7 +393,6 @@ export type V1AiVoiceGeneratorCreateBodyStyleVoiceNameEnum =
   | "Enrique Iglesias"
   | "Eren Jaeger"
   | "Eric Cartman"
-  | "Eric Clapton"
   | "Erling Haaland"
   | "Ernie Hudson"
   | "Erza Scarlet"
