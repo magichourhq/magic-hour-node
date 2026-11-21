@@ -28,6 +28,10 @@ export type V1AiImageGeneratorCreateBody = {
    *   - Supported resolutions: 640px, 1k, 2k
    *   - Available for tiers: free, creator, pro, business
    *   - Image count allowed: 1
+   * - `flux-3-klein` - from 5 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k
+   *   - Available for tiers: free, creator, pro, business
+   *   - Image count allowed: 1, 2, 3, 4
    * - `flux-schnell` - from 5 credits/image
    *   - Supported resolutions: 640px, 1k, 2k
    *   - Available for tiers: free, creator, pro, business
@@ -93,6 +97,7 @@ export type V1AiImageGeneratorCreateBody = {
     | (
         | "default"
         | "flux-2-klein"
+        | "flux-3-klein"
         | "flux-schnell"
         | "gpt-image-2"
         | "gpt-image-2.5-flare"
@@ -133,6 +138,7 @@ export type V1AiImageGeneratorCreateBody = {
    *
    * **Per-model support:**
    * - `flux-2-klein` - 640px, 1k, 2k
+   * - `flux-3-klein` - 640px, 1k, 2k
    * - `flux-schnell` - 640px, 1k, 2k
    * - `gpt-image-2` - 640px, 1k, 2k, 4k
    * - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
@@ -169,6 +175,7 @@ export type External$V1AiImageGeneratorCreateBody = {
     | (
         | "default"
         | "flux-2-klein"
+        | "flux-3-klein"
         | "flux-schnell"
         | "gpt-image-2"
         | "gpt-image-2.5-flare"
@@ -208,6 +215,7 @@ const SchemaIn$V1AiImageGeneratorCreateBody: z.ZodType<
       .enum([
         "default",
         "flux-2-klein",
+        "flux-3-klein",
         "flux-schnell",
         "gpt-image-2",
         "gpt-image-2.5-flare",
@@ -259,6 +267,7 @@ const SchemaOut$V1AiImageGeneratorCreateBody: z.ZodType<
       .enum([
         "default",
         "flux-2-klein",
+        "flux-3-klein",
         "flux-schnell",
         "gpt-image-2",
         "gpt-image-2.5-flare",

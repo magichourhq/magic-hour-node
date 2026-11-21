@@ -7,6 +7,10 @@
  *   - Supported resolutions: 640px, 1k, 2k
  *   - Available for tiers: free, creator, pro, business
  *   - Max additional input images: 5
+ * - `flux-3-klein` - from 5 credits/image
+ *   - Supported resolutions: 640px, 1k, 2k
+ *   - Available for tiers: free, creator, pro, business
+ *   - Max additional input images: 1
  * - `gpt-image-2` - from 50 credits/image
  *   - Supported resolutions: 640px, 1k, 2k, 4k
  *   - Available for tiers: creator, pro, business
@@ -64,6 +68,7 @@
 export type V1AiImageEditorCreateBodyModelEnum =
   | "default"
   | "flux-2-klein"
+  | "flux-3-klein"
   | "gpt-image-2"
   | "gpt-image-2.5-flare"
   | "krea-2"

@@ -10,6 +10,7 @@
  *
  * **Per-model support:**
  * - `flux-2-klein` - 640px, 1k, 2k
+ * - `flux-3-klein` - 640px, 1k, 2k
  * - `gpt-image-2` - 640px, 1k, 2k, 4k
  * - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
  * - `krea-2` - 640px, 1k
