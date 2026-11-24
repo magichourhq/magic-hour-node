@@ -1,5 +1,5 @@
 {
-  "id": "0e114939-8b31-4288-aaeb-ea7889217ee9",
+  "id": "a105f77e-6343-4442-b0c9-9187402d5e98",
   "tracked_paths": [
     {
       "editable": true,
@@ -52,6 +52,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/account/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/account/checkout/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/account/checkout/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/account/checkout/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/account/checkout/resource-client.ts"
     },
     {
       "editable": true,
@@ -704,6 +720,18 @@
     {
       "editable": true,
       "path": "src/types/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-checkout-create-body-type-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-checkout-create-body.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-account-checkout-create-response.ts"
     },
     {
       "editable": false,
@@ -1552,6 +1580,10 @@
     {
       "editable": false,
       "path": "src/types/v1-voices-list-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-account-checkout.test.ts"
     },
     {
       "editable": false,

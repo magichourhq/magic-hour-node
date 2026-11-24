@@ -2,6 +2,7 @@
 
 ## Submodules
 
+- [checkout](resources/v1/account/checkout/README.md) - checkout
 - [account](resources/v1/account/README.md) - account
 - [ai-clothes-changer](resources/v1/ai-clothes-changer/README.md) - ai-clothes-changer
 - [ai-face-editor](resources/v1/ai-face-editor/README.md) - ai-face-editor
