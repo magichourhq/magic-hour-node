@@ -200,6 +200,19 @@ try {
 }
 ```
 
+## Idempotent Requests
+
+Project create endpoints accept an `Idempotency-Key` header, so you can safely retry a request without creating or paying for a second project. Repeating a key within 24 hours returns the original project. Keys are shared across your account, so use a new key, such as a UUID, for each project.
+
+```ts
+await client.v1.aiImageGenerator.create(
+  { imageCount: 1, style: { prompt: "Cool image" } },
+  { additionalHeaders: { "Idempotency-Key": "5f3c1b9e-8a41-4a0e-9d3e-2f6a1c7b9e10" } },
+);
+```
+
+This also works with `generate()`.
+
 ## Logging
 
 ### Logging Levels
