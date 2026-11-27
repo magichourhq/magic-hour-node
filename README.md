@@ -365,6 +365,10 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/character-replace/README.md#create) - Character Replace
 - [generate](src/resources/v1/character-replace/README.md#generate) - Character Replace Generate Workflow
 
+### [v1.estimate.image](src/resources/v1/estimate/image/README.md)
+
+- [list](src/resources/v1/estimate/image/README.md#list) - Estimate image credits
+
 ### [v1.faceDetection](src/resources/v1/face-detection/README.md)
 
 - [create](src/resources/v1/face-detection/README.md#create) - Face Detection
