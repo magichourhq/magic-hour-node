@@ -64,7 +64,8 @@ async function main() {
 
     console.log(`📄 Processing ${moduleName}...`);
 
-    let content = fs.readFileSync(file, "utf8");
+    const content = fs.readFileSync(file, "utf8");
+    if (!content.includes("<!-- CUSTOM DOCS START -->")) continue;
 
     const example = extractCodeSnippet(content);
 
