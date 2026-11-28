@@ -365,9 +365,17 @@ Valid values are: `none`, `error`, `warn`, `info`, `debug` (case insensitive). I
 - [create](src/resources/v1/character-replace/README.md#create) - Character Replace
 - [generate](src/resources/v1/character-replace/README.md#generate) - Character Replace Generate Workflow
 
+### [v1.estimate.audio](src/resources/v1/estimate/audio/README.md)
+
+- [list](src/resources/v1/estimate/audio/README.md#list) - Estimate audio credits
+
 ### [v1.estimate.image](src/resources/v1/estimate/image/README.md)
 
 - [list](src/resources/v1/estimate/image/README.md#list) - Estimate image credits
+
+### [v1.estimate.video](src/resources/v1/estimate/video/README.md)
+
+- [list](src/resources/v1/estimate/video/README.md#list) - Estimate video credits
 
 ### [v1.faceDetection](src/resources/v1/face-detection/README.md)
 
