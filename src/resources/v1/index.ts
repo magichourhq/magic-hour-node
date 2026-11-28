@@ -22,6 +22,7 @@ export * as audioToVideo from "./audio-to-video";
 export * as autoSubtitleGenerator from "./auto-subtitle-generator";
 export * as bodySwap from "./body-swap";
 export * as characterReplace from "./character-replace";
+export * as estimate from "./estimate";
 export * as faceDetection from "./face-detection";
 export * as faceSwap from "./face-swap";
 export * as faceSwapPhoto from "./face-swap-photo";

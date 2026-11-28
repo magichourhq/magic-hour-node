@@ -28,6 +28,7 @@ import { AudioToVideoClient } from "magic-hour/resources/v1/audio-to-video";
 import { AutoSubtitleGeneratorClient } from "magic-hour/resources/v1/auto-subtitle-generator";
 import { BodySwapClient } from "magic-hour/resources/v1/body-swap";
 import { CharacterReplaceClient } from "magic-hour/resources/v1/character-replace";
+import { EstimateClient } from "magic-hour/resources/v1/estimate";
 import { FaceDetectionClient } from "magic-hour/resources/v1/face-detection";
 import { FaceSwapClient } from "magic-hour/resources/v1/face-swap";
 import { FaceSwapPhotoClient } from "magic-hour/resources/v1/face-swap-photo";
@@ -45,6 +46,7 @@ import { VideoToVideoClient } from "magic-hour/resources/v1/video-to-video";
 import { VoicesClient } from "magic-hour/resources/v1/voices";
 
 export class V1Client extends CoreResourceClient {
+  private _estimateLazy?: EstimateClient; // lazy-loading cache
   private _voicesLazy?: VoicesClient; // lazy-loading cache
   private _aiVideoUpscalerLazy?: AiVideoUpscalerClient; // lazy-loading cache
   private _aiMusicGeneratorLazy?: AiMusicGeneratorClient; // lazy-loading cache
@@ -113,6 +115,7 @@ export class V1Client extends CoreResourceClient {
       this.autoSubtitleGenerator;
       this.bodySwap;
       this.characterReplace;
+      this.estimate;
       this.faceDetection;
       this.faceSwap;
       this.faceSwapPhoto;
@@ -544,6 +547,16 @@ export class V1Client extends CoreResourceClient {
     return (
       this._voicesLazy ??
       (this._voicesLazy = new (require("./voices").VoicesClient)(
+        this._client,
+        this._opts,
+      ))
+    );
+  }
+
+  get estimate(): EstimateClient {
+    return (
+      this._estimateLazy ??
+      (this._estimateLazy = new (require("./estimate").EstimateClient)(
         this._client,
         this._opts,
       ))

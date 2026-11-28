@@ -2,6 +2,11 @@ import { zodTransform } from "make-api-request-js";
 import * as z from "zod";
 
 import {
+  External$V1AccountListResponseAutoReload,
+  Schemas$V1AccountListResponseAutoReload,
+  V1AccountListResponseAutoReload,
+} from "./v1-account-list-response-auto-reload";
+import {
   External$V1AccountListResponseSubscription,
   Schemas$V1AccountListResponseSubscription,
   V1AccountListResponseSubscription,
@@ -11,6 +16,7 @@ import {
  * V1AccountListResponse
  */
 export type V1AccountListResponse = {
+  autoReload: V1AccountListResponseAutoReload;
   /**
    * Credits currently available to spend. Includes subscription credits and any purchased credit packs.
    */
@@ -41,6 +47,7 @@ export type V1AccountListResponse = {
  * we expect to come in as network data
  */
 export type External$V1AccountListResponse = {
+  auto_reload: External$V1AccountListResponseAutoReload;
   credits: number;
   email: string | null;
   id: string;
@@ -57,6 +64,7 @@ const SchemaIn$V1AccountListResponse: z.ZodType<
   unknown
 > = z
   .object({
+    auto_reload: Schemas$V1AccountListResponseAutoReload.in,
     credits: z.number().int(),
     email: z.string().nullable(),
     id: z.string(),
@@ -65,6 +73,7 @@ const SchemaIn$V1AccountListResponse: z.ZodType<
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      auto_reload: "autoReload",
       credits: "credits",
       email: "email",
       id: "id",
@@ -83,6 +92,7 @@ const SchemaOut$V1AccountListResponse: z.ZodType<
   V1AccountListResponse // the object to be transformed
 > = z
   .object({
+    autoReload: Schemas$V1AccountListResponseAutoReload.out,
     credits: z.number().int(),
     email: z.string().nullable(),
     id: z.string(),
@@ -91,6 +101,7 @@ const SchemaOut$V1AccountListResponse: z.ZodType<
   })
   .transform((obj) => {
     return zodTransform(obj, {
+      autoReload: "auto_reload",
       credits: "credits",
       email: "email",
       id: "id",
