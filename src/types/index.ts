@@ -132,8 +132,12 @@ export { V1CharacterReplaceCreateBodyStyleModeEnum } from "./v1-character-replac
 export { V1CharacterReplaceCreateBodyStylePointsItem } from "./v1-character-replace-create-body-style-points-item";
 export { V1CharacterReplaceCreateBodyStyleSelectionModeEnum } from "./v1-character-replace-create-body-style-selection-mode-enum";
 export { V1CharacterReplaceCreateResponse } from "./v1-character-replace-create-response";
+export { V1EstimateAudioListResponse } from "./v1-estimate-audio-list-response";
+export { V1EstimateAudioListToolEnum } from "./v1-estimate-audio-list-tool-enum";
 export { V1EstimateImageListResponse } from "./v1-estimate-image-list-response";
 export { V1EstimateImageListToolEnum } from "./v1-estimate-image-list-tool-enum";
+export { V1EstimateVideoListResponse } from "./v1-estimate-video-list-response";
+export { V1EstimateVideoListToolEnum } from "./v1-estimate-video-list-tool-enum";
 export { V1FaceDetectionCreateBody } from "./v1-face-detection-create-body";
 export { V1FaceDetectionCreateBodyAssets } from "./v1-face-detection-create-body-assets";
 export { V1FaceDetectionCreateResponse } from "./v1-face-detection-create-response";

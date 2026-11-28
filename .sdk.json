@@ -1,5 +1,5 @@
 {
-  "id": "b26d3adf-44c3-435a-b4db-9a794146c099",
+  "id": "f12f29f9-47ed-4ac6-92d6-cb4b5d3effb0",
   "tracked_paths": [
     {
       "editable": true,
@@ -455,6 +455,22 @@
     },
     {
       "editable": true,
+      "path": "src/resources/v1/estimate/audio/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/estimate/audio/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/estimate/audio/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/estimate/audio/resource-client.ts"
+    },
+    {
+      "editable": true,
       "path": "src/resources/v1/estimate/image/README.md"
     },
     {
@@ -480,6 +496,22 @@
     {
       "editable": true,
       "path": "src/resources/v1/estimate/resource-client.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/estimate/video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/estimate/video/index.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/resources/v1/estimate/video/request-types.ts"
+    },
+    {
+      "editable": true,
+      "path": "src/resources/v1/estimate/video/resource-client.ts"
     },
     {
       "editable": true,
@@ -1291,11 +1323,27 @@
     },
     {
       "editable": false,
+      "path": "src/types/v1-estimate-audio-list-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-estimate-audio-list-tool-enum.ts"
+    },
+    {
+      "editable": false,
       "path": "src/types/v1-estimate-image-list-response.ts"
     },
     {
       "editable": false,
       "path": "src/types/v1-estimate-image-list-tool-enum.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-estimate-video-list-response.ts"
+    },
+    {
+      "editable": false,
+      "path": "src/types/v1-estimate-video-list-tool-enum.ts"
     },
     {
       "editable": false,
@@ -1731,7 +1779,15 @@
     },
     {
       "editable": false,
+      "path": "test/v1-estimate-audio.test.ts"
+    },
+    {
+      "editable": false,
       "path": "test/v1-estimate-image.test.ts"
+    },
+    {
+      "editable": false,
+      "path": "test/v1-estimate-video.test.ts"
     },
     {
       "editable": false,
